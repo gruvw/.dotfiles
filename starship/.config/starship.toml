@@ -1,0 +1,96 @@
+# ~/.config/starship.toml
+
+# See https://starship.rs/config for defaults
+
+# TODO: Add git support
+# TODO: Add languages support
+
+# Use custom format
+format = """
+([└─](green)$status$cmd_duration
+)[╭─](green)$sudo$username$hostname$directory$package$fill$memory_usage$jobs$time
+[├─](green)$character
+"""
+
+# Insert blank line at the start of (and between) the prompt
+add_newline = false
+# Timeout for starship to scan files (in milliseconds)
+scan_timeout = 50
+command_timeout = 800
+
+[username]
+show_always = true
+style_user = "bold purple"
+style_root = "bold red"
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = false
+style = "green"
+format = "[@$hostname]($style)"
+
+[directory]
+truncation_symbol = ".../"  # used when directory is too long
+style = "cyan"
+format = "[ $path/]($style)[$read_only]($read_only_style) "  # (known issue) shows double slashes (//) on root directory
+
+[directory.substitutions]
+
+[memory_usage]
+disabled = false
+threshold = 60  # hidden unless over this threshold in %
+symbol = "[ram ](dimmed white)"
+style = "bold dimmed white"
+format = "$symbol[$ram_pct ]($style)"
+
+# Show when sudo credentials are cached
+[sudo]
+disabled = false
+symbol = "🟊 "
+style = "bold purple"
+format = "[$symbol]($style)"
+
+[cmd_duration]
+min_time = 5
+show_milliseconds = true
+show_notifications = true  # desktop notifications
+min_time_to_notify = 10000
+style = "yellow"
+format = "[took ](dimmed white)[$duration]($style)"
+
+# Number of jobs running
+[jobs]
+symbol_threshold = 2  # show symbol if over this threshold of jobs running
+symbol = "[jobs ](blue)"
+format = "$symbol[$number ]($style)"
+
+[battery]
+disabled = true
+
+[time]
+disabled = false
+use_12hr = true
+style = "yellow"
+format = "[$time]($style)"
+
+[status]
+disabled = false
+symbol = "[exit](dimmed white)"
+format = "[$symbol \\[$status$signal_number\\]]($style)[( \\($common_meaning$signal_name\\)) ](red)"
+
+# Prompt character (before command)
+[character]
+success_symbol = "[❯](bold green)"  # insert mode
+vicmd_symbol = "[❙](bold green)"  # normal mode
+error_symbol = "[❯](bold green)"  # no error character, error is displayed above
+
+# Used for right prompt on first line
+[fill]
+symbol = " "
+
+[line_break]
+disabled = true
+
+[package]
+style = "white"
+format = "[$symbol$version]($style) "
