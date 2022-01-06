@@ -1,0 +1,7 @@
+[user]
+	name = gruvw
+	email = gruvw.dev@gmail.com
+[init]
+	defaultBranch = main
+[credential]
+	helper = store
