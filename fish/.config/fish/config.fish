@@ -1,8 +1,6 @@
 # ~/.config/fish/config.fish
 
 if status is-interactive
-    # Loads starship prompt
-    starship init fish | source
     # Commands to run in interactive sessions can go here
     # Disables welcome message
     set fish_greeting
@@ -22,4 +20,6 @@ if status is-interactive
     set fish_pager_color_prefix green --bold  # the color of the prefix string, i.e. the string that is to be completed
     set fish_pager_color_description yellow --italics  # the color of the completion description
     set fish_pager_color_progress cyan --underline  # the color of the indicator at the bottom left corner
+    # Loads starship prompt
+    starship init fish | source
 end

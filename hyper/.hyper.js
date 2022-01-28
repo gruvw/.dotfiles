@@ -18,12 +18,11 @@ module.exports = {
         backgroundColor: '#363537',
         selectionColor: 'rgba(123, 216, 143,0.3)',
         borderColor: '#333',
-        css: '',
+        css: '.xterm-viewport::-webkit-scrollbar-thumb { background-color: #000;}', // .xterm-screen > canvas:nth-child(4) {padding: 2px 5px;}',
         termCSS: '',
         workingDirectory: '',
         showHamburgerMenu: '',
         showWindowControls: true,
-        padding: '5px 10px',
         colors: {
             // MONOKAI PRO (spectrum filter) colors
             // No light colors
