@@ -20,6 +20,11 @@ if status is-interactive
     set fish_pager_color_prefix green --bold  # the color of the prefix string, i.e. the string that is to be completed
     set fish_pager_color_description yellow --italics  # the color of the completion description
     set fish_pager_color_progress cyan --underline  # the color of the indicator at the bottom left corner
+    # Set the cursor shapes for the different vi modes.
+    set fish_cursor_default block blink
+    set fish_cursor_insert line blink
+    set fish_cursor_replace_one underscore blink
+    set fish_cursor_visual block
     # Loads starship prompt
     starship init fish | source
 end
