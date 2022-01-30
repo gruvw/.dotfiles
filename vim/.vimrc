@@ -1,3 +1,5 @@
+" ~/.vimrc
+
 " Vim plug
 call plug#begin('~/.vim/plugged')
 " Plug 'sirver/ultisnips'
