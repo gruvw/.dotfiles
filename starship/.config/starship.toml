@@ -46,8 +46,8 @@ format = "$symbol[$ram_pct ]($style)"
 # Show when sudo credentials are cached
 [sudo]
 disabled = false
-symbol = "🟊 "
-style = "bold purple"
+symbol = "⏺"
+style = "bold red"
 format = "[$symbol]($style)"
 
 [cmd_duration]

@@ -1,3 +1,5 @@
+; ~/.gitconfig
+
 [user]
 	name = gruvw
 	email = gruvw.dev@gmail.com
