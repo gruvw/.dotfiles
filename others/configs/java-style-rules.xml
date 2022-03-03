@@ -68,7 +68,7 @@
         <setting id="org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_enum_constant" value="do not insert" />
         <setting id="org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_for" value="do not insert" />
         <setting id="org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_method_declaration" value="insert" />
-        <setting id="org.eclipse.jdt.core.formatter.alignment_for_selector_in_method_invocation" value="85" />
+        <setting id="org.eclipse.jdt.core.formatter.alignment_for_selector_in_method_invocation" value="80" />
         <setting id="org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_switch" value="do not insert" />
         <setting id="org.eclipse.jdt.core.formatter.insert_space_after_unary_operator" value="do not insert" />
         <setting id="org.eclipse.jdt.core.formatter.insert_space_after_colon_in_case" value="insert" />
@@ -94,7 +94,7 @@
         <setting id="org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_enum_constant" value="do not insert" />
         <setting id="org.eclipse.jdt.core.formatter.alignment_for_annotations_on_package" value="1585" />
         <setting id="org.eclipse.jdt.core.formatter.alignment_for_superclass_in_type_declaration" value="16" />
-        <setting id="org.eclipse.jdt.core.formatter.alignment_for_assignment" value="16" />
+        <setting id="org.eclipse.jdt.core.formatter.alignment_for_assignment" value="0" />
         <setting id="org.eclipse.jdt.core.compiler.problem.assertIdentifier" value="error" />
         <setting id="org.eclipse.jdt.core.formatter.tabulation.char" value="space" />
         <setting id="org.eclipse.jdt.core.formatter.insert_space_after_semicolon_in_try_resources" value="insert" />
