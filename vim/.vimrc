@@ -94,3 +94,29 @@ function SetupLightlineColors() abort
   let l:palette.tabline.middle = l:palette.normal.middle
   call lightline#colorscheme()
 endfunction
+
+" Explorer (netrw)
+let g:netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
+let g:netrw_keepdir = 0 " cd to current dir
+let g:netrw_banner = 0
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_localcopydircmd = 'cp -r'
+hi! link netrwMarkFile Search
+function! NetrwMapping()
+  nmap <buffer> H u
+  nmap <buffer> h -^
+  nmap <buffer> l <CR>
+  nmap <buffer> . gh
+  nmap <buffer> P <C-w>z
+  nmap <buffer> <TAB> mf
+  nmap <buffer> <S-TAB> mF
+  nmap <buffer> ff %:w<CR>:buffer #<CR>
+endfunction
+
+augroup netrw_mapping
+  autocmd!
+  autocmd filetype netrw call NetrwMapping()
+augroup END
+
+" Saved macro
+let @f = 'F"ifjkf";' " Python transform string into formatted literal
