@@ -41,7 +41,7 @@ set incsearch
 set background=dark
 set termguicolors
 colorscheme monokai_pro
-hi Normal guibg=#363537 ctermbg=NONE
+hi Normal guibg=NONE ctermbg=black
 highlight NonText guibg=NONE ctermbg=NONE
 " hi CursorLine guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermbg=NONE
@@ -110,6 +110,7 @@ function! NetrwMapping()
   nmap <buffer> P <C-w>z
   nmap <buffer> <TAB> mf
   nmap <buffer> <S-TAB> mF
+  " New file
   nmap <buffer> ff %:w<CR>:buffer #<CR>
 endfunction
 
