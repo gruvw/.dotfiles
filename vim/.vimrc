@@ -41,7 +41,7 @@ set incsearch
 set background=dark
 set termguicolors
 colorscheme monokai_pro
-hi Normal guibg=NONE ctermbg=black
+hi Normal guibg=#222222 ctermbg=NONE
 highlight NonText guibg=NONE ctermbg=NONE
 " hi CursorLine guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermbg=NONE

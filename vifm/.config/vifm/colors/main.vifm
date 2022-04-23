@@ -1,0 +1,39 @@
+" Available attributes (some of them can be combined):
+" bold
+" underline
+" reverse or inverse
+" standout
+" italic (on unsupported systems becomes reverse)
+" none
+
+" highlight group cterm=attrs ctermfg=foreground_color ctermbg=background_color
+
+highlight clear
+
+highlight Win cterm=none ctermfg=white ctermbg=black
+highlight Directory cterm=bold ctermfg=green ctermbg=black
+highlight Border cterm=none ctermfg=black ctermbg=black
+highlight CmdLine cterm=none ctermfg=white ctermbg=black
+highlight TopLine cterm=none ctermfg=cyan ctermbg=black
+highlight TopLineSel cterm=bold,reverse ctermfg=cyan ctermbg=black
+highlight CurrLine cterm=bold ctermfg=-1 ctermbg=8
+highlight StatusLine cterm=bold ctermfg=black ctermbg=green
+highlight Executable cterm=bold ctermfg=blue ctermbg=black
+highlight ErrorMsg cterm=none ctermfg=black ctermbg=red
+highlight Link cterm=italic ctermfg=yellow ctermbg=black
+highlight BrokenLink cterm=italic ctermfg=red ctermbg=black
+highlight WildMenu cterm=none ctermfg=black ctermbg=white
+
+" highlight Selected cterm=bold ctermfg=magenta ctermbg=red
+" highlight JobLine cterm=bold,reverse ctermfg=black ctermbg=white
+" highlight SuggestBox cterm=bold ctermfg=default ctermbg=default
+" highlight CmpMismatch cterm=bold ctermfg=white ctermbg=red
+" highlight AuxWin cterm=bold,underline,reverse,standout,italic ctermfg=default ctermbg=default
+" highlight TabLine cterm=none ctermfg=white ctermbg=black
+" highlight TabLineSel cterm=bold,reverse ctermfg=default ctermbg=default
+" highlight OtherWin cterm=bold,underline,reverse,standout,italic ctermfg=default ctermbg=default
+
+highlight Socket cterm=bold ctermfg=magenta ctermbg=black
+highlight Device cterm=bold ctermfg=red ctermbg=black
+highlight Fifo cterm=bold ctermfg=cyan ctermbg=none
+highlight Selected cterm=none ctermfg=236 ctermbg=208
