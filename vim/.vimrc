@@ -58,6 +58,7 @@ map <C-_> <Plug>NERDCommenterToggle
 filetype plugin on
 hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=124 guifg=#af0000 gui=underline
+set nofoldenable
 
 " Spell check
 setlocal spell
