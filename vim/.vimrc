@@ -61,7 +61,10 @@ hi SpellBad cterm=underline ctermfg=124 guifg=#af0000 gui=underline
 set nofoldenable
 
 " Spell check
-setlocal spell
+augroup spellchecker
+    autocmd!
+    autocmd FileType FileType latex,tex,md,markdown setlocal spell
+augroup END
 set spelllang=en_us,fr
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
