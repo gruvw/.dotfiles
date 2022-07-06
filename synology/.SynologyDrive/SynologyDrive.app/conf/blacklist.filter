@@ -1,0 +1,21 @@
+[Version]
+major = 1
+minor = 1
+
+[Common]
+black_dir_prefix = "/Backups/Android Xiaomi Mi9T-Pro 12-Oct-2020", "/Backups/Applications/Flexcil", "/Backups/Backup PC FIX (gaming) lucas 19-04-2020", "/Backups/Google Photos 18-12-2020", "/Backups/OneDrive Lucas backup 24.05.2020", 
+"/Backups/Onedrive Storage Limit 11-08-2020", "/Backups/PC Lucas TP 12-09-2020", "/Backups/PC portable thinkpad ALL 24-05-2020", "/Backups/Recovery", "/Backups/Samsung S8 (images and all) 08-03-2020", 
+"/Backups/Services data", "/EPFL/Switch Tube saves", "/Nas Admin", "/Old", "/Programmation/Java/JaVelo/data/tiles"
+
+max_length = 0
+max_path = 0
+
+[File]
+black_suffix = ".lnk", ".pst", ".swp", ".temp", ".tmp"
+black_ext_selective_sync = "tmp", "temp", "swp", "lnk", "pst"
+
+max_size = 0
+
+[Directory]
+black_name = ".cache", "bower_components", "node_modules", ".git"
+
