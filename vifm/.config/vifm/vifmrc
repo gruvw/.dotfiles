@@ -1,6 +1,6 @@
 " Own config
 " Key map
-nnoremap xv :!code %c<CR>
+nnoremap xc :!code %c<CR>
 nnoremap xh za
 nnoremap xn :!nautilus .<CR>
 " Options
