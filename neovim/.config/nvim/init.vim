@@ -1,7 +1,5 @@
-" ~/.vimrc
-
 " Vim plug
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/site/plugged')
 " Plug 'sirver/ultisnips'
 "     let g:UltiSnipsExpandTrigger = '<nop>'
 "     let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
@@ -25,8 +23,15 @@ Plug 'plasticboy/vim-markdown'
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-surround'
-Plug 'easymotion/vim-easymotion'
+if exists('g:vscode')
+  Plug 'asvetliakov/vim-easymotion', { 'as': 'vsc-easymotion' }
+else
+  Plug 'easymotion/vim-easymotion'
+endif
 call plug#end()
+
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath=&runtimepath
 
 " Own settings
 set encoding=utf8
