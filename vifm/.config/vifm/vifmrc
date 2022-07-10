@@ -58,10 +58,11 @@ set statusline="  %= %A %10u:%-7g %15s %20d  "
 " :mark mark /full/directory/path [filename]
 
 mark h ~/
-mark d ~/Downloads
+mark D ~/Downloads
 mark s ~/SynologyDrive
 mark p ~/SynologyDrive/Programmation
 mark e ~/SynologyDrive/EPFL
+mark d ~/dotfiles
 
 " ------------------------------------------------------------------------------
 
