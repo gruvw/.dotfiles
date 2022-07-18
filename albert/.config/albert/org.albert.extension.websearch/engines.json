@@ -1,0 +1,38 @@
+[
+    {
+        "iconPath": "/usr/share/icons/Numix-Circle/48/apps/google-news.svg",
+        "name": "Google",
+        "trigger": "g ",
+        "url": "https://www.google.com/search?q=%s"
+    },
+    {
+        "iconPath": "/usr/share/icons/Numix-Circle/48/apps/youtube.svg",
+        "name": "Youtube",
+        "trigger": "y ",
+        "url": "https://www.youtube.com/results?search_query=%s"
+    },
+    {
+        "iconPath": "/usr/share/icons/Numix-Circle/48/apps/github.svg",
+        "name": "GitHub",
+        "trigger": "gh ",
+        "url": "https://github.com/search?utf8=✓&q=%s"
+    },
+    {
+        "iconPath": "/usr/share/icons/Numix-Circle/48/apps/wolfram-mathematica.svg",
+        "name": "Wolfram Alpha",
+        "trigger": "= ",
+        "url": "https://www.wolframalpha.com/input/?i=%s"
+    },
+    {
+        "iconPath": "/usr/share/icons/Numix-Circle/48/apps/wikipedia.svg",
+        "name": "Wikipedia",
+        "trigger": "w ",
+        "url": "https://en.wikipedia.org/wiki/Special:Search/%s"
+    },
+    {
+        "iconPath": "/usr/share/icons/Numix-Circle/48/apps/appgrid.svg",
+        "name": "Stack Overflow",
+        "trigger": "s ",
+        "url": "https://stackoverflow.com/search?q=%s"
+    }
+]

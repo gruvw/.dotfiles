@@ -68,11 +68,11 @@ QScrollBar::sub-page:vertical {
 }
 
 QListView#actionList {
-    font-size: 25px;
+    font-size: 18px;
 }
 
 QListView#actionList::item {
-    height: 20px;
+    height: 24px;
 }
 
 QListView#resultsList {
