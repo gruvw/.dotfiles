@@ -11,4 +11,3 @@ export CHROME_EXECUTABLE="/opt/brave.com/brave/brave-browser"
 
 # == Others ==
 set PATH "$HOME/pathed:$PATH"
-
