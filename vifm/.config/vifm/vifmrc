@@ -9,9 +9,12 @@ nnoremap os :vsplit<CR>
 nnoremap ov :view<CR>
 nnoremap oo :only<CR>
 
+" Utils
+nnoremap yp :!echo -n %c:p | xclip -selection clipboard %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
+
 
 " Options
-only
+" only
 
 " Others
 fileview *.md,*.py rich %c

@@ -1,5 +1,9 @@
 " ~/.vimrc
 
+" Auto start insert mode
+autocmd BufNewFile * startinsert
+autocmd VimEnter * if empty(expand("%")) | startinsert | endif
+
 " Vim plug
 call plug#begin('~/.vim/plugged')
 " Plug 'sirver/ultisnips'
