@@ -1,0 +1,47 @@
+# ~/.config/betterlockscreenrc
+
+# options
+display_on=0
+span_image=false
+lock_timeout=200
+
+fx_list=(dim blur dimblur pixel dimpixel color)
+dim_level=40
+blur_level=1
+pixel_scale=10,1000
+solid_color=333333
+
+wallpaper_cmd="feh --bg-fill"
+quiet=false
+
+# theme
+loginbox=00000066
+loginshadow=00000000
+
+locktext="Type password to unlock..."
+font="Fira Sans"
+
+ringcolor=f7f1ffff
+insidecolor=00000000
+separatorcolor=00000000
+
+ringvercolor=fce566ff
+insidevercolor=00000000
+
+ringwrongcolor=f7f1ffff
+insidewrongcolor=fc618dff
+
+timecolor=f7f1ffff
+time_format="%H:%M:%S"
+
+greetercolor=f7f1ffff
+layoutcolor=f7f1ffff
+
+keyhlcolor=7bd88fff
+bshlcolor=363537ff
+
+verifcolor=fce566ff
+wrongcolor=fc618dff
+
+modifcolor=fc618dff
+bgcolor=000000ff
