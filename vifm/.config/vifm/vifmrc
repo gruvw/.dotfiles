@@ -1,3 +1,5 @@
+" ~/.config/vifm/vifmrc
+
 " Own config
 " Key map
 nnoremap sc :!code %c<CR>
@@ -18,7 +20,12 @@ nnoremap cw :rename<cr>
 " Options
 " only
 set relativenumber
+
+" Show number of element inside directory instead of size
 set dirsize=nitems
+
+" Sort Downloads
+autocmd DirEnter ~/Downloads setlocal sort=-mtime,dir
 
 " Others
 fileview *.md,*.py rich %c

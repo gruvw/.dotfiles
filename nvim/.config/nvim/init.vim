@@ -1,3 +1,5 @@
+" ~/.config/nvim/init.vim
+
 " Vim plug
 call plug#begin('~/.local/share/nvim/site/plugged')
 " Plug 'sirver/ultisnips'

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# ~/pathed/brightness
+
 max=$(cat /sys/class/backlight/intel_backlight/max_brightness)
 diff=`expr $max / 15`
 val=$(cat /sys/class/backlight/intel_backlight/brightness)

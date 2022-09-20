@@ -1,3 +1,5 @@
+" ~/.vim/autoload/plug.vim
+
 " vim-plug: Vim plugin manager
 " ============================
 "

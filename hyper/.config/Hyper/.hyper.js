@@ -1,4 +1,4 @@
-// ~/.hyper.js
+// ~/.config/Hyper/.hyper.js
 
 "use strict"
 module.exports = {

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# ~/.config/qtile/autostart.sh
+
 # No scrolling flicker
 picom -b --unredir-if-possible --backend xr_glx_hybrid --vsync --use-damage --glx-no-stencil
 
