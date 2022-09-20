@@ -12,9 +12,13 @@ nnoremap oo :only<CR>
 " Utils
 nnoremap yp :!echo -n %c:p | xclip -selection clipboard %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
 
+" Use editor to rename
+nnoremap cw :rename<cr>
 
 " Options
 " only
+set relativenumber
+set dirsize=nitems
 
 " Others
 fileview *.md,*.py rich %c
@@ -65,6 +69,8 @@ mark D ~/Downloads
 mark s ~/SynologyDrive
 mark p ~/SynologyDrive/Programmation
 mark e ~/SynologyDrive/EPFL
+mark 2 ~/SynologyDrive/EPFL/BA2
+mark 3 ~/SynologyDrive/EPFL/BA3
 mark d ~/dotfiles
 
 " ------------------------------------------------------------------------------
@@ -118,9 +124,7 @@ command! reload :write | restart
 " You can also add %CLEAR if you want to clear screen before running FUSE
 " program.
 
-" Pdf
-filextype *.pdf zathura %c %i &, apvlv %c, xpdf %c
-fileviewer *.pdf pdftotext -nopgbrk %c -
+fileviewer * echo ""
 
 " PostScript
 filextype *.ps,*.eps,*.ps.gz
@@ -316,7 +320,7 @@ filextype */
 " uncommenting one of lines below will result in ignoring 'vi[x]cmd' option
 " for unknown file types.
 " For *nix:
-" filetype * xdg-open
+filetype * xdg-open
 " For OS X:
 " filetype * open
 " For Windows:
