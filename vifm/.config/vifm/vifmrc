@@ -11,6 +11,10 @@ nnoremap os :vsplit<CR>
 nnoremap ov :view<CR>
 nnoremap oo :only<CR>
 
+" Switch cw wich cW
+nnoremap cw cW
+nnoremap cW cw
+
 " Utils
 nnoremap yp :!echo -n %c:p | xclip -selection clipboard %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
 
