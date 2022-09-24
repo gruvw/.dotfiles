@@ -16,3 +16,6 @@ synology-drive autostart &
 
 # Starts Albert
 albert &
+
+# Starts CopyQ
+copyq &

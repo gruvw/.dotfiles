@@ -4,7 +4,7 @@ import os
 import random
 import subprocess
 
-from libqtile import bar, layout, widget, hook
+from libqtile import bar, layout, widget, hook, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
@@ -35,8 +35,8 @@ class Commands:
 
 
 class Paths:
-    wallpaper_directory = "~/SynologyDrive/Media/Images/Backgrounds/Desktop/"
-    auto_start = "~/.config/qtile/autostart.sh"
+    wallpaper_directory = os.path.expanduser("~/SynologyDrive/Media/Images/Backgrounds/Desktop/")
+    startup_script = os.path.expanduser("~/.config/qtile/autostart.sh")
 
 
 class Colors:
@@ -46,13 +46,52 @@ class Colors:
 
 
 class Settings:
-    font = "sans"
+    font = "Noto Sans"
+    font_bold = "Noto Sans Bold"
 
-    widget_font_size = 12
+    widget_font_size = 14
     widget_padding = 3
 
     window_border_width = 3
     window_floating_border_width = 0
+
+    wallpaper_timeout = 200
+
+
+# Autostart
+@hook.subscribe.startup_once
+def autostart():
+    cycle_wallpaper()
+
+    # Startup script
+    startup_script = os.path.expanduser(Paths.startup_script)
+    subprocess.Popen([startup_script])
+
+
+def cycle_wallpaper():
+    wallpaper = Paths.wallpaper_directory + random.choice(os.listdir(Paths.wallpaper_directory))
+
+    for screen in qtile.screens:
+        screen.cmd_set_wallpaper(wallpaper, "fill")
+
+    qtile.call_later(Settings.wallpaper_timeout, cycle_wallpaper)
+
+
+@hook.subscribe.layout_change
+def change_layout(layout, group):
+    # FIXME does not work
+    if layout.name == "max":
+        margin = [0, 0, 0, 0]
+    else:
+        margin = [5, 5, 5, 5]
+    try:
+        bar = qtile.current_screen.top
+    except AttributeError:
+        return
+    bar.margin = margin
+    bar._configure(qtile, qtile.current_screen)
+    bar.draw()
+    qtile.current_screen.group.layout_all()
 
 
 keys = [
@@ -161,28 +200,32 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        wallpaper=Paths.wallpaper_directory + random.choice(os.listdir(os.path.expanduser(Paths.wallpaper_directory))),
-        wallpaper_mode="fill",
         top=bar.Bar(
             [
                 widget.CurrentLayout(),
-                widget.GroupBox(),
+                widget.GroupBox(font=Settings.font_bold),
+                # widget.LaunchBar(progs=[
+                #     ("brave-browser", "brave-browser"),
+                # ]),
                 widget.Prompt(),
-                widget.WindowName(),
+                widget.Spacer(length=bar.STRETCH),
+                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.Spacer(length=bar.STRETCH),
+                widget.ThermalZone(high=60, crit=75, format_crit="{temp}°C"),
+                widget.CPU(format="{freq_current}GHz {load_percent: >4}%"),
+                widget.Memory(format="{MemUsed: .0f}{mm}"),
+                # widget.Net(font="Fira Code", format="{down} ↓↑ {up}"),
+                widget.Systray(),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.Battery(format="{char} {percent:2.0%} {hour:d}:{min:02d}"),
-                widget.QuickExit(),
             ],
-            24,
+            25,
+            margin=[8, 10, 8, 10]
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
@@ -230,10 +273,3 @@ wl_input_rules = None
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
-
-
-# Autostart
-@hook.subscribe.startup_once
-def autostart():
-    script = os.path.expanduser(Paths.auto_start)
-    subprocess.Popen([script])
