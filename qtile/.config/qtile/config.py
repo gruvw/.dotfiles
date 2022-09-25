@@ -46,8 +46,8 @@ class Colors:
 
 
 class Settings:
-    font = "Noto Sans"
-    font_bold = "Noto Sans Bold"
+    font = "DejaVu Sans"
+    font_bold = "DejaVu Sans Bold"
 
     widget_font_size = 14
     widget_padding = 3
@@ -57,8 +57,10 @@ class Settings:
 
     wallpaper_timeout = 200
 
+    layout_margin = 4
+    bar_margin = [8, 8, 8 - layout_margin, 8]
 
-# Autostart
+
 @hook.subscribe.startup_once
 def autostart():
     cycle_wallpaper()
@@ -77,21 +79,26 @@ def cycle_wallpaper():
     qtile.call_later(Settings.wallpaper_timeout, cycle_wallpaper)
 
 
-@hook.subscribe.layout_change
-def change_layout(layout, group):
-    # FIXME does not work
-    if layout.name == "max":
+def update_margin(*args):
+    group = qtile.current_screen.group
+    layout = group.layout
+    if layout.name == "max" or len([w for w in group.windows if not w.floating]) == 1:
         margin = [0, 0, 0, 0]
+        layout.margin = 0
     else:
-        margin = [5, 5, 5, 5]
-    try:
-        bar = qtile.current_screen.top
-    except AttributeError:
-        return
-    bar.margin = margin
-    bar._configure(qtile, qtile.current_screen)
-    bar.draw()
-    qtile.current_screen.group.layout_all()
+        margin = Settings.bar_margin
+        layout.margin = Settings.layout_margin
+    bar = qtile.current_screen.top
+    bar._initial_margin = margin
+    bar._configure(qtile, qtile.current_screen, reconfigure=True)
+    # bar.draw()
+    group.layout_all()
+
+
+hook.subscribe.layout_change(update_margin)
+hook.subscribe.focus_change(update_margin)
+hook.subscribe.client_new(update_margin)
+hook.subscribe.client_killed(update_margin)
 
 
 keys = [
@@ -117,7 +124,7 @@ keys = [
 
     # Desktop control
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod], "m", lazy.window.toggle_maximize(), desc="Toggle maximize"),
+    Key([mod], "m", lazy.next_layout(), desc="Toggle max layout"),
     Key([mod], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
     Key([mod, control], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, control], "q", lazy.shutdown(), desc="Shutdown Qtile"),
@@ -175,7 +182,7 @@ layouts = [
     layout.Columns(
         **border_settings,
         border_focus=Colors.window_border_focus,
-        border_width=Settings.window_border_width
+        border_width=Settings.window_border_width,
     ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.

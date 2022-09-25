@@ -11,11 +11,11 @@ setxkbmap -option caps:backspace
 # Map AltGr to compose key
 xmodmap -e "keycode 108 = Multi_key"
 
-# Starts Synology Drive
-synology-drive autostart &
-
 # Starts Albert
 albert &
+
+# Starts Synology Drive
+synology-drive autostart &
 
 # Starts CopyQ
 copyq &
