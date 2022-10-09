@@ -12,12 +12,14 @@ from libqtile.lazy import lazy
 terminal = "kitty"
 mod, shift, control, alt = "mod4", "shift", "control", "mod1"
 
-# TODO remove /home/gruvw/pathed and make it to the path
+home = os.path.expanduser("~")
 
 
 class Commands:
     vifm = f"{terminal} vifm"
-    vim_anywhere = "/home/gruvw/pathed/vim-anywhere"
+    vim_anywhere = home + "/pathed/vim-anywhere"
+
+    vscode = "code"
 
     # TODO do it for every possible device
     audio_increase = "amixer -D pulse sset Master 5%+"
@@ -27,16 +29,16 @@ class Commands:
 
     lock_screen = "betterlockscreen -l"
 
-    brightness_increase = "/home/gruvw/pathed/brightness +"
-    brightness_decrease = "/home/gruvw/pathed/brightness -"
+    brightness_increase = home + "/pathed/brightness +"
+    brightness_decrease = home + "/pathed/brightness -"
 
     screenshot_fullscreen = "gnome-screenshot"
-    screenshot_area = "gnome-screenshot -a"
+    screenshot_area = "import png:- | xclip -selection clipboard -t image/png"
 
 
 class Paths:
-    wallpaper_directory = os.path.expanduser("~/SynologyDrive/Media/Images/Backgrounds/Desktop/")
-    startup_script = os.path.expanduser("~/.config/qtile/autostart.sh")
+    wallpaper_directory = home + "/SynologyDrive/Media/Images/Backgrounds/Desktop/"
+    startup_script = home + "/.config/qtile/autostart.sh"
 
 
 class Colors:
@@ -64,10 +66,7 @@ class Settings:
 @hook.subscribe.startup_once
 def autostart():
     cycle_wallpaper()
-
-    # Startup script
-    startup_script = os.path.expanduser(Paths.startup_script)
-    subprocess.Popen([startup_script])
+    subprocess.Popen([Paths.startup_script])
 
 
 def cycle_wallpaper():
@@ -91,14 +90,14 @@ def update_margin(*args):
     bar = qtile.current_screen.top
     bar._initial_margin = margin
     bar._configure(qtile, qtile.current_screen, reconfigure=True)
-    # bar.draw()
+    bar.draw()
     group.layout_all()
 
 
 hook.subscribe.layout_change(update_margin)
 hook.subscribe.focus_change(update_margin)
-hook.subscribe.client_new(update_margin)
-hook.subscribe.client_killed(update_margin)
+# hook.subscribe.client_new(update_margin)
+# hook.subscribe.client_killed(update_margin)
 
 
 keys = [
@@ -145,9 +144,10 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "Escape", lazy.spawn(Commands.lock_screen), desc="Lock screen"),
     Key([mod], "v", lazy.spawn(Commands.vifm), desc="Launch vifm"),
+    Key([mod], "semicolon", lazy.spawn(Commands.vscode), desc="Launch VSCode"),
     Key([control, alt], "v", lazy.spawn(Commands.vim_anywhere), desc="Launch vim-anywhere"),
-    Key([mod], "p", lazy.spawn(Commands.screenshot_fullscreen), desc="Full screen screenshot"),
-    Key([mod, shift], "p", lazy.spawn(Commands.screenshot_area), desc="Area screenshot"),
+    Key([mod], "p", lazy.spawn(Commands.screenshot_fullscreen, shell=True), desc="Full screen screenshot"),
+    Key([mod, shift], "p", lazy.spawn(Commands.screenshot_area, shell=True), desc="Area screenshot"),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -183,6 +183,7 @@ layouts = [
         **border_settings,
         border_focus=Colors.window_border_focus,
         border_width=Settings.window_border_width,
+        wrap_focus_columns=False
     ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
@@ -216,7 +217,7 @@ screens = [
                 # ]),
                 widget.Prompt(),
                 widget.Spacer(length=bar.STRETCH),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.Clock(format="%Y_%m_%d %a %H:%M:%S %p"),
                 widget.Spacer(length=bar.STRETCH),
                 widget.ThermalZone(high=60, crit=75, format_crit="{temp}°C"),
                 widget.CPU(format="{freq_current}GHz {load_percent: >4}%"),
@@ -229,7 +230,12 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.Battery(format="{char} {percent:2.0%} {hour:d}:{min:02d}"),
+                widget.Battery(
+                    format="{percent:2.0%}{char} {hour:d}:{min:02d}",
+                    update_interval=5,
+                    low_percentage=0.2,
+                    discharge_char=""
+                ),
             ],
             25,
             margin=[8, 10, 8, 10]

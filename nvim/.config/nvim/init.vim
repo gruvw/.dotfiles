@@ -140,3 +140,6 @@ let @f = 'F"ifjkf";' " Python transform string into formatted literal
 " Auto start insert mode
 autocmd BufNewFile * startinsert
 autocmd VimEnter * if empty(expand("%")) | startinsert | endif
+
+set ve+=onemore
+set scrolloff=5

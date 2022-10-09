@@ -1,10 +1,13 @@
 " ~/.config/vifm/vifmrc
 
+plugin load
+
 " Own config
 " Key map
 nnoremap sc :!code %c<CR>
+nnoremap sC :!code .<CR>
 nnoremap sh za
-nnoremap sn :!nautilus .<CR>
+nnoremap sn :!nemo .<CR>
 nnoremap sf :!fish<CR>
 
 nnoremap os :vsplit<CR>
@@ -29,7 +32,7 @@ set relativenumber
 set dirsize=nitems
 
 " Sort Downloads
-autocmd DirEnter ~/Downloads setlocal sort=-mtime,dir
+autocmd DirEnter ~/Downloads setlocal sort=-mtime
 
 " Others
 fileview *.md,*.py rich %c
@@ -51,7 +54,7 @@ colorscheme main
 " TIME_STAMP_FORMAT=%m/%d-%H:%M
 " See man date or man strftime for details.
 
-set timefmt=%Y/%m/%d-%H:%M
+set timefmt="%Y_%m_%d %H:%M:%S"
 set wildmenu
 set wildstyle=popup
 set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
@@ -331,7 +334,7 @@ filextype */
 " uncommenting one of lines below will result in ignoring 'vi[x]cmd' option
 " for unknown file types.
 " For *nix:
-filetype * xdg-open
+filetype * xdg-open %f &
 " For OS X:
 " filetype * open
 " For Windows:
@@ -347,6 +350,7 @@ set vifminfo=dhistory,chistory,state,tui,shistory,
 " Customize view columns a bit (enable ellipsis for truncated file names)
 "
 " set viewcolumns=-{name}..,6{}.
+windo set viewcolumns=*{name}..,16{FileMtime},7{size}
 
 " Filter-out build and temporary files
 "

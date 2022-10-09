@@ -133,3 +133,6 @@ augroup END
 
 " Saved macro
 let @f = 'F"ifjkf";' " Python transform string into formatted literal
+
+set ve+=onemore
+set scrolloff=5
