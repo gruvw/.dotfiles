@@ -11,7 +11,7 @@ export CHROME_EXECUTABLE="/opt/brave.com/brave/brave-browser"
 
 # == Others ==
 set PATH "$HOME/pathed:$PATH"
-set PATH "$HOME/intelFPGA_lite/20.1/quartus/bin:$PATH"
+# set PATH "$HOME/intelFPGA_lite/20.1/quartus/bin:$PATH"
 set PATH "$HOME/intelFPGA_lite/20.1/modelsim_ase/bin:$PATH"
 set PATH "$HOME/intelFPGA_lite/21.1/quartus/bin:$PATH"
 set PATH "$HOME/.local/share/coursier/bin:$PATH"

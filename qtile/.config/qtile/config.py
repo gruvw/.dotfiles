@@ -42,9 +42,13 @@ class Paths:
 
 
 class Colors:
+    bar_background = "#222222"
+    text_color = "#f7f1ff"
     window_border_normal = "#222222"
     window_border_focus = "#7bd88f"
     window_floating_border_focus = "#fd9353"
+    inactive_group = "#404040"
+    current_group = "#7bd88f"
 
 
 class Settings:
@@ -211,7 +215,13 @@ screens = [
         top=bar.Bar(
             [
                 widget.CurrentLayout(),
-                widget.GroupBox(font=Settings.font_bold),
+                widget.GroupBox(
+                    font=Settings.font_bold,
+                    inactive=Colors.inactive_group,
+                    this_current_screen_border=Colors.current_group,
+                    rounded=False,
+                    disable_drag=True
+                ),
                 # widget.LaunchBar(progs=[
                 #     ("brave-browser", "brave-browser"),
                 # ]),
@@ -220,6 +230,7 @@ screens = [
                 widget.Clock(format="%Y_%m_%d %a %H:%M:%S %p"),
                 widget.Spacer(length=bar.STRETCH),
                 widget.ThermalZone(high=60, crit=75, format_crit="{temp}°C"),
+                # widget.ThermalSensor(threshold=75, tag_sensor="Core 0"),
                 widget.CPU(format="{freq_current}GHz {load_percent: >4}%"),
                 widget.Memory(format="{MemUsed: .0f}{mm}"),
                 # widget.Net(font="Fira Code", format="{down} ↓↑ {up}"),
@@ -238,9 +249,10 @@ screens = [
                 ),
             ],
             25,
-            margin=[8, 10, 8, 10]
+            margin=[8, 10, 8, 10],
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            background=Colors.bar_background
         ),
     ),
 ]
