@@ -30,6 +30,7 @@ if exists('g:vscode')
 else
   Plug 'easymotion/vim-easymotion'
 endif
+Plug 'ThePrimeagen/vim-be-good'
 call plug#end()
 
 set runtimepath^=~/.vim runtimepath+=~/.vim/after

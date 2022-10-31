@@ -113,10 +113,10 @@ keys = [
     Key([mod], "space", lazy.layout.next(), desc="Move focus to another window"),
 
     # Move windows (moving out of range in Columns layout will create new column)
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
+    Key([mod, shift], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
+    Key([mod, shift], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
+    Key([mod, shift], "j", lazy.layout.shuffle_down(), desc="Move window down"),
+    Key([mod, shift], "k", lazy.layout.shuffle_up(), desc="Move window up"),
 
     # Grow/Shrink windows
     Key([mod, control], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
@@ -131,7 +131,6 @@ keys = [
     Key([mod], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
     Key([mod, control], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, control], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     # Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
 
     # Special keys
@@ -146,6 +145,7 @@ keys = [
 
     # Launch
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    Key([mod, shift], "Return", lazy.spawncmd(prompt="cmd"), desc="Spawn a command using the prompt widget"),
     Key([mod], "Escape", lazy.spawn(Commands.lock_screen), desc="Lock screen"),
     Key([mod], "v", lazy.spawn(Commands.vifm), desc="Launch vifm"),
     Key([mod], "semicolon", lazy.spawn(Commands.vscode), desc="Launch VSCode"),

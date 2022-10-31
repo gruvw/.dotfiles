@@ -206,7 +206,7 @@ fileviewer *.[1-8] man ./%c | col -b
 "         \ shotwell,
 " fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
 "          \ identify %f
-filetype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm xdg-open %c
+filetype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm xdg-open %c %i &
 
 " OpenRaster
 filextype *.ora
