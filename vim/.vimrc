@@ -79,6 +79,7 @@ map <Space> <Leader><Leader>
 
 " Rebind esc to jk
 imap jk <Esc>
+map ZS :w<CR>
 
 " Visual mode surround
 " map vs vS

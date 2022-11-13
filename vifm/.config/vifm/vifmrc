@@ -8,7 +8,8 @@ nnoremap sc :!code %c<CR>
 nnoremap sC :!code .<CR>
 nnoremap sh za
 nnoremap sn :!nemo . &<CR>
-nnoremap sf :!fish<CR>
+nnoremap s<CR> :!fish<CR>
+nnoremap sf :FZFlocate<CR>
 
 nnoremap os :vsplit<CR>
 nnoremap ov :view<CR>
@@ -75,6 +76,13 @@ endif
 set statusline="  %= %A %10u:%-7g %15s %20d  "
 
 " ------------------------------------------------------------------------------
+
+" FZF
+command! FZFlocate : set noquickview
+                  \| let $FZF_PICK = term('find ~ -not \( -path "*/intelFPGA_lite/*" -prune \) -not \( -path "*/.*" -prune \) | fzf 2>/dev/tty')
+                  \| if $FZF_PICK != ''
+                  \|     execute system('[ -f "$FZF_PICK" ] && echo goto || echo cd') fnameescape($FZF_PICK)
+                  \| endif
 
 " :mark mark /full/directory/path [filename]
 
