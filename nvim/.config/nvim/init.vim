@@ -145,3 +145,10 @@ autocmd VimEnter * if empty(expand("%")) | startinsert | endif
 
 set ve+=onemore
 set scrolloff=5
+
+" TODO make the following usable using count (like 3<CR>)
+" New empty line.s normal mode
+nnoremap <CR> oa<BS><Esc>
+
+" Delete line normal mode
+nnoremap <BS> 0D

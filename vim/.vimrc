@@ -137,3 +137,9 @@ let @f = 'F"ifjkf";' " Python transform string into formatted literal
 
 set ve+=onemore
 set scrolloff=5
+
+" New empty line.s normal mode
+nnoremap <CR> oa<BS><Esc>
+
+" Delete line normal mode
+nnoremap <BS> 0D
