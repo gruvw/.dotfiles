@@ -5,7 +5,7 @@ import random
 import subprocess
 
 from libqtile import bar, layout, widget, hook, qtile
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, KeyChord
 from libqtile.lazy import lazy
 
 
@@ -22,15 +22,22 @@ class Commands:
     vscode = "code"
 
     # TODO do it for every possible device
-    audio_increase = "amixer -D pulse sset Master 5%+"
-    audio_decrease = "amixer -D pulse sset Master 5%-"
-    audio_mute_toggle = "amixer -D pulse sset Master toggle"
-    microphone_mute_toggle = "amixer -D pulse set Capture toggle"
+    amixer_prefix = "amixer -D pulse sset"
+    audio_increase = f"{amixer_prefix} Master 5%+"
+    audio_decrease = f"{amixer_prefix} Master 5%-"
+    audio_mute_toggle = f"{amixer_prefix} Master toggle"
+    microphone_mute_toggle = f"{amixer_prefix} Capture toggle"
+
+    playerctl_prefix = "playerctl"
+    music_pause = f"{playerctl_prefix} play-pause"
+    music_next = f"{playerctl_prefix} next"
+    music_previous = f"{playerctl_prefix} previous"
 
     lock_screen = "betterlockscreen -l"
 
-    brightness_increase = home + "/pathed/brightness +"
-    brightness_decrease = home + "/pathed/brightness -"
+    brightness_prefix = "/pathed/brightness"
+    brightness_increase = home + f"{brightness_prefix} +"
+    brightness_decrease = home + f"{brightness_prefix} -"
 
     screenshot_fullscreen = "gnome-screenshot"
     screenshot_area = "import png:- | xclip -selection clipboard -t image/png"
@@ -133,6 +140,13 @@ keys = [
     Key([mod, control], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     # Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
 
+    # Music
+    KeyChord([mod], "s", [
+        Key([], "space", lazy.spawn(Commands.music_pause), desc="Pause music"),
+        Key([], "l", lazy.spawn(Commands.music_next), desc="Next song"),
+        Key([], "h", lazy.spawn(Commands.music_previous), desc="Previous song"),
+    ], name="Music"),
+
     # Special keys
     Key([], "XF86AudioRaiseVolume", lazy.spawn(Commands.audio_increase), desc="Increase audio volume"),
     Key([], "XF86AudioLowerVolume", lazy.spawn(Commands.audio_decrease), desc="Lower audio volume"),
@@ -147,9 +161,13 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod, shift], "Return", lazy.spawncmd(prompt="cmd"), desc="Spawn a command using the prompt widget"),
     Key([mod], "Escape", lazy.spawn(Commands.lock_screen), desc="Lock screen"),
+
+    # Applications
     Key([mod], "v", lazy.spawn(Commands.vifm), desc="Launch vifm"),
     Key([mod], "semicolon", lazy.spawn(Commands.vscode), desc="Launch VSCode"),
     Key([control, alt], "v", lazy.spawn(Commands.vim_anywhere), desc="Launch vim-anywhere"),
+
+    # Screenshot
     Key([mod], "p", lazy.spawn(Commands.screenshot_fullscreen, shell=True), desc="Full screen screenshot"),
     Key([mod, shift], "p", lazy.spawn(Commands.screenshot_area, shell=True), desc="Area screenshot"),
 ]
@@ -220,12 +238,13 @@ screens = [
                     inactive=Colors.inactive_group,
                     this_current_screen_border=Colors.current_group,
                     rounded=False,
-                    disable_drag=True
+                    disable_drag=True,
                 ),
                 # widget.LaunchBar(progs=[
                 #     ("brave-browser", "brave-browser"),
                 # ]),
                 widget.Prompt(),
+                widget.Chord(),
                 widget.Spacer(length=bar.STRETCH),
                 widget.Clock(format="%Y_%m_%d %a %H:%M:%S %p"),
                 widget.Spacer(length=bar.STRETCH),

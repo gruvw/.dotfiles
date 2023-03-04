@@ -93,7 +93,9 @@ mark p ~/SynologyDrive/Programmation
 mark e ~/SynologyDrive/EPFL
 mark 2 ~/SynologyDrive/EPFL/BA2
 mark 3 ~/SynologyDrive/EPFL/BA3
+mark 4 ~/SynologyDrive/EPFL/BA4
 mark d ~/dotfiles
+mark m /media/gruvw/
 
 " ------------------------------------------------------------------------------
 
