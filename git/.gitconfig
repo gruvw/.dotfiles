@@ -9,3 +9,10 @@
 	helper = store
 [pull]
 	rebase = false
+[merge]
+	tool = code
+[mergetool]
+	writeToTemp = true
+	keepBackup = false
+[mergetool "code"]
+	cmd = code --wait -m $REMOTE $LOCAL $BASE $MERGED

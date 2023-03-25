@@ -1,0 +1,2 @@
+[build]
+rustc-wrapper = "/home/gruvw/.cargo/bin/sccache"

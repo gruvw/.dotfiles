@@ -28,6 +28,7 @@ nnoremap cw :rename<cr>
 " Options
 " only
 set relativenumber
+set number
 
 " Show number of element inside directory instead of size
 set dirsize=nitems
