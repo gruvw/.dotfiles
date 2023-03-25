@@ -28,6 +28,7 @@ class Commands:
     audio_mute_toggle = f"{amixer_prefix} Master toggle"
     microphone_mute_toggle = f"{amixer_prefix} Capture toggle"
 
+    music_open = f"spotify"
     playerctl_prefix = "playerctl"
     music_pause = f"{playerctl_prefix} play-pause"
     music_next = f"{playerctl_prefix} next"
@@ -142,6 +143,7 @@ keys = [
 
     # Music
     KeyChord([mod], "s", [
+        Key([], "Return", lazy.spawn(Commands.music_open), desc="Open music app"),
         Key([], "space", lazy.spawn(Commands.music_pause), desc="Pause music"),
         Key([], "l", lazy.spawn(Commands.music_next), desc="Next song"),
         Key([], "h", lazy.spawn(Commands.music_previous), desc="Previous song"),

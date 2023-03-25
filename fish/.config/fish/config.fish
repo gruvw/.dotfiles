@@ -33,6 +33,8 @@ if status is-interactive
     # Aliases
     alias vim "nvim"
     alias vi "nvim"
+    alias bat "batcat"
+    alias cat "batcat"
 
     # Loads starship prompt
     starship init fish | source
