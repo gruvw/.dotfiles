@@ -230,6 +230,8 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+SEPARATOR = widget.Sep(size_percent=73, padding=8, linewidth=1)
+
 screens = [
     Screen(
         top=bar.Bar(
@@ -246,22 +248,26 @@ screens = [
                 #     ("brave-browser", "brave-browser"),
                 # ]),
                 widget.Prompt(),
-                widget.Chord(),
+                widget.Chord(
+                    font=Settings.font_bold,
+                    background="f7f1ff",
+                    foreground="363537",
+                    name_transform=lambda name: name.upper(),
+                    padding=4,
+                ),
                 widget.Spacer(length=bar.STRETCH),
                 widget.Clock(format="%Y_%m_%d %a %H:%M:%S %p"),
                 widget.Spacer(length=bar.STRETCH),
+                # widget.Wlan(),
+                widget.Net(format="{down} D {up} U"),
+                SEPARATOR,
                 widget.ThermalZone(high=60, crit=75, format_crit="{temp}°C"),
                 # widget.ThermalSensor(threshold=75, tag_sensor="Core 0"),
                 widget.CPU(format="{freq_current}GHz {load_percent: >4}%"),
                 widget.Memory(format="{MemUsed: .0f}{mm}"),
-                # widget.Net(font="Fira Code", format="{down} ↓↑ {up}"),
+                SEPARATOR,
                 widget.Systray(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
+                SEPARATOR,
                 widget.Battery(
                     format="{percent:2.0%}{char} {hour:d}:{min:02d}",
                     update_interval=5,

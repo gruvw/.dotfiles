@@ -18,7 +18,8 @@ Checks: >
   -clang-diagnostic-gnu-designator,
   -readability-isolate-declaration,
   -hicpp-braces-around-statements,
-  -google-readability-todo
+  -google-readability-todo,
+  -misc-no-recursion
 ExtraArgs: [
   "-std=c17",
   "-pedantic",
