@@ -16,10 +16,10 @@ home = os.path.expanduser("~")
 
 
 class Commands:
-    vifm = f"{terminal} vifm"
+    file_manager = f"{terminal} vifm"
+    process_manager = f"{terminal} btm"
     vim_anywhere = home + "/pathed/vim-anywhere"
-
-    vscode = "code"
+    ide = "code"
 
     # TODO do it for every possible device
     amixer_prefix = "amixer -D pulse sset"
@@ -165,8 +165,9 @@ keys = [
     Key([mod], "Escape", lazy.spawn(Commands.lock_screen), desc="Lock screen"),
 
     # Applications
-    Key([mod], "v", lazy.spawn(Commands.vifm), desc="Launch vifm"),
-    Key([mod], "semicolon", lazy.spawn(Commands.vscode), desc="Launch VSCode"),
+    Key([mod], "v", lazy.spawn(Commands.file_manager), desc="Launch file manager"),
+    Key([mod], "b", lazy.spawn(Commands.process_manager), desc="Launch process manager"),
+    Key([mod], "semicolon", lazy.spawn(Commands.ide), desc="Launch IDE"),
     Key([control, alt], "v", lazy.spawn(Commands.vim_anywhere), desc="Launch vim-anywhere"),
 
     # Screenshot
