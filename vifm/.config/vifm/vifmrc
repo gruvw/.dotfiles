@@ -6,6 +6,7 @@ plugin load
 " Key map
 nnoremap sc :!code %c<CR>
 nnoremap sC :!code .<CR>
+nnoremap sv :!vim %c:p<CR>
 nnoremap sh za
 nnoremap sn :!nemo . &<CR>
 nnoremap s<CR> :!fish<CR>
@@ -21,6 +22,11 @@ nnoremap cW cw
 
 " Utils
 nnoremap yp :!echo -n %c:p | xclip -selection clipboard %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
+nnoremap yP :!echo -n %d:p | xclip -selection clipboard %i<cr>:echo expand('%"d:p') "is yanked to clipboard"<cr>
+
+" TODO make them usable as command arg>
+" nnoremap Zp :!echo %c:p<CR>:exit<CR
+" nnoremap ZP :!echo %d:p<CR>:exit<CR>
 
 " Use editor to rename
 nnoremap cw :rename<cr>
@@ -37,7 +43,7 @@ set dirsize=nitems
 autocmd DirEnter ~/Downloads setlocal sort=-mtime
 
 " Others
-fileview *.md,*.py rich %c
+fileview *.md,*.py bat %c
 
 " ------------------------------------------------------------------------------
 

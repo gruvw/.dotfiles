@@ -15,10 +15,16 @@ mod, shift, control, alt = "mod4", "shift", "control", "mod1"
 home = os.path.expanduser("~")
 
 
+class Paths:
+    brightness_prefix = "/pathed/brightness"
+    wallpaper_directory = home + "/SynologyDrive/Media/Images/Backgrounds/Desktop/"
+    startup_script = home + "/.config/qtile/autostart.sh"
+    vim_anywhere = home + "/pathed/vim-anywhere"
+
+
 class Commands:
     file_manager = f"{terminal} vifm"
     process_manager = f"{terminal} btm"
-    vim_anywhere = home + "/pathed/vim-anywhere"
     ide = "code"
 
     # TODO do it for every possible device
@@ -36,17 +42,18 @@ class Commands:
 
     lock_screen = "betterlockscreen -l"
 
-    brightness_prefix = "/pathed/brightness"
-    brightness_increase = home + f"{brightness_prefix} +"
-    brightness_decrease = home + f"{brightness_prefix} -"
+    brightness_increase = home + f"{Paths.brightness_prefix} +"
+    brightness_decrease = home + f"{Paths.brightness_prefix} -"
 
     screenshot_fullscreen = "gnome-screenshot"
     screenshot_area = "import png:- | xclip -selection clipboard -t image/png"
 
 
-class Paths:
-    wallpaper_directory = home + "/SynologyDrive/Media/Images/Backgrounds/Desktop/"
-    startup_script = home + "/.config/qtile/autostart.sh"
+class Keyboard:
+    layout_prefix = "setxkbmap"
+    layout_caps_bs = "-option caps:backspace"
+    layout_dvorak = f"{layout_prefix} dvorak {layout_caps_bs}"
+    layout_us = f"{layout_prefix} us"
 
 
 class Colors:
@@ -111,8 +118,35 @@ hook.subscribe.focus_change(update_margin)
 # hook.subscribe.client_new(update_margin)
 # hook.subscribe.client_killed(update_margin)
 
+keys: list = []  # Initialize + avoid warning
 
-keys = [
+groups = [Group(i) for i in "123456789"]
+
+for g in groups:
+    keys += [
+        # mod1 + letter of group = switch to group
+        Key(
+            [mod],
+            g.name,
+            lazy.group[g.name].toscreen(toggle=True),
+            desc="Switch to group {}".format(g.name),
+        ),
+        # mod1 + shift + letter of group = switch to & move focused window to group
+        Key(
+            [mod, shift],
+            g.name,
+            lazy.window.togroup(g.name, switch_group=True),
+            desc=f"Switch to & move focused window to group {g.name}",
+        ),
+        Key(
+            [mod, control],
+            g.name,
+            lazy.window.togroup(g.name),
+            desc=f"Move focused window to group {g.name} (no group switch)",
+        ),
+    ]
+
+keys += [
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
@@ -133,6 +167,13 @@ keys = [
     Key([mod, control], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
 
+    # More group related keys
+    KeyChord([mod], "g", [
+        # Key([gi.name], gj.name, swap_groups(i, gi, j, gj),
+        #     desc=f"Swaps windows between {gi.name} and {gj.name}")
+        # for (i, gi) in enumerate(groups) for (j, gj) in enumerate(groups) if gi.name != gj.name
+    ], name="group"),
+
     # Desktop control
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod], "m", lazy.next_layout(), desc="Toggle max layout"),
@@ -141,13 +182,19 @@ keys = [
     Key([mod, control], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     # Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
 
+    # Keyboard
+    KeyChord([mod], "k", [
+        Key([], "u", lazy.spawn(Keyboard.layout_us), desc="Keyboard layout to US"),
+        Key([], "d", lazy.spawn(Keyboard.layout_dvorak), desc="Keyboard layout to DVORAK"),
+    ], name="keyboard"),
+
     # Music
     KeyChord([mod], "s", [
         Key([], "Return", lazy.spawn(Commands.music_open), desc="Open music app"),
         Key([], "space", lazy.spawn(Commands.music_pause), desc="Pause music"),
         Key([], "l", lazy.spawn(Commands.music_next), desc="Next song"),
         Key([], "h", lazy.spawn(Commands.music_previous), desc="Previous song"),
-    ], name="Music"),
+    ], name="music"),
 
     # Special keys
     Key([], "XF86AudioRaiseVolume", lazy.spawn(Commands.audio_increase), desc="Increase audio volume"),
@@ -168,38 +215,12 @@ keys = [
     Key([mod], "v", lazy.spawn(Commands.file_manager), desc="Launch file manager"),
     Key([mod], "b", lazy.spawn(Commands.process_manager), desc="Launch process manager"),
     Key([mod], "semicolon", lazy.spawn(Commands.ide), desc="Launch IDE"),
-    Key([control, alt], "v", lazy.spawn(Commands.vim_anywhere), desc="Launch vim-anywhere"),
+    Key([control, alt], "v", lazy.spawn(Paths.vim_anywhere), desc="Launch vim-anywhere"),
 
     # Screenshot
     Key([mod], "p", lazy.spawn(Commands.screenshot_fullscreen, shell=True), desc="Full screen screenshot"),
     Key([mod, shift], "p", lazy.spawn(Commands.screenshot_area, shell=True), desc="Area screenshot"),
 ]
-
-groups = [Group(i) for i in "123456789"]
-
-for i in groups:
-    keys.extend(
-        [
-            # mod1 + letter of group = switch to group
-            Key(
-                [mod],
-                i.name,
-                lazy.group[i.name].toscreen(toggle=True),
-                desc="Switch to group {}".format(i.name),
-            ),
-            # mod1 + shift + letter of group = switch to & move focused window to group
-            Key(
-                [mod, "shift"],
-                i.name,
-                lazy.window.togroup(i.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(i.name),
-            ),
-            # Or, use below if you prefer not to switch to that group.
-            # # mod1 + shift + letter of group = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
-        ]
-    )
 
 border_settings = dict(border_normal=Colors.window_border_normal)
 

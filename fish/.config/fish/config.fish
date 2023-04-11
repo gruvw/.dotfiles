@@ -35,6 +35,7 @@ if status is-interactive
     alias vi "nvim"
     alias bat "batcat"
     alias cat "batcat"
+    # alias vifm "vifm --choose-dir -"
 
     # Loads starship prompt
     starship init fish | source
