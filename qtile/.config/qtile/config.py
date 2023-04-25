@@ -152,7 +152,7 @@ keys += [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(), desc="Move focus to another window"),
+    # Key([mod], "space", lazy.layout.next(), desc="Move focus to another window"),
 
     # Move windows (moving out of range in Columns layout will create new column)
     Key([mod, shift], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
@@ -165,7 +165,7 @@ keys += [
     Key([mod, control], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
     Key([mod, control], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, control], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    # Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
 
     # More group related keys
     KeyChord([mod], "g", [
@@ -176,7 +176,7 @@ keys += [
 
     # Desktop control
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod], "m", lazy.next_layout(), desc="Toggle max layout"),
+    Key([mod], "m", lazy.next_layout(), desc="Next layout"),
     Key([mod], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
     Key([mod, control], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, control], "q", lazy.shutdown(), desc="Shutdown Qtile"),
@@ -213,8 +213,8 @@ keys += [
 
     # Applications
     Key([mod], "v", lazy.spawn(Commands.file_manager), desc="Launch file manager"),
-    Key([mod], "b", lazy.spawn(Commands.process_manager), desc="Launch process manager"),
     Key([mod], "semicolon", lazy.spawn(Commands.ide), desc="Launch IDE"),
+    Key([mod], "b", lazy.spawn(Commands.process_manager), desc="Launch process manager"),
     Key([control, alt], "v", lazy.spawn(Paths.vim_anywhere), desc="Launch vim-anywhere"),
 
     # Screenshot
