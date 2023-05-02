@@ -76,6 +76,16 @@ inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Space for easymotion
 map <Space> <Leader><Leader>
+nnoremap f <Leader><Leader>f
+nnoremap F <Leader><Leader>F
+vnoremap f <Leader><Leader>f
+vnoremap F <Leader><Leader>F
+nnoremap t <Leader><Leader>t
+nnoremap T <Leader><Leader>t
+vnoremap t <Leader><Leader>t
+vnoremap T <Leader><Leader>T
+
+nnoremap S <Leader><Leader>s
 
 " Rebind esc to jk
 imap jk <Esc>
