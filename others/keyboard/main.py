@@ -29,10 +29,10 @@ keyboard.modules = [layers, split]
 
 keyboard.keymap = [
     [  # DVORAK
-        KC.NO,   KC.Q,    KC.W,    KC.E,    KC.P,    KC.Y,                         KC.F,    KC.G,    KC.C,    KC.R,   KC.L,  KC.NO,\
-        KC.NO,   KC.A,    KC.O,    KC.E,    KC.U,    KC.I,                         KC.D,    KC.H,    KC.T,    KC.N,   KC.S,  KC.NO,\
-        KC.NO,   KC.Z,    KC.Q,    KC.J,    KC.K,    KC.X,                         KC.B,    KC.M,    KC.W,    KC.V,   KC.Z,  KC.NO,\
-                                            KC.TAB,   KC.SPC,  KC.ENTER,     KC.NO,   KC.BSPC,  KC.NO,
+        KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.P,    KC.Y,                          KC.F,    KC.G,    KC.C,    KC.R,   KC.L,  KC.NO,
+        KC.NO,   KC.A,    KC.O,    KC.E,    KC.U,    KC.I,                          KC.D,    KC.H,    KC.T,    KC.N,   KC.S,  KC.NO,
+        KC.NO,   KC.Z,    KC.Q,    KC.J,    KC.K,    KC.X,                          KC.B,    KC.M,    KC.W,    KC.V,   KC.Z,  KC.NO,
+                                            KC.TAB,  KC.SPC,  KC.ENTER,     KC.NO,  KC.BSPC, KC.NO,
     ],
 ]
 
