@@ -52,8 +52,9 @@ class Commands:
 class Keyboard:
     layout_prefix = "setxkbmap"
     layout_caps_bs = "-option caps:backspace"
-    layout_dvorak = f"{layout_prefix} dvorak {layout_caps_bs}"
-    layout_us = f"{layout_prefix} us"
+    layout_compose = "" # TODO fix not working: ;xmodmap -e 'keycode 108 = Multi_key'
+    layout_dvorak = f"{layout_prefix} dvorak {layout_caps_bs} {layout_compose}"
+    layout_us = f"{layout_prefix} us {layout_compose}"
 
 
 class Colors:
@@ -183,7 +184,7 @@ keys += [
     # Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
 
     # Keyboard
-    KeyChord([mod], "k", [
+    KeyChord([mod], "a", [
         Key([], "u", lazy.spawn(Keyboard.layout_us), desc="Keyboard layout to US"),
         Key([], "d", lazy.spawn(Keyboard.layout_dvorak), desc="Keyboard layout to DVORAK"),
     ], name="keyboard"),
