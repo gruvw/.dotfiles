@@ -5,7 +5,7 @@ plugin load
 " Own config
 " Key map
 nnoremap sc :!code %c<CR>
-nnoremap sC :!code .<CR>
+nnoremap sC :!code .<CR>ZQ<CR>
 nnoremap sv :!vim %c:p<CR>
 nnoremap sh za
 nnoremap sn :!nemo . &<CR>
@@ -104,6 +104,7 @@ mark e ~/SynologyDrive/EPFL
 mark 2 ~/SynologyDrive/EPFL/BA2
 mark 3 ~/SynologyDrive/EPFL/BA3
 mark 4 ~/SynologyDrive/EPFL/BA4
+mark b ~/SynologyDrive/EPFL/BA4
 mark d ~/dotfiles
 mark m /media/gruvw/
 

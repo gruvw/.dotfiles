@@ -7,12 +7,13 @@ from kmk.kmk_keyboard import KMKKeyboard as _KMKKeyboard
 from kmk.scanners.keypad import KeysScanner
 
 # VBus pin config
-VBUS_PIN = board.VBUS_SENSE  # RPi Pico
+# VBUS_PIN = board.VBUS_SENSE  # RPi Pico
+VBUS_PIN = board.GP29      # WeAct RP2040 + resistors on Piantor PCB
 
 # split side detection using vbus sense
 vbus = digitalio.DigitalInOut(VBUS_PIN)
 vbus.direction = digitalio.Direction.INPUT
-isRight = True if vbus.value == False else False
+isRight = not vbus.value
 
 # alternate option: set side based on drive names
 # name = str(getmount('/').label)
@@ -26,7 +27,7 @@ _KEY_CFG_LEFT = [
                                         board.GP17, board.GP18, board.GP16
 ]
 
-# GPIO to key mapping, Left
+# GPIO to key mapping, Right
 _KEY_CFG_RIGHT = [
     board.GP22, board.GP21, board.GP2, board.GP5, board.GP8, board.GP11,
     board.GP20, board.GP19, board.GP3, board.GP6, board.GP9, board.GP12,

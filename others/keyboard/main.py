@@ -9,7 +9,7 @@ from kmk.modules.layers import Layers
 from kmk.modules.split import Split, SplitSide, SplitType
 
 keyboard = KMKKeyboard()
-keyboard.tap_time = 100
+# keyboard.tap_time = 100
 
 layers = Layers()
 
