@@ -7,8 +7,7 @@ from kmk.kmk_keyboard import KMKKeyboard as _KMKKeyboard
 from kmk.scanners.keypad import KeysScanner
 
 # VBus pin config
-# VBUS_PIN = board.VBUS_SENSE  # RPi Pico
-VBUS_PIN = board.GP29      # WeAct RP2040 + resistors on Piantor PCB
+VBUS_PIN = board.VBUS_SENSE
 
 # split side detection using vbus sense
 vbus = digitalio.DigitalInOut(VBUS_PIN)

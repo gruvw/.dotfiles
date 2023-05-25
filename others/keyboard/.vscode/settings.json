@@ -1,0 +1,41 @@
+{
+    "python.languageServer": "Pylance",
+    "python.linting.pylintEnabled": false,
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingModuleSource": "none"
+    },
+    "python.analysis.extraPaths": [
+        "",
+        "/home/gruvw/.vscode/extensions/joedevivo.vscode-circuitpython-0.1.20-linux-x64/stubs",
+        "/home/gruvw/.config/Code/User/globalStorage/joedevivo.vscode-circuitpython/bundle/20230525/adafruit-circuitpython-bundle-py-20230525/lib"
+    ],
+    "circuitpython.board.version": null,
+    "cSpell.words": [
+        "AMPR",
+        "BSLS",
+        "BSPC",
+        "COLN",
+        "consts",
+        "DQUO",
+        "EXLM",
+        "keymap",
+        "LALT",
+        "LBRC",
+        "LCBR",
+        "LCTL",
+        "LGUI",
+        "LPRN",
+        "LSFT",
+        "oneshot",
+        "PERC",
+        "RBRC",
+        "RCBR",
+        "RPRN",
+        "SCLN",
+        "SLSH",
+        "TILD",
+        "TRNS",
+        "UART",
+        "UNDS"
+    ]
+}
