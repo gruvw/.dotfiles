@@ -33,7 +33,7 @@ split = Split(
     data_pin2=data_pin2
 )
 
-keyboard.modules += [layers, split, oneshot, combos]
+keyboard.modules += [oneshot, layers, split, combos]
 
 # Keys
 
@@ -61,7 +61,7 @@ OS_LSFT_LALT_LGUI = KC.OS(KC.LSFT(KC.LALT(OS_LGUI)), tap_time=None)
 
 OS_LCTL_LSFT_LALT_LGUI = KC.OS(KC.LCTL(KC.LSFT(KC.LALT(OS_LGUI))), tap_time=None)
 
-NUM_LAY = KC.LT(1, KC.BSPC, tap_time=0)
+NUM_LAY = KC.LT(1, KC.BSPC, tap_time=200, prefer_hold=True, tap_interrupted=True)
 FUN_LAY = KC.LT(2, KC.NO, tap_time=0)
 
 # Combos
@@ -89,7 +89,7 @@ keyboard.keymap = [
     [
         KC.NO,   OS_LALT, OS_LGUI, KC.NO,   KC.P,    KC.Y,                          KC.F,    KC.G,    KC.C,    KC.R,   KC.L,  KC.NO,
         KC.NO,   KC.A,    KC.O,    KC.E,    KC.U,    KC.I,                          KC.D,    KC.H,    KC.T,    KC.N,   KC.S,  KC.NO,
-        KC.NO,   KC.Z,    KC.Q,    KC.J,    KC.K,    KC.X,                          KC.B,    KC.M,    KC.W,    KC.V,   KC.Z,  KC.NO,
+        KC.NO,   KC.ESC,  KC.Q,    KC.J,    KC.K,    KC.X,                          KC.B,    KC.M,    KC.W,    KC.V,   KC.Z,  KC.NO,
                                             KC.TAB,  KC.SPC,  KC.ENTER,    OS_LSFT, NUM_LAY, OS_LCTL,
     ],
 
@@ -103,9 +103,9 @@ keyboard.keymap = [
 
     # 2: Function / Symbols 2
     [
-        KC.NO,   DEG,     KC.GT,   KC.RCBR, KC.RPRN, KC.RBRC,                       KC.NO,   KC.TILD, KC.NO,   KC.NO,   KC.F10,  KC.NO,
-        KC.NO,   KC.NO,   KC.F1,   KC.F2,   KC.F3,   KC.F4,                         KC.HASH, KC.AT,   KC.DLR,  KC.PERC, KC.F11,  KC.NO,
-        KC.NO,   KC.F5,   KC.F6,   KC.F7,   KC.F8,   KC.F9,                         KC.NO,   KC.NO,   KC.PIPE, KC.NO,   KC.F12,  KC.NO,
+        KC.NO,   DEG,     KC.GT,   KC.RCBR, KC.RPRN, KC.RBRC,                       KC.F10,  KC.TILD, KC.NO,   KC.NO,   KC.NO,     KC.NO,
+        KC.NO,   KC.NO,   KC.F1,   KC.F2,   KC.F3,   KC.F4,                         KC.F11,  KC.AT,   KC.DLR,  KC.PERC, KC.HASH,   KC.NO,
+        KC.NO,   KC.F5,   KC.F6,   KC.F7,   KC.F8,   KC.F9,                         KC.F12,  KC.NO,   KC.PIPE, KC.NO,   KC.NO,     KC.NO,
                                             KC.NO,   KC.TRNS,   KC.NO,     KC.NO,   KC.TRNS, KC.NO
     ]
 ]
