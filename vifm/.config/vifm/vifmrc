@@ -2,10 +2,12 @@
 
 plugin load
 
+set dotdirs=0
+
 " Own config
-" Key map
+" Key map (used ZQ<CR> to close)
 nnoremap sc :!code %c<CR>
-nnoremap sC :!code .<CR>ZQ<CR>
+nnoremap sC :!code .<CR>
 nnoremap sv :!vim %c:p<CR>
 nnoremap sh za
 nnoremap sn :!nemo . &<CR>
