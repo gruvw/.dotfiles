@@ -34,6 +34,8 @@ class Commands:
     audio_mute_toggle = f"{amixer_prefix} Master toggle"
     microphone_mute_toggle = f"{amixer_prefix} Capture toggle"
 
+    albert = "albert show"
+
     music_open = f"spotify"
     playerctl_prefix = "playerctl"
     music_pause = f"{playerctl_prefix} play-pause"
@@ -210,6 +212,7 @@ keys += [
     # Launch
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod, shift], "Return", lazy.spawncmd(prompt="cmd"), desc="Spawn a command using the prompt widget"),
+    Key([mod], "u", lazy.spawn(Commands.albert), desc="Show albert prompt"),
     Key([mod], "Escape", lazy.spawn(Commands.lock_screen), desc="Lock screen"),
 
     # Applications

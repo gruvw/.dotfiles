@@ -1,8 +1,6 @@
 import board
 import digitalio
 
-from storage import getmount
-
 from kmk.kmk_keyboard import KMKKeyboard as _KMKKeyboard
 from kmk.scanners.keypad import KeysScanner
 
@@ -13,10 +11,6 @@ VBUS_PIN = board.VBUS_SENSE
 vbus = digitalio.DigitalInOut(VBUS_PIN)
 vbus.direction = digitalio.Direction.INPUT
 isRight = not vbus.value
-
-# alternate option: set side based on drive names
-# name = str(getmount('/').label)
-# isRight = True if name.endswith('R') else False
 
 # GPIO to key mapping, Left
 _KEY_CFG_LEFT = [
@@ -34,6 +28,7 @@ _KEY_CFG_RIGHT = [
     board.GP15, board.GP14, board.GP16
 ]
 
+
 class KMKKeyboard(_KMKKeyboard):
     def __init__(self):
         # create and register the scanner
@@ -41,8 +36,6 @@ class KMKKeyboard(_KMKKeyboard):
             pins = _KEY_CFG_RIGHT if isRight == True else _KEY_CFG_LEFT
         )
 
-    # flake8: noqa
-    # fmt: off
     coord_mapping = [
      0,  1,  2,  3,  4,  5,   21, 22, 23, 24, 25, 26,
      6,  7,  8,  9, 10, 11,   27, 28, 29, 30, 31, 32,
