@@ -4,6 +4,7 @@ from kb import KMKKeyboard, isRight
 from kmk.consts import UnicodeMode
 
 from kmk.keys import KC
+from kmk.modules.mouse_keys import MouseKeys
 from kmk.modules.layers import Layers
 from kmk.modules.capsword import CapsWord
 from kmk.modules.oneshot import OneShot
@@ -28,6 +29,7 @@ layers = Layers()
 oneshot = OneShot()
 combos = Combos()
 caps_word = CapsWord()
+mouse_keys = MouseKeys()
 
 split_side = SplitSide.RIGHT if isRight else SplitSide.LEFT
 data_pin = board.GP1 if split_side == SplitSide.LEFT else board.GP0
@@ -44,6 +46,8 @@ split = Split(
 dynamic_sequences = DynamicSequences(timeout=DS_TIMEOUT)
 
 keyboard.unicode_mode = UnicodeMode.LINUX
+mouse_keys.max_speed = 20
+mouse_keys.acc_interval = 30
 
 # Keys
 
@@ -102,70 +106,69 @@ combos.combos = [
 # LAYERS
 
 # TODO Media keys
-# TODO boot
-# TODO mouse keys
+
 
 keyboard.keymap = [
     # 0: DVORAK
     [
-        KC.NO,   KC.RALT, OS_LGUI, OS_LALT, KC.P,    KC.Y,                          KC.F,    KC.G,    KC.C,    KC.R,    KC.L,      KC.NO,
-        KC.NO,   KC.A,    KC.O,    KC.E,    KC.U,    KC.I,                          KC.D,    KC.H,    KC.T,    KC.N,    KC.S,      KC.NO,
-        KC.NO,   KC.ESC,  KC.Q,    KC.J,    KC.K,    KC.X,                          KC.B,    KC.M,    KC.W,    KC.V,    KC.Z,      KC.NO,
-                                            MGC_LAY, KC.SPC,   SP1_LAY,    OS_LSFT, NUM_LAY, OS_LCTL,
+        KC.NO,     KC.RALT,   OS_LGUI,   OS_LALT,   KC.P,      KC.Y,                 KC.F,      KC.G,      KC.C,      KC.R,      KC.L,      KC.NO,
+        KC.NO,     KC.A,      KC.O,      KC.E,      KC.U,      KC.I,                 KC.D,      KC.H,      KC.T,      KC.N,      KC.S,      KC.NO,
+        KC.NO,     KC.ESC,    KC.Q,      KC.J,      KC.K,      KC.X,                 KC.B,      KC.M,      KC.W,      KC.V,      KC.Z,      KC.NO,
+                                         MGC_LAY,   KC.SPC,    SP1_LAY,              OS_LSFT,   NUM_LAY,   OS_LCTL,
     ],
 
     # 1: Numbers / Symbols 1
     [
-        KC.NO,   KC.GRV,  KC.LABK, KC.LCBR, KC.LPRN, KC.LBRC,                       KC.COMM, KC.EXLM, KC.QUES, KC.DQUO, KC.QUOT,  KC.NO,
-        KC.NO,   KC.N0,   KC.N1,   KC.N2,   KC.N3,   KC.N4,                         KC.PLUS, KC.MINS, KC.ASTR, KC.SLSH, KC.COLN,  KC.NO,
-        KC.NO,   KC.N5,   KC.N6,   KC.N7,   KC.N8,   KC.N9,                         KC.BSLS, KC.UNDS, KC.CIRC, KC.AMPR, KC.PIPE,  KC.NO,
-                                            KC.EQL,  FUN_LAY, KC.SCLN,     KC.NO,   KC.TRNS, KC.NO,
+        KC.NO,     KC.GRV,    KC.LABK,   KC.LCBR,   KC.LPRN,   KC.LBRC,              KC.COMM,   KC.EXLM,   KC.QUES,   KC.DQUO,   KC.QUOT,   KC.NO,
+        KC.NO,     KC.N0,     KC.N1,     KC.N2,     KC.N3,     KC.N4,                KC.PLUS,   KC.MINS,   KC.ASTR,   KC.SLSH,   KC.COLN,   KC.NO,
+        KC.NO,     KC.N5,     KC.N6,     KC.N7,     KC.N8,     KC.N9,                KC.BSLS,   KC.UNDS,   KC.CIRC,   KC.AMPR,   KC.PIPE,   KC.NO,
+                                         KC.EQL,    FUN_LAY,   KC.SCLN,              KC.NO,     KC.TRNS,   KC.NO,
     ],
 
     # 2: Function / Symbols 2
     [
-        KC.NO,   DEG,     KC.NO,   KC.F10,  KC.F11,  KC.F12,                        KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,    KC.NO,
-        KC.NO,   KC.NO,   KC.F1,   KC.F2,   KC.F3,   KC.F4,                         KC.TILD, KC.AT,   KC.DLR,  KC.PERC, KC.HASH,  KC.NO,
-        KC.NO,   KC.F5,   KC.F6,   KC.F7,   KC.F8,   KC.F9,                         KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,    KC.NO,
-                                            KC.NO,   KC.TRNS, KC.NO,       KC.NO,   KC.TRNS, KC.NO
+        KC.NO,     DEG,       KC.NO,     KC.F10,    KC.F11,    KC.F12,               KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,
+        KC.NO,     KC.NO,     KC.F1,     KC.F2,     KC.F3,     KC.F4,                KC.TILD,   KC.AT,     KC.DLR,    KC.PERC,   KC.HASH,   KC.NO,
+        KC.NO,     KC.F5,     KC.F6,     KC.F7,     KC.F8,     KC.F9,                KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,
+                                         KC.NO,     KC.TRNS,   KC.NO,                KC.NO,     KC.TRNS,   KC.NO
     ],
 
     # 3: Special keys 1
     [
-        KC.NO,   KC.NO,   KC.RABK, KC.RCBR, KC.RPRN, KC.RBRC,                       KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.RIGHT, KC.NO,
-        KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,                         KC.NO,   KC.LEFT, KC.NO,   KC.NO,   KC.NO,    KC.NO,
-        KC.NO,   KC.NO,   KC.NO,   KC.DOWN, KC.UP,   KC.NO,                         KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,    KC.NO,
-                                            KC.NO,   KC.TRNS, KC.NO,       KC.CW,   SP2_LAY, KC.NO
+        KC.NO,     KC.NO,     KC.RABK,   KC.RCBR,   KC.RPRN,   KC.RBRC,              KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.RIGHT,  KC.NO,
+        KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,                KC.NO,     KC.LEFT,   KC.NO,     KC.NO,     KC.NO,     KC.NO,
+        KC.NO,     KC.NO,     KC.NO,     KC.DOWN,   KC.UP,     KC.NO,                KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,
+                                         KC.NO,     KC.TRNS,   KC.NO,                KC.CW,     SP2_LAY,   KC.NO
     ],
 
     # 4: Special keys 2
     [
-        KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,                         KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.END,   KC.NO,
-        KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,                         KC.NO,   KC.HOME, KC.NO,   KC.NO,   KC.NO,    KC.NO,
-        KC.NO,   KC.NO,   KC.NO,   KC.PGDN, KC.PGUP, KC.NO,                         KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,    KC.NO,
-                                            KC.NO,   KC.TRNS, KC.NO,       KC.NO,   KC.TRNS, KC.NO
+        KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,                KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.END,    KC.NO,
+        KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,                KC.NO,     KC.HOME,   KC.NO,     KC.NO,     KC.NO,     KC.NO,
+        KC.NO,     KC.NO,     KC.NO,     KC.PGDN,   KC.PGUP,   KC.NO,                KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,
+                                         KC.NO,     KC.TRNS,   KC.NO,                KC.NO,     KC.TRNS,   KC.NO
     ],
 
-    # 5: Magic
+    # 5: Magic / Mouse
     [
-        KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,                         DS_REP,  DS_REC,  DS_STP,  DS_PLA,  DS_INT,   KC.NO,
-        KC.NO,   HTP,     KC.NO,   KC.NO,   KC.NO,   KC.NO,                         KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,    KC.NO,
-        KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,                         KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,    KC.NO,
-                                            KC.TRNS, KC.NO,   KC.NO,       KC.NO,   KC.NO,   KC.NO
+        KC.NO,     HTP,       KC.NO,     KC.MS_UP,  KC.NO,     KC.NO,                KC.MB_MMB, KC.NO,     KC.MW_UP,  KC.NO,     KC.NO,     KC.NO,
+        KC.NO,     KC.NO,     KC.MS_LT,  KC.MS_DN,  KC.MS_RT,  KC.NO,                KC.NO,     KC.MW_LT,  KC.MW_DN,  KC.MW_RT,  KC.NO,     KC.NO,
+        KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,                DS_REP,    DS_REC,    DS_STP,    DS_PLA,    DS_INT,    KC.NO,
+                                         KC.TRNS,   KC.NO,     KC.NO,                KC.NO,     KC.MB_LMB, KC.MB_RMB
     ],
 
     # X: Dummy
     # [
-    #     KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,                         KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,    KC.NO,
-    #     KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,                         KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,    KC.NO,
-    #     KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,                         KC.NO,   KC.NO,   KC.NO,   KC.NO,   KC.NO,    KC.NO,
-    #                                         KC.NO,   KC.NO,   KC.NO,       KC.NO,   KC.NO,   KC.NO
+    #     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,                KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,
+    #     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,                KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,
+    #     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,                KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,
+    #                                      KC.NO,     KC.NO,     KC.NO,                KC.NO,     KC.NO,     KC.NO
     # ],
 ]
 
 # MAIN
 
-keyboard.modules += [dynamic_sequences, oneshot, combos, layers, split, caps_word]
+keyboard.modules += [dynamic_sequences, oneshot, combos, layers, split, caps_word, mouse_keys]
 
 if __name__ == '__main__':
     keyboard.go()
