@@ -7,7 +7,7 @@
     "python.analysis.extraPaths": [
         "",
         "/home/gruvw/.vscode/extensions/joedevivo.vscode-circuitpython-0.1.20-linux-x64/stubs",
-        "/home/gruvw/.config/Code/User/globalStorage/joedevivo.vscode-circuitpython/bundle/20230610/adafruit-circuitpython-bundle-py-20230610/lib"
+        "/home/gruvw/.config/Code/User/globalStorage/joedevivo.vscode-circuitpython/bundle/20230611/adafruit-circuitpython-bundle-py-20230611/lib"
     ],
     "circuitpython.board.version": null,
     "cSpell.words": [
@@ -29,6 +29,8 @@
         "LSFT",
         "oneshot",
         "PERC",
+        "PGDN",
+        "PGUP",
         "RABK",
         "RALT",
         "RBRC",
