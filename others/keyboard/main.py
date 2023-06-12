@@ -47,7 +47,7 @@ dynamic_sequences = DynamicSequences(timeout=DS_TIMEOUT)
 
 keyboard.unicode_mode = UnicodeMode.LINUX
 mouse_keys.max_speed = 20
-mouse_keys.acc_interval = 30
+mouse_keys.acc_interval = 25
 
 # Keys
 
@@ -107,7 +107,6 @@ combos.combos = [
 
 # TODO Media keys
 
-
 keyboard.keymap = [
     # 0: DVORAK
     [
@@ -137,8 +136,8 @@ keyboard.keymap = [
     [
         KC.NO,     KC.NO,     KC.RABK,   KC.RCBR,   KC.RPRN,   KC.RBRC,              KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.RIGHT,  KC.NO,
         KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,                KC.NO,     KC.LEFT,   KC.NO,     KC.NO,     KC.NO,     KC.NO,
-        KC.NO,     KC.NO,     KC.NO,     KC.DOWN,   KC.UP,     KC.NO,                KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,
-                                         KC.NO,     KC.TRNS,   KC.NO,                KC.CW,     SP2_LAY,   KC.NO
+        KC.NO,     KC.NO,     KC.NO,     KC.DOWN,   KC.UP,     KC.NO,                KC.INS,    KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,
+                                         KC.NO,     KC.NO,     KC.TRNS,              KC.CW,     SP2_LAY,   KC.NO
     ],
 
     # 4: Special keys 2
@@ -146,7 +145,7 @@ keyboard.keymap = [
         KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,                KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.END,    KC.NO,
         KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,                KC.NO,     KC.HOME,   KC.NO,     KC.NO,     KC.NO,     KC.NO,
         KC.NO,     KC.NO,     KC.NO,     KC.PGDN,   KC.PGUP,   KC.NO,                KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,
-                                         KC.NO,     KC.TRNS,   KC.NO,                KC.NO,     KC.TRNS,   KC.NO
+                                         KC.NO,     KC.NO,     KC.TRNS,              KC.NO,     KC.TRNS,   KC.NO
     ],
 
     # 5: Magic / Mouse
