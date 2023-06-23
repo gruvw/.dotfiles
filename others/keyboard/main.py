@@ -118,16 +118,16 @@ keyboard.keymap = [
 
     # 1: Numbers / Symbols 1
     [
-        KC.NO,     KC.GRV,    KC.LABK,   KC.LCBR,   KC.LPRN,   KC.LBRC,              KC.COMM,   KC.EXLM,   KC.QUES,   KC.DQUO,   KC.QUOT,   KC.NO,
-        KC.NO,     KC.N0,     KC.N1,     KC.N2,     KC.N3,     KC.N4,                KC.PLUS,   KC.MINS,   KC.ASTR,   KC.SLSH,   KC.COLN,   KC.NO,
-        KC.NO,     KC.N5,     KC.N6,     KC.N7,     KC.N8,     KC.N9,                KC.BSLS,   KC.UNDS,   KC.CIRC,   KC.AMPR,   KC.PIPE,   KC.NO,
+        KC.NO,     KC.GRV,    KC.LABK,   KC.LCBR,   KC.LPRN,   KC.LBRC,              KC.BSLS,   KC.EXLM,   KC.QUES,   KC.PLUS,   KC.SLSH,   KC.NO,
+        KC.NO,     KC.N0,     KC.N1,     KC.N2,     KC.N3,     KC.N4,                KC.MINS,   KC.COMM,   KC.DQUO,   KC.QUOT,   KC.COLN,   KC.NO,
+        KC.NO,     KC.N5,     KC.N6,     KC.N7,     KC.N8,     KC.N9,                KC.PIPE,   KC.UNDS,   KC.AMPR,   KC.CIRC,   KC.ASTR,   KC.NO,
                                          KC.EQL,    FUN_LAY,   KC.SCLN,              KC.NO,     KC.TRNS,   KC.NO,
     ],
 
     # 2: Function / Symbols 2
     [
-        KC.NO,     DEG,       KC.NO,     KC.F10,    KC.F11,    KC.F12,               KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,
-        KC.NO,     KC.NO,     KC.F1,     KC.F2,     KC.F3,     KC.F4,                KC.TILD,   KC.AT,     KC.DLR,    KC.PERC,   KC.HASH,   KC.NO,
+        KC.NO,     DEG,       KC.NO,     KC.F10,    KC.F11,    KC.F12,               KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.PERC,   KC.NO,
+        KC.NO,     KC.NO,     KC.F1,     KC.F2,     KC.F3,     KC.F4,                KC.TILD,   KC.DLR,    KC.AT,     KC.NO,     KC.HASH,   KC.NO,
         KC.NO,     KC.F5,     KC.F6,     KC.F7,     KC.F8,     KC.F9,                KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,
                                          KC.NO,     KC.TRNS,   KC.NO,                KC.NO,     KC.TRNS,   KC.NO
     ],
@@ -157,7 +157,7 @@ keyboard.keymap = [
     ],
 
     # X: Dummy
-    # [
+    # [, mouse_keys
     #     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,                KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,
     #     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,                KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,
     #     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,                KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,
@@ -167,7 +167,7 @@ keyboard.keymap = [
 
 # MAIN
 
-keyboard.modules += [dynamic_sequences, oneshot, combos, layers, split, caps_word, mouse_keys]
+keyboard.modules += [dynamic_sequences, combos, layers, split, caps_word, mouse_keys, oneshot]
 
 if __name__ == '__main__':
     keyboard.go()

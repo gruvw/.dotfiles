@@ -7,7 +7,7 @@
     "python.analysis.extraPaths": [
         "",
         "/home/gruvw/.vscode/extensions/joedevivo.vscode-circuitpython-0.1.20-linux-x64/stubs",
-        "/home/gruvw/.config/Code/User/globalStorage/joedevivo.vscode-circuitpython/bundle/20230612/adafruit-circuitpython-bundle-py-20230612/lib"
+        "/home/gruvw/.config/Code/User/globalStorage/joedevivo.vscode-circuitpython/bundle/20230623/adafruit-circuitpython-bundle-py-20230623/lib"
     ],
     "circuitpython.board.version": null,
     "cSpell.words": [
