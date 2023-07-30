@@ -19,7 +19,10 @@ OS_TIMEOUT = 1000
 DS_TIMEOUT = 60 * 1000
 
 OS_TAP_TIME = 2000
-TAP_TIME = 500
+TAP_TIME = 150
+
+MOUSE_MAX_SPEED = 25
+MOUSE_ACC_INTERVAL = 25
 
 # SETUP
 
@@ -46,13 +49,14 @@ split = Split(
 dynamic_sequences = DynamicSequences(timeout=DS_TIMEOUT)
 
 keyboard.unicode_mode = UnicodeMode.LINUX
-mouse_keys.max_speed = 20
-mouse_keys.acc_interval = 25
+mouse_keys.max_speed = MOUSE_MAX_SPEED
+mouse_keys.acc_interval = MOUSE_MAX_SPEED
 
 # Keys
 
 DEG = unicode_string_sequence("°")
 HTP = send_string("https://")
+AP_T = send_string("'t ")
 
 OS_LCTL = KC.OS(KC.LCTL, tap_time=OS_TAP_TIME)
 OS_LSFT = KC.OS(KC.LSFT, tap_time=OS_TAP_TIME)
@@ -76,7 +80,7 @@ OS_LCTL_LSFT_LALT_LGUI = KC.OS(KC.LCTL(KC.LSFT(KC.LALT(OS_LGUI))), tap_time=OS_T
 MGC_LAY = KC.LT(5, KC.TAB, tap_time=TAP_TIME, prefer_hold=True, tap_interrupted=True)
 SP1_LAY = KC.LT(3, KC.ENTER, tap_time=TAP_TIME, prefer_hold=True, tap_interrupted=True)
 SP2_LAY = KC.LT(4, KC.DEL, tap_time=TAP_TIME, prefer_hold=True, tap_interrupted=True)
-NUM_LAY = KC.LT(1, KC.BSPC, tap_time=200, prefer_hold=True, tap_interrupted=True)
+NUM_LAY = KC.LT(1, KC.BSPC, tap_time=TAP_TIME, prefer_hold=True, tap_interrupted=True)
 FUN_LAY = KC.LT(2, KC.DOT, tap_time=TAP_TIME, prefer_hold=True, tap_interrupted=True)
 
 DS_REC = KC.RECORD_SEQUENCE()
@@ -135,7 +139,7 @@ keyboard.keymap = [
     # 3: Special keys 1
     [
         KC.NO,     KC.NO,     KC.RABK,   KC.RCBR,   KC.RPRN,   KC.RBRC,              KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.RIGHT,  KC.NO,
-        KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,                KC.NO,     KC.LEFT,   KC.NO,     KC.NO,     KC.NO,     KC.NO,
+        KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,                KC.NO,     KC.LEFT,   KC.NO,     AP_T,      KC.NO,     KC.NO,
         KC.NO,     KC.NO,     KC.NO,     KC.DOWN,   KC.UP,     KC.NO,                KC.INS,    KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,
                                          KC.NO,     KC.NO,     KC.TRNS,              KC.CW,     SP2_LAY,   KC.NO
     ],
@@ -167,7 +171,7 @@ keyboard.keymap = [
 
 # MAIN
 
-keyboard.modules += [dynamic_sequences, combos, layers, split, caps_word, mouse_keys, oneshot]
+keyboard.modules += [dynamic_sequences, mouse_keys, combos, layers, split, caps_word, oneshot]
 
 if __name__ == '__main__':
     keyboard.go()
