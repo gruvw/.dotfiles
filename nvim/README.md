@@ -1,4 +1,4 @@
-# Vim configurating Roadmap
+# Vim configuration Roadmap
 
 ## Config
 
@@ -15,14 +15,14 @@
 - [ ] Good and clean task bar
 - [ ] Easy motion
 
-## Intermediat editor functionalities
+## Intermediate editor functionalities
 
 - [ ] Languages integration (LSP, formater, linter, snippets, ...)
-    - [ ] Python
-    - [ ] Rust
-    - [ ] Dart
-    - [ ] LaTeX
-    - [ ] Markdown
+  - [ ] Python
+  - [ ] Rust
+  - [ ] Dart
+  - [ ] LaTeX
+  - [ ] Markdown
 
 - [ ] Fuzzy Finder (file opening like ctrl-p)
 - [ ] Git integration: select staged files, commit, push, pull, automatic fetch, git graph, blames, file history
