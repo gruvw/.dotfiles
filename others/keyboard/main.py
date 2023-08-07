@@ -18,7 +18,7 @@ from kmk.modules.split import Split, SplitSide, SplitType
 OS_TIMEOUT = 1000
 DS_TIMEOUT = 60 * 1000
 
-OS_TAP_TIME = 2000
+OS_TAP_TIME = 700
 TAP_TIME = 150
 
 MOUSE_MAX_SPEED = 25
@@ -122,7 +122,7 @@ keyboard.keymap = [
 
     # 1: Numbers / Symbols 1
     [
-        KC.NO,     KC.GRV,    KC.LABK,   KC.LCBR,   KC.LPRN,   KC.LBRC,              KC.BSLS,   KC.EXLM,   KC.QUES,   KC.PLUS,   KC.SLSH,   KC.NO,
+        KC.NO,     KC.GRV,    KC.RABK,   KC.RCBR,   KC.RPRN,   KC.RBRC,              KC.BSLS,   KC.EXLM,   KC.QUES,   KC.PLUS,   KC.SLSH,   KC.NO,
         KC.NO,     KC.N0,     KC.N1,     KC.N2,     KC.N3,     KC.N4,                KC.MINS,   KC.COMM,   KC.DQUO,   KC.QUOT,   KC.COLN,   KC.NO,
         KC.NO,     KC.N5,     KC.N6,     KC.N7,     KC.N8,     KC.N9,                KC.PIPE,   KC.UNDS,   KC.AMPR,   KC.CIRC,   KC.ASTR,   KC.NO,
                                          KC.EQL,    FUN_LAY,   KC.SCLN,              KC.NO,     KC.TRNS,   KC.NO,
@@ -138,7 +138,7 @@ keyboard.keymap = [
 
     # 3: Special keys 1
     [
-        KC.NO,     KC.NO,     KC.RABK,   KC.RCBR,   KC.RPRN,   KC.RBRC,              KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.RIGHT,  KC.NO,
+        KC.NO,     KC.NO,     KC.LABK,   KC.LCBR,   KC.LPRN,   KC.LBRC,              KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.RIGHT,  KC.NO,
         KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,                KC.NO,     KC.LEFT,   KC.NO,     AP_T,      KC.NO,     KC.NO,
         KC.NO,     KC.NO,     KC.NO,     KC.DOWN,   KC.UP,     KC.NO,                KC.INS,    KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,
                                          KC.NO,     KC.NO,     KC.TRNS,              KC.CW,     SP2_LAY,   KC.NO
