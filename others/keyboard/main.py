@@ -18,7 +18,7 @@ from kmk.modules.split import Split, SplitSide, SplitType
 OS_TIMEOUT = 1000
 DS_TIMEOUT = 60 * 1000
 
-OS_TAP_TIME = 700
+OS_TAP_TIME = 500
 TAP_TIME = 150
 
 MOUSE_MAX_SPEED = 25

@@ -1,9 +1,9 @@
 -- ~/.config/nvim/lua/gruvw/init.lua
 
--- Load remaps
+-- Load modules
 require("gruvw.remap")
--- Load configuration
-require("gruvw.config")
+require("gruvw.set")
+require("gruvw.scripts")
 
 -- Load package manager and plugins
 require("gruvw.lazy")

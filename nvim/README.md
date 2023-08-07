@@ -13,6 +13,7 @@
 - [ ] Auto-complete and intellisense integration (like documentation)
 - [ ] Auto-save, easy to disable
 - [ ] Good and clean task bar
+- [X] Surround motions
 - [X] Easy motion / leap
 
 ## Intermediate editor functionalities
@@ -25,7 +26,7 @@
   - [ ] Markdown
 
 - [ ] Fuzzy Finder (file opening like ctrl-p)
-- [ ] Git integration: select staged files, commit, push, pull, automatic fetch, git graph, blames, file history
+- [ ] Git integration: select staged files, diff (margin and whole file), commit, push, pull, automatic fetch, git graph, blames, file history
 - [ ] Spell checker
 - [ ] Hyper-snips
 - [ ] Tasks: configurable + run on keyboard shortcut or from palette
@@ -41,4 +42,4 @@
 - [ ] Image preview/quick open, link resolution
 - [ ] LaTeX math preview
 - [ ] Random everything, Lorem Ipsum generator, custom length
-
+- [ ] Highlight weird non-ASCII characters
