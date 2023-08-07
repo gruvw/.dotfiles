@@ -3,17 +3,17 @@
 ## Config
 
 - Comment explaining every config line
-- Plugin manager
 
 ## Basic editor functionalities
 
-- [ ] Color Theme: Monokai Pro (Spectral)
+- [X] Color Theme: Monokai Pro (Spectral)
+- [ ] Default vim config translate (except plugins)
 - [ ] VIFM/tree file picker intergration, icons per extention
 - [ ] Easy file switching operations (harpoon?)
 - [ ] Auto-complete and intellisense integration (like documentation)
 - [ ] Auto-save, easy to disable
 - [ ] Good and clean task bar
-- [ ] Easy motion
+- [X] Easy motion / leap
 
 ## Intermediate editor functionalities
 

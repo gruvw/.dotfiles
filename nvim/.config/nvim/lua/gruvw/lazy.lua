@@ -1,6 +1,6 @@
 -- ~/.config/nvim/lua/gruvw/lazy.lua
 
--- lazy.nvim install
+-- lazy.nvim install (https://github.com/folke/lazy.nvim)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -14,5 +14,5 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Plugins list
-require("lazy").setup({ })
+-- Plugins loading from plugins directory, see https://github.com/folke/lazy.nvim#-structuring-your-plugins
+require("lazy").setup("plugins")
