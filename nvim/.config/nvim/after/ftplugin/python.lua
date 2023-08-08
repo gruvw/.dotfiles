@@ -1,3 +1,3 @@
 -- ~/.config/nvim/after/ftplugin/python.lua
 
-vim.o.colorcolumn = 80
+vim.opt.colorcolumn = "80"

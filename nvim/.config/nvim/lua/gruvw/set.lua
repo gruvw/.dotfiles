@@ -19,6 +19,10 @@ set.softtabstop = 4
 set.shiftwidth  = 4
 set.expandtab = true
 
+-- Automatic indentation
+set.autoindent = true
+set.smartindent = true
+
 -- Bar (|) cursor on insert mode
 set.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 
@@ -38,16 +42,19 @@ set.undofile = true
 -- Matched string is highlighted when searching
 set.incsearch = true
 
+-- Search is case insensitive by default
+set.smartcase = true
+
 -- Enables 24-bit RGB color in the TUI
 set.termguicolors = true
 
 -- Keeps a few lines of margin when scrolling
 set.scrolloff = 8
+set.sidescrolloff = 16
 
 -- Swap file to disk time
 set.updatetime = 50
 
 -- Add column ruler
--- TODO colorcolumn not showing from config
--- set.colorcolumn = "100"
--- vim.api.nvim_command("highlight ColorColumn ctermbg=8")
+set.colorcolumn = "100"
+set.wrap = false

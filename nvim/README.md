@@ -34,6 +34,8 @@
 - [ ] Multi cursor editing
 - [ ] Path intellisense
 
+- [ ] Compare and add with VSCode settings
+
 ## Advanced editor functionalities
 
 - [ ] Todos integration, with tags regex, in-code coloring, listing
