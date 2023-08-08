@@ -32,8 +32,8 @@ set.ruler = true
 -- Allows to go one more charater with cursor after end of line
 set.virtualedit = "onemore"
 
--- Time in milliseconds to wait for a mapped sequence to complete
-set.timeoutlen = 100
+-- Time in milliseconds to wait or a mapped sequence to complete
+set.timeoutlen = 600
 
 -- Undo history
 set.undodir = os.getenv("HOME") .. "/.vim/undodir"
@@ -58,3 +58,12 @@ set.updatetime = 50
 -- Add column ruler
 set.colorcolumn = "100"
 set.wrap = false
+
+-- Show command
+set.showcmd = true
+
+-- Highlight current line
+set.cursorline = true
+
+-- Disable folds by default
+set.foldenable = false

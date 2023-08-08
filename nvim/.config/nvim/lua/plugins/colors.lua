@@ -8,5 +8,10 @@ return {
       filter = "spectrum",
     })
     vim.cmd("colorscheme monokai-pro")
+
+    -- Customize
+
+    -- Only highlight the line number not whole current line
+    vim.cmd([[highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE]])
   end,
 }

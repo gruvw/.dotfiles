@@ -7,10 +7,9 @@
 ## Basic editor functionalities
 
 - [X] Color Theme: Monokai Pro (Spectral)
-- [ ] Default vim config translate (except plugins)
+- [X] Default vim config translate (except plugins)
 - [ ] VIFM/tree file picker intergration, icons per extention
 - [ ] Easy file switching operations (harpoon?)
-- [ ] Auto-complete and intellisense integration (like documentation)
 - [ ] Auto-save, easy to disable
 - [ ] Good and clean task bar
 - [X] Surround motions
@@ -18,13 +17,15 @@
 
 ## Intermediate editor functionalities
 
-- [ ] Languages integration (LSP, formater, linter, snippets, ...)
+- [ ] Languages integration, treesitter (LSP, formater, linter, snippets, ...)
   - [ ] Python
   - [ ] Rust
   - [ ] Dart
   - [ ] LaTeX
   - [ ] Markdown
 
+- [ ] Ctrl+p equivalent to search for code elements
+- [ ] Auto-complete and intellisense integration (like documentation), cmp ?
 - [ ] Fuzzy Finder (file opening like ctrl-p)
 - [ ] Git integration: select staged files, diff (margin and whole file), commit, push, pull, automatic fetch, git graph, blames, file history
 - [ ] Spell checker
@@ -33,6 +34,8 @@
 - [ ] Error Lens
 - [ ] Multi cursor editing
 - [ ] Path intellisense
+- [ ] Good and simple welcome screen
+- [ ] Project search
 
 - [ ] Compare and add with VSCode settings
 
