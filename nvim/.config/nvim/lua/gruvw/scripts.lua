@@ -5,6 +5,12 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
   group = vim.api.nvim_create_augroup('UserOnSave', {}),
   pattern = "*",
   callback = function()
+    -- Should not happen for temporary files (examples: vifm bulk rename, vim-anywhere)
+    local buffer_name = vim.fn.expand("%:p")
+    if vim.startswith(buffer_name, "/tmp/") then
+      return
+    end
+
     local n_lines = vim.api.nvim_buf_line_count(0)
     local last_nonblank = vim.fn.prevnonblank(n_lines)
     if last_nonblank <= n_lines then vim.api.nvim_buf_set_lines(0,

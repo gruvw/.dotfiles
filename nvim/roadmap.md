@@ -8,10 +8,11 @@
 
 - [X] Color Theme: Monokai Pro (Spectral)
 - [X] Default vim config translate (except plugins)
-- [ ] VIFM/tree file picker intergration, icons per extention
+- [ ] VIFM/tree file picker integration, icons per extension
 - [ ] Easy file switching operations (harpoon?)
 - [ ] Auto-save, easy to disable
 - [ ] Good and clean task bar
+- [X] Nerd fonts
 - [X] Surround motions
 - [X] Easy motion / leap
 

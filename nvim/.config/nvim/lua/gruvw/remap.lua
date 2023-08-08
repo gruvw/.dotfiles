@@ -10,7 +10,7 @@ keymap("i", "jk", "<Esc>", {})
 
 -- Easy save/quit
 keymap("n", "Zs", ":w<CR>", {noremap = true, silent = true})
-keymap("n", "Zq", ":q!<CR>", {noremap = true, silent = true})
+keymap("n", "Zq", ":q<CR>", {noremap = true, silent = true})
 keymap("n", "Zz", ":wq<CR>", {noremap = true, silent = true})
 
 -- Empty current line

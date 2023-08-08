@@ -67,3 +67,6 @@ set.cursorline = true
 
 -- Disable folds by default
 set.foldenable = false
+
+-- Asks before leaving file with unsaved changes
+set.confirm = true
