@@ -21,3 +21,7 @@ keymap("n", "<CR>", "o<Esc>", {noremap = true, silent = true})
 
 -- Line numbers relative toggle
 keymap("n", "<C-;>", ":set relativenumber!<CR>", {noremap = true, silent = true})
+
+-- Go to first character of line with gg and G
+keymap("n", "gg", "gg0", {noremap = true, silent = true})
+keymap("n", "G", "G0", {noremap = true, silent = true})

@@ -1,8 +1,11 @@
 -- ~/.config/nvim/lua/gruvw/scripts.lua
 
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+
 -- Add new line to the end of the file
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
-  group = vim.api.nvim_create_augroup('UserOnSave', {}),
+autocmd({"BufWritePre"}, {
+  group = augroup("UserOnSave", {}),
   pattern = "*",
   callback = function()
     -- Should not happen for temporary files (examples: vifm bulk rename, vim-anywhere)
@@ -20,7 +23,7 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
 })
 
 -- Trim ending whitespaces, keep cursor position
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
+autocmd({"BufWritePre"}, {
     pattern = {"*"},
     callback = function(ev)
         save_cursor = vim.fn.getpos(".")
@@ -31,3 +34,15 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
 
 -- Autostart in insert mode for new files
 vim.cmd([[autocmd BufNewFile * startinsert]])
+
+-- Highlight on yank
+autocmd("TextYankPost", {
+    group = augroup("highlight_yank", {}),
+    pattern = "*",
+    callback = function()
+        vim.highlight.on_yank({
+            higroup = "IncSearch",
+            timeout = 150,
+        })
+    end,
+})

@@ -35,12 +35,16 @@ set.virtualedit = "onemore"
 -- Time in milliseconds to wait or a mapped sequence to complete
 set.timeoutlen = 600
 
+-- Swap file to disk time (nothing typed)
+set.updatetime = 600
+
 -- Undo history
 set.undodir = os.getenv("HOME") .. "/.vim/undodir"
 set.undofile = true
 
 -- Matched string is highlighted when searching
 set.incsearch = true
+set.hlsearch = false
 
 -- Search is case insensitive by default
 set.smartcase = true
@@ -51,9 +55,6 @@ set.termguicolors = true
 -- Keeps a few lines of margin when scrolling
 set.scrolloff = 8
 set.sidescrolloff = 16
-
--- Swap file to disk time
-set.updatetime = 50
 
 -- Add column ruler
 set.colorcolumn = "100"
@@ -70,3 +71,6 @@ set.foldenable = false
 
 -- Asks before leaving file with unsaved changes
 set.confirm = true
+
+-- Only one sign column
+set.signcolumn = "yes:1"
