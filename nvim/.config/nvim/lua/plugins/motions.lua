@@ -1,8 +1,8 @@
 -- ~/.config/nvim/lua/plugins/motions.lua
 
 return {
+  -- https://github.com/ggandor/leap.nvim
   {
-    -- https://github.com/ggandor/leap.nvim
     "ggandor/leap.nvim",
     config = function()
       local leap = require("leap")
@@ -38,8 +38,8 @@ return {
     end,
   },
 
+  -- https://github.com/kylechui/nvim-surround
   {
-    -- https://github.com/kylechui/nvim-surround
     "kylechui/nvim-surround",
     opts = {
        keymaps = {

@@ -1,4 +1,4 @@
--- ~/.config/nvim/lua/gruvw/config.lua
+-- ~/.config/nvim/lua/gruvw/set.lua
 
 local set = vim.opt
 

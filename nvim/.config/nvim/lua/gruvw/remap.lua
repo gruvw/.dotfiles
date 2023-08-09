@@ -1,4 +1,4 @@
--- ~/.config/nvim/lua/gruvw/remap.vim
+-- ~/.config/nvim/lua/gruvw/remap.lua
 
 local keymap = vim.api.nvim_set_keymap
 

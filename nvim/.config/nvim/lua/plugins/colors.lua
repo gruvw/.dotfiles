@@ -2,16 +2,18 @@
 
 return {
   -- https://github.com/loctvl842/monokai-pro.nvim
-  "loctvl842/monokai-pro.nvim",
-  config = function()
-    require("monokai-pro").setup({
-      filter = "spectrum",
-    })
-    vim.cmd("colorscheme monokai-pro")
+  {
+    "loctvl842/monokai-pro.nvim",
+    config = function()
+      require("monokai-pro").setup({
+        filter = "spectrum",
+      })
+      vim.cmd("colorscheme monokai-pro")
 
-    -- Customize
+      -- Customize
 
-    -- Only highlight the line number not whole current line
-    vim.cmd([[highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE]])
-  end,
+      -- Only highlight the line number not whole current line
+      vim.cmd([[highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE]])
+    end,
+  },
 }
