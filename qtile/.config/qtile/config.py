@@ -70,8 +70,8 @@ class Colors:
 
 
 class Settings:
-    font = "DejaVu Sans"
-    font_bold = "DejaVu Sans Bold"
+    font = "Fira Code Medium"
+    font_bold = "Fira Code Bold"
 
     widget_font_size = 14
     widget_padding = 3
@@ -278,8 +278,8 @@ screens = [
             ],
             25,
             margin=Settings.bar_margin,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            # border_width=[0, 0, 1, 0],
+            border_color=[Colors.text_color] * 4,
             background=Colors.bar_background
         ),
     ),
@@ -319,10 +319,3 @@ reconfigure_screens = True
 # If things like steam games want to auto-minimize themselves when losing
 # focus, should we respect this or not?
 auto_minimize = True
-
-# When using the Wayland backend, this can be used to configure input devices.
-wl_input_rules = None
-
-# We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
-# java that happens to be on java's whitelist.
-wmname = "LG3D"

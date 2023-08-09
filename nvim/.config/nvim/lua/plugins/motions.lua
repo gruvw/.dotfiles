@@ -7,6 +7,8 @@ return {
     config = function()
       local leap = require("leap")
       leap.add_default_mappings()
+
+      -- Defines characters considered equivalent when searching
       leap.opts.equivalence_classes = {
         "aàâæ",
         "eéèæ",
