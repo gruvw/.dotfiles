@@ -81,8 +81,7 @@ class Settings:
 
     wallpaper_timeout = 200
 
-    layout_margin = 4
-    bar_margin = [8, 8, 8 - layout_margin, 8]
+    bar_margin = [0] * 4
 
 
 @hook.subscribe.startup_once
@@ -99,27 +98,6 @@ def cycle_wallpaper():
 
     qtile.call_later(Settings.wallpaper_timeout, cycle_wallpaper)
 
-
-def update_margin(*args):
-    group = qtile.current_screen.group
-    layout = group.layout
-    if layout.name == "max" or len([w for w in group.windows if not w.floating]) == 1:
-        margin = [0, 0, 0, 0]
-        layout.margin = 0
-    else:
-        margin = Settings.bar_margin
-        layout.margin = Settings.layout_margin
-    bar = qtile.current_screen.top
-    bar._initial_margin = margin
-    bar._configure(qtile, qtile.current_screen, reconfigure=True)
-    bar.draw()
-    group.layout_all()
-
-
-hook.subscribe.layout_change(update_margin)
-hook.subscribe.focus_change(update_margin)
-# hook.subscribe.client_new(update_margin)
-# hook.subscribe.client_killed(update_margin)
 
 keys: list = []  # Initialize + avoid warning
 
@@ -270,9 +248,6 @@ screens = [
                     rounded=False,
                     disable_drag=True,
                 ),
-                # widget.LaunchBar(progs=[
-                #     ("brave-browser", "brave-browser"),
-                # ]),
                 widget.Prompt(),
                 widget.Chord(
                     font=Settings.font_bold,
@@ -302,7 +277,7 @@ screens = [
                 ),
             ],
             25,
-            margin=[8, 10, 8, 10],
+            margin=Settings.bar_margin,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
             background=Colors.bar_background
