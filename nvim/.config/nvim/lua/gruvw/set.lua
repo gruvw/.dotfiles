@@ -56,8 +56,8 @@ set.scrolloff = 8
 set.sidescrolloff = 16
 
 -- Add column ruler
-vim.wo.colorcolumn = "100"
-set.wrap = false
+-- vim.wo.colorcolumn = "100"
+set.wrap = true
 
 -- Show command
 set.showcmd = true
