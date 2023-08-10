@@ -7,7 +7,6 @@ set.belloff = "all"
 
 -- File encoding
 set.encoding = "utf-8"
-set.fileencoding = "utf-8"
 
 -- Relative linu numbers
 set.number = true
@@ -36,7 +35,7 @@ set.virtualedit = "onemore"
 set.timeoutlen = 600
 
 -- Swap file to disk time (nothing typed)
-set.updatetime = 600
+set.updatetime = 500
 
 -- Undo history
 set.undodir = os.getenv("HOME") .. "/.vim/undodir"
@@ -57,7 +56,7 @@ set.scrolloff = 8
 set.sidescrolloff = 16
 
 -- Add column ruler
-set.colorcolumn = "100"
+vim.wo.colorcolumn = "100"
 set.wrap = false
 
 -- Show command
@@ -74,3 +73,6 @@ set.confirm = true
 
 -- Only one sign column
 set.signcolumn = "yes:1"
+
+-- Open new buffers on the right
+set.splitright = true

@@ -33,7 +33,7 @@ autocmd({"BufWritePre"}, {
 })
 
 -- Autostart in insert mode for new files
-vim.cmd([[autocmd BufNewFile * startinsert]])
+vim.cmd("autocmd BufNewFile * startinsert")
 
 -- Highlight on yank
 autocmd("TextYankPost", {
@@ -45,4 +45,13 @@ autocmd("TextYankPost", {
             timeout = 150,
         })
     end,
+})
+
+-- Open help window in a vertical split to the right.
+vim.api.nvim_create_autocmd("BufWinEnter", {
+    group = vim.api.nvim_create_augroup("help_window_right", {}),
+    pattern = {"*.txt"},
+    callback = function()
+        if vim.o.filetype == "help" then vim.cmd.wincmd("L") end
+    end
 })

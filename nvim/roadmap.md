@@ -11,20 +11,21 @@
 - [ ] VIFM/tree file picker integration, icons per extension
 - [ ] Easy file switching operations (harpoon?)
 - [X] Auto-save, easy to disable
-- [ ] Good and clean task bar
+- [X] Good and clean task bar
 - [X] Nerd fonts
 - [X] Surround motions
 - [X] Easy motion / leap
 
 ## Intermediate editor functionalities
 
-- [ ] Languages integration, treesitter (LSP, formater, linter, snippets, ...)
+- [ ] Languages integration, treesitter, treesitter context (LSP, formater, linter, snippets, ...)
   - [ ] Python
   - [ ] Rust
   - [ ] Dart
   - [ ] LaTeX
   - [ ] Markdown
 
+- [ ] Nvim terminal emulator
 - [ ] Ctrl+p equivalent to search for code elements
 - [ ] Auto-complete and intellisense integration (like documentation), cmp ?
 - [ ] Fuzzy Finder (file opening like ctrl-p)

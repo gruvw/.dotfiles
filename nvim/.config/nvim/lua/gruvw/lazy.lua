@@ -14,5 +14,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Initializes lazy.nvim
 -- Plugins loading from plugins directory, https://github.com/folke/lazy.nvim#-structuring-your-plugins
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+  ui = {
+    border = "rounded",
+  },
+})
