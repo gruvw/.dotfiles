@@ -11,7 +11,7 @@ return {
       -- Defines characters considered equivalent when searching
       leap.opts.equivalence_classes = {
         "aàâæ",
-        "eéèæ",
+        "eéèæê",
         "cç{}",
         "p()",
         "b[]",

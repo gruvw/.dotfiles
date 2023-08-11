@@ -11,7 +11,7 @@ return {
           return "saved"
         end,
       },
-      cleaning_interval = 2000, -- time before erasing the execution msg
+      cleaning_interval = 3000, -- time before erasing the execution msg
       debounce_delay = 10000, -- time till a defered save acctually happens (if not cancelled)
     },
   },

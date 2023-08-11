@@ -9,7 +9,7 @@ autocmd({"BufWritePre"}, {
     callback = function(ev)
         save_cursor = vim.fn.getpos(".")
         vim.cmd([[%s/\s\+$//e]])
-        vim.cmd([[%s#\($\n\s*\)\+\%$##]])
+        vim.cmd([[%s#\($\n\s*\)\+\%$##e]])
         vim.fn.setpos(".", save_cursor)
     end,
 })
