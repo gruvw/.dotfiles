@@ -15,7 +15,7 @@ autocmd({"BufWritePre"}, {
 })
 
 -- Autostart in insert mode for new files
-vim.cmd("autocmd BufNewFile * startinsert")
+-- vim.cmd("autocmd BufNewFile * startinsert")
 
 -- Highlight on yank
 autocmd("TextYankPost", {

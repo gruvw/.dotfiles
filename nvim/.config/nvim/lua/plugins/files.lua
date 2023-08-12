@@ -31,6 +31,9 @@ return {
       local telescope = require("telescope")
 
       telescope.setup({
+        defaults = {
+          initial_mode = "normal", -- open telescope in normal mode
+        },
         extensions = {
           undo = {
             -- use_delta = true,
