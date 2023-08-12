@@ -3,9 +3,6 @@
 local keymap = vim.api.nvim_set_keymap
 local remap = {noremap = true, silent = true}
 
--- Set leader key to space
-vim.g.mapleader = " "
-
 -- Remap esc to jk
 -- keymap("i", "jk", "<Esc>", {})
 
@@ -27,5 +24,18 @@ keymap("n", "<C-;>", ":set relativenumber!<CR>", remap)
 keymap("n", "gg", "gg0", remap)
 keymap("n", "G", "G0", remap)
 
+-- Yank the whole buffer content to "+
+keymap("n", "yA", ":%y+<CR>", remap)
+
 -- Functions remap
 keymap("n", "<leader>D", ":lua insert_date()<CR>", remap)
+
+-- Plugins remap
+local telescope = require("telescope.builtin")
+
+-- Telescope remaps
+vim.keymap.set("n", "<leader>tf", telescope.find_files, {})
+vim.keymap.set("n", "<leader>tg", telescope.live_grep, {})
+
+-- Telescope extensions remap
+vim.keymap.set("n", "<leader>tu", ":Telescope undo<CR>")

@@ -15,4 +15,42 @@ return {
       debounce_delay = 10000, -- time till a defered save acctually happens (if not cancelled)
     },
   },
+
+  -- https://github.com/nvim-telescope/telescope.nvim
+  {
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.2",
+    dependencies = {
+      -- https://github.com/nvim-lua/plenary.nvim
+      "nvim-lua/plenary.nvim",
+
+      -- https://github.com/debugloop/telescope-undo.nvim
+      "debugloop/telescope-undo.nvim",
+    },
+    config = function()
+      local telescope = require("telescope")
+
+      telescope.setup({
+        extensions = {
+          undo = {
+            -- use_delta = true,
+            -- side_by_side = true,
+            layout_strategy = "vertical",
+            diff_context_lines = 4,
+            entry_format = "state #$ID, $STAT, $TIME",
+            mappings = {
+              n = {
+                ["uy"] = require("telescope-undo.actions").yank_additions,
+                ["ud"] = require("telescope-undo.actions").yank_deletions,
+                ["ur"] = require("telescope-undo.actions").restore,
+              },
+            },
+          },
+        },
+      })
+
+      -- Load extensions
+      telescope.load_extension("undo")
+    end
+  }
 }

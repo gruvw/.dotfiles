@@ -10,6 +10,13 @@ return {
         filter = "spectrum",
         background_clear = {
           "float_win",
+          "toggleterm",
+          "telescope",
+          "which-key",
+          "renamer",
+          "notify",
+          "nvim-tree",
+          "neo-tree",
         },
       })
       vim.cmd("colorscheme monokai-pro")

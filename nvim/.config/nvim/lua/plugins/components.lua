@@ -65,7 +65,10 @@ return {
   -- https://github.com/nvim-lualine/lualine.nvim
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = {"nvim-tree/nvim-web-devicons"}, -- icons support
+    dependencies = {
+      -- https://github.com/nvim-tree/nvim-web-devicons
+      "nvim-tree/nvim-web-devicons", -- icons support
+    },
     opts = {
       options = {
         theme = "monokai-pro",
