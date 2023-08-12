@@ -26,3 +26,6 @@ keymap("n", "<C-;>", ":set relativenumber!<CR>", remap)
 -- Go to first character of line with gg and G
 keymap("n", "gg", "gg0", remap)
 keymap("n", "G", "G0", remap)
+
+-- Functions remap
+keymap("n", "<leader>D", ":lua insert_date()<CR>", remap)

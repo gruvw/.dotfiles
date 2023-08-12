@@ -2,6 +2,7 @@
 
 -- Load modules
 require("gruvw.set")
+require("gruvw.functions")
 require("gruvw.remap")
 require("gruvw.scripts")
 

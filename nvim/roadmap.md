@@ -10,6 +10,8 @@
 - [X] Default vim config translate (except plugins)
 - [ ] VIFM/tree file picker integration, icons per extension
 - [ ] Easy file switching operations (harpoon?)
+- [ ] Undo tree
+- [X] Auto pairs
 - [X] Auto-save, easy to disable
 - [X] Good and clean task bar
 - [X] Nerd fonts
@@ -28,7 +30,7 @@
 - [ ] Nvim terminal emulator
 - [ ] Ctrl+p equivalent to search for code elements
 - [ ] Auto-complete and intellisense integration (like documentation), cmp ?
-- [ ] Fuzzy Finder (file opening like ctrl-p)
+- [ ] Fuzzy Finder (file opening like ctrl-p), telescope
 - [ ] Git integration: select staged files, diff (margin and whole file), commit, push, pull, automatic fetch, git graph, blames, file history
 - [ ] Spell checker
 - [ ] Hyper-snips
