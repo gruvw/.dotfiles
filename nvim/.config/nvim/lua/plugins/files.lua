@@ -54,6 +54,16 @@ return {
 
       -- Load extensions
       telescope.load_extension("undo")
+
+      -- Remap
+      local telescope_blt = require("telescope.builtin")
+
+      -- Telescope remaps
+      vim.keymap.set("n", "<leader>tf", telescope_blt.find_files, {})
+      vim.keymap.set("n", "<leader>tg", telescope_blt.live_grep, {})
+
+      -- Telescope extensions remap
+      vim.keymap.set("n", "<leader>tu", ":Telescope undo<CR>")
     end
   }
 }

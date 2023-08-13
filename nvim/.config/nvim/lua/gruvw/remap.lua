@@ -29,13 +29,3 @@ keymap("n", "yA", ":%y+<CR>", remap)
 
 -- Functions remap
 keymap("n", "<leader>D", ":lua insert_date()<CR>", remap)
-
--- Plugins remap
-local telescope = require("telescope.builtin")
-
--- Telescope remaps
-vim.keymap.set("n", "<leader>tf", telescope.find_files, {})
-vim.keymap.set("n", "<leader>tg", telescope.live_grep, {})
-
--- Telescope extensions remap
-vim.keymap.set("n", "<leader>tu", ":Telescope undo<CR>")
