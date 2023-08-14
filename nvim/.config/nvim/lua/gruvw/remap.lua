@@ -45,3 +45,6 @@ keymap("n", "<leader>hh", [[:lua require("harpoon.ui").nav_file(1)<CR>]], remap)
 keymap("n", "<leader>ht", [[:lua require("harpoon.ui").nav_file(2)<CR>]], remap)
 keymap("n", "<leader>hn", [[:lua require("harpoon.ui").nav_file(3)<CR>]], remap)
 keymap("n", "<leader>hs", [[:lua require("harpoon.ui").nav_file(4)<CR>]], remap)
+
+-- Nvim-tree
+keymap("n", "<leader>f", [[:lua require("nvim-tree.api").tree.toggle()<CR>]], remap)

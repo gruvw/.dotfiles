@@ -76,3 +76,7 @@ set.signcolumn = "yes:1"
 
 -- Open new buffers on the right
 set.splitright = true
+
+-- Disable netrw (nvim-tree)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1

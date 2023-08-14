@@ -23,9 +23,11 @@ return {
 
       -- Only highlight the line number not whole current line
       vim.cmd("highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE")
+      vim.cmd("highlight NvimTreeCursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE")
 
       -- Windows line separator in white
       vim.cmd("highlight WinSeparator guifg=15")
+      vim.cmd("highlight NvimTreeWinSeparator guifg=15")
     end,
   },
 }
