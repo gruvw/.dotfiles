@@ -4,6 +4,7 @@ return {
   -- https://github.com/okuuva/auto-save.nvim
   {
     "okuuva/auto-save.nvim",
+    event = "VeryLazy",
     opts = {
       enabled = true,
       execution_message = {
@@ -20,6 +21,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.2",
+    lazy = true,
     dependencies = {
       -- https://github.com/nvim-lua/plenary.nvim
       "nvim-lua/plenary.nvim",
@@ -27,7 +29,6 @@ return {
       -- https://github.com/debugloop/telescope-undo.nvim
       "debugloop/telescope-undo.nvim",
     },
-    lazy = true,
     config = function()
       local telescope = require("telescope")
 

@@ -4,6 +4,7 @@ return {
   -- https://github.com/ggandor/leap.nvim
   {
     "ggandor/leap.nvim",
+    event = "VeryLazy",
     config = function()
       local leap = require("leap")
       leap.add_default_mappings()
@@ -43,6 +44,8 @@ return {
   -- https://github.com/kylechui/nvim-surround
   {
     "kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
     opts = {
        keymaps = {
         normal = "gz",
@@ -61,7 +64,6 @@ return {
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
-    lazy = true,
     config = function()
       require("nvim-autopairs").setup()
     end
