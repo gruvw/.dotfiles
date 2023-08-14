@@ -9,7 +9,7 @@
 - [X] Color Theme: Monokai Pro (Spectral)
 - [X] Default vim config translate (except plugins)
 - [ ] VIFM/tree file picker integration, icons per extension
-- [ ] Easy file switching operations (harpoon?)
+- [X] Easy file switching operations (harpoon?)
 - [X] Fuzzy Finder (file opening like ctrl-p), telescope
 - [X] Undo tree
 - [X] Auto pairs

@@ -29,3 +29,19 @@ keymap("n", "yA", ":%y+<CR>", remap)
 
 -- Functions remap
 keymap("n", "<leader>D", ":lua insert_date()<CR>", remap)
+
+-- Plugins remap
+
+-- Telescope
+keymap("n", "<leader>tf", [[:lua require("telescope.builtin").find_files()<CR>]], remap)
+keymap("n", "<leader>tg", [[:lua require("telescope.builtin").live_grep()<CR>]], remap)
+keymap("n", "<leader>tu", [[:lua require("telescope").extensions.undo.undo()<CR>]], remap)
+
+-- Harpoon
+-- From the quickmenu, open a file in: a vertical split with <C-v>, a horizontal split with <C-x>, a new tab with <C-t>
+keymap("n", "<leader>ha", [[:lua require("harpoon.mark").add_file()<CR>]], remap)
+keymap("n", "<leader>hm", [[:lua require("harpoon.ui").toggle_quick_menu()<CR>]], remap)
+keymap("n", "<leader>hh", [[:lua require("harpoon.ui").nav_file(1)<CR>]], remap)
+keymap("n", "<leader>ht", [[:lua require("harpoon.ui").nav_file(2)<CR>]], remap)
+keymap("n", "<leader>hn", [[:lua require("harpoon.ui").nav_file(3)<CR>]], remap)
+keymap("n", "<leader>hs", [[:lua require("harpoon.ui").nav_file(4)<CR>]], remap)

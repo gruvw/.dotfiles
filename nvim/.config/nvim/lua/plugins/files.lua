@@ -27,12 +27,20 @@ return {
       -- https://github.com/debugloop/telescope-undo.nvim
       "debugloop/telescope-undo.nvim",
     },
+    lazy = true,
     config = function()
       local telescope = require("telescope")
 
       telescope.setup({
         defaults = {
           initial_mode = "normal", -- open telescope in normal mode
+          mappings = {
+            n = {
+              -- Disable escape to quit and map to normal quit keybind
+              ["<esc>"] = false,
+              ["Zq"] = require("telescope.actions").close,
+            },
+          },
         },
         extensions = {
           undo = {
@@ -54,16 +62,12 @@ return {
 
       -- Load extensions
       telescope.load_extension("undo")
-
-      -- Remap
-      local telescope_blt = require("telescope.builtin")
-
-      -- Telescope remaps
-      vim.keymap.set("n", "<leader>tf", telescope_blt.find_files, {})
-      vim.keymap.set("n", "<leader>tg", telescope_blt.live_grep, {})
-
-      -- Telescope extensions remap
-      vim.keymap.set("n", "<leader>tu", ":Telescope undo<CR>")
     end
-  }
+  },
+
+  -- https://github.com/ThePrimeagen/harpoon
+  {
+    "ThePrimeagen/harpoon",
+    lazy = true,
+  },
 }
