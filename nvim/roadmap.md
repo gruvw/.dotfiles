@@ -31,7 +31,7 @@
 - [ ] Nvim terminal emulator
 - [ ] Ctrl+p equivalent to search for code elements
 - [ ] Auto-complete and intellisense integration (like documentation), cmp ?
-- [ ] Git integration: select staged files, diff (margin and whole file), commit, push, pull, automatic fetch, git graph, blames, file history
+- [X] Git integration: select staged files, diff (margin and whole file), commit, push, pull, automatic fetch, git graph, blames, file history
 - [ ] Spell checker
 - [ ] Hyper-snips
 - [ ] Tasks: configurable + run on keyboard shortcut or from palette

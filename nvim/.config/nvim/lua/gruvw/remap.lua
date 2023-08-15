@@ -48,3 +48,7 @@ keymap("n", "<leader>hs", [[:lua require("harpoon.ui").nav_file(4)<CR>]], remap)
 
 -- Nvim-tree
 keymap("n", "<leader>f", [[:lua require("nvim-tree.api").tree.toggle()<CR>]], remap)
+
+-- Git
+keymap("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", remap)
+keymap("n", "<leader>gg", ":G<CR>", remap)
