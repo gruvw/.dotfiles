@@ -21,26 +21,26 @@
 
 ## Intermediate editor functionalities
 
-- [ ] Languages integration, treesitter, treesitter context (LSP, formater, linter, snippets, ...)
+- [ ] Languages integration
+  - [ ] Treesitter
+  - [ ] Treesitter context
+  - [ ] Auto-complete and intellisense integration (like documentation), cmp ?
+  - [ ] LSP
+  - [ ] Formater
+  - [ ] Markdown
+  - [ ] LaTeX
+  - [ ] Dart
   - [ ] Python
   - [ ] Rust
-  - [ ] Dart
-  - [ ] LaTeX
-  - [ ] Markdown
 
-- [ ] Nvim terminal emulator
-- [ ] Ctrl+p equivalent to search for code elements
-- [ ] Auto-complete and intellisense integration (like documentation), cmp ?
+- [X] Ctrl+p equivalent to search for code elements
 - [X] Git integration: select staged files, diff (margin and whole file), commit, push, pull, automatic fetch, git graph, blames, file history
 - [ ] Spell checker
 - [ ] Hyper-snips
 - [ ] Tasks: configurable + run on keyboard shortcut or from palette
 - [ ] Error Lens
-- [ ] Multi cursor editing
 - [ ] Path intellisense
-- [ ] Good and simple welcome screen
-- [ ] Project search
-
+- [X] Project search
 - [ ] Compare and add with VSCode settings
 
 ## Advanced editor functionalities
