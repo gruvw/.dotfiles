@@ -22,7 +22,7 @@
 ## Intermediate editor functionalities
 
 - [ ] Languages integration
-  - [ ] Treesitter
+  - [X] Treesitter
   - [ ] Treesitter context
   - [ ] Auto-complete and intellisense integration (like documentation), cmp ?
   - [ ] LSP
