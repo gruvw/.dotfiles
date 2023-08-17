@@ -5,13 +5,27 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    event = "VeryLazy",
     config = function()
-      require("nvim-treesitter.configs").setup {
+      require("nvim-treesitter.configs").setup({
         ensure_installed = "all",
         highlight = {
           enable = true,
         },
-      }
+      })
     end,
   },
+
+  -- https://github.com/nvim-treesitter/nvim-treesitter-context
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "VeryLazy",
+    config = function()
+      require("treesitter-context").setup({
+        enable = true,
+        mode = "topline",
+        max_lines = 4,
+      })
+    end,
+  }
 }

@@ -23,7 +23,7 @@
 
 - [ ] Languages integration
   - [X] Treesitter
-  - [ ] Treesitter context
+  - [X] Treesitter context
   - [ ] Auto-complete and intellisense integration (like documentation), cmp ?
   - [ ] LSP
   - [ ] Formater

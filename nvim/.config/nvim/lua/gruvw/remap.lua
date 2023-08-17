@@ -52,3 +52,6 @@ keymap("n", "<leader>f", [[:lua require("nvim-tree.api").tree.toggle()<CR>]], re
 -- Git
 keymap("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", remap)
 keymap("n", "<leader>gg", ":G<CR>", remap)
+
+-- Code
+keymap("n", "<leader>sc", ":TSContextToggle<CR>", remap)
