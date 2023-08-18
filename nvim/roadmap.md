@@ -24,13 +24,13 @@
 - [ ] Languages integration
   - [X] Treesitter
   - [X] Treesitter context
-  - [ ] Auto-complete and intellisense integration (like documentation), cmp ?
-  - [ ] LSP
+  - [X] Auto-complete and intellisense integration (like documentation), cmp ?
+  - [X] LSP
   - [ ] Formater
   - [ ] Markdown
   - [ ] LaTeX
   - [ ] Dart
-  - [ ] Python
+  - [X] Python
   - [ ] Rust
 
 - [X] Ctrl+p equivalent to search for code elements
@@ -52,3 +52,4 @@
 - [ ] LaTeX math preview
 - [ ] Random everything, Lorem Ipsum generator, custom length
 - [ ] Highlight weird non-ASCII characters
+- [ ] Open link from editor to browser (detect links)
