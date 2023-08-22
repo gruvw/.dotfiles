@@ -5,7 +5,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    event = "VeryLazy",
     config = function()
       require("nvim-treesitter.configs").setup({
         ensure_installed = "all",
@@ -19,7 +18,6 @@ return {
   -- https://github.com/nvim-treesitter/nvim-treesitter-context
   {
     "nvim-treesitter/nvim-treesitter-context",
-    event = "VeryLazy",
     config = function()
       require("treesitter-context").setup({
         enable = true,
@@ -33,6 +31,7 @@ return {
   {
     "VonHeikemen/lsp-zero.nvim",
     branch = "v2.x",
+    event = "VeryLazy",
     dependencies = {
       -- LSP Support
       "neovim/nvim-lspconfig",
