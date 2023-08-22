@@ -32,9 +32,14 @@
   - [ ] Dart
   - [X] Python
   - [ ] Rust
+  - [X] Emmet
 
 - [X] Ctrl+p equivalent to search for code elements
 - [X] Git integration: select staged files, diff (margin and whole file), commit, push, pull, automatic fetch, git graph, blames, file history
+- [X] Colorizer
+- [X] Workspaces
+- [X] Color brackets
+- [X] Commands auto-complete
 - [ ] Spell checker
 - [ ] Hyper-snips
 - [ ] Tasks: configurable + run on keyboard shortcut or from palette

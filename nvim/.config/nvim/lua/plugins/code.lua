@@ -56,6 +56,7 @@ return {
         "marksman",
         "texlab",
         "lua_ls",
+        "emmet_language_server",
       })
 
       lsp.set_sign_icons({
