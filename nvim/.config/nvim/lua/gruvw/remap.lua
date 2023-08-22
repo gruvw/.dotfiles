@@ -36,6 +36,7 @@ keymap("n", "<leader>D", ":lua insert_date()<CR>", remap)
 keymap("n", "<leader>tf", [[:lua require("telescope.builtin").find_files()<CR>]], remap)
 keymap("n", "<leader>tg", [[:lua require("telescope.builtin").live_grep()<CR>]], remap)
 keymap("n", "<leader>tu", [[:lua require("telescope").extensions.undo.undo()<CR>]], remap)
+keymap("n", "<leader>tw", [[:lua require("telescope").extensions.workspaces.workspaces()<CR>]], remap)
 
 -- Harpoon
 -- From the quickmenu, open a file in: a vertical split with <C-v>, a horizontal split with <C-x>, a new tab with <C-t>

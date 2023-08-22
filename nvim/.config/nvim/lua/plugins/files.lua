@@ -63,7 +63,22 @@ return {
 
       -- Load extensions
       telescope.load_extension("undo")
+      telescope.load_extension("workspaces")
     end
+  },
+
+  -- https://github.com/natecraddock/workspaces.nvim
+  {
+    "natecraddock/workspaces.nvim",
+    config = function()
+      require("workspaces").setup({
+        hooks = {
+          open = {
+            [[lua require("telescope.builtin").find_files()]],
+          },
+        },
+      })
+    end,
   },
 
   -- https://github.com/ThePrimeagen/harpoon
