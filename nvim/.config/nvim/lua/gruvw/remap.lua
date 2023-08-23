@@ -27,6 +27,9 @@ keymap("n", "G", "G0", remap)
 -- Yank the whole buffer content to "+
 keymap("n", "yA", ":%y+<CR>", remap)
 
+-- Copy vim message
+keymap("n", "yM", ":let @+=trim(execute('1messages')) <bar> echo 'copied' <CR>", remap)
+
 -- Functions remap
 keymap("n", "<leader>D", ":lua insert_date()<CR>", remap)
 
@@ -61,19 +64,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(event)
     local opts = {buffer = event.buf}
 
-    vim.keymap.set("n", "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-    vim.keymap.set("n", "<leader>ld", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-    vim.keymap.set("n", "<leader>lD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
-    vim.keymap.set("n", "<leader>li", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
-    vim.keymap.set("n", "<leader>lo", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
-    vim.keymap.set("n", "<leader>lr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
-    vim.keymap.set("n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
-    vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-    vim.keymap.set({"n", "x"}, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
-    vim.keymap.set("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+    vim.keymap.set("n", "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    vim.keymap.set("n", "<leader>ld", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    vim.keymap.set("n", "<leader>lD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+    vim.keymap.set("n", "<leader>li", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+    vim.keymap.set("n", "<leader>lo", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+    vim.keymap.set("n", "<leader>lr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+    vim.keymap.set("n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+    vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+    vim.keymap.set({"n", "x"}, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
+    vim.keymap.set("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 
-    vim.keymap.set("n", "<leader>le", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
-    vim.keymap.set("n", "<leader>ln", "<cmd>lua vim.diagnostic.goto_next()<cr>", opts)
-    vim.keymap.set("n", "<leader>lN", "<cmd>lua vim.diagnostic.goto_prev()<cr>", opts)
+    vim.keymap.set("n", "<leader>le", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+    vim.keymap.set("n", "<leader>ln", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+    vim.keymap.set("n", "<leader>lN", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   end
 })
+vim.keymap.set({"i", "s", "n"}, "<C-Tab>", [[<cmd>lua require("luasnip").expand_or_jump()<CR>]], opts)
+vim.keymap.set({"i", "s", "n"}, "<C-S-Tab>", [[<cmd>lua require("luasnip").jump(-1)<CR>]], opts)

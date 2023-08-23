@@ -31,6 +31,7 @@
   - [ ] LaTeX
   - [ ] Dart
   - [X] Python
+  - [ ] Java
   - [ ] Rust
   - [X] Emmet
 
@@ -43,8 +44,8 @@
 - [ ] Spell checker
 - [ ] Hyper-snips
 - [ ] Tasks: configurable + run on keyboard shortcut or from palette
-- [ ] Error Lens
-- [ ] Path intellisense
+- [X] Error Lens
+- [X] Path intellisense
 - [X] Project search
 - [ ] Compare and add with VSCode settings
 
