@@ -122,7 +122,7 @@ keyboard.keymap = [
 
     # 1: Numbers / Symbols 1
     [
-        KC.NO,     KC.GRV,    KC.RABK,   KC.RCBR,   KC.RPRN,   KC.RBRC,              KC.BSLS,   KC.EXLM,   KC.QUES,   KC.PLUS,   KC.SLSH,   KC.NO,
+        KC.NO,     KC.GRV,    KC.TILD,   KC.DLR,    KC.HASH,    KC.AT,                KC.BSLS,   KC.EXLM,   KC.QUES,   KC.PLUS,   KC.SLSH,   KC.NO,
         KC.NO,     KC.N0,     KC.N1,     KC.N2,     KC.N3,     KC.N4,                KC.MINS,   KC.COMM,   KC.DQUO,   KC.QUOT,   KC.COLN,   KC.NO,
         KC.NO,     KC.N5,     KC.N6,     KC.N7,     KC.N8,     KC.N9,                KC.PIPE,   KC.UNDS,   KC.AMPR,   KC.CIRC,   KC.ASTR,   KC.NO,
                                          KC.EQL,    FUN_LAY,   KC.SCLN,              KC.NO,     KC.TRNS,   KC.NO,
@@ -131,7 +131,7 @@ keyboard.keymap = [
     # 2: Function / Symbols 2
     [
         KC.NO,     DEG,       KC.NO,     KC.F10,    KC.F11,    KC.F12,               KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.PERC,   KC.NO,
-        KC.NO,     KC.NO,     KC.F1,     KC.F2,     KC.F3,     KC.F4,                KC.TILD,   KC.DLR,    KC.AT,     KC.NO,     KC.HASH,   KC.NO,
+        KC.NO,     KC.NO,     KC.F1,     KC.F2,     KC.F3,     KC.F4,                KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,   KC.NO,
         KC.NO,     KC.F5,     KC.F6,     KC.F7,     KC.F8,     KC.F9,                KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,
                                          KC.NO,     KC.TRNS,   KC.NO,                KC.NO,     KC.TRNS,   KC.NO
     ],
@@ -139,7 +139,7 @@ keyboard.keymap = [
     # 3: Special keys 1
     [
         KC.NO,     KC.NO,     KC.LABK,   KC.LCBR,   KC.LPRN,   KC.LBRC,              KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.RIGHT,  KC.NO,
-        KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,                KC.NO,     KC.LEFT,   KC.NO,     AP_T,      KC.NO,     KC.NO,
+        KC.NO,     KC.NO,     KC.RABK,   KC.RCBR,   KC.RPRN,   KC.RBRC,              KC.NO,     KC.LEFT,   KC.NO,     AP_T,      KC.NO,     KC.NO,
         KC.NO,     KC.NO,     KC.NO,     KC.DOWN,   KC.UP,     KC.NO,                KC.INS,    KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,
                                          KC.NO,     KC.NO,     KC.TRNS,              KC.CW,     SP2_LAY,   KC.NO
     ],
