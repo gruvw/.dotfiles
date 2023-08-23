@@ -28,6 +28,9 @@ return {
       -- Windows line separator in white
       vim.cmd("highlight WinSeparator guifg=15")
       vim.cmd("highlight NvimTreeWinSeparator guifg=15")
+
+      -- LspInfo floating window border color
+      vim.cmd("highlight LspInfoBorder ctermfg=NONE ctermbg=NONE cterm=NONE")
     end,
   },
 

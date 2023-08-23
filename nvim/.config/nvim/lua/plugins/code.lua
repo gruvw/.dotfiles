@@ -27,28 +27,19 @@ return {
     end,
   },
 
+  -- TODO lazy loading
+
   -- https://github.com/VonHeikemen/lsp-zero.nvim
   {
     "VonHeikemen/lsp-zero.nvim",
-    branch = "v2.x",
-    event = "VeryLazy",
-    dependencies = {
-      -- LSP Support
-      "neovim/nvim-lspconfig",
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-
-      -- Autocompletion
-      "hrsh7th/nvim-cmp",
-      "hrsh7th/cmp-nvim-lsp",
-      "L3MON4D3/LuaSnip",
-    },
+    branch = "dev-v3",
+    -- event = "VeryLazy",
     config = function()
       local lsp = require("lsp-zero").preset({})
 
-      lsp.on_attach(function(client, bufnr)
-        lsp.default_keymaps({buffer = bufnr})
-      end)
+      -- lsp.on_attach(function(client, bufnr)
+      --   lsp.default_keymaps({buffer = bufnr})
+      -- end)
 
       lsp.ensure_installed({
         "pyright",
@@ -66,9 +57,32 @@ return {
         info =  "I",
       })
 
+      lsp.extend_cmp()
       lsp.setup()
+    end
+  },
 
-      local cmp = require('cmp')
+  -- https://github.com/neovim/nvim-lspconfig
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      -- https://github.com/hrsh7th/cmp-nvim-lsp
+      "hrsh7th/cmp-nvim-lsp",
+    },
+    config = function()
+       require("lspconfig.ui.windows").default_options.border = "rounded"
+    end
+  },
+
+  -- https://github.com/hrsh7th/nvim-cmp
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      -- https://github.com/L3MON4D3/LuaSnip
+      "L3MON4D3/LuaSnip",
+    },
+    config = function()
+      local cmp = require("cmp")
 
       cmp.setup({
         mapping = {
@@ -80,7 +94,43 @@ return {
           documentation = cmp.config.window.bordered(),
         },
       })
-
     end,
-  }
+  },
+
+  -- https://github.com/williamboman/mason-lspconfig.nvim
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = {
+      -- https://github.com/williamboman/mason.nvim
+      "williamboman/mason.nvim",
+    },
+    config = function()
+      local lsp = require("lsp-zero")
+
+      require("mason").setup({
+        ui = {
+          border = "rounded",
+          height = 0.7,
+        },
+      })
+
+      require("mason-lspconfig").setup({
+        automatic_installation = true,
+        ensure_installed = {
+          "pyright",
+          "rust_analyzer",
+          "marksman",
+          "texlab",
+          "lua_ls",
+          "emmet_language_server",
+        },
+        handlers = {
+          lsp.default_setup,
+          lua_ls = function()
+            require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+          end,
+        },
+      })
+    end
+  },
 }
