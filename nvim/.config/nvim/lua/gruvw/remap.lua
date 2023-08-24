@@ -82,3 +82,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 vim.keymap.set({"i", "s", "n"}, "<C-Tab>", [[<cmd>lua require("luasnip").expand_or_jump()<CR>]], opts)
 vim.keymap.set({"i", "s", "n"}, "<C-S-Tab>", [[<cmd>lua require("luasnip").jump(-1)<CR>]], opts)
+vim.keymap.set({"v", "n"}, "<leader>c", [[:CommentToggle<CR>]], opts)
