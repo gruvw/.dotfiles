@@ -18,6 +18,10 @@ return {
   -- https://github.com/nvim-treesitter/nvim-treesitter-context
   {
     "nvim-treesitter/nvim-treesitter-context",
+    dependencies = {
+      "nvim-treesitter",
+    },
+    event = "VeryLazy",
     config = function()
       require("treesitter-context").setup({
         enable = true,
@@ -31,6 +35,12 @@ return {
   {
     "VonHeikemen/lsp-zero.nvim",
     branch = "dev-v3",
+    dependencies = {
+      "nvim-lspconfig",
+      "mason-lspconfig.nvim",
+      "nvim-cmp",
+    },
+    event = "BufReadPre",
     config = function()
       local lsp = require("lsp-zero").preset({})
 
@@ -39,6 +49,11 @@ return {
         warn =  "W",
         hint =  "H",
         info =  "I",
+      })
+
+      -- Sort diagnostics by severity
+      vim.diagnostic.config({
+        severity_sort = true,
       })
 
       lsp.setup()
@@ -52,67 +67,10 @@ return {
       -- https://github.com/hrsh7th/cmp-nvim-lsp
       "hrsh7th/cmp-nvim-lsp",
     },
+    lazy = true,
     config = function()
       require("lspconfig.ui.windows").default_options.border = "rounded"
     end
-  },
-
-  -- https://github.com/hrsh7th/nvim-cmp
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      -- https://github.com/L3MON4D3/LuaSnip
-      "L3MON4D3/LuaSnip",
-
-      -- https://github.com/hrsh7th/cmp-path
-      "hrsh7th/cmp-path",
-    },
-    event = "VeryLazy",
-    config = function()
-      require("lsp-zero").extend_cmp()
-
-      local cmp = require("cmp")
-
-      cmp.setup({
-        mapping = {
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-CR>"] = cmp.mapping.confirm({select = true}),
-        },
-        window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
-        },
-        sources = {
-          {name = "nvim_lsp"},
-          {name = "path"},
-        },
-      })
-
-      -- LuaSnip
-
-      vim.api.nvim_set_hl(0, "LuaSnipPlace", {
-        bg = "#363537",
-        italic = true,
-      })
-
-      local types = require("luasnip.util.types")
-
-      require("luasnip").setup({
-        ext_opts = {
-          [types.insertNode] = {
-            unvisited = {
-              hl_group = "LuaSnipPlace",
-            },
-          },
-          [types.exitNode] = {
-            unvisited = {
-              hl_group = "LuaSnipPlace",
-            },
-          },
-        }
-      })
-
-    end,
   },
 
   -- https://github.com/williamboman/mason-lspconfig.nvim
@@ -122,6 +80,7 @@ return {
       -- https://github.com/williamboman/mason.nvim
       "williamboman/mason.nvim",
     },
+    lazy = true,
     config = function()
       local lsp = require("lsp-zero")
 
@@ -150,5 +109,68 @@ return {
         },
       })
     end
+  },
+
+  -- https://github.com/hrsh7th/nvim-cmp
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      -- https://github.com/hrsh7th/cmp-path
+      "hrsh7th/cmp-path",
+
+      "LuaSnip",
+    },
+    lazy = true,
+    config = function()
+      require("lsp-zero").extend_cmp()
+
+      local cmp = require("cmp")
+
+      cmp.setup({
+        mapping = {
+          ["<C-Space>"] = cmp.mapping.complete(),
+          ["<C-CR>"] = cmp.mapping.confirm({select = true}),
+        },
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
+        sources = {
+          {name = "nvim_lsp"},
+          {name = "path"},
+        },
+      })
+    end,
+  },
+
+  -- https://github.com/L3MON4D3/LuaSnip
+  {
+    "L3MON4D3/LuaSnip",
+    lazy = true,
+    config = function()
+      -- Style for default placeholder text
+      vim.api.nvim_set_hl(0, "LuaSnipPlace", {
+        bg = "#363537",
+        italic = true,
+      })
+
+      local types = require("luasnip.util.types")
+
+      require("luasnip").setup({
+        ext_opts = {
+          [types.insertNode] = {
+            unvisited = {
+              hl_group = "LuaSnipPlace",
+            },
+          },
+          [types.exitNode] = {
+            unvisited = {
+              hl_group = "LuaSnipPlace",
+            },
+          },
+        }
+      })
+
+    end,
   },
 }

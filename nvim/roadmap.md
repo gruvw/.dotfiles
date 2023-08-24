@@ -27,7 +27,7 @@
   - [X] Auto-complete and intellisense integration (like documentation), cmp ?
   - [X] LSP
   - [ ] Formater
-  - [ ] Markdown
+  - [X] Markdown
   - [ ] LaTeX
   - [ ] Dart
   - [X] Python
@@ -44,6 +44,7 @@
 - [ ] Spell checker
 - [ ] Hyper-snips
 - [ ] Tasks: configurable + run on keyboard shortcut or from palette
+- [ ] Comment by keybind
 - [X] Error Lens
 - [X] Path intellisense
 - [X] Project search
