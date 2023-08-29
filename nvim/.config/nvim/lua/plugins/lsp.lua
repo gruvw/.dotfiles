@@ -39,7 +39,7 @@ return {
     },
     lazy = true,
     config = function()
-      require("lspconfig.ui.windows").default_options.border = "rounded"
+      require("lspconfig.ui.windows").default_options.border = "single"
     end
   },
 
@@ -56,7 +56,7 @@ return {
 
       require("mason").setup({
         ui = {
-          border = "rounded",
+          border = "single",
           height = 0.7,
         },
       })
@@ -69,7 +69,7 @@ return {
           "marksman",
           "texlab",
           "lua_ls",
-          "emmet_ls",
+          "emmet_language_server",
         },
         handlers = {
           lsp.default_setup,
@@ -102,8 +102,13 @@ return {
           ["<C-CR>"] = cmp.mapping.confirm({select = true}),
         },
         window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
+          completion = cmp.config.window.bordered({
+            border = "single",
+          }),
+          documentation = cmp.config.window.bordered({
+            border = "single",
+          }),
+
         },
         sources = {
           {name = "nvim_lsp"},

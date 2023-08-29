@@ -18,6 +18,6 @@ vim.opt.rtp:prepend(lazypath)
 -- Plugins loading from plugins directory, https://github.com/folke/lazy.nvim#-structuring-your-plugins
 require("lazy").setup("plugins", {
   ui = {
-    border = "rounded",
+    border = "single",
   },
 })

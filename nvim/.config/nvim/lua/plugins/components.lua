@@ -126,7 +126,7 @@ return {
               local center_y = ((vim.opt.lines:get() - window_h) / 2)
                               - vim.opt.cmdheight:get()
               return {
-                border = "rounded",
+                border = "single",
                 relative = "editor",
                 row = center_y,
                 col = center_x,
@@ -169,7 +169,7 @@ return {
           accent = wilder.make_hl("WilderAccent", "Pmenu", {{a = 1}, {a = 1}, {foreground = "#7bd88f"}}),
             border = "Normal",
           },
-          border = "rounded",
+          border = "single",
           reverse = 1,
           max_height = "25%",
         })
