@@ -1,0 +1,25 @@
+{
+	"name": "example-snippets",
+	"contributes": {
+		"snippets": [
+			{
+				"language": [
+					"all"
+				],
+				"path": "./all.jsonc"
+			},
+			{
+				"language": [
+					"tex"
+				],
+				"path": "./tex.jsonc"
+			},
+			{
+				"language": [
+					"python"
+				],
+				"path": "./python.jsonc"
+			}
+		]
+	}
+}

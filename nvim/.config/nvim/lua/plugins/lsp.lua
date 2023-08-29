@@ -158,9 +158,10 @@ return {
       })
 
       -- Load user snippets
-      require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/lua/plugins/snippets/lua/"})
+      require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/lua/plugins/snippets/lua"})
+      require("luasnip.loaders.from_vscode").lazy_load({paths = "~/.config/nvim/lua/plugins/snippets/lsp"})
 
-      -- Load friendly snippets
+      -- Load friendly-snippets
       require("luasnip.loaders.from_vscode").lazy_load({
         exclude = {"plaintex", "all", "tex"},
       })
