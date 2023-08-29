@@ -101,7 +101,7 @@ def cycle_wallpaper():
 
 keys: list = []  # Initialize + avoid warning
 
-groups = [Group(i) for i in "123456789"]
+groups = [Group(str(i)) for i in range(10)]
 
 for g in groups:
     keys += [

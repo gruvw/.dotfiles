@@ -72,7 +72,6 @@ return {
       -- https://github.com/nvim-tree/nvim-web-devicons
       "nvim-tree/nvim-web-devicons", -- icons support
     },
-    priority = 90,
     opts = {
       options = {
         theme = "monokai-pro",

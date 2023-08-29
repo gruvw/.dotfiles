@@ -125,6 +125,10 @@ return {
   -- https://github.com/L3MON4D3/LuaSnip
   {
     "L3MON4D3/LuaSnip",
+    dependencies = {
+      -- https://github.com/rafamadriz/friendly-snippets
+      "rafamadriz/friendly-snippets",
+    },
     event = "VeryLazy",
     config = function()
       -- Style for default placeholder text
@@ -136,6 +140,7 @@ return {
       local types = require("luasnip.util.types")
 
       require("luasnip").setup({
+        history = true,
         enable_autosnippets = true,
         update_events = {"TextChanged", "TextChangedI"},
         ext_opts = {
@@ -152,8 +157,13 @@ return {
         }
       })
 
-      -- Load snippets
+      -- Load user snippets
       require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/lua/plugins/snippets/lua/"})
+
+      -- Load friendly snippets
+      require("luasnip.loaders.from_vscode").lazy_load({
+        exclude = {"plaintex", "all", "tex"},
+      })
 
       -- Filetype fixes
       require("luasnip").filetype_extend("plaintex", {"tex"})

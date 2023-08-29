@@ -4,7 +4,6 @@ return {
   -- https://github.com/loctvl842/monokai-pro.nvim
   {
     "loctvl842/monokai-pro.nvim",
-    priority = 100,
     config = function()
       -- Setup and enable
       require("monokai-pro").setup({
