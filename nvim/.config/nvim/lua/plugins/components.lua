@@ -174,7 +174,6 @@ return {
           max_height = "25%",
         })
       ))
-
     end
   },
 }

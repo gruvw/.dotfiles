@@ -88,6 +88,9 @@ return {
       -- https://github.com/hrsh7th/cmp-path
       "hrsh7th/cmp-path",
 
+      -- https://github.com/saadparwaiz1/cmp_luasnip
+      "saadparwaiz1/cmp_luasnip",
+
       "LuaSnip",
     },
     lazy = true,
@@ -112,6 +115,7 @@ return {
         },
         sources = {
           {name = "nvim_lsp"},
+          {name = "luasnip"},
           {name = "path"},
         },
       })
@@ -121,7 +125,7 @@ return {
   -- https://github.com/L3MON4D3/LuaSnip
   {
     "L3MON4D3/LuaSnip",
-    lazy = true,
+    event = "VeryLazy",
     config = function()
       -- Style for default placeholder text
       vim.api.nvim_set_hl(0, "LuaSnipPlace", {
@@ -132,6 +136,8 @@ return {
       local types = require("luasnip.util.types")
 
       require("luasnip").setup({
+        enable_autosnippets = true,
+        update_events = {"TextChanged", "TextChangedI"},
         ext_opts = {
           [types.insertNode] = {
             unvisited = {
@@ -146,6 +152,11 @@ return {
         }
       })
 
+      -- Load snippets
+      require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/lua/plugins/snippets/lua/"})
+
+      -- Filetype fixes
+      require("luasnip").filetype_extend("plaintex", {"tex"})
     end,
   },
 }
