@@ -28,7 +28,7 @@
   - [X] LSP
   - [ ] Formater
   - [X] Markdown
-  - [ ] LaTeX
+  - [X] LaTeX
   - [ ] Dart
   - [X] Python
   - [ ] Java

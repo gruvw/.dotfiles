@@ -37,17 +37,18 @@ return {
   -- https://github.com/hiphish/rainbow-delimiters.nvim
   {
     "hiphish/rainbow-delimiters.nvim",
+    enabled = false, -- perfomance issue when typing (input delay)
     config = function()
       local rainbow_delimiters = require("rainbow-delimiters")
 
       vim.g.rainbow_delimiters = {
           strategy = {
               [""] = rainbow_delimiters.strategy["global"],
-              commonlisp = rainbow_delimiters.strategy["local"],
           },
           query = {
               [""] = "rainbow-delimiters",
               lua = "rainbow-blocks",
+              latex = "rainbow-delimiters",
           },
           highlight = {
               "RainbowDelimiterRed",
@@ -95,4 +96,17 @@ return {
       })
     end
   },
+
+  -- https://github.com/tzachar/highlight-undo.nvim
+  {
+    "tzachar/highlight-undo.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("highlight-undo").setup({
+        duration = 300,
+      })
+
+      vim.cmd([[hi! link HighlightUndo IncSearch]])
+    end
+  }
 }

@@ -10,9 +10,10 @@ return {
       "mason-lspconfig.nvim",
       "nvim-cmp",
     },
-    event = "BufReadPre",
+    event = "BufRead",
     config = function()
-      local lsp = require("lsp-zero").preset({})
+      local lsp = require("lsp-zero")
+      lsp.preset({})
 
       lsp.set_sign_icons({
         error = "E",
