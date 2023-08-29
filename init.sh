@@ -24,7 +24,7 @@ if ! [ $STOW_INSTALLED -eq 0 ]; then
 fi
 
 # Clone dotfiles repo to home directory
-echo "+ Cloning gruvw/dotfiles repo to home directory..."
-git clone https://github.com/gruvw/dotfiles.git ~/dotfiles
+echo "+ Cloning gruvw/.dotfiles repo to home directory..."
+git clone https://github.com/gruvw/.dotfiles.git ~/.dotfiles
 
 echo "+ Done!"
