@@ -102,11 +102,60 @@ return {
     dependencies = {
       -- https://github.com/nvim-tree/nvim-web-devicons
       "nvim-tree/nvim-web-devicons", -- icons support
+
+      -- https://github.com/notjedi/nvim-rooter.lua
+      "notjedi/nvim-rooter.lua",
     },
     config = function()
+      -- Set keybinds
+      local function tree_on_attach(bufnr)
+        local api = require("nvim-tree.api")
+
+        local function opts(desc)
+          return {desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true}
+        end
+
+        vim.keymap.set("n", "<C-v>", api.node.open.vertical, opts("Open Vertical Split"))
+        vim.keymap.set("n", "<C-h>", api.node.open.horizontal, opts("Open Horizontal Split"))
+        vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close Parent Directory"))
+        vim.keymap.set("n", "H", api.node.navigate.parent, opts("Navigate to Parent Directory"))
+        vim.keymap.set("n", "R", api.tree.change_root_to_node, opts("Change Root to Node"))
+        vim.keymap.set("n", "K", api.node.show_info_popup, opts("Show Info PopUp"))
+        vim.keymap.set("n", "o", api.fs.create, opts("Create"))
+        vim.keymap.set("n", "yy", api.fs.copy.node, opts("Copy"))
+        vim.keymap.set("n", "yw", api.fs.copy.filename, opts("Copy Name"))
+        vim.keymap.set("n", "yp", api.fs.copy.relative_path, opts("Copy Relative Path"))
+        vim.keymap.set("n", "yP", api.fs.copy.absolute_path, opts("Copy Absolute Path"))
+        vim.keymap.set("n", "d", api.fs.cut, opts("Cut"))
+        vim.keymap.set("n", "D", api.fs.trash, opts("Trash"))
+        vim.keymap.set("n", "C", api.tree.collapse_all, opts("Collapse All"))
+        vim.keymap.set("n", "E", api.tree.expand_all, opts("Expand All"))
+        vim.keymap.set("n", "/", api.tree.search_node, opts("Search"))
+        vim.keymap.set("n", "v", api.node.run.system, opts("Run System Explorer"))
+        vim.keymap.set("n", "cw", api.fs.rename, opts("Rename"))
+        vim.keymap.set("n", "r", api.fs.rename_basename, opts("Rename Base Name"))
+        vim.keymap.set("n", "P", api.node.navigate.parent, opts("Jump to Parent"))
+        vim.keymap.set("n", "p", api.fs.paste, opts("Paste"))
+        vim.keymap.set("n", "<CR>", api.node.open.edit, opts("Open"))
+        vim.keymap.set("n", "l", api.node.open.edit, opts("Open"))
+        vim.keymap.set("n", "<Tab>", api.node.open.preview, opts("Open Preview"))
+        vim.keymap.set("n", "g?", api.tree.toggle_help, opts("Show Help"))
+        vim.keymap.set("n", "F", api.live_filter.clear, opts("Clear Filter"))
+      end
+
       require("nvim-tree").setup({
+        on_attach = tree_on_attach,
+        update_cwd = true,
         disable_netrw = true,
         hijack_netrw = true,
+        update_focused_file = {
+          enable = true,
+          update_cwd = true
+        },
+        system_open = {
+          cmd = "kitty",
+          args = {"vifm"},
+        },
         view = {
           relativenumber = true,
           number = true,
@@ -138,6 +187,20 @@ return {
             return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
           end,
         },
+        actions = {
+          file_popup = {
+            open_win_config = {
+              border = "single",
+            },
+          },
+        }
+      })
+
+      require("nvim-rooter").setup({
+        rooter_patterns = {".git", ".hg", ".svn"},
+        trigger_patterns = {"*"},
+        manual = false,
+        fallback_to_parent = true,
       })
     end,
   },

@@ -146,6 +146,7 @@ return {
         history = true,
         enable_autosnippets = true,
         update_events = {"TextChanged", "TextChangedI"},
+        store_selection_keys = "<Tab>",
         ext_opts = {
           [types.insertNode] = {
             unvisited = {

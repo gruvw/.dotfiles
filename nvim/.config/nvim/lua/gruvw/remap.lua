@@ -17,6 +17,9 @@ keymap("n", "<BS>", "0D", remap)
 -- New empty line normal mode
 keymap("n", "<CR>", "o<Esc>", remap)
 
+-- No space inserted by J
+keymap("n", "J", "gJ", remap)
+
 -- Line numbers relative toggle
 keymap("n", "<C-;>", ":set relativenumber!<CR>", remap)
 
@@ -84,5 +87,5 @@ vim.keymap.set({"v", "n"}, "<leader>cc", [[:CommentToggle<CR>]], opts)
 
 -- LuaSnip
 vim.keymap.set({"i"}, "<C-h>", function() require("luasnip").expand() end, opts)
-vim.keymap.set({"i", "s", "n"}, "<C-Tab>", [[<cmd>lua require("luasnip").jump(1)<CR>]], opts)
+
 vim.keymap.set({"i", "s", "n"}, "<C-S-Tab>", [[<cmd>lua require("luasnip").jump(-1)<CR>]], opts)
