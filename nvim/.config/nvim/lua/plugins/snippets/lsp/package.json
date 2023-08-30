@@ -13,7 +13,11 @@
 			{
 				"language": ["python"],
 				"path": "./python.jsonc"
-			}
+			},
+            {
+                "language": ["jsonc"],
+                "path": "./jsonc.jsonc"
+            }
 		]
 	}
 }

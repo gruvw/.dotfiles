@@ -101,6 +101,7 @@ return {
       require("lsp-zero").extend_cmp()
 
       local cmp = require("cmp")
+      local types = require('cmp.types')
 
       local border = cmp.config.window.bordered({border = "single"})
 
@@ -109,7 +110,10 @@ return {
           completeopt = "menu,menuone,noinsert",
         },
         mapping = {
+          ["<Down>"] = {i = cmp.mapping.select_next_item({behavior = types.cmp.SelectBehavior.Select}),},
+          ["<Up>"] = {i = cmp.mapping.select_prev_item({behavior = types.cmp.SelectBehavior.Select}),},
           ["<C-Space>"] = cmp.mapping.complete(),
+          ["<C-c>"] = cmp.mapping.abort(),
           ["<C-CR>"] = cmp.mapping.confirm({select = true}),
         },
         window = {

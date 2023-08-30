@@ -21,6 +21,7 @@ set.expandtab = true
 -- Automatic indentation
 set.autoindent = true
 set.smartindent = true
+set.cindent = true
 
 -- Bar (|) cursor on insert mode
 set.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
@@ -46,6 +47,7 @@ set.incsearch = true
 set.hlsearch = false
 
 -- Search is case insensitive by default
+set.ignorecase = true
 set.smartcase = true
 
 -- Enables 24-bit RGB color in the TUI
@@ -85,3 +87,6 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.listchars:append("space:⋅")
 vim.opt.listchars:append("eol:↴")
 vim.opt.listchars:append("tab:-->")
+
+-- Prefered TEX flavor
+vim.g.tex_flavor = "latex"

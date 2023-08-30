@@ -62,6 +62,7 @@ return {
 
   -- https://github.com/windwp/nvim-autopairs
   {
+    -- enabled = false,
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     config = function()

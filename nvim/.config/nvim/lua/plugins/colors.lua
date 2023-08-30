@@ -86,8 +86,8 @@ return {
 
   -- https://github.com/hiphish/rainbow-delimiters.nvim
   {
-    "hiphish/rainbow-delimiters.nvim",
     enabled = false, -- perfomance issue when typing (input delay)
+    "hiphish/rainbow-delimiters.nvim",
     config = function()
       local rainbow_delimiters = require("rainbow-delimiters")
 
