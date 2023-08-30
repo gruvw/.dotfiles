@@ -3,21 +3,15 @@
 	"contributes": {
 		"snippets": [
 			{
-				"language": [
-					"all"
-				],
+				"language": ["all"],
 				"path": "./all.jsonc"
 			},
 			{
-				"language": [
-					"tex"
-				],
+				"language": ["tex"],
 				"path": "./tex.jsonc"
 			},
 			{
-				"language": [
-					"python"
-				],
+				"language": ["python"],
 				"path": "./python.jsonc"
 			}
 		]

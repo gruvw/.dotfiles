@@ -195,7 +195,22 @@ return {
               border = "single",
             },
           },
-        }
+        },
+        renderer = {
+          icons = {
+            glyphs = {
+              git = {
+                unstaged = "M",
+                staged = "S",
+                unmerged = "UM",
+                renamed = "R",
+                untracked = "U",
+                deleted = "D",
+                ignored = "I",
+              }
+            }
+          }
+        },
       })
 
       -- Sets root directory automagically

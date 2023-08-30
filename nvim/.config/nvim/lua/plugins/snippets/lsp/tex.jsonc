@@ -1,10 +1,12 @@
 // ~/.config/nvim/lua/plugins/snippets/lsp/tex.jsonc
 
 {
+	// Environments
+
     "[G] Aligned": {
 		"prefix": "ali",
 		"body": [
-			"\\begin{aligned}",
+            "\\begin{aligned}",
 			"\t${1:$TM_SELECTED_TEXT}",
 			"\\end{aligned}"
 		]
@@ -14,15 +16,18 @@
 		"body": [
 			"\\begin{gathered}",
 			"\t${1:$TM_SELECTED_TEXT}",
-			"\\end{gathered}"
+            "\\end{gathered}"
 		]
 	},
 	"[G] Cases": {
 		"prefix": "cas",
+
+
 		"body": [
 			"\\begin{cases}",
 			"\t${1:$TM_SELECTED_TEXT}",
 			"\\end{cases}"
+
 		]
 	},
 	"[G] Enumerate": {
@@ -50,12 +55,6 @@
 			"$0"
 		]
 	},
-	"[G] Image Inline": {
-		"prefix": "imgi",
-		"body": [
-			"\\includegraphics[width=${2:3}cm]{$1}"
-		]
-	},
 	"[G] Add margin": {
 		"prefix": "adm",
 		"body": [
@@ -64,12 +63,56 @@
 			"\\end{addmargin}"
 		]
 	},
+	"[G] Minted block": {
+		"prefix": "mitb",
+		"body": [
+			"\\begin{minted}{$1}",
+			"${2:$TM_SELECTED_TEXT}",
+			"\\end{minted}"
+		]
+	},
+
+	// Inline
+
+	"[G] Image Inline": {
+		"prefix": "imgi",
+		"body": [
+			"\\includegraphics[width=${2:3}cm]{$1}"
+		]
+	},
 	"[G] Math in-line": {
 		"prefix": "mi",
 		"body": [
 			"\\(${1:$TM_SELECTED_TEXT}\\)"
 		]
 	},
+	"[G] Chemistry equation": {
+		"prefix": "ce",
+		"body": [
+			"\\ce{${1:$TM_SELECTED_TEXT}}"
+		]
+	},
+	"[G] Text": {
+		"prefix": "txt",
+		"body": [
+			"\\text{${1:$TM_SELECTED_TEXT}}"
+		]
+	},
+	"[G] Minted in-line": {
+		"prefix": "miti",
+		"body": [
+			"\\mintinline{$1}{${2:$TM_SELECTED_TEXT}}"
+		]
+	},
+	"[G] Cancel": {
+		"prefix": "can",
+		"body": [
+			"\\cancel{${1:$TM_SELECTED_TEXT}}"
+		]
+	},
+
+	// Modifiers
+
 	"[G] Under-brace": {
 		"prefix": "unbc",
 		"body": [
@@ -94,12 +137,9 @@
 			"\\textit{${1:$TM_SELECTED_TEXT}}"
 		]
 	},
-	"[G] Chemistry equation": {
-		"prefix": "ce",
-		"body": [
-			"\\ce{${1:$TM_SELECTED_TEXT}}"
-		]
-	},
+
+	// Structure
+
 	"[G] Chapter": {
 		"prefix": "chp",
 		"body": [
@@ -140,30 +180,10 @@
 			"$0"
 		]
 	},
-	"[G] Text": {
-		"prefix": "txt",
+	"[G] Math centered block": {
+		"prefix": "mc",
 		"body": [
-			"\\text{${1:$TM_SELECTED_TEXT}}"
-		]
-	},
-	"[G] Minted block": {
-		"prefix": "mitb",
-		"body": [
-			"\\begin{minted}{$1}",
-			"${2:$TM_SELECTED_TEXT}",
-			"\\end{minted}"
-		]
-	},
-	"[G] Minted in-line": {
-		"prefix": "miti",
-		"body": [
-			"\\mintinline{$1}{${2:$TM_SELECTED_TEXT}}"
-		]
-	},
-	"[G] Cancel": {
-		"prefix": "can",
-		"body": [
-			"\\cancel{${1:$TM_SELECTED_TEXT}}"
-		]
+            ""
+        ]
 	}
 }

@@ -1,18 +1,5 @@
 // ~/.config/nvim/lua/plugins/snippets/lsp/all.jsonc
 
 {
-	"snip1": {
-		"prefix": "all1",
-		"body": [
-			"expands? jumps? $1 $2 !"
-		]
-	},
-	"snip2": {
-		"prefix": "all2",
-		"body": [
-			"multi $1",
-			"line $2",
-			"snippet$0"
-		]
-	}
+
 }
