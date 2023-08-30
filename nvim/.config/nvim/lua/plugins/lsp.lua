@@ -24,7 +24,9 @@ return {
 
       -- Sort diagnostics by severity
       vim.diagnostic.config({
+        underline = true,
         severity_sort = true,
+        float={border="single"},
       })
 
       lsp.setup()
@@ -100,19 +102,19 @@ return {
 
       local cmp = require("cmp")
 
+      local border = cmp.config.window.bordered({border = "single"})
+
       cmp.setup({
+        completion = {
+          completeopt = "menu,menuone,noinsert",
+        },
         mapping = {
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-CR>"] = cmp.mapping.confirm({select = true}),
         },
         window = {
-          completion = cmp.config.window.bordered({
-            border = "single",
-          }),
-          documentation = cmp.config.window.bordered({
-            border = "single",
-          }),
-
+          completion = border,
+          documentation = border,
         },
         sources = {
           {name = "nvim_lsp"},
