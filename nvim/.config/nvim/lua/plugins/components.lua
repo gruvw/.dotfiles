@@ -152,10 +152,12 @@ return {
           enable = true,
           update_cwd = true
         },
+        -- Open in new terminal
         system_open = {
           cmd = "kitty",
           args = {"vifm"},
         },
+        -- Floating window and borders
         view = {
           relativenumber = true,
           number = true,
@@ -196,11 +198,12 @@ return {
         }
       })
 
+      -- Sets root directory automagically
       require("nvim-rooter").setup({
         rooter_patterns = {".git", ".hg", ".svn"},
         trigger_patterns = {"*"},
-        manual = false,
         fallback_to_parent = true,
+        manual = false,
       })
     end,
   },

@@ -5,7 +5,6 @@ return {
   {
     "loctvl842/monokai-pro.nvim",
     config = function()
-      -- Setup and enable
       require("monokai-pro").setup({
         filter = "spectrum",
         background_clear = {
@@ -19,6 +18,8 @@ return {
           "neo-tree",
         },
       })
+
+      -- Enable theme
       vim.cmd("colorscheme monokai-pro")
 
       -- Only highlight the line number not whole current line
@@ -31,7 +32,56 @@ return {
 
       -- LspInfo floating window border color
       vim.cmd("highlight LspInfoBorder ctermfg=NONE ctermbg=NONE cterm=NONE")
+
+      -- Waiting on https://github.com/loctvl842/monokai-pro.nvim/issues/75
+      vim.cmd([[highlight RainbowDelimiterRed guifg=#fc618d ctermfg=white]])
+      vim.cmd([[highlight RainbowDelimiterOrange guifg=#fd9353 ctermfg=white]])
+      vim.cmd([[highlight RainbowDelimiterYellow guifg=#fce566 ctermfg=white]])
+      vim.cmd([[highlight RainbowDelimiterGreen guifg=#7bd88f ctermfg=white]])
+      vim.cmd([[highlight RainbowDelimiterCyan guifg=#5ad4e6 ctermfg=white]])
+      vim.cmd([[highlight RainbowDelimiterViolet guifg=#948ae3 ctermfg=white]])
+
+      -- indent-blankline, https://www.colorhexa.com, 70% 222222 + 30% <color theme>
+      vim.cmd([[highlight IndentBlanklineIndent1 guifg=#633542 ctermfg=black gui=nocombine]])
+      vim.cmd([[highlight IndentBlanklineIndent2 guifg=#644431 ctermfg=black gui=nocombine]])
+      vim.cmd([[highlight IndentBlanklineIndent3 guifg=#635d36 ctermfg=black gui=nocombine]])
+      vim.cmd([[highlight IndentBlanklineIndent4 guifg=#3d5943 ctermfg=black gui=nocombine]])
+      vim.cmd([[highlight IndentBlanklineIndent5 guifg=#33575d ctermfg=black gui=nocombine]])
+      vim.cmd([[highlight IndentBlanklineIndent6 guifg=#44415c ctermfg=black gui=nocombine]])
+
+      -- Invisible characters highlight
+      vim.cmd([[highlight Whitespace cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#626064]])
+      vim.cmd([[highlight! link IndentBlanklineSpaceChar Whitespace]])
+      vim.cmd([[highlight! link NonText Whitespace]])
     end,
+  },
+
+  -- https://github.com/lukas-reineke/indent-blankline.nvim
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("indent_blankline").setup({
+        char = "│",
+        show_end_of_line = true,
+        show_trailing_blankline_indent = false,
+        char_highlight_list = {
+          "IndentBlanklineIndent1",
+          "IndentBlanklineIndent2",
+          "IndentBlanklineIndent3",
+          "IndentBlanklineIndent4",
+          "IndentBlanklineIndent5",
+          "IndentBlanklineIndent6",
+        },
+        filetype_exclude = {
+          "lspinfo",
+          "packer",
+          "checkhealth",
+          "help",
+          "man",
+          "",
+        },
+      })
+    end
   },
 
   -- https://github.com/hiphish/rainbow-delimiters.nvim
@@ -59,14 +109,6 @@ return {
               "RainbowDelimiterViolet",
           },
       }
-
-      -- Waiting on https://github.com/loctvl842/monokai-pro.nvim/issues/75
-      vim.cmd([[highlight RainbowDelimiterRed guifg=#fc618d ctermfg=white]])
-      vim.cmd([[highlight RainbowDelimiterOrange guifg=#fd9353 ctermfg=white]])
-      vim.cmd([[highlight RainbowDelimiterYellow guifg=#fce566 ctermfg=white]])
-      vim.cmd([[highlight RainbowDelimiterGreen guifg=#7bd88f ctermfg=white]])
-      vim.cmd([[highlight RainbowDelimiterCyan guifg=#5ad4e6 ctermfg=white]])
-      vim.cmd([[highlight RainbowDelimiterViolet guifg=#948ae3 ctermfg=white]])
     end
   },
 

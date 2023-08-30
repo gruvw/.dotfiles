@@ -72,6 +72,8 @@ return {
     "natecraddock/workspaces.nvim",
     config = function()
       require("workspaces").setup({
+        path = vim.fn.stdpath("data") .. "/workspaces",
+        cd_type = "global",
         hooks = {
           open = {
             [[lua require("telescope.builtin").find_files()]],

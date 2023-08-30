@@ -23,6 +23,9 @@ keymap("n", "J", "gJ", remap)
 -- Line numbers relative toggle
 keymap("n", "<C-;>", ":set relativenumber!<CR>", remap)
 
+-- Toggle invisible characters visibility
+keymap("n", "<C-.>", ":set list!<CR>", remap)
+
 -- Go to first character of line with gg and G
 keymap("n", "gg", "gg0", remap)
 keymap("n", "G", "G0", remap)

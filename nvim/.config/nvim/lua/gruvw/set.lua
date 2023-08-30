@@ -80,3 +80,8 @@ set.splitright = true
 -- Disable netrw (nvim-tree)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+-- Invisible characters
+vim.opt.listchars:append("space:⋅")
+vim.opt.listchars:append("eol:↴")
+vim.opt.listchars:append("tab:-->")
