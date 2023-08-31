@@ -53,6 +53,9 @@ return {
       vim.cmd([[highlight Whitespace cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#626064]])
       vim.cmd([[highlight! link IndentBlanklineSpaceChar Whitespace]])
       vim.cmd([[highlight! link NonText Whitespace]])
+
+      -- Style for LuaSnip default placeholder text
+      vim.api.nvim_set_hl(0, "LuaSnipPlace", {bg = "#363537", italic = true})
     end,
   },
 

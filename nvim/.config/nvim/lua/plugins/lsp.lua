@@ -1,48 +1,100 @@
 -- ~/.config/nvim/lua/plugins/lsp.lua
 
-return {
-  -- https://github.com/VonHeikemen/lsp-zero.nvim
-  {
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "dev-v3",
-    dependencies = {
-      "nvim-lspconfig",
-      "mason-lspconfig.nvim",
-      "nvim-cmp",
-    },
-    event = "BufRead",
-    config = function()
-      local lsp = require("lsp-zero")
-      lsp.preset({})
+-- Set sign icons, from lsp-zero: https://github.com/VonHeikemen/lsp-zero.nvim/blob/f084f4a6a716f55bf9c4026e73027bb24a0325a3/lua/lsp-zero/server.lua#L169
+local function set_sign_icons(opts)
+  opts = opts or {}
 
-      lsp.set_sign_icons({
+  local sign = function(args)
+    if opts[args.name] == nil then
+      return
+    end
+
+    vim.fn.sign_define(args.hl, {
+      texthl = args.hl,
+      text = opts[args.name],
+      numhl = ""
+    })
+  end
+
+  sign({name = "error", hl = "DiagnosticSignError"})
+  sign({name = "warn", hl = "DiagnosticSignWarn"})
+  sign({name = "hint", hl = "DiagnosticSignHint"})
+  sign({name = "info", hl = "DiagnosticSignInfo"})
+end
+
+-- Default LSP server setup
+local function default_setup(server)
+  require("lspconfig")[server].setup({})
+end
+
+return {
+  -- https://github.com/neovim/nvim-lspconfig
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "nvim-cmp",
+      "mason-lspconfig.nvim",
+    },
+    event = "VeryLazy",
+    config = function()
+      local lspconfig = require("lspconfig")
+
+      local lsp_defaults = lspconfig.util.default_config
+      lsp_defaults.capabilities = vim.tbl_deep_extend(
+        "force",
+        lsp_defaults.capabilities,
+        require("cmp_nvim_lsp").default_capabilities()
+      )
+
+      -- Add border to LSP windows
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+        vim.lsp.handlers.hover,
+        {border = "single"}
+      )
+      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+        vim.lsp.handlers.signature_help,
+        {border = "single"}
+      )
+      require("lspconfig.ui.windows").default_options.border = "single"
+
+      -- LSP commands
+      local command = vim.api.nvim_create_user_command
+      command(
+        "LspWorkspaceAdd",
+        function() vim.lsp.buf.add_workspace_folder() end,
+        {desc = "Add folder to workspace"}
+      )
+      command(
+        "LspWorkspaceList",
+        function() vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+        {desc = "List workspace folders"}
+      )
+      command(
+        "LspWorkspaceRemove",
+        function() vim.lsp.buf.remove_workspace_folder() end,
+        {desc = "Remove folder from workspace"}
+      )
+
+      -- Automatic LSP default server setup
+      local get_servers = require("mason-lspconfig").get_installed_servers
+      for _, server_name in ipairs(get_servers()) do
+        default_setup(server_name)
+      end
+
+      -- Diagnostics config
+      vim.diagnostic.config({
+        underline = true,
+        severity_sort = true, -- Sort diagnostics by severity
+        float = {border = "single"},
+      })
+
+      -- Set sign icons in gutter
+      set_sign_icons({
         error = "E",
         warn =  "W",
         hint =  "H",
         info =  "I",
       })
-
-      -- Sort diagnostics by severity
-      vim.diagnostic.config({
-        underline = true,
-        severity_sort = true,
-        float={border="single"},
-      })
-
-      lsp.setup()
-    end
-  },
-
-  -- https://github.com/neovim/nvim-lspconfig
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      -- https://github.com/hrsh7th/cmp-nvim-lsp
-      "hrsh7th/cmp-nvim-lsp",
-    },
-    lazy = true,
-    config = function()
-      require("lspconfig.ui.windows").default_options.border = "single"
     end
   },
 
@@ -55,14 +107,43 @@ return {
     },
     lazy = true,
     config = function()
-      local lsp = require("lsp-zero")
-
       require("mason").setup({
         ui = {
           border = "single",
           height = 0.7,
         },
       })
+
+      -- Lua LSP server config (neovim)
+      local runtime_path = vim.split(package.path, ";")
+      table.insert(runtime_path, "lua/?.lua")
+      table.insert(runtime_path, "lua/?/init.lua")
+      local lua_config = {
+        settings = {
+          Lua = {
+            -- Disable telemetry
+            telemetry = {enable = false},
+            runtime = {
+              -- Tell the language server which version of Lua you're using
+              -- (most likely LuaJIT in the case of Neovim)
+              version = "LuaJIT",
+              path = runtime_path,
+            },
+            diagnostics = {
+              -- Get the language server to recognize the `vim` global
+              globals = {"vim"}
+            },
+            workspace = {
+              checkThirdParty = false,
+              library = {
+                -- Make the server aware of Neovim runtime files
+                vim.fn.expand("$VIMRUNTIME/lua"),
+                vim.fn.stdpath("config") .. "/lua"
+              }
+            }
+          }
+        }
+      }
 
       require("mason-lspconfig").setup({
         automatic_installation = true,
@@ -75,9 +156,9 @@ return {
           "emmet_language_server",
         },
         handlers = {
-          lsp.default_setup,
+          default_setup,
           lua_ls = function()
-            require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+            require("lspconfig").lua_ls.setup(lua_config)
           end,
         },
       })
@@ -94,27 +175,36 @@ return {
       -- https://github.com/saadparwaiz1/cmp_luasnip
       "saadparwaiz1/cmp_luasnip",
 
+      -- https://github.com/hrsh7th/cmp-nvim-lsp
+      "hrsh7th/cmp-nvim-lsp",
+
       "LuaSnip",
     },
     lazy = true,
     config = function()
-      require("lsp-zero").extend_cmp()
-
       local cmp = require("cmp")
-      local types = require('cmp.types')
+      local types = require("cmp.types")
 
       local border = cmp.config.window.bordered({border = "single"})
+      local cmp_select_opts = {behavior = cmp.SelectBehavior.Select}
 
       cmp.setup({
         completion = {
-          completeopt = "menu,menuone,noinsert",
+          completeopt = "menu,menuone,noinsert", -- pre-select first option
         },
         mapping = {
-          ["<Down>"] = {i = cmp.mapping.select_next_item({behavior = types.cmp.SelectBehavior.Select}),},
-          ["<Up>"] = {i = cmp.mapping.select_prev_item({behavior = types.cmp.SelectBehavior.Select}),},
+          -- Completion results choice
           ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-c>"] = cmp.mapping.abort(),
           ["<C-CR>"] = cmp.mapping.confirm({select = true}),
+          ["<C-c>"] = cmp.mapping.abort(),
+
+          -- Move in completion results
+          ["<Down>"] = {i = cmp.mapping.select_next_item(cmp_select_opts)},
+          ["<Up>"] = {i = cmp.mapping.select_prev_item(cmp_select_opts)},
+
+          -- Scroll up and down in the completion documentation
+          ["<C-j>"] = cmp.mapping.scroll_docs(-5),
+          ["<C-k>"] = cmp.mapping.scroll_docs(5),
         },
         window = {
           completion = border,
@@ -124,6 +214,27 @@ return {
           {name = "nvim_lsp"},
           {name = "luasnip"},
           {name = "path"},
+        },
+        snippet = {
+          expand = function(args)
+            luasnip.lsp_expand(args.body)
+          end,
+        },
+        formatting = {
+          fields = {"abbr", "menu", "kind"},
+          format = function(entry, item)
+            local short_name = {
+              nvim_lsp = "LSP",
+              nvim_lua = "NVIM",
+              luasnip = "SNIP",
+              path = "PATH",
+            }
+
+            local menu_name = short_name[entry.source.name] or entry.source.name
+            item.menu = string.format("[%s]", menu_name)
+
+            return item
+          end,
         },
       })
     end,
@@ -138,29 +249,20 @@ return {
     },
     event = "VeryLazy",
     config = function()
-      -- Style for default placeholder text
-      vim.api.nvim_set_hl(0, "LuaSnipPlace", {
-        bg = "#363537",
-        italic = true,
-      })
-
+      local ls = require("luasnip")
       local types = require("luasnip.util.types")
 
-      require("luasnip").setup({
+      ls.setup({
         history = true,
         enable_autosnippets = true,
         update_events = {"TextChanged", "TextChangedI"},
-        store_selection_keys = "<Tab>",
+        store_selection_keys = "<Tab>", -- use key on selection for $TM_SELECTED_TEXT content
         ext_opts = {
           [types.insertNode] = {
-            unvisited = {
-              hl_group = "LuaSnipPlace",
-            },
+            unvisited = {hl_group = "LuaSnipPlace"},
           },
           [types.exitNode] = {
-            unvisited = {
-              hl_group = "LuaSnipPlace",
-            },
+            unvisited = {hl_group = "LuaSnipPlace"},
           },
         }
       })
@@ -175,7 +277,7 @@ return {
       })
 
       -- Filetype fixes
-      require("luasnip").filetype_extend("plaintex", {"tex"})
+      ls.filetype_extend("plaintex", {"tex"})
     end,
   },
 }

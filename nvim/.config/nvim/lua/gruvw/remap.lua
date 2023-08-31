@@ -1,6 +1,6 @@
 -- ~/.config/nvim/lua/gruvw/remap.lua
 
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 local remap = {noremap = true, silent = true}
 
 -- Remap esc to jk
@@ -17,8 +17,9 @@ keymap("n", "<BS>", "0D", remap)
 -- New empty line normal mode
 keymap("n", "<CR>", "o<Esc>", remap)
 
--- No space inserted by J
-keymap("n", "J", "gJ", remap)
+-- No space inserted by J, with a single space for gJ
+keymap("n", "J", "j_d0kgJ", remap)
+keymap("n", "gJ", "j_d0kgJi<space><Esc>", remap)
 
 -- Line numbers relative toggle
 keymap("n", "<C-;>", ":set relativenumber!<CR>", remap)
@@ -65,30 +66,57 @@ keymap("n", "<leader>gg", ":G<CR>", remap)
 
 -- Code (c)
 vim.api.nvim_create_autocmd("LspAttach", {
-  desc = "LSP actions",
+  desc = "LSP mapping",
   callback = function(event)
     local opts = {buffer = event.buf}
 
-    vim.keymap.set("n", "<leader>ch", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    vim.keymap.set("n", "<leader>cd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    vim.keymap.set("n", "<leader>cD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-    vim.keymap.set("n", "<leader>ci", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-    vim.keymap.set("n", "<leader>co", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-    vim.keymap.set("n", "<leader>cr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    vim.keymap.set("n", "<leader>cs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-    vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-    vim.keymap.set({"n", "x"}, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
-    vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+    -- Format
+    vim.api.nvim_buf_create_user_command(
+      event.buf,
+      "LspFormat",
+      function() vim.lsp.buf.format() end,
+      {desc = "Format buffer with language server"}
+    )
 
-    vim.keymap.set("n", "<leader>ce", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-    vim.keymap.set("n", "<leader>cn", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-    vim.keymap.set("n", "<leader>cN", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+    -- LSP buffer actions
+    keymap("n", "<leader>ch", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    keymap("n", "<leader>cd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    keymap("n", "<leader>cD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+    keymap("n", "<leader>ci", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+    keymap("n", "<leader>co", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+    keymap("n", "<leader>cr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+    keymap("n", "<leader>cs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+    keymap("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+    keymap({"n", "x"}, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
+    keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+
+    -- Diagnostic
+    keymap("n", "<leader>ce", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+    keymap("n", "<leader>cn", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+    keymap("n", "<leader>cN", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   end
 })
 keymap("n", "<leader>ct", ":TSContextToggle<CR>", remap)
-vim.keymap.set({"v", "n"}, "<leader>cl", [[:CommentToggle<CR>]], opts)
+keymap({"v", "n"}, "<leader>cl", [[:CommentToggle<CR>]], opts)
 
 -- LuaSnip
-vim.keymap.set({"i"}, "<C-s>", [[<cmd>lua require("luasnip").expand()<CR>]], opts)
-vim.keymap.set({"i", "s", "n"}, "<C-Tab>", [[<cmd>lua require("luasnip").jump(1)<CR>]], opts)
-vim.keymap.set({"i", "s", "n"}, "<C-S-Tab>", [[<cmd>lua require("luasnip").jump(-1)<CR>]], opts)
+-- Jump to $0, https://github.com/L3MON4D3/LuaSnip/issues/562#issuecomment-1233122825
+function snip_jump_end()
+  local ls = require("luasnip")
+  local session = require("luasnip.session")
+	local current = session.current_nodes[vim.api.nvim_get_current_buf()]
+  local snip = current and current.parent.snippet or nil
+  local end_node = snip.insert_nodes[0]
+
+  while end_node and ls.jumpable(1) do
+    local current = session.current_nodes[vim.api.nvim_get_current_buf()]
+    if current == end_node then
+      break
+    end
+    ls.jump(1)
+  end
+end
+keymap({"i"}, "<C-0>", snip_jump_end, opts)
+keymap({"i"}, "<C-e>", [[<cmd>lua require("luasnip").expand()<CR>]], {})
+keymap({"i", "s", "n"}, "<C-Tab>", [[<cmd>lua require("luasnip").jump(1)<CR>]], opts)
+keymap({"i", "s", "n"}, "<C-S-Tab>", [[<cmd>lua require("luasnip").jump(-1)<CR>]], opts)
