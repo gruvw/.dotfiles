@@ -21,6 +21,9 @@ keymap("n", "<CR>", "o<Esc>", remap)
 keymap("n", "J", "j_d0kgJ", remap)
 keymap("n", "gJ", "j_d0kgJi<space><Esc>", remap)
 
+-- Execute line under custor as cmd
+keymap("n", "<C-x>", ":exec getline('.')<CR>", remap)
+
 -- Line numbers relative toggle
 keymap("n", "<C-;>", ":set relativenumber!<CR>", remap)
 

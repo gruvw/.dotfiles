@@ -7,6 +7,7 @@ return {
     config = function()
       require("monokai-pro").setup({
         filter = "spectrum",
+        devicons = true,
         background_clear = {
           "float_win",
           "toggleterm",
@@ -56,6 +57,9 @@ return {
 
       -- Style for LuaSnip default placeholder text
       vim.api.nvim_set_hl(0, "LuaSnipPlace", {bg = "#363537", italic = true})
+
+      -- TreeSitter highlights
+      vim.api.nvim_set_hl(0, "@function.builtin.python", {link = "Function"})
     end,
   },
 

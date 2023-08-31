@@ -55,6 +55,7 @@ mouse_keys.acc_interval = MOUSE_MAX_SPEED
 # Keys
 
 DEG = unicode_string_sequence("°")
+MIDP = send_string("·")
 HTP = send_string("https://")
 AP_T = send_string("'t ")
 
@@ -130,7 +131,7 @@ keyboard.keymap = [
 
     # 2: Function / Symbols 2
     [
-        KC.NO,     DEG,       KC.NO,     KC.F10,    KC.F11,    KC.F12,               KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.PERC,   KC.NO,
+        KC.NO,     DEG,       MIDP,      KC.F10,    KC.F11,    KC.F12,               KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.PERC,   KC.NO,
         KC.NO,     KC.NO,     KC.F1,     KC.F2,     KC.F3,     KC.F4,                KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,   KC.NO,
         KC.NO,     KC.F5,     KC.F6,     KC.F7,     KC.F8,     KC.F9,                KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,     KC.NO,
                                          KC.NO,     KC.TRNS,   KC.NO,                KC.NO,     KC.TRNS,   KC.NO
