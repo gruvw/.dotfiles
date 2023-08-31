@@ -1,7 +1,7 @@
 // ~/.config/nvim/lua/plugins/snippets/lsp/python.jsonc
 
 {
-    "Main": {
+    "[G] Main": {
 		"prefix": "main",
 		"body": [
 			"def main():",
@@ -13,7 +13,7 @@
 		],
 		"description": "Log output to console"
 	},
-	"cocotest": {
+	"[G] cocotest": {
 		"prefix": "cocotest",
 		"body": [
 			"import cocotb",

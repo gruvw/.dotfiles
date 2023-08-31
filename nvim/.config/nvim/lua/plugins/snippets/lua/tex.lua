@@ -91,5 +91,24 @@ return
 },
 -- Automatic
 {
-  
+
+  -- No argument commands
+
+  s({
+    name="[G] Rightarrow",
+    trig=[[\b(?<!\\)Rra]],
+    trigEngine="ecma",
+    condition=in_mathzone,
+  }, {
+    t([[\Rightarrow ]]),
+  }),
+  s({
+    name="[G] Wedge (AND)",
+    trig=[[\b(?<!\\)wdg]],
+    trigEngine="ecma",
+    condition=in_mathzone,
+  }, {
+    t([[\wedge ]]),
+  }),
+
 }

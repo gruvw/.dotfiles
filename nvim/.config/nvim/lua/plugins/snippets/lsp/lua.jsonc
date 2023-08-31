@@ -1,16 +1,28 @@
 // ~/.config/nvim/lua/plugins/snippets/lsp/lua.jsonc
 
 {
-    "Snippet RegEx Math": {
+    "[G] Snippet RegEx Math": {
+		"prefix": "rsnip",
+		"body": [
+            "s({",
+            "  name=\"[G] $1\",",
+            "  trig=[[$2]],",
+            "  trigEngine=\"ecma\",",
+            "  condition=in_mathzone,",
+            "}, {",
+            "  $3,",
+            "}),",
+		],
+	},
+    "[G] Snippet Math": {
 		"prefix": "snip",
 		"body": [
             "s({",
             "  name=\"[G] $1\",",
-            "  trig=\"$2\",",
-            "  trigEngine=\"ecma\",",
+            "  trig=[[$2]],",
             "  condition=in_mathzone,",
             "}, {",
-            "  $3",
+            "  $3,",
             "}),",
 		],
 	},
