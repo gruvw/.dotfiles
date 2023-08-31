@@ -17,6 +17,10 @@
             {
                 "language": ["jsonc"],
                 "path": "./jsonc.jsonc"
+            },
+            {
+                "language": ["lua"],
+                "path": "./lua.jsonc"
             }
 		]
 	}

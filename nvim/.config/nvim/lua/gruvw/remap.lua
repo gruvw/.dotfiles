@@ -34,6 +34,9 @@ keymap("n", "<C-.>", ":set list!<CR>", remap)
 keymap("n", "gg", "gg0", remap)
 keymap("n", "G", "G0", remap)
 
+-- Full file format
+keymap("n", "=G", "gg=G''", remap)
+
 -- Yank the whole buffer content to "+
 keymap("n", "yA", ":%y+<CR>", remap)
 

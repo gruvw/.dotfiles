@@ -217,7 +217,7 @@ return {
         },
         snippet = {
           expand = function(args)
-            luasnip.lsp_expand(args.body)
+            require("luasnip").lsp_expand(args.body)
           end,
         },
         formatting = {
@@ -246,7 +246,10 @@ return {
     dependencies = {
       -- https://github.com/rafamadriz/friendly-snippets
       "rafamadriz/friendly-snippets",
+
+      "nvim-treesitter",
     },
+    build = "make install_jsregexp",
     event = "VeryLazy",
     config = function()
       local ls = require("luasnip")

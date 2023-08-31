@@ -1,0 +1,17 @@
+// ~/.config/nvim/lua/plugins/snippets/lsp/lua.jsonc
+
+{
+    "Snippet RegEx Math": {
+		"prefix": "snip",
+		"body": [
+            "s({",
+            "  name=\"[G] $1\",",
+            "  trig=\"$2\",",
+            "  trigEngine=\"ecma\",",
+            "  condition=in_mathzone,",
+            "}, {",
+            "  $3",
+            "}),",
+		],
+	},
+}
