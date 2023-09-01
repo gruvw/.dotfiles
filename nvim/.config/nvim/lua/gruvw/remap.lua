@@ -41,7 +41,10 @@ keymap("n", "=G", "gg=G''", remap)
 keymap("n", "yA", ":%y+<CR>", remap)
 
 -- Copy vim message
-keymap("n", "yM", ":let @+=trim(execute('1messages')) <bar> echo 'copied' <CR>", remap)
+keymap("n", "yM", ":let @+=trim(execute('1messages')) <bar> echo 'copied'<CR>", remap)
+
+-- Open terminal
+keymap("n", "<leader><CR>", [[:silent exec "!nohup kitty &>/dev/null &"<CR>]], remap)
 
 -- Functions remap
 keymap("n", "<leader>D", ":lua insert_date()<CR>", remap)

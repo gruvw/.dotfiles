@@ -38,8 +38,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
     end
 })
 
--- Remember last place cursor on open
-
+-- Remember last place cursor on open, https://github.com/neovim/neovim/issues/16339
 -- adapted from https://github.com/ethanholz/nvim-lastplace/blob/main/lua/nvim-lastplace/init.lua
 local ignore_buftype = {"quickfix", "nofile", "help"}
 local ignore_filetype = {"gitcommit", "gitrebase", "svn", "hgcommit"}
@@ -80,7 +79,19 @@ local function restore_cursor()
   end
 end
 
-vim.api.nvim_create_autocmd({'BufWinEnter', 'FileType'}, {
-  group = vim.api.nvim_create_augroup('nvim-lastplace', {}),
+vim.api.nvim_create_autocmd({"BufWinEnter", "FileType"}, {
+  group = vim.api.nvim_create_augroup("nvim-lastplace", {}),
   callback = restore_cursor
+})
+
+-- LSP Diagnostics on save
+vim.api.nvim_create_autocmd({"BufNew", "InsertEnter"}, {
+  callback = function(args)
+    vim.diagnostic.disable(args.buf)
+  end
+})
+vim.api.nvim_create_autocmd({"BufWrite"}, {
+  callback = function(args)
+    vim.diagnostic.enable(args.buf)
+  end
 })

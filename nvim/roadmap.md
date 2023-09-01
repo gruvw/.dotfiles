@@ -53,11 +53,14 @@
 
 ## Advanced editor functionalities
 
+- [ ] LeetCode (leetbuddy)
+- [ ] Clipboard history (neoclip)
 - [ ] Todos integration, with tags regex, in-code coloring, listing
 - [ ] Add current file to gitignore
 - [ ] Open file in hex editor view
 - [ ] Image preview/quick open, link resolution
 - [ ] LaTeX math preview
+- [ ] Markdown preview
 - [ ] Random everything, Lorem Ipsum generator, custom length
 - [ ] Highlight weird non-ASCII characters
 - [ ] Open link from editor to browser (detect links)
