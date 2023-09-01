@@ -43,7 +43,11 @@ keymap("n", "yA", ":%y+<CR>", remap)
 -- Copy vim message
 keymap("n", "yM", ":let @+=trim(execute('1messages')) <bar> echo 'copied'<CR>", remap)
 
--- Open terminal
+-- Terminal normal mode
+keymap("t", "<C-t>", [[<C-\><C-n>]], remap)
+keymap("t", "<C-w>", [[<C-\><C-n>:q<CR>]], remap)
+
+-- Open terminal in new WM window
 keymap("n", "<leader><CR>", [[:silent exec "!nohup kitty &>/dev/null &"<CR>]], remap)
 
 -- Functions remap
@@ -130,3 +134,6 @@ keymap({"i"}, "<C-0>", snip_jump_end, opts)
 keymap({"i"}, "<C-e>", [[<cmd>lua require("luasnip").expand()<CR>]], {})
 keymap({"i", "s", "n"}, "<C-Tab>", [[<cmd>lua require("luasnip").jump(1)<CR>]], opts)
 keymap({"i", "s", "n"}, "<C-S-Tab>", [[<cmd>lua require("luasnip").jump(-1)<CR>]], opts)
+
+-- Open floating terminal
+keymap("n", "<leader>T", [[<cmd>lua require("toggleterm").toggle()<CR>]], opts)

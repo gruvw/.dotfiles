@@ -82,6 +82,9 @@ set.splitright = true
 -- Format options (don't insert comment leader in normal mode), also in autocmd (see scripts.lua)
 set.formatoptions = "jctrlq"
 
+-- Default to fish shell
+set.shell = "fish"
+
 -- Disable netrw (nvim-tree)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

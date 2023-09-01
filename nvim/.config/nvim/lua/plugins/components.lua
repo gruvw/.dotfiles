@@ -87,9 +87,9 @@ return {
       },
       sections = {
         lualine_a = {mode_cmpnt},
-        lualine_b = {"branch", "diff", "diagnostics"},
-        lualine_c = {filename_cmpnt, "encoding"},
-        lualine_x = {filetype_cmpnt},
+        lualine_b = {"branch"},
+        lualine_c = {filename_cmpnt, "diff"},
+        lualine_x = {"diagnostics", filetype_cmpnt},
         lualine_y = {progress_cmpnt},
         lualine_z = {"location"},
       },
@@ -254,6 +254,24 @@ return {
           max_height = "25%",
         })
       ))
-    end
+    end,
   },
+
+  -- https://github.com/akinsho/toggleterm.nvim
+{
+  "akinsho/toggleterm.nvim",
+  version = "*",
+  lazy = true,
+  config = function()
+    require("toggleterm").setup({
+      direction = "float",
+      shell = "fish",
+      autochdir = false,
+      shade_terminals = false,
+    })
+
+    -- Enable line numbers in float, https://github.com/akinsho/toggleterm.nvim/issues/280
+    vim.cmd([[autocmd TermEnter term://*toggleterm#* setlocal number relativenumber]])
+  end,
+},
 }

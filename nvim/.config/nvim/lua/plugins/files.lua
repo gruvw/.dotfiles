@@ -12,6 +12,24 @@ return {
           return "saved"
         end,
       },
+      trigger_events = {
+        immediate_save = {"BufLeave", "FocusLost"},
+        defer_save = {"InsertLeave", "TextChanged"},
+        cancel_defered_save = {"InsertEnter"},
+      },
+      condition = function(buf)
+        -- Ignore auto-save
+        local ignore_buftype = {}
+        local ignore_filetype = {}
+
+        if vim.tbl_contains(ignore_buftype, vim.bo.buftype)
+          or vim.tbl_contains(ignore_filetype, vim.bo.filetype)
+        then
+          return false
+        end
+
+        return true
+      end,
       cleaning_interval = 3000, -- time before erasing the execution msg
       debounce_delay = 5000, -- time till a defered save acctually happens (if not cancelled)
     },

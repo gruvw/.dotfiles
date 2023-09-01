@@ -43,8 +43,8 @@
 - [X] Commands auto-complete
 - [ ] Spell checker
 - [ ] Hyper-snips
-- [ ] Integrated terminal
-- [ ] Tasks: configurable + run on keyboard shortcut or from palette
+- [X] Integrated terminal (look into toggleterm)
+- [ ] Tasks: configurable + run on keyboard shortcut or from palette (overseer.nvim)
 - [X] Comment by keybind
 - [X] Error Lens
 - [X] Path intellisense
