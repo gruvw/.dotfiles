@@ -43,6 +43,7 @@
 - [X] Commands auto-complete
 - [ ] Spell checker
 - [ ] Hyper-snips
+- [ ] Integrated terminal
 - [ ] Tasks: configurable + run on keyboard shortcut or from palette
 - [X] Comment by keybind
 - [X] Error Lens
@@ -55,6 +56,7 @@
 
 - [ ] LeetCode (leetbuddy)
 - [ ] Clipboard history (neoclip)
+- [ ] GitHub integration
 - [ ] Todos integration, with tags regex, in-code coloring, listing
 - [ ] Add current file to gitignore
 - [ ] Open file in hex editor view

@@ -56,6 +56,7 @@ keymap("n", "<leader>sf", [[:lua require("telescope.builtin").find_files()<CR>]]
 keymap("n", "<leader>sg", [[:lua require("telescope.builtin").live_grep()<CR>]], remap)
 keymap("n", "<leader>su", [[:lua require("telescope").extensions.undo.undo()<CR>]], remap)
 keymap("n", "<leader>sw", [[:lua require("telescope").extensions.workspaces.workspaces()<CR>]], remap)
+keymap("n", "<leader>sj", [[:lua require("telescope").extensions.harpoon.marks()<CR>]], remap)
 
 -- Harpoon (j)
 -- From the quickmenu, open a file in: a vertical split with <C-v>, a horizontal split with <C-x>, a new tab with <C-t>
