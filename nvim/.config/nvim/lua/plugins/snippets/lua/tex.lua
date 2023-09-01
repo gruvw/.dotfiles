@@ -92,23 +92,307 @@ return
 -- Automatic
 {
 
-  -- No argument commands
+  -- Quick fix
 
   s({
-    name="[G] Rightarrow",
-    trig=[[\b(?<!\\)Rra]],
-    trigEngine="ecma",
-    condition=in_mathzone,
+    name = "[G] Square",
+    trig = [[ ?sq]],
+    trigEngine = "ecma",
+    wordTrig = false,
+    condition = in_mathzone,
+  }, {
+    t([[^2]]),
+  }),
+  s({
+    name = "[G] Cube",
+    trig = [[ ?cb]],
+    trigEngine = "ecma",
+    wordTrig = false,
+    condition = in_mathzone,
+  }, {
+    t([[^3]]),
+  }),
+
+  -- No argument commands (space after)
+
+  s({
+    name = "[G] Rightarrow",
+    trig = [[\b(?<!\\)Rra]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
   }, {
     t([[\Rightarrow ]]),
   }),
+
   s({
-    name="[G] Wedge (AND)",
-    trig=[[\b(?<!\\)wdg]],
-    trigEngine="ecma",
-    condition=in_mathzone,
+    name = "[G] Wedge (AND)",
+    trig = [[\b(?<!\\)wdg]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
   }, {
     t([[\wedge ]]),
+  }),
+
+  s({
+    name = "[G] Proportional",
+    trig = [[\b(?<!\\)prp]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\propto ]]),
+  }),
+
+  s({
+    name = "[G] Equiv",
+    trig = [[\b(?<!\\)eqv]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\equiv ]]),
+  }),
+
+  s({
+    name = "[G] Partial",
+    trig = [[\b(?<!\\)prt]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\partial ]]),
+  }),
+
+  s({
+    name = "[G] Integral",
+    trig = [[\b(?<!\\)nnt]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\int ]]),
+  }),
+
+  s({
+    name = "[G] Surface integral",
+    trig = [[\b(?<!\\)ont]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\oint ]]),
+  }),
+
+  s({
+    name = "[G] Circle",
+    trig = [[\b(?<!\\)cir]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\circ ]]),
+  }),
+
+  s({
+    name = "[G] Not equal",
+    trig = [[\b(?<!\\)ne]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\neq ]]),
+  }),
+
+  s({
+    name = "[G] Subset",
+    trig = [[\b(?<!\\)sub]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\subset ]]),
+  }),
+
+  s({
+    name = "[G] Supset",
+    trig = [[\b(?<!\\)sup]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\supset ]]),
+  }),
+
+  s({
+    name = "[G] Subseteq",
+    trig = [[\b(?<!\\)sue]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\subseteq ]]),
+  }),
+
+  s({
+    name = "[G] Gradient",
+    trig = [[\b(?<!\\)grd]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\nabla ]]),
+  }),
+
+  s({
+    name = "[G] Allow Break",
+    trig = [[\b(?<!\\)awb]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\allowbreak ]]),
+  }),
+
+  s({
+    name = "[G] Quad",
+    trig = [[\b(?<!\\)qq]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\quad ]]),
+  }),
+
+  s({
+    name = "[G] Leftrightarrow",
+    trig = [[\b(?<!\\)Lra]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\Leftrightarrow ]]),
+  }),
+
+  s({
+    name = "[G] leftrightarrow",
+    trig = [[\b(?<!\\)lra]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\leftrightarrow ]]),
+  }),
+
+  s({
+    name = "[G] Ldots",
+    trig = "..",
+    condition = in_mathzone,
+  }, {
+    t([[\ldots ]]),
+  }),
+
+  s({
+    name = "[G] Implies",
+    trig = [[\b(?<!\\)imm]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\implies ]]),
+  }),
+
+  s({
+    name = "[G] Implied by",
+    trig = [[\b(?<!\\)iib]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\impliedby ]]),
+  }),
+
+  s({
+    name = "[G] Almost equal",
+    trig = [[\b(?<!\\)app]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\approx ]]),
+  }),
+
+  s({
+    name = "[G] Mapsto",
+    trig = [[\b(?<!\\)mto]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\mapsto ]]),
+  }),
+
+  s({
+    name = "[G] Exists",
+    trig = [[\b(?<!\\)ee]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\exists ]]),
+  }),
+
+  s({
+    name = "[G] For all",
+    trig = [[\b(?<!\\)fa]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\forall ]]),
+  }),
+
+  s({
+    name = "[G] Cross",
+    trig = [[\b(?<!\\)xx]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\times ]]),
+  }),
+
+  s({
+    name = "[G] cdot",
+    trig = [[\b(?<!\\)cd]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\cdot ]]),
+  }),
+
+  s({
+    name = "[G] Setminus",
+    trig = [[\b(?<!\\)stm]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\setminus ]]),
+  }),
+
+  s({
+    name = "[G] Displaystyle",
+    trig = [[\b(?<!\\)dsp]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\displaystyle ]]),
+  }),
+
+  -- No argument commands (no space after)
+
+  s({
+    name = "[G] Infinity",
+    trig = [[\b(?<!\\)iin]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\infty]]),
+  }),
+
+  s({
+    name = "[G] Empty Set",
+    trig = [[\b(?<!\\)emp]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\emptyset]]),
+  }),
+
+  s({
+    name = "[G] Null set",
+    trig = [[\b(?<!\\)0n]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\varnothing]]),
   }),
 
 }

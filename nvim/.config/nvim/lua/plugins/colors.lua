@@ -24,8 +24,8 @@ return {
       vim.cmd("colorscheme monokai-pro")
 
       -- Only highlight the line number not whole current line
-      vim.cmd("highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE")
-      vim.cmd("highlight NvimTreeCursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE")
+      -- vim.cmd("highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE")
+      -- vim.cmd("highlight NvimTreeCursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE")
 
       -- Windows line separator in white
       vim.cmd("highlight WinSeparator guifg=15")
