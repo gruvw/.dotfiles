@@ -1,4 +1,4 @@
-// ~/.config/nvim/lua/plugins/snippets/lsp/python.jsonc
+// ~/.config/nvim/lua/gruvw/snippets/lsp/python.jsonc
 
 {
     "[G] Main": {

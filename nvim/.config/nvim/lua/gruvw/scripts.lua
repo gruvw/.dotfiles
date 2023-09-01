@@ -30,7 +30,7 @@ autocmd("TextYankPost", {
 })
 
 -- Open help window in a vertical split to the right.
-vim.api.nvim_create_autocmd("BufWinEnter", {
+autocmd("BufWinEnter", {
     group = vim.api.nvim_create_augroup("help_window_right", {}),
     pattern = {"*.txt"},
     callback = function()
@@ -79,19 +79,26 @@ local function restore_cursor()
   end
 end
 
-vim.api.nvim_create_autocmd({"BufWinEnter", "FileType"}, {
-  group = vim.api.nvim_create_augroup("nvim-lastplace", {}),
+autocmd({"BufWinEnter", "FileType"}, {
+  group = augroup("nvim-lastplace", {}),
   callback = restore_cursor
 })
 
 -- LSP Diagnostics on save
-vim.api.nvim_create_autocmd({"BufNew", "InsertEnter"}, {
+autocmd({"BufNew", "InsertEnter"}, {
   callback = function(args)
     vim.diagnostic.disable(args.buf)
   end
 })
-vim.api.nvim_create_autocmd({"BufWrite"}, {
+autocmd({"BufWrite"}, {
   callback = function(args)
     vim.diagnostic.enable(args.buf)
+  end
+})
+
+-- Format options
+autocmd({"BufNewFile", "BufRead"}, {
+  callback = function(args)
+    vim.opt.formatoptions = "jctrlq"
   end
 })

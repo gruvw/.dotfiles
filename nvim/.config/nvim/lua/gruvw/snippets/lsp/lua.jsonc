@@ -1,4 +1,4 @@
-// ~/.config/nvim/lua/plugins/snippets/lsp/lua.jsonc
+// ~/.config/nvim/lua/gruvw/snippets/lsp/lua.jsonc
 
 {
     "[G] Snippet RegEx Math": {

@@ -22,11 +22,6 @@ local function set_sign_icons(opts)
   sign({name = "info", hl = "DiagnosticSignInfo"})
 end
 
--- Default LSP server setup
-local function default_setup(server)
-  require("lspconfig")[server].setup({})
-end
-
 return {
   -- https://github.com/neovim/nvim-lspconfig
   {
@@ -75,12 +70,6 @@ return {
         {desc = "Remove folder from workspace"}
       )
 
-      -- Automatic LSP default server setup
-      local get_servers = require("mason-lspconfig").get_installed_servers
-      for _, server_name in ipairs(get_servers()) do
-        default_setup(server_name)
-      end
-
       -- Diagnostics config
       vim.diagnostic.config({
         underline = true,
@@ -95,6 +84,9 @@ return {
         hint =  "H",
         info =  "I",
       })
+
+      -- Start LSP
+      vim.cmd(":LspStart")
     end
   },
 
@@ -114,37 +106,6 @@ return {
         },
       })
 
-      -- Lua LSP server config (neovim)
-      local runtime_path = vim.split(package.path, ";")
-      table.insert(runtime_path, "lua/?.lua")
-      table.insert(runtime_path, "lua/?/init.lua")
-      local lua_config = {
-        settings = {
-          Lua = {
-            -- Disable telemetry
-            telemetry = {enable = false},
-            runtime = {
-              -- Tell the language server which version of Lua you're using
-              -- (most likely LuaJIT in the case of Neovim)
-              version = "LuaJIT",
-              path = runtime_path,
-            },
-            diagnostics = {
-              -- Get the language server to recognize the `vim` global
-              globals = {"vim"}
-            },
-            workspace = {
-              checkThirdParty = false,
-              library = {
-                -- Make the server aware of Neovim runtime files
-                vim.fn.expand("$VIMRUNTIME/lua"),
-                vim.fn.stdpath("config") .. "/lua"
-              }
-            }
-          }
-        }
-      }
-
       require("mason-lspconfig").setup({
         automatic_installation = true,
         ensure_installed = {
@@ -158,7 +119,7 @@ return {
         handlers = {
           default_setup,
           lua_ls = function()
-            require("lspconfig").lua_ls.setup(lua_config)
+            require("lspconfig").lua_ls.setup(require("gruvw.lsp.lua_ls"))
           end,
         },
       })
@@ -271,8 +232,8 @@ return {
       })
 
       -- Load user snippets
-      require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/lua/plugins/snippets/lua"})
-      require("luasnip.loaders.from_vscode").lazy_load({paths = "~/.config/nvim/lua/plugins/snippets/lsp"})
+      require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/lua/gruvw/snippets/lua"})
+      require("luasnip.loaders.from_vscode").lazy_load({paths = "~/.config/nvim/lua/gruvw/snippets/lsp"})
 
       -- Load friendly-snippets
       require("luasnip.loaders.from_vscode").lazy_load({

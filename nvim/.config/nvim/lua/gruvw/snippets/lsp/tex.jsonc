@@ -1,4 +1,4 @@
-// ~/.config/nvim/lua/plugins/snippets/lsp/tex.jsonc
+// ~/.config/nvim/lua/gruvw/snippets/lsp/tex.jsonc
 
 {
 	// Environments

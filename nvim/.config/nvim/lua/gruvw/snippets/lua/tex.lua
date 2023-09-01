@@ -1,4 +1,7 @@
--- ~/.config/nvim/lua/plugins/snippets/lua/tex.lua
+-- ~/.config/nvim/lua/gruvw/snippets/lua/tex.lua
+
+--- @diagnostic disable: unused-local
+--- @diagnostic disable: unused-function
 
 local ts = require("vim.treesitter")
 local ls = require("luasnip")
@@ -394,5 +397,7 @@ return
   }, {
     t([[\varnothing]]),
   }),
+
+  -- Simple with arguments
 
 }

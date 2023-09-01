@@ -79,6 +79,9 @@ set.signcolumn = "yes:1"
 -- Open new buffers on the right
 set.splitright = true
 
+-- Format options (don't insert comment leader in normal mode), also in autocmd (see scripts.lua)
+set.formatoptions = "jctrlq"
+
 -- Disable netrw (nvim-tree)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
