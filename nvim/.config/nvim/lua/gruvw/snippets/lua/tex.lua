@@ -88,6 +88,8 @@ local function in_mathzone()
   return false
 end
 
+-- `\b(?<!\\)` regex is used to prevent expansion while writing a command (starts with `\`)
+
 return
 {
 
@@ -398,6 +400,16 @@ return
     t([[\varnothing]]),
   }),
 
+  s({
+    name = "[G] Limits subscript",
+    trig = [[-_]],
+    trigEngine = "ecma",
+    wordTrig = false,
+    condition = in_mathzone,
+  }, {
+    t([[\limits_]]),
+  }),
+
   -- Simple with arguments
 
   s({
@@ -425,6 +437,143 @@ return
     condition = in_mathzone,
   }, {
     t([[\widetilde{]]), i(1), t([[}]]),
+  }),
+
+  s({
+    name = "[G] Vector",
+    trig = [[\b(?<!\\)vv]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\vv{]]), i(1), t([[}]]),
+  }),
+
+  s({
+    name = "[G] Bold vector",
+    trig = [[\b(?<!\\)vb]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\mathbf{]]), i(1), t([[}]]),
+  }),
+
+  s({
+    name = "[G] Absolute value",
+    trig = [[\b(?<!\\)abs]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\abs{]]), i(1), t([[}]]),
+  }),
+
+  s({
+    name = "[G] Norm",
+    trig = [[\b(?<!\\)nrm]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\norm{]]), i(1), t([[}]]),
+  }),
+
+  s({
+    name = "[G] Overline",
+    trig = [[\b(?<!\\)ovl]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\overline{]]), i(1), t([[}]]),
+  }),
+
+  s({
+    name = "[G] Square root",
+    trig = [[\b(?<!\\)srt]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\sqrt{]]), i(1), t([[}]]),
+  }),
+
+  s({
+    name = "[G] Math rm",
+    trig = [[\b(?<!\\)mrm]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\mathrm{]]), i(1), t([[}]]),
+  }),
+
+  s({
+    name = "[G] Set",
+    trig = [[\b(?<!\\)sst]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\{ ]]), i(1), t([[ \}]]),
+  }),
+
+  s({
+    name = "[G] Angles",
+    trig = [[\b(?<!\\)ang]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\langle ]]), i(1), t([[\rangle]]),
+  }),
+
+  s({
+    name = "[G] Supperscript",
+    trig = [[--]],
+    trigEngine = "ecma",
+    wordTrig = false,
+    condition = in_mathzone,
+  }, {
+    t([[^{]]), i(1), t([[}]]),
+  }),
+
+  s({
+    name = "[G] Subscript",
+    trig = [[__]],
+    trigEngine = "ecma",
+    wordTrig = false,
+    condition = in_mathzone,
+  }, {
+    t([[_{]]), i(1), t([[}]]),
+  }),
+
+  s({
+    name = "[G] Big cap single",
+    trig = [[\b(?<!\\)bca]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\bigcap_{]]), i(1, [[i]]), t([[} ]]),
+  }),
+
+  s({
+    name = "[G] Big cup single",
+    trig = [[\b(?<!\\)bcu]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\bigcup_{]]), i(1, [[i]]), t([[} ]]),
+  }),
+
+  s({
+    name = "[G] Product single",
+    trig = [[\b(?<!\\)ppr]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\prod_{]]), i(1, [[i]]), t([[} ]]),
+  }),
+
+  s({
+    name = "[G] Sum single",
+    trig = [[\b(?<!\\)ssm]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\sum_{]]), i(1, [[i]]), t([[} ]])
   }),
 
 }
