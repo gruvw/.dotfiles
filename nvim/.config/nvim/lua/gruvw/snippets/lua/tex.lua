@@ -400,4 +400,31 @@ return
 
   -- Simple with arguments
 
+  s({
+    name = "[G] Verbatim",
+    trig = [[\b(?<!\\)vrb]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\verb']]), i(1), t([[']]),
+  }),
+
+  s({
+    name = "[G] Num",
+    trig = [[\b(?<!\\)num]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\num{]]), i(1), t([[}]]),
+  }),
+
+  s({
+    name = "[G] Tilde",
+    trig = [[\b(?<!\\)tld]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\widetilde{]]), i(1), t([[}]]),
+  }),
+
 }

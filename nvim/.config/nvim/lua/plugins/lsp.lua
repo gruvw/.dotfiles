@@ -106,6 +106,10 @@ return {
         },
       })
 
+      local function default_setup(server)
+        require("lspconfig")[server].setup({})
+      end
+
       require("mason-lspconfig").setup({
         automatic_installation = true,
         ensure_installed = {
@@ -151,6 +155,7 @@ return {
 
       cmp.setup({
         completion = {
+          -- autocomplete = false,
           completeopt = "menu,menuone,noinsert", -- pre-select first option
         },
         mapping = {
