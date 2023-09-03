@@ -55,6 +55,9 @@ return {
       vim.cmd([[highlight! link IndentBlanklineSpaceChar Whitespace]])
       vim.cmd([[highlight! link NonText Whitespace]])
 
+      -- Match paren
+      vim.api.nvim_set_hl(0, "MatchParen", {fg = "#fce566", underline = false, bold = true})
+
       -- Style for LuaSnip default placeholder text
       vim.api.nvim_set_hl(0, "LuaSnipPlace", {bg = "#363537", italic = true})
 

@@ -15,7 +15,7 @@ keymap("n", "Zz", ":wq<CR>", remap)
 keymap("n", "<BS>", "0D", remap)
 
 -- New empty line normal mode
-keymap("n", "<CR>", "o<Esc>0D", remap)
+keymap("n", "g<CR>", "o<Esc>0D", remap)
 
 -- No space inserted by J, with a single space for gJ
 keymap("n", "J", "j_d0kgJ", remap)

@@ -84,16 +84,16 @@ autocmd({"BufWinEnter", "FileType"}, {
 })
 
 -- LSP Diagnostics on save
-autocmd({"BufNew", "InsertEnter"}, {
-  callback = function(args)
-    vim.diagnostic.disable(args.buf)
-  end
-})
-autocmd({"BufWrite"}, {
-  callback = function(args)
-    vim.diagnostic.enable(args.buf)
-  end
-})
+-- autocmd({"BufNew", "InsertEnter"}, {
+--   callback = function(args)
+--     vim.diagnostic.disable(args.buf)
+--   end
+-- })
+-- autocmd({"BufWrite"}, {
+--   callback = function(args)
+--     vim.diagnostic.enable(args.buf)
+--   end
+-- })
 
 -- Format options
 autocmd({"BufNewFile", "BufRead"}, {

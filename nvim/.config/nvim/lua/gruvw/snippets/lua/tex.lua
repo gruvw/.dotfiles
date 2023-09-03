@@ -32,11 +32,18 @@ local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
 
--- Regex match group helper
-local rm = function(group_nb)
-  return function(_, snip)
+-- Regex match group helper, groups starts at 0
+local rg = function(group_nb)
+  return f(function(_, snip)
     return snip.captures[group_nb]
-  end
+  end)
+end
+
+-- Selected text + insert node helper
+local si = function(nb)
+  return d(nb, function(_, parent)
+    return sn(nil, i(1, parent.snippet.env.TM_SELECTED_TEXT))
+  end)
 end
 
 local MATH_NODES = {
@@ -425,7 +432,7 @@ return
     trigEngine = "ecma",
     condition = in_mathzone,
   }, {
-    t([[\verb']]), i(1), t([[']]),
+    t([[\verb']]), si(1), t([[']]),
   }),
 
   s({
@@ -434,7 +441,7 @@ return
     trigEngine = "ecma",
     condition = in_mathzone,
   }, {
-    t([[\num{]]), i(1), t([[}]]),
+    t([[\num{]]), si(1), t([[}]]),
   }),
 
   s({
@@ -443,7 +450,7 @@ return
     trigEngine = "ecma",
     condition = in_mathzone,
   }, {
-    t([[\widetilde{]]), i(1), t([[}]]),
+    t([[\widetilde{]]), si(1), t([[}]]),
   }),
 
   s({
@@ -452,7 +459,7 @@ return
     trigEngine = "ecma",
     condition = in_mathzone,
   }, {
-    t([[\vv{]]), i(1), t([[}]]),
+    t([[\vv{]]), si(1), t([[}]]),
   }),
 
   s({
@@ -461,7 +468,7 @@ return
     trigEngine = "ecma",
     condition = in_mathzone,
   }, {
-    t([[\mathbf{]]), i(1), t([[}]]),
+    t([[\mathbf{]]), si(1), t([[}]]),
   }),
 
   s({
@@ -470,7 +477,7 @@ return
     trigEngine = "ecma",
     condition = in_mathzone,
   }, {
-    t([[\abs{]]), i(1), t([[}]]),
+    t([[\abs{]]), si(1), t([[}]]),
   }),
 
   s({
@@ -479,7 +486,7 @@ return
     trigEngine = "ecma",
     condition = in_mathzone,
   }, {
-    t([[\norm{]]), i(1), t([[}]]),
+    t([[\norm{]]), si(1), t([[}]]),
   }),
 
   s({
@@ -488,7 +495,7 @@ return
     trigEngine = "ecma",
     condition = in_mathzone,
   }, {
-    t([[\overline{]]), i(1), t([[}]]),
+    t([[\overline{]]), si(1), t([[}]]),
   }),
 
   s({
@@ -497,7 +504,7 @@ return
     trigEngine = "ecma",
     condition = in_mathzone,
   }, {
-    t([[\sqrt{]]), i(1), t([[}]]),
+    t([[\sqrt{]]), si(1), t([[}]]),
   }),
 
   s({
@@ -506,7 +513,7 @@ return
     trigEngine = "ecma",
     condition = in_mathzone,
   }, {
-    t([[\mathrm{]]), i(1), t([[}]]),
+    t([[\mathrm{]]), si(1), t([[}]]),
   }),
 
   s({
@@ -515,7 +522,7 @@ return
     trigEngine = "ecma",
     condition = in_mathzone,
   }, {
-    t([[\{ ]]), i(1), t([[ \}]]),
+    t([[\{ ]]), si(1), t([[ \}]]),
   }),
 
   s({
@@ -524,7 +531,7 @@ return
     trigEngine = "ecma",
     condition = in_mathzone,
   }, {
-    t([[\langle ]]), i(1), t([[\rangle]]),
+    t([[\langle ]]), si(1), t([[\rangle]]),
   }),
 
   s({
@@ -534,7 +541,7 @@ return
     wordTrig = false,
     condition = in_mathzone,
   }, {
-    t([[^{]]), i(1), t([[}]]),
+    t([[^{]]), si(1), t([[}]]),
   }),
 
   s({
@@ -544,7 +551,7 @@ return
     wordTrig = false,
     condition = in_mathzone,
   }, {
-    t([[_{]]), i(1), t([[}]]),
+    t([[_{]]), si(1), t([[}]]),
   }),
 
   s({
@@ -592,7 +599,7 @@ return
     trigEngine = "ecma",
     condition = in_mathzone,
   }, {
-    t([[\frac{\partial ]]), i(1), t([[}{\partial ]]), i(2), t([[}]]),
+    t([[\frac{\partial ]]), si(1), t([[}{\partial ]]), i(2), t([[}]]),
   }),
 
   s({
@@ -601,7 +608,7 @@ return
     trigEngine = "ecma",
     condition = in_mathzone,
   }, {
-    t([[\frac{]]), i(1), t([[}{]]), i(2), t([[}]]),
+    t([[\frac{]]), si(1), t([[}{]]), i(2), t([[}]]),
   }),
 
   s({
@@ -685,5 +692,121 @@ return
     t([[\xrightarrow[]]), i(1, [[x]]), t([[ \to ]]), i(2, [[\infty]]), t([[]{]]), i(3), t([[} ]]),
   }),
 
-  -- Simple trigger interpolation
+  -- Simple trigger match interpolation
+
+  s({
+    name = "[G] Differential",
+    trig = [[\b(?<!\\)dd(\w)]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\,d]]), rg(1),
+  }),
+
+  s({
+    name = "[G] _{n-d}",
+    trig = [[_?(\w)m(\d)]],
+    trigEngine = "ecma",
+    wordTrig = false,
+    condition = in_mathzone,
+  }, {
+    t([[_{]]), rg(1), t([[-]]), rg(2), t([[}]]),
+  }),
+
+
+  s({
+    name = "[G] _{n+d}",
+    trig = [[(?!M)_?(\w)p(\d)]],
+    trigEngine = "ecma",
+    wordTrig = false,
+    condition = in_mathzone,
+  }, {
+    t([[_{]]), rg(1), t([[+]]), rg(2), t([[}]]),
+  }),
+
+  s({
+    name = "[G] Arc-trigo",
+    trig = [[\b(?<!\\)a(sin|cos|tan)]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\arc]]), rg(1), t([[ ]]),
+  }),
+
+  s({
+    name = "[G] Commands without space",
+    trig = [[\b(?<!\\)(?<!\\mathrm\{)(max|min|log)]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\]]), rg(1),
+  }),
+
+  s({
+    name = "[G] Commands with space",
+    trig = [[\b(?<!\\)(?<!\\mathrm\{)(ker|det|deg|sin|cos|tan|cot|ln|exp|arg|to|perp|in|cup|cap|ge|le|sim|pm|iff|mid|dim|Im|Re|not|vee)]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\]]), rg(1), t([[ ]]),
+  }),
+
+  s({
+    name = "[G] Special commands (mathrm)",
+    trig = [[\b(?<!\\)(?<!\\mathrm\{)(Vect|rg|var|cov|corr)]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\mathrm{]]), rg(1), t([[}]]),
+  }),
+
+
+  -- Trigger match interpolation transformed
+
+
+
+  -- Arguments with trigger match interpolation
+
+  s({
+    name = "[G] Commands with argument (mathrm)",
+    trig = [[\b(?<!\\)(?<!\\mathrm\{)(bar|dot|hat)]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\]]), rg(1), t([[{]]), i(1), t([[}]]),
+  }),
+
+  -- Automatic
+
+
+
+  -- Postfix modifications
+
+  s({
+    name = "[G] Fraction automatic",
+    trig = [[((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\w+\}|\w))*)\/$|(\(((?:\([^()]*\)|[^()])*)\))\/$]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\frac{]]),
+    f(function(_, snip)
+      return snip.captures[1] .. snip.captures[10]
+    end),
+    t([[}{]]),
+    i(1),
+    t([[}]]),
+  }),
+
+  s({
+    name = "[G] Mathbb",
+    trig = [[([A-Z])#]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\mathbb{]]), rg(1), t([[}]]),
+  }),
+
+  -- Complex code interpolated
+
+
 }
