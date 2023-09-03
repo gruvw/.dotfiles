@@ -78,7 +78,6 @@ local function restore_cursor()
     end
   end
 end
-
 autocmd({"BufWinEnter", "FileType"}, {
   group = augroup("nvim-lastplace", {}),
   callback = restore_cursor

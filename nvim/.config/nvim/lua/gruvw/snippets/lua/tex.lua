@@ -32,6 +32,13 @@ local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
 
+-- Regex match group helper
+local rm = function(group_nb)
+  return function(_, snip)
+    return snip.captures[group_nb]
+  end
+end
+
 local MATH_NODES = {
   displayed_equation = true,
   inline_formula = true,

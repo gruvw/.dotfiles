@@ -32,8 +32,15 @@ local mode_cmpnt = {
 -- File type
 local filetype_cmpnt = {
   "filetype",
-  icon_only = true,
-  icon = {align = "right"},
+  icon = {align = "left"},
+  -- Show "+" if LSP client is running
+  fmt = function(s)
+    if #vim.lsp.buf_get_clients() > 0 then
+      return "+"
+    end
+
+    return "-"
+  end,
 }
 
 -- File name
@@ -44,7 +51,7 @@ local filename_cmpnt = {
     readonly = "-",
     unnamed = "[No Name]",
     newfile = "[New]",
-  }
+  },
 }
 
 -- Progress rename strings
@@ -165,7 +172,6 @@ return {
           float = {
             enable = true,
             open_win_config = function()
-
               local screen_w = vim.opt.columns:get()
               local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
               local window_w = screen_w * WIDTH_RATIO
@@ -173,8 +179,7 @@ return {
               local window_w_int = math.floor(window_w)
               local window_h_int = math.floor(window_h)
               local center_x = (screen_w - window_w) / 2
-              local center_y = ((vim.opt.lines:get() - window_h) / 2)
-                              - vim.opt.cmdheight:get()
+              local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
               return {
                 border = "single",
                 relative = "editor",
@@ -183,7 +188,7 @@ return {
                 width = window_w_int,
                 height = window_h_int,
               }
-              end,
+            end,
           },
           width = function()
             return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
@@ -215,7 +220,7 @@ return {
 
       -- Sets root directory automagically
       require("nvim-rooter").setup({
-        rooter_patterns = {".git", ".hg", ".svn"},
+        rooter_patterns = {".git", ".root"},
         trigger_patterns = {"*"},
         fallback_to_parent = true,
         update_cwd = true,
