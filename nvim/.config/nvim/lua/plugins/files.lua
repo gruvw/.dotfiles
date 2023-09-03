@@ -15,8 +15,10 @@ return {
       trigger_events = {
         immediate_save = {"BufLeave", "FocusLost"},
         defer_save = {"InsertLeave", "TextChanged"},
-        cancel_defered_save = {"InsertEnter"},
+        cancel_defered_save = {"ModeChanged"},
       },
+      cleaning_interval = 3000, -- time before erasing the execution msg
+      debounce_delay = 6000, -- time till a defered save acctually happens (if not cancelled)
       condition = function(buf)
         -- Ignore auto-save
         local ignore_buftype = {}
@@ -30,8 +32,6 @@ return {
 
         return true
       end,
-      cleaning_interval = 3000, -- time before erasing the execution msg
-      debounce_delay = 5000, -- time till a defered save acctually happens (if not cancelled)
     },
   },
 

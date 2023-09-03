@@ -130,10 +130,10 @@ function snip_jump_end()
     ls.jump(1)
   end
 end
-keymap({"i"}, "<C-0>", snip_jump_end, opts)
 keymap({"i"}, "<C-e>", [[<cmd>lua require("luasnip").expand()<CR>]], {})
 keymap({"i", "s", "n"}, "<C-Tab>", [[<cmd>lua require("luasnip").jump(1)<CR>]], opts)
 keymap({"i", "s", "n"}, "<C-S-Tab>", [[<cmd>lua require("luasnip").jump(-1)<CR>]], opts)
+keymap({"i", "s", "n"}, "<C-0>", snip_jump_end, opts)
 
 -- Open floating terminal
 keymap("n", "<leader>T", [[<cmd>lua require("toggleterm").toggle()<CR>]], opts)

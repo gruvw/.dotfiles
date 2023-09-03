@@ -410,7 +410,7 @@ return
     t([[\limits_]]),
   }),
 
-  -- Simple with arguments
+  -- Simple with one argument
 
   s({
     name = "[G] Verbatim",
@@ -576,4 +576,107 @@ return
     t([[\sum_{]]), i(1, [[i]]), t([[} ]])
   }),
 
+
+  -- Simple with multiple arguments
+
+  s({
+    name = "[G] Partial derivative",
+    trig = [[\b(?<!\\)part]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\frac{\partial ]]), i(1), t([[}{\partial ]]), i(2), t([[}]]),
+  }),
+
+  s({
+    name = "[G] Fraction",
+    trig = [[\b(?<!\\)ff]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\frac{]]), i(1), t([[}{]]), i(2), t([[}]]),
+  }),
+
+  s({
+    name = "[G] Binomial",
+    trig = [[\b(?<!\\)bnm]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\binom{]]), i(1, [[n]]), t([[}{]]), i(2, [[k]]), t([[}]]),
+  }),
+
+  s({
+    name = "[G] Integral definite",
+    trig = [[\b(?<!\\)dint]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\int_{]]), i(1, [[-\infty]]), t([[}^{]]), i(2, [[\infty]]), t([[} ]]),
+  }),
+
+  s({
+    name = "[G] Sum",
+    trig = [[\b(?<!\\)Ssm]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\sum_{]]), i(1, [[i]]), t([[=]]), i(2, [[1]]), t([[}^{]]), i(3, [[\infty]]), t([[} ]]),
+  }),
+
+  s({
+    name = "[G] Product",
+    trig = [[\b(?<!\\)Ppr]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\prod{]]), i(1, [[i]]), t([[=]]), i(2, [[1]]), t([[}^{]]), i(3, [[n]]), t([[} ]]),
+  }),
+
+  s({
+    name = "[G] Big cup",
+    trig = [[\b(?<!\\)Bcu]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\bigcup_{]]), i(1, [[i]]), t([[=]]), i(2, [[1]]), t([[}^{]]), i(3, [[\infty]]), t([[} ]]),
+  }),
+
+  s({
+    name = "[G] Big cap",
+    trig = [[\b(?<!\\)Bca]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\bigcap_{]]), i(1, [[i]]), t([[=]]), i(2, [[1]]), t([[}^{]]), i(3, [[\infty]]), t([[} ]]),
+  }),
+
+  s({
+    name = "[G] Inline limit",
+    trig = [[\b(?<!\\)lim]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\lim_{]]), i(1, [[x]]), t([[ \to ]]), i(2, [[\infty]]), t([[} ]]),
+  }),
+
+  s({
+    name = "[G] Limit",
+    trig = [[\b(?<!\\)Lim]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\lim\limits_{]]), i(1, [[x]]), t([[ \to ]]), i(2, [[\infty]]), t([[} ]]),
+  }),
+
+  s({
+    name = "[G] Arrow limit",
+    trig = [[\b(?<!\\)alim]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\xrightarrow[]]), i(1, [[x]]), t([[ \to ]]), i(2, [[\infty]]), t([[]{]]), i(3), t([[} ]]),
+  }),
+
+  -- Simple trigger interpolation
 }
