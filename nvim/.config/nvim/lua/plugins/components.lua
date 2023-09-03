@@ -218,7 +218,19 @@ return {
         rooter_patterns = {".git", ".hg", ".svn"},
         trigger_patterns = {"*"},
         fallback_to_parent = true,
-        manual = false,
+        update_cwd = true,
+      })
+
+      vim.api.nvim_create_autocmd({"BufEnter"}, {
+        group = vim.api.nvim_create_augroup("nvim_rooter", {clear = true}),
+        callback = function()
+          -- Don't call in floating window buffers
+          if vim.api.nvim_win_get_config(vim.fn.win_getid()).zindex then
+            return
+          end
+
+          require("nvim-rooter").rooter()
+        end,
       })
     end,
   },
@@ -266,12 +278,9 @@ return {
     require("toggleterm").setup({
       direction = "float",
       shell = "fish",
-      autochdir = false,
+      autochdir = true,
       shade_terminals = false,
     })
-
-    -- Enable line numbers in float, https://github.com/akinsho/toggleterm.nvim/issues/280
-    vim.cmd([[autocmd TermEnter term://*toggleterm#* setlocal number relativenumber]])
   end,
 },
 }

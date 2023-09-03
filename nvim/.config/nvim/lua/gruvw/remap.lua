@@ -135,5 +135,5 @@ keymap({"i", "s", "n"}, "<C-Tab>", [[<cmd>lua require("luasnip").jump(1)<CR>]], 
 keymap({"i", "s", "n"}, "<C-S-Tab>", [[<cmd>lua require("luasnip").jump(-1)<CR>]], opts)
 keymap({"i", "s", "n"}, "<C-0>", snip_jump_end, opts)
 
--- Open floating terminal
-keymap("n", "<leader>T", [[<cmd>lua require("toggleterm").toggle()<CR>]], opts)
+-- Open floating terminal, enable line numbers in float (autocmd do not work)
+keymap("n", "<leader>T", [[<cmd>lua require("toggleterm").toggle()<CR><cmd>setlocal number relativenumber<CR><cmd>:startinsert<CR>]], opts)
