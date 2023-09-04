@@ -6,14 +6,14 @@ set dotdirs=0
 
 " Own config
 " Key map (used ZQ<CR> to close)
-nnoremap sc :!code %c<CR>
-nnoremap sC :!code .<CR>
-nnoremap sV :!nohup kitty nvim %c:p &>/dev/null &<CR>
-nnoremap sv :!nvim %c:p<CR>
-nnoremap sh za
-nnoremap sn :!nemo . &<CR>
-nnoremap s<CR> :!fish<CR>
-nnoremap sf :FZFlocate<CR>
+nnoremap <space>c :!code %c<CR>
+nnoremap <space>C :!code .<CR>
+nnoremap <space>V :!nohup kitty nvim %c:p &>/dev/null &<CR>
+nnoremap <space>v :!nvim %c:p<CR>
+nnoremap <space>h za
+nnoremap <space>n :!nemo . &<CR>
+nnoremap <space><CR> :!fish<CR>
+nnoremap <space>f :FZFlocate<CR>
 
 nnoremap os :vsplit<CR>
 nnoremap ov :view<CR>
@@ -35,7 +35,7 @@ nnoremap yP :!echo -n %d:p | xclip -selection clipboard %i<cr>:echo expand('%"d:
 " nnoremap ZP :!echo %d:p<CR>:exit<CR>
 
 command! dragon dragon -a -x %f
-nnoremap sd :dragon<CR>
+nnoremap <space>d :dragon<CR>
 
 " Use editor to rename
 nnoremap cw :rename<cr>
