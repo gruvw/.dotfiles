@@ -778,7 +778,43 @@ return
 
   -- Automatic
 
+  s({
+    name = "[G] Auto subscript",
+    trig = [[(\B\\[A-Za-z]+|\b\d*[A-Za-z])(\d)]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    rg(1), t([[_]]), rg(2),
+  }),
 
+  s({
+    name = "[G] Auto subscript 2",
+    trig = [[_([A-Za-z\d]{2})]],
+    trigEngine = "ecma",
+    wordTrig = false,
+    condition = in_mathzone,
+  }, {
+    t([[_{]]), rg(1), t([[}]]),
+  }),
+
+  s({
+    name = "[G] Auto subscript after }",
+    trig = [[\}(\d)]],
+    trigEngine = "ecma",
+    wordTrig = false,
+    condition = in_mathzone,
+  }, {
+    t([[}_]]), rg(1),
+  }),
+
+  s({
+    name = "[G] Square root auto",
+    trig = [[\((((?:\([^()]*\)|[^()])*))\)rt]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\sqrt{]]), rg(1), t([[}]]),
+  }),
 
   -- Postfix modifications
 

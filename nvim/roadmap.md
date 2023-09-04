@@ -54,15 +54,15 @@
 
 ## Advanced editor functionalities
 
-- [ ] LeetCode (leetbuddy)
+- [ ] Todos integration, with tags regex, in-code coloring, listing (todo-comments.nvim)
+- [ ] Open file in hex/byte editor view
 - [ ] Clipboard history (neoclip)
+
+- [ ] Highlight weird non-ASCII characters
+- [ ] LeetCode (leetbuddy)
 - [ ] GitHub integration
-- [ ] Todos integration, with tags regex, in-code coloring, listing
 - [ ] Add current file to gitignore
-- [ ] Open file in hex editor view
 - [ ] Image preview/quick open, link resolution
-- [ ] LaTeX math preview
 - [ ] Markdown preview
 - [ ] Random everything, Lorem Ipsum generator, custom length
-- [ ] Highlight weird non-ASCII characters
-- [ ] Open link from editor to browser (detect links)
+- [X] Open link from editor to browser (detect links)

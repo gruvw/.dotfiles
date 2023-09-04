@@ -47,6 +47,9 @@ keymap("n", "yM", ":let @+=trim(execute('1messages')) <bar> echo 'copied'<CR>", 
 keymap("t", "<C-t>", [[<C-\><C-n>]], remap)
 keymap("t", "<C-w>", [[<C-\><C-n>:q<CR>]], remap)
 
+-- Open links
+keymap("n", "gx", [[:silent execute "!open " . shellescape(expand("<cfile>"), 1)<CR>]], remap)
+
 -- Open terminal in new WM window
 keymap("n", "<leader><CR>", [[:silent exec "!nohup kitty &>/dev/null &"<CR>]], remap)
 
