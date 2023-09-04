@@ -49,10 +49,6 @@ local filetype_cmpnt = {
   end,
 }
 
-local function LspStatus()
-    return
-end
-
 -- File name
 local filename_cmpnt = {
   "filename",
@@ -96,27 +92,27 @@ return {
       require("lsp-progress").setup()
 
       require("lualine").setup({
-      options = {
-        theme = "monokai-pro",
-        globalstatus = true,
-        icons_enabled = true,
-        section_separators = {left = "", right = ""},
-        component_separators = {left = "|", right = "|"},
-        refresh = {
-          statusline = 500,
-          tabline = 500,
-          winbar = 500,
-        }
-      },
-      sections = {
-        lualine_a = {mode_cmpnt},
-        lualine_b = {"branch"},
-        lualine_c = {filename_cmpnt, "diff"},
-        lualine_x = {"diagnostics", filetype_cmpnt},
-        lualine_y = {progress_cmpnt},
-        lualine_z = {"location"},
-      },
-    })
+        options = {
+          theme = "monokai-pro",
+          globalstatus = true,
+          icons_enabled = true,
+          section_separators = {left = "", right = ""},
+          component_separators = {left = "|", right = "|"},
+          refresh = {
+            statusline = 500,
+            tabline = 500,
+            winbar = 500,
+          }
+        },
+        sections = {
+          lualine_a = {mode_cmpnt},
+          lualine_b = {"branch"},
+          lualine_c = {filename_cmpnt, "diff"},
+          lualine_x = {"diagnostics", filetype_cmpnt},
+          lualine_y = {progress_cmpnt},
+          lualine_z = {"location"},
+        },
+      })
     end
   },
 
@@ -269,6 +265,7 @@ return {
 
   -- https://github.com/gelguy/wilder.nvim
   {
+    -- enabled = false,
     "gelguy/wilder.nvim",
     event = "CmdlineEnter",
     build = ":UpdateRemotePlugins",

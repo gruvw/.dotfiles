@@ -76,6 +76,10 @@ keymap("n", "<leader>t", [[:lua require("nvim-tree.api").tree.toggle()<CR>]], re
 
 -- Git (g)
 keymap("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", remap)
+keymap("n", "<leader>gn", [[:lua require("gitsigns").next_hunk()<CR>]], remap)
+keymap("n", "<leader>gN", [[:lua require("gitsigns").prev_hunk()<CR>]], remap)
+keymap("n", "<leader>gs", [[:lua require("gitsigns").stage_hunk()<CR>]], remap)
+keymap("n", "<leader>gu", [[:lua require("gitsigns").undo_stage_hunk()<CR>]], remap)
 keymap("n", "<leader>gg", ":G<CR>", remap)
 
 -- Code (c)

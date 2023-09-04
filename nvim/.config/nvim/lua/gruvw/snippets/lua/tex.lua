@@ -32,14 +32,14 @@ local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
 
--- Regex match group helper, groups starts at 0
+-- Regex match group content helper, groups start at 0
 local rg = function(group_nb)
   return f(function(_, snip)
     return snip.captures[group_nb]
   end)
 end
 
--- Selected text + insert node helper
+-- Insert node with selected text placeholder helper
 local si = function(nb)
   return d(nb, function(_, parent)
     return sn(nil, i(1, parent.snippet.env.TM_SELECTED_TEXT))
