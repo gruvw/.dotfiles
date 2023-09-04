@@ -32,7 +32,7 @@
   - [ ] Dart
   - [X] Python
   - [ ] Java
-  - [ ] Rust
+  - [X] Rust
   - [X] Emmet
 
 - [X] Ctrl+p equivalent to search for code elements

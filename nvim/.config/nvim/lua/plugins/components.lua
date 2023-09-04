@@ -33,15 +33,25 @@ local mode_cmpnt = {
 local filetype_cmpnt = {
   "filetype",
   icon = {align = "left"},
-  -- Show "+" if LSP client is running
+  -- Show "+" if LSP client is running, "~" when progress
   fmt = function(s)
     if #vim.lsp.buf_get_clients() > 0 then
-      return "+"
+      local progress = require("lsp-progress").progress({
+        format = function(messages)
+          return #messages > 0
+        end,
+      })
+
+      return progress and "~" or "+"
     end
 
     return "-"
   end,
 }
+
+local function LspStatus()
+    return
+end
 
 -- File name
 local filename_cmpnt = {
@@ -78,8 +88,14 @@ return {
     dependencies = {
       -- https://github.com/nvim-tree/nvim-web-devicons
       "nvim-tree/nvim-web-devicons", -- icons support
+
+      -- https://github.com/linrongbin16/lsp-progress.nvim
+      "linrongbin16/lsp-progress.nvim",
     },
-    opts = {
+    config = function()
+      require("lsp-progress").setup()
+
+      require("lualine").setup({
       options = {
         theme = "monokai-pro",
         globalstatus = true,
@@ -100,7 +116,8 @@ return {
         lualine_y = {progress_cmpnt},
         lualine_z = {"location"},
       },
-    },
+    })
+    end
   },
 
   -- https://github.com/nvim-tree/nvim-tree.lua
@@ -163,6 +180,16 @@ return {
         system_open = {
           cmd = "kitty",
           args = {"vifm"},
+        },
+        diagnostics = {
+          enable = true,
+          show_on_dirs = true,
+          icons = {
+            hint = "H",
+            info = "I",
+            warning = "W",
+            error = "E",
+          },
         },
         -- Floating window and borders
         view = {
