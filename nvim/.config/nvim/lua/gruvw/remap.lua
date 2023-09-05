@@ -3,9 +3,6 @@
 local keymap = vim.keymap.set
 local remap = {noremap = true, silent = true}
 
--- Remap esc to jk
--- keymap("i", "jk", "<Esc>", {})
-
 -- Easy save/quit
 keymap("n", "Zs", ":w<CR>", remap)
 keymap("n", "Zq", ":q<CR>", remap)
@@ -54,7 +51,7 @@ keymap("n", "gx", [[:silent execute "!open " . shellescape(expand("<cfile>"), 1)
 keymap("n", "<leader><CR>", [[:silent exec "!nohup kitty &>/dev/null &"<CR>]], remap)
 
 -- Functions remap
-keymap("n", "<leader>D", ":lua insert_date()<CR>", remap)
+keymap("n", "<leader>fD", ":lua insert_date()<CR>", remap)
 
 -- Plugins remap
 

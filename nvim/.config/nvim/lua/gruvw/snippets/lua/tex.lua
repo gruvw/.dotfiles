@@ -842,6 +842,51 @@ return
     t([[\mathbb{]]), rg(1), t([[}]]),
   }),
 
+  s({
+    name = "[G] Math cal (F##)",
+    trig = [[\\mathbb{([A-Z])}#]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    t([[\mathcal{]]), rg(1), t([[}]]),
+  }),
+
+  s({
+    name = "[G] Math bb +/- modifier",
+    trig = [[(\\mathbb{[A-Z]})(_[+-])?(\^[\w\*])?([+-])]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    rg(1), t([[_]]), rg(4), rg(3),
+  }),
+
+  s({
+    name = "[G] Math bb superscript modifier",
+    trig = [[(\\mathbb{[A-Z]})(_[+-])?([\w\*])]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    rg(1), rg(2), t([[^]]), rg(3),
+  }),
+
+  s({
+    name = "[G] N root auto / modify",
+    trig = [[\\sqrt(?:\[\w\])?\{(.*)\}(\w)]],
+    trigEngine = "ecma",
+    priority = 1001, -- conflict with "}_2"
+    condition = in_mathzone,
+  }, {
+    t([[\sqrt[]]), rg(2), t([[]{]]), rg(1), t([[}]]),
+  }),
+
+  s({
+    name = "[G] Star title post-fix",
+    trig = [[(\\((sub)*section|chapter))({.*)}\*]],
+    trigEngine = "ecma",
+  }, {
+    rg(1), t([[*]]), rg(4), t([[}]]),
+  }),
+
   -- Complex code interpolated
 
 

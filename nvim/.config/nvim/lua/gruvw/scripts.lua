@@ -14,9 +14,6 @@ autocmd({"BufWritePre"}, {
     end,
 })
 
--- Autostart in insert mode for new files
--- vim.cmd("autocmd BufNewFile * startinsert")
-
 -- Highlight on yank
 autocmd("TextYankPost", {
     group = augroup("highlight_yank", {}),
@@ -95,7 +92,7 @@ autocmd({"BufWinEnter", "FileType"}, {
 --   end
 -- })
 
--- Format options
+-- Format options (don't comment continuation in normal mode)
 autocmd({"BufNewFile", "BufRead"}, {
   callback = function(args)
     vim.opt.formatoptions = "jctrlq"
