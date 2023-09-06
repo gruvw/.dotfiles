@@ -760,11 +760,6 @@ return
     t([[\mathrm{]]), rg(1), t([[}]]),
   }),
 
-
-  -- Trigger match interpolation transformed
-
-
-
   -- Arguments with trigger match interpolation
 
   s({
@@ -862,8 +857,9 @@ return
 
   s({
     name = "[G] Math bb superscript modifier",
-    trig = [[(\\mathbb{[A-Z]})(_[+-])?([\w\*])]],
+    trig = [[(\\mathbb{[A-Z]})(_[+-])?\^?([\w\*])+]],
     trigEngine = "ecma",
+    priority = 1001, -- conflict with "n_2"
     condition = in_mathzone,
   }, {
     rg(1), rg(2), t([[^]]), rg(3),
@@ -885,6 +881,35 @@ return
     trigEngine = "ecma",
   }, {
     rg(1), t([[*]]), rg(4), t([[}]]),
+  }),
+
+  -- Trigger match interpolation transformed
+
+  s({
+    name = "[G] Left-right",
+    trig = [[\b(?<!\\)lr([\|\)\]\>\}vV])]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    d(1, function(_, parent)
+      local trans = {["|"] = {"|", "|"}, [")"] = {"(", ")"}, ["]"] = {"[", "]"}, [">"] = {"<", ">"}, ["}"] = {"{", "}"}, ["v"] = {"\\lvert", "\\rvert"}, ["V"] = {"\\lVert", "\\rVert"}}
+      local pair = trans[parent.snippet.captures[1]]
+
+      return sn(nil, {t([[\left]] .. pair[1] .. [[ ]]), i(1), t([[ \right]] .. pair[2])})
+    end),
+  }),
+
+  s({
+    name = "[G] Greek letter",
+    trig = [[\b(?<!\\)(?<![\\a-zA-Z])z([a-zA-Z])(?![a-zA-Z])]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    f(function(_, snip)
+      local trans = {["a"] = "\\alpha", ["b"] = "\\beta", ["g"] = "\\gamma", ["G"] = "\\Gamma", ["d"] = "\\delta", ["D"] = "\\Delta", ["e"] = "\\epsilon", ["E"] = "\\varepsilon", ["z"] = "\\zeta", ["h"] = "\\eta", ["t"] = "\\theta", ["T"] = "\\Theta", ["k"] = "\\kappa", ["i"] = "\\iota", ["l"] = "\\lambda", ["L"] = "\\Lambda", ["m"] = "\\mu", ["n"] = "\\nu", ["x"] = "\\xi", ["X"] = "\\Xi", ["p"] = "\\pi", ["P"] = "\\Pi", ["r"] = "\\rho", ["s"] = "\\sigma", ["S"] = "\\Sigma", ["o"] = "\\omega", ["O"] = "\\Omega", ["c"] = "\\chi", ["f"] = "\\phi", ["F"] = "\\varphi", ["I"] = "\\Phi", ["y"] = "\\upsilon", ["Y"] = "\\Upsilon", ["v"] = "\\psi", ["V"] = "\\Psi", ["u"] = "\\tau"}
+
+      return trans[snip.captures[1]] or ("z" .. snip.captures[1])
+    end),
   }),
 
   -- Complex code interpolated
