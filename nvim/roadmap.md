@@ -42,7 +42,7 @@
 - [X] Color brackets
 - [X] Commands auto-complete
 - [ ] Spell checker
-- [ ] Hyper-snips
+- [X] Hyper-snips
 - [X] Integrated terminal (look into toggleterm)
 - [ ] Tasks: configurable + run on keyboard shortcut or from palette (overseer.nvim)
 - [X] Comment by keybind
@@ -57,6 +57,7 @@
 - [ ] Todos integration, with tags regex, in-code coloring, listing (todo-comments.nvim)
 - [ ] Open file in hex/byte editor view
 - [ ] Clipboard history (neoclip)
+- [ ] DAP
 
 - [ ] Highlight weird non-ASCII characters
 - [ ] LeetCode (leetbuddy)

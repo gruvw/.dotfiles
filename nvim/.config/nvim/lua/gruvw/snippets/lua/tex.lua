@@ -914,5 +914,48 @@ return
 
   -- Complex code interpolated
 
+  s({
+    name = "[G] Matrix",
+    trig = [[M([\ pbvBV])(\d)(\d)(.)([bn])]],
+    trigEngine = "ecma",
+    condition = in_mathzone,
+  }, {
+    d(1, function(_, parent)
+      local cg = parent.snippet.captures
+
+      local res = {}
+      local type = cg[1] == " " and "" or cg[1]
+      local line = cg[5] == "b" and "" or nil
+      local indent = line and "    "
+
+      table.insert(res, t({[[\begin{]] .. type .. [[matrix}]], line}))
+
+      local rows = tonumber(cg[2])
+      local cols = tonumber(cg[3])
+
+      for row = 0, rows - 1  do
+        for col = 0, cols - 1 do
+          if col == 0 then
+            table.insert(res, t(indent))
+          end
+
+          table.insert(res, i(row * cols + col + 1, cg[4]))
+
+          if col + 1 ~= cols then
+            table.insert(res, t([[ & ]]))
+          else
+            if row + 1 ~= rows then
+              table.insert(res, t([[\\]]))
+            end
+            table.insert(res, t({"", line}))
+          end
+        end
+      end
+
+      table.insert(res, t([[\end{]] .. type .. [[matrix}]]))
+
+      return sn(nil, res)
+    end),
+  }),
 
 }
