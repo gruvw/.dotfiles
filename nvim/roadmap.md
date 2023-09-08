@@ -55,9 +55,13 @@
 ## Advanced editor functionalities
 
 - [ ] Todos integration, with tags regex, in-code coloring, listing (todo-comments.nvim)
+- [ ] Local settings
 - [ ] Open file in hex/byte editor view
 - [ ] Clipboard history (neoclip)
 - [ ] DAP
+- [ ] NeoTest
+
+## Fun and extra
 
 - [ ] Highlight weird non-ASCII characters
 - [ ] LeetCode (leetbuddy)
@@ -66,4 +70,6 @@
 - [ ] Image preview/quick open, link resolution
 - [ ] Markdown preview
 - [ ] Random everything, Lorem Ipsum generator, custom length
+- [ ] nvim-notify
+- [X] dressing.nvim
 - [X] Open link from editor to browser (detect links)

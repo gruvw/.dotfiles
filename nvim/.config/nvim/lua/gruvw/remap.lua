@@ -31,6 +31,9 @@ keymap("n", "<C-.>", ":set list!<CR>", remap)
 keymap("n", "gg", "gg0", remap)
 keymap("n", "G", "G0", remap)
 
+-- Tab as indent, https://vi.stackexchange.com/questions/42945/indentkeys-tab-behavior
+keymap("i", "<Tab>", [[getline(".") == "" && line(".") != 1 ? (line(".") != line("$") ? "\\<Esc>\\"_ddko" : "\\<Esc>\\"_ddo") : "\\<Tab>"]], {expr = true, noremap = true})
+
 -- Full file format
 keymap("n", "=A", "gg=G''", remap)
 
@@ -40,9 +43,9 @@ keymap("n", "yA", ":%y+<CR>", remap)
 -- Copy vim message
 keymap("n", "yM", ":let @+=trim(execute('1messages')) <bar> echo 'copied'<CR>", remap)
 
--- Terminal normal mode
+-- Terminal normal mode, close
 keymap("t", "<C-t>", [[<C-\><C-n>]], remap)
-keymap("t", "<C-w>", [[<C-\><C-n>:q<CR>]], remap)
+keymap("t", "<C-c>", [[<C-\><C-n>:q<CR>]], remap)
 
 -- Open links
 keymap("n", "gx", [[:silent execute "!open " . shellescape(expand("<cfile>"), 1)<CR>]], remap)

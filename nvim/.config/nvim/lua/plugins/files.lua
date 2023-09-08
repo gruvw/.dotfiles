@@ -62,6 +62,9 @@ return {
               ["<esc>"] = false,
               ["Zq"] = require("telescope.actions").close,
             },
+            i = {
+              ["<C-c>"] = require("telescope.actions").close,
+            }
           },
         },
         extensions = {

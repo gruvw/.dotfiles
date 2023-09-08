@@ -299,17 +299,63 @@ return {
   },
 
   -- https://github.com/akinsho/toggleterm.nvim
-{
-  "akinsho/toggleterm.nvim",
-  version = "*",
-  lazy = true,
-  config = function()
-    require("toggleterm").setup({
-      direction = "float",
-      shell = "fish",
-      autochdir = true,
-      shade_terminals = false,
-    })
-  end,
-},
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    lazy = true,
+    config = function()
+      require("toggleterm").setup({
+        direction = "float",
+        shell = "fish",
+        autochdir = true,
+        shade_terminals = false,
+      })
+    end,
+  },
+
+  -- https://github.com/stevearc/dressing.nvim
+  {
+    "stevearc/dressing.nvim",
+    dependencies = {
+      "telescope.nvim",
+    },
+    event = "VeryLazy",
+    config = function()
+      require("dressing").setup({
+        input = {
+          default_prompt = "Input:",
+          -- start_in_insert = false,
+          border = "single",
+          prefer_width = 40,
+          mappings = {
+            n = {
+              ["<C-c>"] = "Close",
+              ["Zq"] = "Close",
+              ["<CR>"] = "Confirm",
+              ["<Up>"] = "HistoryPrev",
+              ["<Down>"] = "HistoryNext",
+            },
+            i = {
+              ["<C-c>"] = "Close",
+              ["<CR>"] = "Confirm",
+              ["<Up>"] = "HistoryPrev",
+              ["<Down>"] = "HistoryNext",
+            },
+          },
+        },
+        select = {
+          backend = {"telescope", "fzf_lua", "fzf", "builtin", "nui"},
+          trim_prompt = true,
+          builtin = {
+            show_numbers = true,
+            border = "single",
+            win_options = {
+              winblend = 0,
+              cursorline = true,
+            },
+          },
+        },
+      })
+    end
+  },
 }

@@ -41,6 +41,109 @@ return {
         comment_empty = false,
         create_mappings = false,
       })
-    end
+    end,
   },
+
+  -- https://github.com/stevearc/overseer.nvim
+  {
+    "stevearc/overseer.nvim",
+    event = "VeryLazy",
+    config = function()
+      local overseer = require("overseer")
+      overseer.setup({
+        templates = {"builtin"},
+        task_list = {
+          default_detail = 1,
+          max_width = {0.3},
+          separator = "────────────────────────────────────────",
+          direction = "left",
+          bindings = {
+            ["g?"] = "ShowHelp",
+            ["<CR>"] = "RunAction",
+            ["c"] = "Edit",
+            ["o"] = "Open",
+            ["<C-v>"] = "OpenVsplit",
+            ["<C-s>"] = "OpenSplit",
+            ["<C-f>"] = "OpenFloat",
+            ["<C-q>"] = "OpenQuickFix",
+            ["p"] = "TogglePreview",
+            ["<C-l>"] = "IncreaseDetail",
+            ["<C-h>"] = "DecreaseDetail",
+            ["L"] = "IncreaseAllDetail",
+            ["H"] = "DecreaseAllDetail",
+            ["<"] = "DecreaseWidth",
+            [">"] = "IncreaseWidth",
+            ["{"] = "PrevTask",
+            ["}"] = "NextTask",
+            ["<C-k>"] = "ScrollOutputUp",
+            ["<C-j>"] = "ScrollOutputDown",
+          },
+        },
+        form = {
+          border = "single",
+        },
+        task_launcher = {
+          bindings = {
+            i = {
+              ["<C-s>"] = "Submit",
+              ["<C-c>"] = "Cancel",
+            },
+            n = {
+              ["<CR>"] = "Submit",
+              ["<C-s>"] = "Submit",
+              ["<C-c>"] = "Cancel",
+              ["g?"] = "ShowHelp",
+            },
+          },
+        },
+        task_editor = {
+          bindings = {
+            i = {
+              ["<CR>"] = "NextOrSubmit",
+              ["<C-s>"] = "Submit",
+              ["<C-Tab>"] = "Next",
+              ["<C-S-Tab>"] = "Prev",
+              ["<C-c>"] = "Cancel",
+            },
+            n = {
+              ["<CR>"] = "NextOrSubmit",
+              ["<C-s>"] = "Submit",
+              ["<C-Tab>"] = "Next",
+              ["<C-S-Tab>"] = "Prev",
+              ["<C-c>"] = "Cancel",
+              ["g?"] = "ShowHelp",
+            },
+          },
+        },
+        confirm = {
+          border = "signle",
+        },
+        task_win = {
+          border = "single",
+        },
+        component_aliases = {
+          default = {
+            {"display_duration", detail_level = 2},
+            "on_output_summarize",
+            "on_exit_set_status",
+            "on_complete_notify",
+            {"on_complete_dispose", timeout = 900, statuses = {"SUCCESS"}},
+          },
+          default_vscode = {
+            "default",
+            "on_result_diagnostics",
+            "on_result_diagnostics_quickfix",
+          },
+        },
+      })
+
+      -- Custom templates
+      local templates = {
+        "python",
+      }
+      for _, t in ipairs(templates) do
+        overseer.register_template(require("gruvw.overseer." .. t))
+      end
+    end,
+  }
 }
