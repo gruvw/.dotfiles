@@ -47,7 +47,7 @@ return {
   -- https://github.com/stevearc/overseer.nvim
   {
     "stevearc/overseer.nvim",
-    event = "VeryLazy",
+    lazy = true,
     config = function()
       local overseer = require("overseer")
       overseer.setup({
@@ -81,6 +81,7 @@ return {
         },
         form = {
           border = "single",
+          win_opts = {winblend = 0},
         },
         task_launcher = {
           bindings = {
@@ -117,17 +118,18 @@ return {
         },
         confirm = {
           border = "signle",
+          win_opts = {winblend = 0},
         },
         task_win = {
           border = "single",
+          win_opts = {winblend = 0},
         },
         component_aliases = {
           default = {
-            {"display_duration", detail_level = 2},
+            "display_duration",
             "on_output_summarize",
             "on_exit_set_status",
             "on_complete_notify",
-            {"on_complete_dispose", timeout = 900, statuses = {"SUCCESS"}},
           },
           default_vscode = {
             "default",
@@ -140,6 +142,7 @@ return {
       -- Custom templates
       local templates = {
         "python",
+        "tex",
       }
       for _, t in ipairs(templates) do
         overseer.register_template(require("gruvw.overseer." .. t))

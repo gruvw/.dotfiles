@@ -44,7 +44,7 @@
 - [ ] Spell checker
 - [X] Hyper-snips
 - [X] Integrated terminal (look into toggleterm)
-- [ ] Tasks: configurable + run on keyboard shortcut or from palette (overseer.nvim)
+- [X] Tasks: configurable + run on keyboard shortcut or from palette (overseer.nvim)
 - [X] Comment by keybind
 - [X] Error Lens
 - [X] Path intellisense

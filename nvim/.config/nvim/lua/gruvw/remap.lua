@@ -58,7 +58,7 @@ keymap("n", "<leader>fD", ":lua insert_date()<CR>", remap)
 
 -- Plugins remap
 
--- Telescope (s)
+-- Telescope, search (s)
 keymap("n", "<leader>sf", [[:lua require("telescope.builtin").find_files()<CR>]], remap)
 keymap("n", "<leader>sg", [[:lua require("telescope.builtin").live_grep()<CR>]], remap)
 keymap("n", "<leader>su", [[:lua require("telescope").extensions.undo.undo()<CR>]], remap)
@@ -144,3 +144,18 @@ keymap({"i", "s", "n"}, "<C-0>", snip_jump_end, opts)
 
 -- Open floating terminal, enable line numbers in float (autocmd do not work)
 keymap("n", "<leader>T", [[<cmd>lua require("toggleterm").toggle()<CR><cmd>setlocal number relativenumber<CR><cmd>:startinsert<CR>]], opts)
+
+-- Run (r)
+keymap("n", "<leader>ro", [[:lua require("overseer").toggle()<CR>]], remap)
+keymap("n", "<leader>rr", [[:lua require("overseer").run_template()<CR>]], remap)
+keymap("n", "<leader>rb", [[:lua require("overseer").run_template({tags = {require("overseer").TAG.BUILD}})<CR>]], remap)
+keymap("n", "<leader>rt", [[:lua require("overseer").run_template({tags = {require("overseer").TAG.TEST}})<CR>]], remap)
+keymap("n", "<leader>rl", function()
+  local overseer = require("overseer")
+  local tasks = overseer.list_tasks({recent_first = true})
+  if vim.tbl_isempty(tasks) then
+    vim.notify("No tasks found", vim.log.levels.WARN)
+  else
+    overseer.run_action(tasks[1], "restart")
+  end
+end, remap)

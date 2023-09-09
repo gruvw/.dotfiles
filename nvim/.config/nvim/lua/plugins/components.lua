@@ -29,12 +29,14 @@ local mode_cmpnt = {
   end,
 }
 
--- File type
+-- File type, LSP, overseer
 local filetype_cmpnt = {
   "filetype",
   icon = {align = "left"},
-  -- Show "+" if LSP client is running, "~" when progress
   fmt = function(s)
+    -- LSP
+    -- Show "+" if LSP client is running, "~" when progress
+    local lsp = ""
     if #vim.lsp.buf_get_clients() > 0 then
       local progress = require("lsp-progress").progress({
         format = function(messages)
@@ -42,10 +44,24 @@ local filetype_cmpnt = {
         end,
       })
 
-      return progress and "~" or "+"
+      lsp = progress and "~" or "+"
+    else
+      lsp = "-"
     end
 
-    return "-"
+    -- Overseer
+    local tasks = require("overseer.task_list").list_tasks({unique = true})
+    local tasks_by_status = require("overseer.util").tbl_group_by(tasks, "status")
+    local status = ""
+    if tasks_by_status["RUNNING"] then
+      status = " R"
+    elseif tasks_by_status["FAILURE"] then
+      status = " F"
+    elseif tasks_by_status["SUCCESS"] then
+      status = " S"
+    end
+
+    return lsp .. status
   end,
 }
 
@@ -87,6 +103,8 @@ return {
 
       -- https://github.com/linrongbin16/lsp-progress.nvim
       "linrongbin16/lsp-progress.nvim",
+
+      "overseer.nvim",
     },
     config = function()
       require("lsp-progress").setup()
@@ -325,8 +343,9 @@ return {
         input = {
           default_prompt = "Input:",
           -- start_in_insert = false,
+          relative = "editor",
           border = "single",
-          prefer_width = 40,
+          prefer_width = 50,
           mappings = {
             n = {
               ["<C-c>"] = "Close",
