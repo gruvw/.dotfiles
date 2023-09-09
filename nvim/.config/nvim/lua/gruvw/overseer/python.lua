@@ -1,21 +1,19 @@
 -- ~/.config/nvim/lua/gruvw/overseer/python.lua
 
 local overseer = require("overseer")
-local files = require("overseer.files")
 
 return {
   name = "Python script generator",
   generator = function(opts, cb)
-    local scripts = vim.tbl_filter(
-      function(filename)
-        return filename:match("%.py$")
-      end,
-      files.list_files(opts.dir)
-    )
+    local cwd = vim.fn.getcwd()
+    local files = vim.split(vim.fn.glob(cwd .. "/**/*.py"), "\n", {trimempty=true})
 
     local res = {}
 
-    for _, filename in ipairs(scripts) do
+    for _, file in ipairs(files) do
+
+      local filename = string.sub(file, #cwd + 2)
+
       table.insert(res, {
         name = "Python " .. filename,
         params = {
@@ -26,8 +24,10 @@ return {
           },
         },
         builder = function(params)
+
           local args = params.args or {}
-          table.insert(args, files.join(opts.dir, filename))
+          table.insert(args, file)
+
           return {
             name = "Python " .. filename,
             cmd = {"python"},

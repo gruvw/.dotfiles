@@ -55,7 +55,7 @@ return {
         task_list = {
           default_detail = 1,
           max_width = {0.3},
-          separator = "────────────────────────────────────────",
+          separator = "",
           direction = "left",
           bindings = {
             ["g?"] = "ShowHelp",

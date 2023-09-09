@@ -1,24 +1,25 @@
 -- ~/.config/nvim/lua/gruvw/overseer/tex.lua
 
 local overseer = require("overseer")
-local files = require("overseer.files")
 
 return {
   name = "Tex file generator",
   generator = function(opts, cb)
-    local scripts = vim.tbl_filter(
-      function(filename)
-        return filename:match("%.tex$")
-      end,
-      files.list_files(opts.dir)
-    )
+    local cwd = vim.fn.getcwd()
+    local files = vim.split(vim.fn.glob(cwd .. "/**/*.tex"), "\n", {trimempty=true})
 
     local res = {}
 
-    for _, filename in ipairs(scripts) do
+    for _, file in ipairs(files) do
+
+      local filename = string.sub(file, #cwd + 2)
+
       table.insert(res, {
         name = "Tex " .. filename,
         builder = function(params)
+          -- Create out for xelatex (if not present)
+          vim.cmd([[:silent exec "!mkdir out"]])
+
           return {
             name = "Tex " .. filename,
             cmd = {"xelatex"},
@@ -26,10 +27,9 @@ return {
               "-synctex=1",
               "-interaction=nonstopmode",
               "-file-line-error",
-              "-pdf",
               "--shell-escape",
-              "-outdir=" .. files.join(opts.dir, "out"),
-              files.join(opts.dir, filename),
+              "-output-directory=out",
+              file,
             },
           }
         end,

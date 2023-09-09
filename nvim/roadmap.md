@@ -70,6 +70,7 @@
 - [ ] Image preview/quick open, link resolution
 - [ ] Markdown preview
 - [ ] Random everything, Lorem Ipsum generator, custom length
+- [ ] Synctex
 - [ ] nvim-notify
 - [X] dressing.nvim
 - [X] Open link from editor to browser (detect links)

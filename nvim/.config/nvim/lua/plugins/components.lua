@@ -179,6 +179,10 @@ return {
         vim.keymap.set("n", "<Tab>", api.node.open.preview, opts("Open Preview"))
         vim.keymap.set("n", "g?", api.tree.toggle_help, opts("Show Help"))
         vim.keymap.set("n", "F", api.live_filter.clear, opts("Clear Filter"))
+        vim.keymap.set("n", "<leader><CR>", function(node, ...)
+          node = node or require("nvim-tree.lib").get_node_at_cursor()
+          vim.cmd([[silent exec "!nohup xdg-open ]] .. node.absolute_path .. [[ &>/dev/null &"]])
+        end, opts("Open in native app"))
       end
 
       require("nvim-tree").setup({
@@ -261,7 +265,7 @@ return {
 
       -- Sets root directory automagically
       require("nvim-rooter").setup({
-        rooter_patterns = {".git", ".root"},
+        rooter_patterns = {".git", ".root", "latex-img"},
         trigger_patterns = {"*"},
         fallback_to_parent = true,
         update_cwd = true,

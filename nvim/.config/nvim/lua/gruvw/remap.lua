@@ -6,6 +6,7 @@ local remap = {noremap = true, silent = true}
 -- Easy save/quit
 keymap("n", "Zs", ":w<CR>", remap)
 keymap("n", "Zq", ":q<CR>", remap)
+keymap("n", "ZQ", ":qa<CR>", remap)
 keymap("n", "Zz", ":wq<CR>", remap)
 
 -- Empty current line
