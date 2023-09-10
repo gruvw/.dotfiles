@@ -5,6 +5,24 @@ return {
   {
     "loctvl842/monokai-pro.nvim",
     config = function()
+      local colors = require("monokai-pro.colorscheme.palette.spectrum")
+      local base = {
+        dark = colors.dark2,
+        black = colors.dark1,
+        red = colors.accent1,
+        green = colors.accent4,
+        yellow = colors.accent3,
+        orange = colors.accent2,
+        magenta = colors.accent6,
+        cyan = colors.accent5,
+        white = colors.text,
+        dimmed1 = colors.dimmed1,
+        dimmed2 = colors.dimmed2,
+        dimmed3 = colors.dimmed3,
+        dimmed4 = colors.dimmed4,
+        dimmed5 = colors.dimmed5,
+      }
+
       require("monokai-pro").setup({
         filter = "spectrum",
         devicons = true,
@@ -18,6 +36,22 @@ return {
           "nvim-tree",
           "neo-tree",
         },
+        override = function()
+          -- https://github.com/loctvl842/monokai-pro.nvim/issues/79
+          return {
+            ["@keyword"] = { fg = base.red, },
+            ["@type"] = { fg = base.cyan, },
+            ["@property"] = { fg = base.white, },
+            ["@parameter"] = { fg = base.orange, },
+
+            -- Semantic tokens
+            ["@lsp.typemod.property.annotation"] = { fg = base.cyan, italic = true, },
+            ["@lsp.type.annotation"] = { fg = base.cyan, italic = true, },
+
+            -- Language specific
+            ["@lsp.type.class.dart"] = { fg = base.cyan, italic = false, },
+          }
+        end,
       })
 
       -- Enable theme
@@ -73,7 +107,7 @@ return {
       require("indent_blankline").setup({
         char = "│",
         show_end_of_line = true,
-        show_trailing_blankline_indent = false,
+        -- show_trailing_blankline_indent = false,
         char_highlight_list = {
           "IndentBlanklineIndent1",
           "IndentBlanklineIndent2",

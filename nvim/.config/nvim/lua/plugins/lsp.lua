@@ -249,4 +249,34 @@ return {
       ls.filetype_extend("plaintex", {"tex"})
     end,
   },
+
+  -- https://github.com/akinsho/flutter-tools.nvim
+  {
+    "akinsho/flutter-tools.nvim",
+    dependencies = {
+        "plenary.nvim",
+        "dressing.nvim",
+    },
+    config = function()
+      require("flutter-tools").setup({
+        ui = {
+          border = "single",
+          notification_style = "native",
+        },
+        debugger = {
+          enabled = false,
+          run_via_dap = false,
+        },
+        lsp = {
+          settings = {
+            showTodos = false,
+            completeFunctionCalls = true,
+            renameFilesWithClasses = "prompt",
+            enableSnippets = true,
+            updateImportsOnRename = true,
+          },
+        },
+      })
+    end
+  },
 }

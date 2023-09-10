@@ -5,3 +5,16 @@ function insert_date()
     local date_format = os.date("%Y_%m_%d")
     vim.api.nvim_put({date_format}, "", false, true)
 end
+
+-- Run build / restart
+function run_build()
+    if vim.bo.filetype == "dart" then
+        vim.cmd("FlutterRun")
+    end
+end
+
+function run_restart()
+    if vim.bo.filetype == "dart" then
+        vim.cmd("FlutterRestart")
+    end
+end

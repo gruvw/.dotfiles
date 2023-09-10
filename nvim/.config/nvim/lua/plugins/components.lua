@@ -287,7 +287,6 @@ return {
 
   -- https://github.com/gelguy/wilder.nvim
   {
-    -- enabled = false,
     "gelguy/wilder.nvim",
     event = "CmdlineEnter",
     build = ":UpdateRemotePlugins",

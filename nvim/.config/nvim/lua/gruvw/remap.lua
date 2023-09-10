@@ -34,7 +34,7 @@ keymap("n", "gg", "gg0", remap)
 keymap("n", "G", "G0", remap)
 
 -- Tab as indent, https://vi.stackexchange.com/questions/42945/indentkeys-tab-behavior
-keymap("i", "<Tab>", [[getline(".") == "" && line(".") != 1 ? (line(".") != line("$") ? "\\<Esc>\\"_ddko" : "\\<Esc>\\"_ddo") : "\\<Tab>"]], {expr = true, noremap = true})
+-- keymap("i", "<Tab>", [[getline(".") == "" && line(".") != 1 ? (line(".") != line("$") ? "\\<Esc>\\"_ddko" : "\\<Esc>\\"_ddo") : "\\<Tab>"]], {expr = true, noremap = true})
 
 -- Full file format
 keymap("n", "=A", "gg=G''", remap)
@@ -59,6 +59,8 @@ keymap("n", "gx", [[:silent execute "!open " . shellescape(expand("<cfile>"), 1)
 keymap("n", "<leader><CR>", [[:silent exec "!nohup kitty &>/dev/null &"<CR>]], remap)
 
 -- Functions remap
+keymap("n", "<leader>fb", ":lua run_build()<CR>", remap)
+keymap("n", "<leader>fr", ":lua run_restart()<CR>", remap)
 keymap("n", "<leader>fD", ":lua insert_date()<CR>", remap)
 
 -- Plugins remap
@@ -70,7 +72,6 @@ keymap("n", "<leader>sc", [[:lua require("telescope.builtin").commands()<CR>]], 
 keymap("n", "<leader>su", [[:lua require("telescope").extensions.undo.undo()<CR>]], remap)
 keymap("n", "<leader>sw", [[:lua require("telescope").extensions.workspaces.workspaces()<CR>]], remap)
 keymap("n", "<leader>sj", [[:lua require("telescope").extensions.harpoon.marks()<CR>]], remap)
-keymap("n", "<leader>sF", [[:lua require("telescope").extensions.flutter.commands()()<CR>]], remap)
 
 -- Harpoon (j)
 -- From the quickmenu, open a file in: a vertical split with <C-v>, a horizontal split with <C-x>, a new tab with <C-t>

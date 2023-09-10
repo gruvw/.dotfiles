@@ -26,10 +26,10 @@
   - [X] Treesitter context
   - [X] Auto-complete and intellisense integration (like documentation), cmp ?
   - [X] LSP
-  - [ ] Formater
+  - [X] Formater
   - [X] Markdown
   - [X] LaTeX
-  - [ ] Dart
+  - [X] Dart/Flutter
   - [X] Python
   - [ ] Java
   - [X] Rust
