@@ -18,6 +18,7 @@ return {
         textobjects = {
           select = {
             enable = true,
+            disable = { "dart", }, -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects/issues/461
             lookahead = true,
             keymaps = {
               ["af"] = "@function.outer",
@@ -169,5 +170,5 @@ return {
         overseer.register_template(require("gruvw.overseer." .. t))
       end
     end,
-  }
+  },
 }
