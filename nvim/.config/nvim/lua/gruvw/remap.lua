@@ -159,12 +159,4 @@ keymap("n", "<leader>ro", [[:lua require("overseer").toggle()<CR>]], remap)
 keymap("n", "<leader>rr", [[:lua require("overseer").run_template()<CR>]], remap)
 keymap("n", "<leader>rb", [[:lua require("overseer").run_template({tags = {require("overseer").TAG.BUILD}})<CR>]], remap)
 keymap("n", "<leader>rt", [[:lua require("overseer").run_template({tags = {require("overseer").TAG.TEST}})<CR>]], remap)
-keymap("n", "<leader>rl", function()
-  local overseer = require("overseer")
-  local tasks = overseer.list_tasks({recent_first = true})
-  if vim.tbl_isempty(tasks) then
-    vim.notify("No tasks found", vim.log.levels.WARN)
-  else
-    overseer.run_action(tasks[1], "restart")
-  end
-end, remap)
+keymap("n", "<leader>rl", [[:lua overseer_restart()<CR>]], remap)
