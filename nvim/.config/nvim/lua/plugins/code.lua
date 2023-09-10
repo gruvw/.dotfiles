@@ -23,8 +23,8 @@ return {
               ["af"] = "@function.outer",
               ["if"] = "@function.inner",
               ["ac"] = "@class.outer",
-              ["ic"] = {query = "@class.inner", desc = "Select inner part of a class region"},
-              ["as"] = {query = "@scope", query_group = "locals", desc = "Select language scope"},
+              ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+              ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
               ["ib"] = "@block.inner",
               ["ab"] = "@block.outer",
               ["il"] = "@loop.inner",
@@ -72,10 +72,10 @@ return {
     config = function()
       local overseer = require("overseer")
       overseer.setup({
-        templates = {"builtin"},
+        templates = { "builtin" },
         task_list = {
           default_detail = 1,
-          max_width = {0.3},
+          max_width = { 0.3 },
           separator = "",
           direction = "left",
           bindings = {
@@ -102,7 +102,7 @@ return {
         },
         form = {
           border = "single",
-          win_opts = {winblend = 0},
+          win_opts = { winblend = 0 },
         },
         task_launcher = {
           bindings = {
@@ -139,11 +139,11 @@ return {
         },
         confirm = {
           border = "signle",
-          win_opts = {winblend = 0},
+          win_opts = { winblend = 0 },
         },
         task_win = {
           border = "single",
-          win_opts = {winblend = 0},
+          win_opts = { winblend = 0 },
         },
         component_aliases = {
           default = {

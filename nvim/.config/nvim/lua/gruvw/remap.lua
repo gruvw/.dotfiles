@@ -6,6 +6,7 @@ local remap = {noremap = true, silent = true}
 -- Easy save/quit
 keymap("n", "Zs", ":w<CR>", remap)
 keymap("n", "Zq", ":q<CR>", remap)
+keymap({"i", "n"}, "<C-c>", "<cmd>:q<CR>", remap)
 keymap("n", "ZQ", ":qa<CR>", remap)
 keymap("n", "Zz", ":wq<CR>", remap)
 
@@ -38,6 +39,9 @@ keymap("i", "<Tab>", [[getline(".") == "" && line(".") != 1 ? (line(".") != line
 -- Full file format
 keymap("n", "=A", "gg=G''", remap)
 
+-- Full file delete
+keymap("n", "dA", "ggdG", remap)
+
 -- Yank the whole buffer content to "+
 keymap("n", "yA", ":%y+<CR>", remap)
 
@@ -62,9 +66,11 @@ keymap("n", "<leader>fD", ":lua insert_date()<CR>", remap)
 -- Telescope, search (s)
 keymap("n", "<leader>sf", [[:lua require("telescope.builtin").find_files()<CR>]], remap)
 keymap("n", "<leader>sg", [[:lua require("telescope.builtin").live_grep()<CR>]], remap)
+keymap("n", "<leader>sc", [[:lua require("telescope.builtin").commands()<CR>]], remap)
 keymap("n", "<leader>su", [[:lua require("telescope").extensions.undo.undo()<CR>]], remap)
 keymap("n", "<leader>sw", [[:lua require("telescope").extensions.workspaces.workspaces()<CR>]], remap)
 keymap("n", "<leader>sj", [[:lua require("telescope").extensions.harpoon.marks()<CR>]], remap)
+keymap("n", "<leader>sF", [[:lua require("telescope").extensions.flutter.commands()()<CR>]], remap)
 
 -- Harpoon (j)
 -- From the quickmenu, open a file in: a vertical split with <C-v>, a horizontal split with <C-x>, a new tab with <C-t>
@@ -109,8 +115,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "<leader>cr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
     keymap("n", "<leader>cs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     keymap("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-    keymap({"n", "x"}, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
+    keymap({"n", "x"}, "<leader>cf", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
     keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+    keymap("v", "<leader>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
 
     -- Diagnostic
     keymap("n", "<leader>ce", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)

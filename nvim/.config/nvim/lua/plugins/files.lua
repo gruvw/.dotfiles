@@ -41,14 +41,10 @@ return {
     tag = "0.1.2",
     lazy = true,
     dependencies = {
-      -- https://github.com/nvim-lua/plenary.nvim
-      "nvim-lua/plenary.nvim",
-
       -- https://github.com/debugloop/telescope-undo.nvim
       "debugloop/telescope-undo.nvim",
 
-      "workspaces.nvim",
-      "harpoon",
+      "plenary.nvim",
     },
     config = function()
       local telescope = require("telescope")
@@ -56,6 +52,12 @@ return {
       telescope.setup({
         defaults = {
           -- initial_mode = "normal", -- open telescope in normal mode
+          borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+          sorting_strategy = "ascending",
+          layout_config = {
+              height = 0.6,
+              prompt_position = "top",
+          },
           mappings = {
             n = {
               -- Disable escape to quit and map to normal quit keybind
@@ -87,14 +89,15 @@ return {
 
       -- Load extensions
       telescope.load_extension("undo")
-      telescope.load_extension("workspaces")
-      telescope.load_extension("harpoon")
     end
   },
 
   -- https://github.com/natecraddock/workspaces.nvim
   {
     "natecraddock/workspaces.nvim",
+    dependencies = {
+      "telescope.nvim",
+    },
     lazy = true,
     config = function()
       require("workspaces").setup({
@@ -106,13 +109,21 @@ return {
           },
         },
       })
+
+      require("telescope").load_extension("workspaces")
     end,
   },
 
   -- https://github.com/ThePrimeagen/harpoon
   {
     "ThePrimeagen/harpoon",
+    dependencies = {
+      "telescope.nvim",
+    },
     lazy = true,
+    config = function()
+      require("telescope").load_extension("harpoon")
+    end,
   },
 
   -- https://github.com/tpope/vim-fugitive

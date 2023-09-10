@@ -368,6 +368,9 @@ return {
         },
         select = {
           backend = {"telescope", "fzf_lua", "fzf", "builtin", "nui"},
+          telescope = {
+            borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+          },
           trim_prompt = true,
           builtin = {
             show_numbers = true,
