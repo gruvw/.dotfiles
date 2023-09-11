@@ -54,6 +54,7 @@ return {
 
             -- Language specific
             ["@lsp.type.class.dart"] = { fg = base.cyan, italic = false, },
+            ["@lsp.mod.interpolation"] = { fg = base.orange, },
           }
         end,
       })
@@ -64,7 +65,6 @@ return {
       -- Only highlight the line number not whole current line
       -- vim.cmd("highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE")
       -- vim.cmd("highlight NvimTreeCursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE")
-      vim.api.nvim_set_hl(0, "TelescopeMatching", {link = "IncSearch"})
 
       -- Windows line separator in white
       vim.cmd("highlight WinSeparator guifg=15")
@@ -72,6 +72,10 @@ return {
 
       -- LspInfo floating window border color
       vim.cmd("highlight LspInfoBorder ctermfg=NONE ctermbg=NONE cterm=NONE")
+
+      -- Telescope
+      vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "IncSearch", })
+      vim.api.nvim_set_hl(0, "TelescopeSelectionCaret", { bg = "#363537", fg = "#7bd88f", bold = true, })
 
       -- Waiting on https://github.com/loctvl842/monokai-pro.nvim/issues/75
       vim.cmd([[highlight RainbowDelimiterRed guifg=#fc618d ctermfg=white]])

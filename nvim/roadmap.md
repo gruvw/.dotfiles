@@ -34,6 +34,7 @@
   - [X] Java
   - [X] Rust
   - [X] Emmet
+  - [ ] C + clang-format
 
 - [X] Ctrl+p equivalent to search for code elements
 - [X] Git integration: select staged files, diff (margin and whole file), commit, push, pull, automatic fetch, git graph, blames, file history
@@ -58,6 +59,7 @@
 - [ ] Open file in hex/byte editor view
 - [ ] Clipboard history (neoclip)
 - [ ] DAP
+- [ ] https://github.com/folke/trouble.nvim
 - [X] Local settings
 
 ## Fun and extra
@@ -71,6 +73,7 @@
 - [ ] Markdown preview
 - [ ] Random everything, Lorem Ipsum generator, custom length
 - [ ] Synctex
+- [ ] Jupyter notebook
 - [ ] nvim-notify
 - [X] dressing.nvim
 - [X] Open link from editor to browser (detect links)

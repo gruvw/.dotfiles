@@ -34,7 +34,7 @@ keymap("n", "gg", "gg0", remap)
 keymap("n", "G", "G0", remap)
 
 -- Tab as indent, https://vi.stackexchange.com/questions/42945/indentkeys-tab-behavior
--- keymap("i", "<Tab>", [[getline(".") == "" && line(".") != 1 ? (line(".") != line("$") ? "\\<Esc>\\"_ddko" : "\\<Esc>\\"_ddo") : "\\<Tab>"]], {expr = true, noremap = true})
+keymap("i", "<Tab>", [[getline(".") == "" && line(".") != 1 ? (line(".") != line("$") ? "<Esc>ddko" : "<Esc>ddo") : "<Tab>"]], {expr = true, noremap = true})
 
 -- Full file format
 keymap("n", "=A", "gg=G''", remap)

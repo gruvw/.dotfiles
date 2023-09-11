@@ -7,10 +7,13 @@ local augroup = vim.api.nvim_create_augroup
 autocmd({"BufWritePre"}, {
     pattern = {"*"},
     callback = function(ev)
-        save_cursor = vim.fn.getpos(".")
-        vim.cmd([[%s/\s\+$//e]])
-        vim.cmd([[%s#\($\n\s*\)\+\%$##e]])
-        vim.fn.setpos(".", save_cursor)
+        local ignore_filetype = { "markdown", "latex", "tex", }
+        if not vim.tbl_contains(ignore_filetype, vim.bo.filetype) then
+          save_cursor = vim.fn.getpos(".")
+          vim.cmd([[%s/\s\+$//e]])
+          vim.cmd([[%s#\($\n\s*\)\+\%$##e]])
+          vim.fn.setpos(".", save_cursor)
+        end
     end,
 })
 
