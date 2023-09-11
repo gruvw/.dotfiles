@@ -21,7 +21,7 @@
 
 ## Intermediate editor functionalities
 
-- [ ] Languages integration
+- [X] Languages integration
   - [X] Treesitter
   - [X] Treesitter context
   - [X] Auto-complete and intellisense integration (like documentation), cmp ?
@@ -31,7 +31,7 @@
   - [X] LaTeX
   - [X] Dart/Flutter
   - [X] Python
-  - [ ] Java
+  - [X] Java
   - [X] Rust
   - [X] Emmet
 
@@ -55,16 +55,16 @@
 ## Advanced editor functionalities
 
 - [ ] Todos integration, with tags regex, in-code coloring, listing (todo-comments.nvim)
-- [ ] Local settings
 - [ ] Open file in hex/byte editor view
 - [ ] Clipboard history (neoclip)
 - [ ] DAP
-- [ ] NeoTest
+- [X] Local settings
 
 ## Fun and extra
 
 - [ ] Highlight weird non-ASCII characters
 - [ ] LeetCode (leetbuddy)
+- [ ] NeoTest
 - [ ] GitHub integration
 - [ ] Add current file to gitignore
 - [ ] Image preview/quick open, link resolution

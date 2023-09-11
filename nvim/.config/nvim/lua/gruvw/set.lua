@@ -88,14 +88,17 @@ set.formatoptions = "jctrlq"
 -- Default to fish shell
 set.shell = "fish"
 
+-- Directory-local settings
+-- set.exrc = true
+
 -- Disable netrw (nvim-tree)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Invisible characters
-vim.opt.listchars:append("space:⋅")
-vim.opt.listchars:append("eol:↴")
-vim.opt.listchars:append("tab:-->")
+set.listchars:append("space:⋅")
+set.listchars:append("eol:↴")
+set.listchars:append("tab:-->")
 
 -- Prefered TEX flavor
 vim.g.tex_flavor = "latex"

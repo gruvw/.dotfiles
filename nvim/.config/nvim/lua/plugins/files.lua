@@ -54,6 +54,7 @@ return {
           -- initial_mode = "normal", -- open telescope in normal mode
           borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
           sorting_strategy = "ascending",
+          file_ignore_patterns = { "^.git/", },
           layout_config = {
               height = 0.6,
               prompt_position = "top",
@@ -67,6 +68,11 @@ return {
             i = {
               ["<C-c>"] = require("telescope.actions").close,
             }
+          },
+        },
+        pickers = {
+          find_files = {
+            hidden = true
           },
         },
         extensions = {

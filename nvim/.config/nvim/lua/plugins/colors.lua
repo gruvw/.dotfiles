@@ -4,6 +4,7 @@ return {
   -- https://github.com/loctvl842/monokai-pro.nvim
   {
     "loctvl842/monokai-pro.nvim",
+    priority = 51,
     config = function()
       local colors = require("monokai-pro.colorscheme.palette.spectrum")
       local base = {
@@ -39,6 +40,9 @@ return {
         override = function()
           -- https://github.com/loctvl842/monokai-pro.nvim/issues/79
           return {
+            Structure = { fg = base.cyan, italic = false, },
+
+            -- Treesitter
             ["@keyword"] = { fg = base.red, },
             ["@type"] = { fg = base.cyan, },
             ["@property"] = { fg = base.white, },
@@ -60,6 +64,7 @@ return {
       -- Only highlight the line number not whole current line
       -- vim.cmd("highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE")
       -- vim.cmd("highlight NvimTreeCursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE")
+      vim.api.nvim_set_hl(0, "TelescopeMatching", {link = "IncSearch"})
 
       -- Windows line separator in white
       vim.cmd("highlight WinSeparator guifg=15")

@@ -58,6 +58,10 @@ keymap("n", "gx", [[:silent execute "!open " . shellescape(expand("<cfile>"), 1)
 -- Open terminal in new WM window
 keymap("n", "<leader><CR>", [[:silent exec "!nohup kitty &>/dev/null &"<CR>]], remap)
 
+-- LSP
+keymap("n", "<leader>lr", ":LspStart<CR>", remap)
+keymap("n", "<leader>ls", ":LspStop<CR>", remap)
+
 -- Functions remap
 keymap("n", "<leader>fb", ":lua run_build()<CR>", remap)
 keymap("n", "<leader>fr", ":lua run_restart()<CR>", remap)
@@ -72,6 +76,9 @@ keymap("n", "<leader>sc", [[:lua require("telescope.builtin").commands()<CR>]], 
 keymap("n", "<leader>su", [[:lua require("telescope").extensions.undo.undo()<CR>]], remap)
 keymap("n", "<leader>sw", [[:lua require("telescope").extensions.workspaces.workspaces()<CR>]], remap)
 keymap("n", "<leader>sj", [[:lua require("telescope").extensions.harpoon.marks()<CR>]], remap)
+
+-- Workspaces (w)
+keymap("n", "<leader>wa", [[:lua require("workspaces").add(vim.fn.getcwd(), vim.fn.input("Workspace name: ", vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")))<CR>]], remap)
 
 -- Harpoon (j)
 -- From the quickmenu, open a file in: a vertical split with <C-v>, a horizontal split with <C-x>, a new tab with <C-t>

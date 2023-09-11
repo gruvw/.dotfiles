@@ -32,3 +32,13 @@ function run_restart()
     overseer_restart()
   end
 end
+
+-- Load local config
+function local_config()
+  -- Load exrc ".nvim.lua", secure
+  local config = vim.fn.getcwd() .. "/.nvim.lua"
+  local content = vim.secure.read(config)
+  if content then
+    vim.cmd([[source ]] .. config)
+  end
+end

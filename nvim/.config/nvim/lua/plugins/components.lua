@@ -280,6 +280,8 @@ return {
           end
 
           require("nvim-rooter").rooter()
+
+          local_config()
         end,
       })
     end,
