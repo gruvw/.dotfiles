@@ -107,6 +107,30 @@ end
 return
 {
 
+  -- Paste image
+  s({
+    name = "[G] Paste image",
+    trig = "pimg",
+    docstring = [[\includegraphics[width=${1:8cm}]{${2:img_name}}]],  -- disable calling function during snippet preview
+  }, {
+    d(1, function()
+      local cwd = vim.fn.getcwd()
+      local input = vim.fn.input("Image name: ")
+      local default = "image" .. math.random(1, 9999)
+      local img_name = (input ~= nil and input ~= "" and input or default) .. ".png"
+      local img_path = cwd .. "/latex-img/" .. img_name
+      local cmd = "\"!xclip -selection clipboard -t image/png -o > " .. img_path .. "\""
+
+      -- Create latex-img if not present
+      vim.cmd([[silent exec "!mkdir latex-img"]])
+
+      -- Paste image from clipboard
+      vim.cmd([[silent exec ]] .. cmd)
+
+      return sn(nil, { t([[\includegraphics[width=]]), i(1, "8cm"), t([[]{]] .. img_name .. [[}]]), })
+    end),
+  }),
+
 },
 -- Automatic
 {
@@ -122,6 +146,7 @@ return
   }, {
     t([[^2]]),
   }),
+
   s({
     name = "[G] Cube",
     trig = [[ ?cb]],

@@ -19,7 +19,7 @@ return {
         name = name,
         builder = function(params)
           -- Create out for xelatex (if not present)
-          vim.cmd([[:silent exec "!mkdir out"]])
+          vim.cmd([[silent exec "!mkdir out"]])
 
           return {
             name = name,
