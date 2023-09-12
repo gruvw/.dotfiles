@@ -34,7 +34,7 @@
   - [X] Java
   - [X] Rust
   - [X] Emmet
-  - [ ] C + clang-format
+  - [X] C + clang-format
 
 - [X] Ctrl+p equivalent to search for code elements
 - [X] Git integration: select staged files, diff (margin and whole file), commit, push, pull, automatic fetch, git graph, blames, file history

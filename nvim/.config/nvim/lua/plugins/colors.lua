@@ -41,6 +41,7 @@ return {
           -- https://github.com/loctvl842/monokai-pro.nvim/issues/79
           return {
             Structure = { fg = base.cyan, italic = false, },
+            Macro = { fg = base.cyan, italic = true, },
 
             -- Treesitter
             ["@keyword"] = { fg = base.red, },
@@ -51,6 +52,7 @@ return {
             -- Semantic tokens
             ["@lsp.typemod.property.annotation"] = { fg = base.cyan, italic = true, },
             ["@lsp.type.annotation"] = { fg = base.cyan, italic = true, },
+            ["@lsp.typemod.class.defaultLibrary"] = { fg = base.cyan, },
 
             -- Language specific
             ["@lsp.type.class.dart"] = { fg = base.cyan, italic = false, },

@@ -119,6 +119,7 @@ return {
           "texlab",
           "lua_ls",
           "emmet_language_server",
+          "clangd",
         },
         handlers = {
           default_setup,
