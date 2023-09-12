@@ -50,13 +50,18 @@ return {
             ["@parameter"] = { fg = base.orange, },
 
             -- Semantic tokens
-            ["@lsp.typemod.property.annotation"] = { fg = base.cyan, italic = true, },
+            ["@lsp.mod.interpolation"] = { fg = base.orange, },
             ["@lsp.type.annotation"] = { fg = base.cyan, italic = true, },
+            ["@lsp.type.parameter"] = { link = "@parameter", },
             ["@lsp.typemod.class.defaultLibrary"] = { fg = base.cyan, },
+            ["@lsp.typemod.property.annotation"] = { fg = base.cyan, italic = true, },
+            ["@lsp.typemod.function.defaultLibrary"] = { fg = base.green, },
+            ["@lsp.typemod.parameter.declaration"] = { link = "@parameter", },
+            ["@lsp.typemod.variable.readonly"] = { fg = base.white, },
 
             -- Language specific
             ["@lsp.type.class.dart"] = { fg = base.cyan, italic = false, },
-            ["@lsp.mod.interpolation"] = { fg = base.orange, },
+            ["@type.python"] = { fg = base.cyan, },
           }
         end,
       })
@@ -64,50 +69,55 @@ return {
       -- Enable theme
       vim.cmd("colorscheme monokai-pro")
 
+      local hl = vim.api.nvim_set_hl
+
       -- Only highlight the line number not whole current line
-      -- vim.cmd("highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE")
-      -- vim.cmd("highlight NvimTreeCursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE")
+      -- hl(0, "CursorLine", { bg = "none", })
+      -- hl(0, "NvimTreeCursorLine", { bg = "none", })
 
       -- Windows line separator in white
-      vim.cmd("highlight WinSeparator guifg=15")
-      vim.cmd("highlight NvimTreeWinSeparator guifg=15")
+      hl(0, "WinSeparator", { fg = "white", })
+      hl(0, "NvimTreeWinSeparator", { fg = "white", })
+      hl(0, "FloatBorder", { fg = "white", })
 
       -- LspInfo floating window border color
-      vim.cmd("highlight LspInfoBorder ctermfg=NONE ctermbg=NONE cterm=NONE")
+      hl(0, "LspInfoBorder", { fg = "white", })
+
+      -- NvimTree
+      hl(0, "NvimTreeNormalFloat", { fg = "white", })
+      hl(0, "NvimTreeFolderName", { fg = "white", })
+      hl(0, "NvimTreeOpenedFolderName", { fg = "white", italic = true, })
 
       -- Telescope
-      vim.api.nvim_set_hl(0, "TelescopeMatching", { link = "IncSearch", })
-      vim.api.nvim_set_hl(0, "TelescopeSelectionCaret", { bg = "#363537", fg = "#7bd88f", bold = true, })
-
-      -- Waiting on https://github.com/loctvl842/monokai-pro.nvim/issues/75
-      vim.cmd([[highlight RainbowDelimiterRed guifg=#fc618d ctermfg=white]])
-      vim.cmd([[highlight RainbowDelimiterOrange guifg=#fd9353 ctermfg=white]])
-      vim.cmd([[highlight RainbowDelimiterYellow guifg=#fce566 ctermfg=white]])
-      vim.cmd([[highlight RainbowDelimiterGreen guifg=#7bd88f ctermfg=white]])
-      vim.cmd([[highlight RainbowDelimiterCyan guifg=#5ad4e6 ctermfg=white]])
-      vim.cmd([[highlight RainbowDelimiterViolet guifg=#948ae3 ctermfg=white]])
+      hl(0, "TelescopeMatching", { link = "IncSearch", })
+      hl(0, "TelescopeSelectionCaret", { bg = "#363537", fg = "#7bd88f", bold = true, })
+      hl(0, "TelescopeResultsBorder", { fg = "white", })
+      hl(0, "TelescopePromptBorder", { fg = "white", })
+      hl(0, "TelescopePreviewBorder", { fg = "white", })
+      hl(0, "TelescopePromptNormal", { fg = "white", })
+      hl(0, "TelescopeResultsNormal", { fg = "white", })
 
       -- indent-blankline, https://www.colorhexa.com, 70% 222222 + 30% <color theme>
-      vim.cmd([[highlight IndentBlanklineIndent1 guifg=#633542 ctermfg=black gui=nocombine]])
-      vim.cmd([[highlight IndentBlanklineIndent2 guifg=#644431 ctermfg=black gui=nocombine]])
-      vim.cmd([[highlight IndentBlanklineIndent3 guifg=#635d36 ctermfg=black gui=nocombine]])
-      vim.cmd([[highlight IndentBlanklineIndent4 guifg=#3d5943 ctermfg=black gui=nocombine]])
-      vim.cmd([[highlight IndentBlanklineIndent5 guifg=#33575d ctermfg=black gui=nocombine]])
-      vim.cmd([[highlight IndentBlanklineIndent6 guifg=#44415c ctermfg=black gui=nocombine]])
+      hl(0, "IndentBlanklineIndent1", { fg = "#633542", nocombine = true, })
+      hl(0, "IndentBlanklineIndent2", { fg = "#644431", nocombine = true, })
+      hl(0, "IndentBlanklineIndent3", { fg = "#635d36", nocombine = true, })
+      hl(0, "IndentBlanklineIndent4", { fg = "#3d5943", nocombine = true, })
+      hl(0, "IndentBlanklineIndent5", { fg = "#33575d", nocombine = true, })
+      hl(0, "IndentBlanklineIndent6", { fg = "#44415c", nocombine = true, })
 
       -- Invisible characters highlight
-      vim.cmd([[highlight Whitespace cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#626064]])
-      vim.cmd([[highlight! link IndentBlanklineSpaceChar Whitespace]])
-      vim.cmd([[highlight! link NonText Whitespace]])
+      hl(0, "Whitespace", { fg = "#626064", })
+      hl(0, "IndentBlanklineSpaceChar", { link = "Whitespace", })
+      hl(0, "NonText", { link = "Whitespace", })
 
       -- Match paren
-      vim.api.nvim_set_hl(0, "MatchParen", {fg = "#fce566", underline = false, bold = true})
+      hl(0, "MatchParen", {fg = "#fce566", underline = false, bold = true})
 
       -- Style for LuaSnip default placeholder text
-      vim.api.nvim_set_hl(0, "LuaSnipPlace", {bg = "#363537", italic = true})
+      hl(0, "LuaSnipPlace", {bg = "#363537", italic = true})
 
       -- TreeSitter highlights
-      vim.api.nvim_set_hl(0, "@function.builtin.python", {link = "Function"})
+      hl(0, "@function.builtin.python", {link = "Function"})
     end,
   },
 

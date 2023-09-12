@@ -106,7 +106,6 @@ end
 
 return
 {
-
   -- Paste image
   s({
     name = "[G] Paste image",
@@ -134,7 +133,6 @@ return
 },
 -- Automatic
 {
-
   -- Quick fix
 
   s({

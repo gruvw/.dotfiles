@@ -51,7 +51,7 @@
 - [X] Path intellisense
 - [X] Project search
 - [X] Compare and add with VSCode settings
-- [ ] Convert vim cmd to nvim (no more vimscript)
+- [X] Convert vim cmd to nvim (no more vimscript)
 
 ## Advanced editor functionalities
 

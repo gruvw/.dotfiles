@@ -5,41 +5,41 @@ local augroup = vim.api.nvim_create_augroup
 
 -- Trim ending whitespaces and empty lines, keep cursor position
 autocmd({"BufWritePre"}, {
-    pattern = {"*"},
-    callback = function(ev)
-        local ignore_filetype = { "markdown", "latex", "tex", }
-        if not vim.tbl_contains(ignore_filetype, vim.bo.filetype) then
-          save_cursor = vim.fn.getpos(".")
-          vim.cmd([[%s/\s\+$//e]])
-          vim.cmd([[%s#\($\n\s*\)\+\%$##e]])
-          vim.fn.setpos(".", save_cursor)
-        end
-    end,
+  pattern = {"*"},
+  callback = function(ev)
+    local ignore_filetype = { "markdown", "latex", "tex", }
+    if not vim.tbl_contains(ignore_filetype, vim.bo.filetype) then
+      save_cursor = vim.fn.getpos(".")
+      vim.cmd([[%s/\s\+$//e]])
+      vim.cmd([[%s#\($\n\s*\)\+\%$##e]])
+      vim.fn.setpos(".", save_cursor)
+    end
+  end,
 })
 
 -- Highlight on yank
 autocmd("TextYankPost", {
-    group = augroup("highlight_yank", {}),
-    pattern = "*",
-    callback = function()
-        vim.highlight.on_yank({
-            higroup = "IncSearch",
-            timeout = 300,
-        })
-    end,
+  group = augroup("highlight_yank", {}),
+  pattern = "*",
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = "IncSearch",
+      timeout = 300,
+    })
+  end,
 })
 
 -- Open help window in a vertical split to the right.
 autocmd("BufWinEnter", {
-    group = vim.api.nvim_create_augroup("help_window_right", {}),
-    pattern = {"*.txt"},
-    callback = function()
-        if vim.o.filetype == "help" then vim.cmd.wincmd("L") end
-    end
+  group = augroup("help_window_right", {}),
+  pattern = {"*.txt"},
+  callback = function()
+    if vim.o.filetype == "help" then vim.cmd.wincmd("L") end
+  end
 })
 
 -- Remember last place cursor on open, https://github.com/neovim/neovim/issues/16339
--- adapted from https://github.com/ethanholz/nvim-lastplace/blob/main/lua/nvim-lastplace/init.lua
+-- Adapted from https://github.com/ethanholz/nvim-lastplace/blob/main/lua/nvim-lastplace/init.lua
 local ignore_buftype = {"quickfix", "nofile", "help"}
 local ignore_filetype = {"gitcommit", "gitrebase", "svn", "hgcommit"}
 local function restore_cursor()
@@ -48,13 +48,12 @@ local function restore_cursor()
   end
 
   if vim.tbl_contains(ignore_filetype, vim.bo.filetype) then
-    -- reset cursor to first line
+    -- Reset cursor to first line
     vim.cmd[[normal! gg]]
     return
   end
 
-  -- If a line has already been specified on the command line, we are done
-  --   nvim file +num
+  -- If a line has already been specified on the command line, we are done nvim file +num
   if vim.fn.line(".") > 1 then
     return
   end

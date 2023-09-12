@@ -36,14 +36,11 @@ keymap("n", "G", "G0", remap)
 -- Tab as indent, https://vi.stackexchange.com/questions/42945/indentkeys-tab-behavior
 keymap("i", "<Tab>", [[getline(".") == "" && line(".") != 1 ? (line(".") != line("$") ? "<Esc>ddko" : "<Esc>ddo") : "<Tab>"]], {expr = true, noremap = true})
 
--- Full file format
+-- Full file operations
 keymap("n", "=A", "gg=G''", remap)
-
--- Full file delete
 keymap("n", "dA", "ggdG", remap)
-
--- Yank the whole buffer content to "+
 keymap("n", "yA", ":%y+<CR>", remap)
+keymap("n", "cA", "ggcG", remap)
 
 -- Copy vim message
 keymap("n", "yM", ":let @+=trim(execute('1messages')) <bar> echo 'copied'<CR>", remap)
@@ -138,7 +135,7 @@ keymap({"v", "n"}, "<leader>cl", [[:CommentToggle<CR>]], opts)
 
 -- LuaSnip
 -- Jump to $0, https://github.com/L3MON4D3/LuaSnip/issues/562#issuecomment-1233122825
-function snip_jump_end()
+local function snip_jump_end()
   local ls = require("luasnip")
   local session = require("luasnip.session")
 	local current = session.current_nodes[vim.api.nvim_get_current_buf()]

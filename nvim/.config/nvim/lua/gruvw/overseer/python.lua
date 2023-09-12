@@ -24,7 +24,6 @@ return {
           },
         },
         builder = function(params)
-
           local args = params.args or {}
           table.insert(args, file)
 

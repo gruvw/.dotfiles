@@ -2,7 +2,6 @@
 
 -- Set leader key to space, set before lazy plugins
 vim.g.mapleader = " "
-vim.o.exrc = true
 
 -- Load package manager and plugins
 require("gruvw.lazy")

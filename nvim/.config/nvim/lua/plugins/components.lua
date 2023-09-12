@@ -265,8 +265,8 @@ return {
 
       -- Sets root directory automagically
       require("nvim-rooter").setup({
-        rooter_patterns = {".git", ".root", "latex-img"},
-        trigger_patterns = {"*"},
+        rooter_patterns = { ".git", ".root", "latex-img", "src", "lib", },
+        trigger_patterns = { "*", },
         fallback_to_parent = true,
         update_cwd = true,
       })
@@ -279,8 +279,10 @@ return {
             return
           end
 
+          -- Find and set cwd
           require("nvim-rooter").rooter()
 
+          -- Load local config
           local_config()
         end,
       })
