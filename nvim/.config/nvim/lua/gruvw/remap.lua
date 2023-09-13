@@ -139,7 +139,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- Treesitter context (c)
-keymap("n", "<leader>ct", ":TSContextToggle<CR>", remap)
+keymap("n", "<leader>cc", ":TSContextToggle<CR>", remap)
+
+-- Trouble (c)
+keymap("n", "<leader>ct", [[:lua require("trouble").toggle()<CR>]], remap)
 
 -- Comment (c)
 keymap({ "v", "n", }, "<leader>cl", [[:CommentToggle<CR>]], remap)
@@ -179,3 +182,7 @@ keymap("n", "<leader>rr", [[:lua require("overseer").run_template()<CR>]], remap
 keymap("n", "<leader>rb", [[:lua require("overseer").run_template({tags = {require("overseer").TAG.BUILD}})<CR>]], remap)
 keymap("n", "<leader>rt", [[:lua require("overseer").run_template({tags = {require("overseer").TAG.TEST}})<CR>]], remap)
 keymap("n", "<leader>rl", [[:lua overseer_restart()<CR>]], remap)
+
+-- ToDo (d)
+keymap("n", "<leader>dn", [[:lua require("todo-comments").jump_next()<CR>]], remap)
+keymap("n", "<leader>dN", [[:lua require("todo-comments").jump_prev()<CR>]], remap)

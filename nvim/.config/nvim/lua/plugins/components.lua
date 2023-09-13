@@ -387,4 +387,53 @@ return {
       })
     end
   },
+
+  -- https://github.com/folke/trouble.nvim
+  {
+    "folke/trouble.nvim",
+    lazy = true,
+    config = function()
+      require("trouble").setup({
+        position = "bottom",
+        height = 10,
+        icons = false,
+        mode = "workspace_diagnostics",
+        fold_open = "v",
+        fold_closed = ">",
+        indent_lines = false,
+        multiline = false,
+        win_config = { border = "single", },
+        auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
+        signs = {
+          error = "E",
+          warning = "W",
+          hint = "H",
+          information = "I",
+          other = "?",
+        },
+        action_keys = {
+            close = { "q", "Zq", },
+            cancel = "<Esc>", -- cancel the preview and get back to your last window / buffer / cursor
+            refresh = "r", -- manually refresh
+            jump = "<CR>", -- jump to the diagnostic or open / close folds
+            open_split = "<c-x>", -- open buffer in new split
+            open_vsplit = "<c-v>", -- open buffer in new vsplit
+            open_tab = "<c-t>", -- open buffer in new tab
+            jump_close = "<BS>", -- jump to the diagnostic and close the list
+            toggle_mode = "<Tab>", -- toggle between "workspace" and "document" diagnostics mode
+            switch_severity = "s", -- switch "diagnostics" severity filter level to HINT / INFO / WARN / ERROR
+            toggle_preview = "P", -- toggle auto_preview
+            hover = "K", -- opens a small popup with the full multiline message
+            preview = "p", -- preview the diagnostic location
+            open_code_href = "gx", -- if present, open a URI with more information about the diagnostic error
+            close_folds = {"zM", "zm"}, -- close all folds
+            open_folds = {"zR", "zr"}, -- open all folds
+            toggle_fold = {"zA", "za"}, -- toggle fold of current file
+            previous = "k", -- previous item
+            next = "j", -- next item
+            help = "?", -- help menu
+        },
+      })
+    end
+  },
 }
