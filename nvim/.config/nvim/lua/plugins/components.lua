@@ -436,4 +436,36 @@ return {
       })
     end
   },
+
+  -- https://github.com/AckslD/nvim-neoclip.lua
+  {
+    "AckslD/nvim-neoclip.lua",
+    dependencies = {
+      "telescope.nvim",
+    },
+    event = "VeryLazy",
+    config = function()
+      require("neoclip").setup({
+        history = 1000,
+        enable_persistent_history = false,
+        preview = true,
+        default_register = [["]],
+        default_register_macros = [[j]],
+        enable_macro_history = true,
+        keys = {
+          telescope = {
+            i = {
+              select = "<cr>",
+            },
+            n = {
+              select = "<cr>",
+              paste = "p",
+              paste_behind = "P",
+              delete = "d",
+            },
+          },
+        },
+      })
+    end
+  }
 }

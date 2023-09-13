@@ -45,8 +45,12 @@ keymap("n", "dA", "ggdG", remap)
 keymap("n", "yA", ":%y+<CR>", remap)
 keymap("n", "cA", "ggcG", remap)
 
--- Copy vim message
-keymap("n", "yM", ":let @+=trim(execute('1messages')) <bar> echo 'copied'<CR>", remap)
+-- Yank paths, relative/absolute
+keymap("n", "yp", [[:let @+="./" . expand("%") <bar> echo "copied"<CR>]], remap)
+keymap("n", "yP", [[:let @+=expand("%:p") <bar> echo "copied"<CR>]], remap)
+
+-- Yank vim message
+keymap("n", "yM", [[:let @+=trim(execute('1messages')) <bar> echo "copied"<CR>]], remap)
 
 -- Terminal normal mode, close
 keymap("t", "<C-t>", [[<C-\><C-n>]], remap)
@@ -77,6 +81,8 @@ keymap("n", "<leader>su", [[:lua require("telescope").extensions.undo.undo()<CR>
 keymap("n", "<leader>sw", [[:lua require("telescope").extensions.workspaces.workspaces()<CR>]], remap)
 keymap("n", "<leader>sj", [[:lua require("telescope").extensions.harpoon.marks()<CR>]], remap)
 keymap("n", "<leader>st", [[:TodoTelescope<CR>]], remap)
+keymap("n", "<leader>sy", [[:lua require("telescope").extensions.neoclip.default()<CR>]], remap)
+keymap("n", "<leader>sm", [[:lua require("telescope").extensions.macroscope.default()<CR>]], remap)
 
 -- Workspaces (w)
 keymap("n", "<leader>wa",
