@@ -21,7 +21,7 @@ set.expandtab = true
 -- Automatic indentation
 set.autoindent = true
 set.smartindent = true
-set.cindent = true
+-- set.cindent = true
 vim.cmd("filetype plugin indent on")
 -- set.indentkeys = "0{,0},0),0],:,0#,!^F,o,O,e,!0<Tab>"
 -- set.cinkeys = "0{,0},0),0],:,0#,!^F,o,O,e,!0<Tab>"

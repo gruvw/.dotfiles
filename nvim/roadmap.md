@@ -67,6 +67,7 @@
 - [ ] Highlight weird non-ASCII characters
 - [ ] LeetCode (leetbuddy)
 - [ ] NeoTest
+- [ ] nvim-notify
 - [ ] GitHub integration
 - [ ] Add current file to gitignore
 - [ ] Image preview/quick open, link resolution
@@ -74,6 +75,5 @@
 - [ ] Random everything, Lorem Ipsum generator, custom length
 - [ ] Synctex
 - [ ] Jupyter notebook
-- [ ] nvim-notify
 - [X] dressing.nvim
 - [X] Open link from editor to browser (detect links)

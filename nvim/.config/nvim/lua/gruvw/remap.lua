@@ -66,10 +66,11 @@ keymap("n", "<leader><CR>", [[:silent exec "!nohup kitty &>/dev/null &"<CR>]], r
 keymap("n", "<leader>lr", ":LspStart<CR>", remap)
 keymap("n", "<leader>ls", ":LspStop<CR>", remap)
 
--- Functions remap
-keymap("n", "<leader>fb", ":lua run_build()<CR>", remap)
-keymap("n", "<leader>fr", ":lua run_restart()<CR>", remap)
+-- Functions/macro remap (f)
+keymap("n", "<leader>fb", ":lua run_build()<CR>", remap) -- run code
+keymap("n", "<leader>fr", ":lua run_restart()<CR>", remap) -- restart code
 keymap("n", "<leader>fD", ":lua insert_date()<CR>", remap)
+keymap("n", "<leader>fs", "iLucas Jung (IN-BA5 324724)<esc>", remap) -- sign
 
 -- Plugins remap
 
@@ -85,9 +86,7 @@ keymap("n", "<leader>sy", [[:lua require("telescope").extensions.neoclip.default
 keymap("n", "<leader>sm", [[:lua require("telescope").extensions.macroscope.default()<CR>]], remap)
 
 -- Workspaces (w)
-keymap("n", "<leader>wa",
-  [[:lua require("workspaces").add(vim.fn.getcwd(), vim.fn.input("Workspace name: ", vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")))<CR>]],
-  remap)
+keymap("n", "<leader>wa", [[:lua require("workspaces").add(vim.fn.getcwd(), vim.fn.input("Workspace name: ", vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")))<CR>]], remap)
 
 -- Harpoon (j)
 -- From the quickmenu, open a file in: a vertical split with <C-v>, a horizontal split with <C-x>, a new tab with <C-t>
@@ -112,17 +111,9 @@ keymap("n", "<leader>gg", ":G<CR>", remap)
 
 -- Code (c)
 vim.api.nvim_create_autocmd("LspAttach", {
-  desc = "LSP mapping",
+  desc = "LSP mappings",
   callback = function(event)
     local opts = { buffer = event.buf, }
-
-    -- Format
-    vim.api.nvim_buf_create_user_command(
-      event.buf,
-      "LspFormat",
-      function() vim.lsp.buf.format() end,
-      { desc = "Format buffer with language server", }
-    )
 
     -- LSP buffer actions
     keymap("n", "<leader>ch", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)

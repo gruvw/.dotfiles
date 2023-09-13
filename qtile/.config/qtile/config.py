@@ -24,6 +24,7 @@ class Paths:
 
 class Commands:
     file_manager = f"{terminal} vifm"
+    text_editor = f"{terminal} nvim"
     process_manager = f"{terminal} btm"
     ide = "code"
 
@@ -195,6 +196,7 @@ keys += [
 
     # Applications
     Key([mod], "v", lazy.spawn(Commands.file_manager), desc="Launch file manager"),
+    Key([mod], "n", lazy.spawn(Commands.text_editor), desc="Launch text editor"),
     Key([mod], "semicolon", lazy.spawn(Commands.ide), desc="Launch IDE"),
     Key([mod], "b", lazy.spawn(Commands.process_manager), desc="Launch process manager"),
     Key([control, alt], "v", lazy.spawn(Paths.vim_anywhere), desc="Launch vim-anywhere"),

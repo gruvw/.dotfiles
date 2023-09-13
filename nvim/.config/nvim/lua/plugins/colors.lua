@@ -89,6 +89,10 @@ return {
       hl(0, "NvimTreeFolderName", { fg = "white", })
       hl(0, "NvimTreeOpenedFolderName", { fg = "white", italic = true, })
 
+      -- Leap
+      hl(0, "LeapLabelPrimary", { link = "IncSearch", })
+      hl(0, "LeapLabelSecondary", { fg = "#222222", bg = "#fd9353", bold = true, })
+
       -- Telescope
       hl(0, "TelescopeMatching", { link = "IncSearch", })
       hl(0, "TelescopeSelectionCaret", { bg = "#363537", fg = "#7bd88f", bold = true, })
