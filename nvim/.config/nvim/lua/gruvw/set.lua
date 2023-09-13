@@ -15,7 +15,7 @@ set.relativenumber = true
 -- Tabs defaults to 4 spaces
 set.tabstop = 4
 set.softtabstop = 4
-set.shiftwidth  = 4
+set.shiftwidth = 4
 set.expandtab = true
 
 -- Automatic indentation

@@ -1,12 +1,12 @@
 -- ~/.config/nvim/lua/gruvw/remap.lua
 
 local keymap = vim.keymap.set
-local remap = {noremap = true, silent = true}
+local remap = { noremap = true, silent = true, }
 
 -- Easy save/quit
 keymap("n", "Zs", ":w<CR>", remap)
 keymap("n", "Zq", ":q<CR>", remap)
-keymap({"i", "n"}, "<C-c>", "<cmd>:q<CR>", remap)
+keymap({ "i", "n", }, "<C-c>", "<cmd>:q<CR>", remap)
 keymap("n", "ZQ", ":qa<CR>", remap)
 keymap("n", "Zz", ":wq<CR>", remap)
 
@@ -34,7 +34,9 @@ keymap("n", "gg", "gg0", remap)
 keymap("n", "G", "G0", remap)
 
 -- Tab as indent, https://vi.stackexchange.com/questions/42945/indentkeys-tab-behavior
-keymap("i", "<Tab>", [[getline(".") == "" && line(".") != 1 ? (line(".") != line("$") ? "<Esc>ddko" : "<Esc>ddo") : "<Tab>"]], {expr = true, noremap = true})
+keymap("i", "<Tab>",
+  [[getline(".") == "" && line(".") != 1 ? (line(".") != line("$") ? "<Esc>ddko" : "<Esc>ddo") : "<Tab>"]],
+  { expr = true, noremap = true, })
 
 -- Full file operations
 keymap("n", "=A", "gg=G''", remap)
@@ -75,7 +77,9 @@ keymap("n", "<leader>sw", [[:lua require("telescope").extensions.workspaces.work
 keymap("n", "<leader>sj", [[:lua require("telescope").extensions.harpoon.marks()<CR>]], remap)
 
 -- Workspaces (w)
-keymap("n", "<leader>wa", [[:lua require("workspaces").add(vim.fn.getcwd(), vim.fn.input("Workspace name: ", vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")))<CR>]], remap)
+keymap("n", "<leader>wa",
+  [[:lua require("workspaces").add(vim.fn.getcwd(), vim.fn.input("Workspace name: ", vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")))<CR>]],
+  remap)
 
 -- Harpoon (j)
 -- From the quickmenu, open a file in: a vertical split with <C-v>, a horizontal split with <C-x>, a new tab with <C-t>
@@ -95,20 +99,21 @@ keymap("n", "<leader>gn", [[:lua require("gitsigns").next_hunk()<CR>]], remap)
 keymap("n", "<leader>gN", [[:lua require("gitsigns").prev_hunk()<CR>]], remap)
 keymap("n", "<leader>gs", [[:lua require("gitsigns").stage_hunk()<CR>]], remap)
 keymap("n", "<leader>gu", [[:lua require("gitsigns").undo_stage_hunk()<CR>]], remap)
+keymap("n", "<leader>gd", [[:lua require("gitsigns").diffthis()<CR>]], remap)
 keymap("n", "<leader>gg", ":G<CR>", remap)
 
 -- Code (c)
 vim.api.nvim_create_autocmd("LspAttach", {
   desc = "LSP mapping",
   callback = function(event)
-    local opts = {buffer = event.buf}
+    local opts = { buffer = event.buf, }
 
     -- Format
     vim.api.nvim_buf_create_user_command(
       event.buf,
       "LspFormat",
       function() vim.lsp.buf.format() end,
-      {desc = "Format buffer with language server"}
+      { desc = "Format buffer with language server", }
     )
 
     -- LSP buffer actions
@@ -120,7 +125,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "<leader>cr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
     keymap("n", "<leader>cs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     keymap("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-    keymap({"n", "x"}, "<leader>cf", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
+    keymap({ "n", "x", }, "<leader>cf", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
     keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
     keymap("v", "<leader>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
 
@@ -131,14 +136,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end
 })
 keymap("n", "<leader>ct", ":TSContextToggle<CR>", remap)
-keymap({"v", "n"}, "<leader>cl", [[:CommentToggle<CR>]], opts)
+keymap({ "v", "n", }, "<leader>cl", [[:CommentToggle<CR>]], remap)
 
 -- LuaSnip
 -- Jump to $0, https://github.com/L3MON4D3/LuaSnip/issues/562#issuecomment-1233122825
 local function snip_jump_end()
   local ls = require("luasnip")
   local session = require("luasnip.session")
-	local current = session.current_nodes[vim.api.nvim_get_current_buf()]
+  local current = session.current_nodes[vim.api.nvim_get_current_buf()]
   local snip = current and current.parent.snippet or nil
   local end_node = snip.insert_nodes[0]
 
@@ -150,13 +155,13 @@ local function snip_jump_end()
     ls.jump(1)
   end
 end
-keymap({"i"}, "<C-e>", [[<cmd>lua require("luasnip").expand()<CR>]], {})
-keymap({"i", "s", "n"}, "<C-Tab>", [[<cmd>lua require("luasnip").jump(1)<CR>]], opts)
-keymap({"i", "s", "n"}, "<C-S-Tab>", [[<cmd>lua require("luasnip").jump(-1)<CR>]], opts)
-keymap({"i", "s", "n"}, "<C-0>", snip_jump_end, opts)
+keymap({ "i" }, "<C-e>", [[<cmd>lua require("luasnip").expand()<CR>]], {})
+keymap({ "i", "s", "n", }, "<C-Tab>", [[<cmd>lua require("luasnip").jump(1)<CR>]], remap)
+keymap({ "i", "s", "n", }, "<C-S-Tab>", [[<cmd>lua require("luasnip").jump(-1)<CR>]], remap)
+keymap({ "i", "s", "n", }, "<C-0>", snip_jump_end, remap)
 
 -- Open floating terminal, enable line numbers in float (autocmd do not work)
-keymap("n", "<leader>T", [[<cmd>lua require("toggleterm").toggle()<CR><cmd>setlocal number relativenumber<CR><cmd>:startinsert<CR>]], opts)
+keymap("n", "<leader>T", [[<cmd>lua require("toggleterm").toggle()<CR><cmd>setlocal number relativenumber<CR><cmd>:startinsert<CR>]], remap)
 
 -- Run (r)
 keymap("n", "<leader>ro", [[:lua require("overseer").toggle()<CR>]], remap)

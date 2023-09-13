@@ -1,16 +1,17 @@
 // ~/.config/nvim/lua/gruvw/snippets/lsp/jsonc.jsonc
 
 {
-    // Snippets
-    "[G] LSP Snippet": {
-        "prefix": "snip",
-        "body": [
-            "\"[G] $1\": {",
-            "    \"prefix\": \"$2\",",
-            "    \"body\": [",
-            "        \"$3\",$4",
-            "    ],",
-            "},",
-        ],
-    },
+  // Snippets
+
+  "[G] LSP Snippet": {
+    "prefix": "snip",
+    "body": [
+      "\"[G] $1\": {",
+      "    \"prefix\": \"$2\",",
+      "    \"body\": [",
+      "        \"$3\",$4",
+      "    ],",
+      "},",
+    ],
+  },
 }

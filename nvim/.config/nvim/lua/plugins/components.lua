@@ -32,7 +32,7 @@ local mode_cmpnt = {
 -- File type, LSP, overseer
 local filetype_cmpnt = {
   "filetype",
-  icon = {align = "left"},
+  icon = { align = "left", },
   fmt = function(s)
     -- LSP
     -- Show "+" if LSP client is running, "~" when progress
@@ -50,7 +50,7 @@ local filetype_cmpnt = {
     end
 
     -- Overseer
-    local tasks = require("overseer.task_list").list_tasks({unique = true})
+    local tasks = require("overseer.task_list").list_tasks({ unique = true, })
     local tasks_by_status = require("overseer.util").tbl_group_by(tasks, "status")
     local status = ""
     if tasks_by_status["RUNNING"] then
@@ -114,8 +114,8 @@ return {
           theme = "monokai-pro",
           globalstatus = true,
           icons_enabled = true,
-          section_separators = {left = "", right = ""},
-          component_separators = {left = "|", right = "|"},
+          section_separators = { left = "", right = "", },
+          component_separators = { left = "|", right = "|", },
           refresh = {
             statusline = 500,
             tabline = 500,
@@ -123,12 +123,12 @@ return {
           }
         },
         sections = {
-          lualine_a = {mode_cmpnt},
-          lualine_b = {"branch"},
-          lualine_c = {filename_cmpnt, "diff"},
-          lualine_x = {"diagnostics", filetype_cmpnt},
-          lualine_y = {progress_cmpnt},
-          lualine_z = {"location"},
+          lualine_a = { mode_cmpnt, },
+          lualine_b = { "branch", },
+          lualine_c = { filename_cmpnt, "diff", },
+          lualine_x = { "diagnostics", filetype_cmpnt, },
+          lualine_y = { progress_cmpnt, },
+          lualine_z = { "location", },
         },
       })
     end
@@ -150,7 +150,7 @@ return {
         local api = require("nvim-tree.api")
 
         local function opts(desc)
-          return {desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true}
+          return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true, }
         end
 
         vim.keymap.set("n", "<C-v>", api.node.open.vertical, opts("Open Vertical Split"))
@@ -197,7 +197,7 @@ return {
         -- Open in new terminal
         system_open = {
           cmd = "kitty",
-          args = {"vifm"},
+          args = { "vifm", },
         },
         diagnostics = {
           enable = true,
@@ -271,8 +271,8 @@ return {
         update_cwd = true,
       })
 
-      vim.api.nvim_create_autocmd({"BufEnter"}, {
-        group = vim.api.nvim_create_augroup("nvim_rooter", {clear = true}),
+      vim.api.nvim_create_autocmd({ "BufEnter", }, {
+        group = vim.api.nvim_create_augroup("nvim_rooter", { clear = true, }),
         callback = function()
           -- Don't call in floating window buffers
           if vim.api.nvim_win_get_config(vim.fn.win_getid()).zindex then
@@ -298,7 +298,7 @@ return {
       local wilder = require("wilder")
 
       wilder.setup({
-        modes = {":", "/", "?"},
+        modes = { ":", "/", "?", },
       })
 
       wilder.set_option("pipeline", {
@@ -312,7 +312,7 @@ return {
         wilder.popupmenu_border_theme({
           highlighter = wilder.basic_highlighter(),
           highlights = {
-          accent = wilder.make_hl("WilderAccent", "Pmenu", {{a = 1}, {a = 1}, {foreground = "#7bd88f"}}),
+            accent = wilder.make_hl("WilderAccent", "Pmenu", { { a = 1 }, { a = 1 }, { foreground = "#7bd88f", }, }),
             border = "Normal",
           },
           border = "single",
@@ -370,7 +370,7 @@ return {
           },
         },
         select = {
-          backend = {"telescope", "fzf_lua", "fzf", "builtin", "nui"},
+          backend = { "telescope", "fzf_lua", "fzf", "builtin", "nui", },
           telescope = {
             borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
           },

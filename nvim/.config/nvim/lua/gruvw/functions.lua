@@ -3,7 +3,7 @@
 -- Insert current date in YYYY_MM_DD format, before cursor
 function insert_date()
   local date_format = os.date("%Y_%m_%d")
-  vim.api.nvim_put({date_format}, "", false, true)
+  vim.api.nvim_put({ date_format }, "", false, true)
 end
 
 -- Run build / restart
@@ -17,7 +17,7 @@ end
 
 function overseer_restart()
   local overseer = require("overseer")
-  local tasks = overseer.list_tasks({recent_first = true})
+  local tasks = overseer.list_tasks({ recent_first = true })
   if vim.tbl_isempty(tasks) then
     vim.notify("No tasks found", vim.log.levels.WARN)
   else

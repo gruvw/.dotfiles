@@ -6,12 +6,11 @@ return {
   name = "Python script generator",
   generator = function(opts, cb)
     local cwd = vim.fn.getcwd()
-    local files = vim.split(vim.fn.glob(cwd .. "/**/*.py"), "\n", {trimempty=true})
+    local files = vim.split(vim.fn.glob(cwd .. "/**/*.py"), "\n", { trimempty = true })
 
     local res = {}
 
     for _, file in ipairs(files) do
-
       local filename = string.sub(file, #cwd + 2)
 
       table.insert(res, {
@@ -29,11 +28,11 @@ return {
 
           return {
             name = "Python " .. filename,
-            cmd = {"python"},
+            cmd = { "python" },
             args = args,
           }
         end,
-        tags = {overseer.TAG.BUILD},
+        tags = { overseer.TAG.BUILD },
       })
     end
 

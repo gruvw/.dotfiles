@@ -1,292 +1,289 @@
 // ~/.config/nvim/lua/gruvw/snippets/lsp/tex.jsonc
 
 {
-	// Environments
+  // Environments
 
-    "[G] Begin/End": {
-		"prefix": "beg",
-		"body": [
-            "\\begin{$1}",
-			"\t${2:$TM_SELECTED_TEXT}",
-			"\\end{$1}",
-            "$0",
-		]
-	},
-    "[G] Aligned": {
-		"prefix": "ali",
-		"body": [
-            "\\begin{aligned}",
-			"\t${1:$TM_SELECTED_TEXT}",
-			"\\end{aligned}"
-		]
-	},
-	"[G] Gathered": {
-		"prefix": "gat",
-		"body": [
-			"\\begin{gathered}",
-			"\t${1:$TM_SELECTED_TEXT}",
-            "\\end{gathered}"
-		]
-	},
-	"[G] Cases": {
-		"prefix": "cas",
+  "[G] Begin/End": {
+    "prefix": "beg",
+    "body": [
+      "\\begin{$1}",
+      "\t${2:$TM_SELECTED_TEXT}",
+      "\\end{$1}",
+      "$0",
+    ]
+  },
+  "[G] Aligned": {
+    "prefix": "ali",
+    "body": [
+      "\\begin{aligned}",
+      "\t${1:$TM_SELECTED_TEXT}",
+      "\\end{aligned}"
+    ]
+  },
+  "[G] Gathered": {
+    "prefix": "gat",
+    "body": [
+      "\\begin{gathered}",
+      "\t${1:$TM_SELECTED_TEXT}",
+      "\\end{gathered}"
+    ]
+  },
+  "[G] Cases": {
+    "prefix": "cas",
+    "body": [
+      "\\begin{cases}",
+      "\t${1:$TM_SELECTED_TEXT}",
+      "\\end{cases}"
+    ]
+  },
+  "[G] Enumerate": {
+    "prefix": "enm",
+    "body": [
+      "\\begin{enumerate}",
+      "\t\\item ${1:$TM_SELECTED_TEXT}",
+      "\\end{enumerate}"
+    ]
+  },
+  "[G] Itemize": {
+    "prefix": "itz",
+    "body": [
+      "\\begin{itemize}",
+      "\t\\item ${1:$TM_SELECTED_TEXT}",
+      "\\end{itemize}"
+    ]
+  },
+  "[G] Image": {
+    "prefix": "img",
+    "body": [
+      "\\begin{center}",
+      "\t\\includegraphics[width=${2:8}cm]{$1}",
+      "\\end{center}",
+      "$0"
+    ]
+  },
+  "[G] Add margin": {
+    "prefix": "adm",
+    "body": [
+      "\\begin{addmargin}[${1:1em}]{${2:0em}}",
+      "\t${3:$TM_SELECTED_TEXT}",
+      "\\end{addmargin}"
+    ]
+  },
+  "[G] Minted block": {
+    "prefix": "mitb",
+    "body": [
+      "\\begin{minted}{$1}",
+      "${2:$TM_SELECTED_TEXT}",
+      "\\end{minted}"
+    ]
+  },
 
+  // Inline
 
-		"body": [
-			"\\begin{cases}",
-			"\t${1:$TM_SELECTED_TEXT}",
-			"\\end{cases}"
+  "[G] Image Inline": {
+    "prefix": "imgi",
+    "body": [
+      "\\includegraphics[width=${2:3}cm]{$1}"
+    ]
+  },
+  "[G] Math in-line": {
+    "prefix": "mi",
+    "body": [
+      "\\(${1:$TM_SELECTED_TEXT}\\)"
+    ]
+  },
+  "[G] Chemistry equation": {
+    "prefix": "ce",
+    "body": [
+      "\\ce{${1:$TM_SELECTED_TEXT}}"
+    ]
+  },
+  "[G] Text": {
+    "prefix": "txt",
+    "body": [
+      "\\text{${1:$TM_SELECTED_TEXT}}"
+    ]
+  },
+  "[G] Minted in-line": {
+    "prefix": "miti",
+    "body": [
+      "\\mintinline{$1}{${2:$TM_SELECTED_TEXT}}"
+    ]
+  },
+  "[G] Cancel": {
+    "prefix": "can",
+    "body": [
+      "\\cancel{${1:$TM_SELECTED_TEXT}}"
+    ]
+  },
 
-		]
-	},
-	"[G] Enumerate": {
-		"prefix": "enm",
-		"body": [
-			"\\begin{enumerate}",
-			"\t\\item ${1:$TM_SELECTED_TEXT}",
-			"\\end{enumerate}"
-		]
-	},
-	"[G] Itemize": {
-		"prefix": "itz",
-		"body": [
-			"\\begin{itemize}",
-			"\t\\item ${1:$TM_SELECTED_TEXT}",
-			"\\end{itemize}"
-		]
-	},
-	"[G] Image": {
-		"prefix": "img",
-		"body": [
-			"\\begin{center}",
-			"\t\\includegraphics[width=${2:8}cm]{$1}",
-			"\\end{center}",
-			"$0"
-		]
-	},
-	"[G] Add margin": {
-		"prefix": "adm",
-		"body": [
-			"\\begin{addmargin}[${1:1em}]{${2:0em}}",
-			"\t${3:$TM_SELECTED_TEXT}",
-			"\\end{addmargin}"
-		]
-	},
-	"[G] Minted block": {
-		"prefix": "mitb",
-		"body": [
-			"\\begin{minted}{$1}",
-			"${2:$TM_SELECTED_TEXT}",
-			"\\end{minted}"
-		]
-	},
+  // Modifiers
 
-	// Inline
+  "[G] Under-brace": {
+    "prefix": "unbc",
+    "body": [
+      "\\underbrace{${1:$TM_SELECTED_TEXT}}_{$2}"
+    ]
+  },
+  "[G] Over-brace": {
+    "prefix": "ovbc",
+    "body": [
+      "\\overbrace{${1:$TM_SELECTED_TEXT}}_{$2}"
+    ]
+  },
+  "[G] Bold": {
+    "prefix": "bld",
+    "body": [
+      "\\textbf{${1:$TM_SELECTED_TEXT}}"
+    ]
+  },
+  "[G] Italic": {
+    "prefix": "itl",
+    "body": [
+      "\\textit{${1:$TM_SELECTED_TEXT}}"
+    ]
+  },
 
-	"[G] Image Inline": {
-		"prefix": "imgi",
-		"body": [
-			"\\includegraphics[width=${2:3}cm]{$1}"
-		]
-	},
-	"[G] Math in-line": {
-		"prefix": "mi",
-		"body": [
-			"\\(${1:$TM_SELECTED_TEXT}\\)"
-		]
-	},
-	"[G] Chemistry equation": {
-		"prefix": "ce",
-		"body": [
-			"\\ce{${1:$TM_SELECTED_TEXT}}"
-		]
-	},
-	"[G] Text": {
-		"prefix": "txt",
-		"body": [
-			"\\text{${1:$TM_SELECTED_TEXT}}"
-		]
-	},
-	"[G] Minted in-line": {
-		"prefix": "miti",
-		"body": [
-			"\\mintinline{$1}{${2:$TM_SELECTED_TEXT}}"
-		]
-	},
-	"[G] Cancel": {
-		"prefix": "can",
-		"body": [
-			"\\cancel{${1:$TM_SELECTED_TEXT}}"
-		]
-	},
+  // Structure
 
-	// Modifiers
+  "[G] Chapter": {
+    "prefix": "chp",
+    "body": [
+      "\\chapter{${1:$TM_SELECTED_TEXT}}",
+      "",
+      "$0"
+    ]
+  },
+  "[G] Section": {
+    "prefix": "sec",
+    "body": [
+      "\\section{${1:$TM_SELECTED_TEXT}}",
+      "",
+      "$0"
+    ]
+  },
+  "[G] Subsection": {
+    "prefix": "ssec",
+    "body": [
+      "\\subsection{${1:$TM_SELECTED_TEXT}}",
+      "",
+      "$0"
+    ]
+  },
+  "[G] Subsubsection": {
+    "prefix": "sssec",
+    "body": [
+      "\\subsubsection{${1:$TM_SELECTED_TEXT}}",
+      "",
+      "$0"
+    ]
+  },
+  "[G] Example": {
+    "prefix": "sssec*",
+    "body": [
+      "\\subsubsection*{${1:$TM_SELECTED_TEXT}}",
+      "",
+      "$0"
+    ]
+  },
+  "[G] Math centered block": {
+    "prefix": "mc",
+    "body": [
+      "\\[",
+      "    $1",
+      "\\]",
+      "$0",
+    ]
+  },
 
-	"[G] Under-brace": {
-		"prefix": "unbc",
-		"body": [
-			"\\underbrace{${1:$TM_SELECTED_TEXT}}_{$2}"
-		]
-	},
-	"[G] Over-brace": {
-		"prefix": "ovbc",
-		"body": [
-			"\\overbrace{${1:$TM_SELECTED_TEXT}}_{$2}"
-		]
-	},
-	"[G] Bold": {
-		"prefix": "bld",
-		"body": [
-			"\\textbf{${1:$TM_SELECTED_TEXT}}"
-		]
-	},
-	"[G] Italic": {
-		"prefix": "itl",
-		"body": [
-			"\\textit{${1:$TM_SELECTED_TEXT}}"
-		]
-	},
+  // Templates
 
-	// Structure
-
-	"[G] Chapter": {
-		"prefix": "chp",
-		"body": [
-			"\\chapter{${1:$TM_SELECTED_TEXT}}",
-			"",
-			"$0"
-		]
-	},
-	"[G] Section": {
-		"prefix": "sec",
-		"body": [
-			"\\section{${1:$TM_SELECTED_TEXT}}",
-			"",
-			"$0"
-		]
-	},
-	"[G] Subsection": {
-		"prefix": "ssec",
-		"body": [
-			"\\subsection{${1:$TM_SELECTED_TEXT}}",
-			"",
-			"$0"
-		]
-	},
-	"[G] Subsubsection": {
-		"prefix": "sssec",
-		"body": [
-			"\\subsubsection{${1:$TM_SELECTED_TEXT}}",
-			"",
-			"$0"
-		]
-	},
-	"[G] Example": {
-		"prefix": "sssec*",
-		"body": [
-			"\\subsubsection*{${1:$TM_SELECTED_TEXT}}",
-			"",
-			"$0"
-		]
-	},
-	"[G] Math centered block": {
-		"prefix": "mc",
-		"body": [
-            "\\[",
-            "    $1",
-            "\\]",
-            "$0",
-        ]
-	},
-
-    // Templates
-
-    "[G] Document Template": {
-        "prefix": "texdoc",
-        "body": [
-            "\\documentclass[12pt, a4paper, openany]{report}",
-            "\\usepackage[utf8]{inputenc}",
-            "\\usepackage[T1]{fontenc}",
-            "",
-            "${1:% LANGUAGE",
-            "\\usepackage[english,french]{babel\\}",
-            "    \\selectlanguage{french\\}",
-            "    \\frenchsetup{StandardItemLabels=true\\}",
-            "\\usepackage{enumitem\\}  % Enumerate improved",
-            "",
-            "}% MATH / Others",
-            "\\usepackage{amsmath, amssymb}  % Math symbols",
-            "\\usepackage{physics}  % \\norm and \\abs",
-            "\\usepackage{esvect, cancel}  % Misc., vectors, strikethrough",
-            "${2:\\usepackage{mhchem\\}  % Chemistry",
-            "}\\usepackage{siunitx}  % Units SI",
-            "${3:\\usepackage{minted\\}  % Code fences ([cache=false])",
-            "\\setminted[python]{",
-            "    fontsize=\\footnotesize,",
-            "    tabsize=4,",
-            "    rulecolor=black,",
-            "    xleftmargin=18pt,",
-            "    linenos,",
-            "    breaklines",
-            "\\}",
-            "\\usemintedstyle{pastie\\}",
-            "}",
-            "% GEOMETRY",
-            "\\usepackage[",
-            "    paper=a4paper,",
-            "    top=2.5cm,",
-            "    left=2.25cm,",
-            "    headheight=15pt,",
-            "    headsep=12pt,",
-            "    textwidth=16cm,",
-            "    textheight=24cm,",
-            "]{geometry}",
-            "\\usepackage{parskip}  % Reformat paragraphs, no indent first line",
-            "\\usepackage{enumitem}  % Enumerate improved",
-            "\\usepackage{scrextend}  % Indent text with addmargin environment",
-            "${4:\\usepackage{graphicx\\}  % Include graphics",
-            "\\graphicspath{{latex-img/\\}\\}",
-            "\\usepackage{caption\\}  % Caption without figures",
-            "\\usepackage{float\\}",
-            "",
-            "}",
-            "% HYPERLINKS",
-            "\\usepackage{hyperref}",
-            "\\hypersetup{",
-            "    colorlinks=true,",
-            "    linktoc=all,",
-            "    linkcolor=blue,",
-            "}",
-            "",
-            "% HEADERS",
-            "\\usepackage{fancyhdr\\}",
-            "    \\pagestyle{fancy}",
-            "    \\lhead{$6\\}",
-            "    \\rhead{$7\\}",
-            "    \\renewcommand{\\footrulewidth}{0.4pt}",
-            "    \\renewcommand{\\headrulewidth}{0.4pt}",
-            "\\usepackage{etoolbox}  % Define chapter page style",
-            "    \\patchcmd{\\chapter}{\\thispagestyle{plain}}{\\thispagestyle{fancy}}{}{}",
-            "",
-            "% TITLE PAGE",
-            "\\title{${6:Title}\\}",
-            "\\author{${7:Author}\\}",
-            "\\date{${8:Date}\\}",
-            "",
-            "\\begin{document\\}",
-            "% TITLE",
-            "\\maketitle",
-            "${5:% TOC",
-            "\\pagenumbering{gobble\\}{",
-            "    \\tableofcontents",
-            "    \\thispagestyle{plain\\}",
-            "    \\cleardoublepage",
-            "\\}",
-            "\\pagenumbering{arabic\\}",
-            "}",
-            "$0",
-            "",
-            "\\end{document}",
-        ],
-    },
+  "[G] Document Template": {
+    "prefix": "texdoc",
+    "body": [
+      "\\documentclass[12pt, a4paper, openany]{report}",
+      "\\usepackage[utf8]{inputenc}",
+      "\\usepackage[T1]{fontenc}",
+      "",
+      "${1:% LANGUAGE",
+      "\\usepackage[english,french]{babel\\}",
+      "    \\selectlanguage{french\\}",
+      "    \\frenchsetup{StandardItemLabels=true\\}",
+      "\\usepackage{enumitem\\}  % Enumerate improved",
+      "",
+      "}% MATH / Others",
+      "\\usepackage{amsmath, amssymb}  % Math symbols",
+      "\\usepackage{physics}  % \\norm and \\abs",
+      "\\usepackage{esvect, cancel}  % Misc., vectors, strikethrough",
+      "${2:\\usepackage{mhchem\\}  % Chemistry",
+      "}\\usepackage{siunitx}  % Units SI",
+      "${3:\\usepackage{minted\\}  % Code fences ([cache=false])",
+      "\\setminted[python]{",
+      "    fontsize=\\footnotesize,",
+      "    tabsize=4,",
+      "    rulecolor=black,",
+      "    xleftmargin=18pt,",
+      "    linenos,",
+      "    breaklines",
+      "\\}",
+      "\\usemintedstyle{pastie\\}",
+      "}",
+      "% GEOMETRY",
+      "\\usepackage[",
+      "    paper=a4paper,",
+      "    top=2.5cm,",
+      "    left=2.25cm,",
+      "    headheight=15pt,",
+      "    headsep=12pt,",
+      "    textwidth=16cm,",
+      "    textheight=24cm,",
+      "]{geometry}",
+      "\\usepackage{parskip}  % Reformat paragraphs, no indent first line",
+      "\\usepackage{enumitem}  % Enumerate improved",
+      "\\usepackage{scrextend}  % Indent text with addmargin environment",
+      "${4:\\usepackage{graphicx\\}  % Include graphics",
+      "\\graphicspath{{latex-img/\\}\\}",
+      "\\usepackage{caption\\}  % Caption without figures",
+      "\\usepackage{float\\}",
+      "",
+      "}",
+      "% HYPERLINKS",
+      "\\usepackage{hyperref}",
+      "\\hypersetup{",
+      "    colorlinks=true,",
+      "    linktoc=all,",
+      "    linkcolor=blue,",
+      "}",
+      "",
+      "% HEADERS",
+      "\\usepackage{fancyhdr\\}",
+      "    \\pagestyle{fancy}",
+      "    \\lhead{$6\\}",
+      "    \\rhead{$7\\}",
+      "    \\renewcommand{\\footrulewidth}{0.4pt}",
+      "    \\renewcommand{\\headrulewidth}{0.4pt}",
+      "\\usepackage{etoolbox}  % Define chapter page style",
+      "    \\patchcmd{\\chapter}{\\thispagestyle{plain}}{\\thispagestyle{fancy}}{}{}",
+      "",
+      "% TITLE PAGE",
+      "\\title{${6:Title}\\}",
+      "\\author{${7:Author}\\}",
+      "\\date{${8:Date}\\}",
+      "",
+      "\\begin{document\\}",
+      "% TITLE",
+      "\\maketitle",
+      "${5:% TOC",
+      "\\pagenumbering{gobble\\}{",
+      "    \\tableofcontents",
+      "    \\thispagestyle{plain\\}",
+      "    \\cleardoublepage",
+      "\\}",
+      "\\pagenumbering{arabic\\}",
+      "}",
+      "$0",
+      "",
+      "\\end{document}",
+    ],
+  },
 }

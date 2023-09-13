@@ -6,12 +6,11 @@ return {
   name = "Tex file generator",
   generator = function(opts, cb)
     local cwd = vim.fn.getcwd()
-    local files = vim.split(vim.fn.glob(cwd .. "/**/*.tex"), "\n", {trimempty=true})
+    local files = vim.split(vim.fn.glob(cwd .. "/**/*.tex"), "\n", { trimempty = true, })
 
     local res = {}
 
     for _, file in ipairs(files) do
-
       local filename = string.sub(file, #cwd + 2)
       local name = "Tex " .. filename
 
@@ -23,7 +22,7 @@ return {
 
           return {
             name = name,
-            cmd = {"latexmk"},
+            cmd = { "latexmk" },
             args = {
               "-xelatex",
               "-synctex=1",
@@ -35,7 +34,7 @@ return {
             },
           }
         end,
-        tags = {overseer.TAG.BUILD},
+        tags = { overseer.TAG.BUILD },
       })
     end
 

@@ -16,10 +16,10 @@ local function set_sign_icons(opts)
     })
   end
 
-  sign({name = "error", hl = "DiagnosticSignError"})
-  sign({name = "warn", hl = "DiagnosticSignWarn"})
-  sign({name = "hint", hl = "DiagnosticSignHint"})
-  sign({name = "info", hl = "DiagnosticSignInfo"})
+  sign({ name = "error", hl = "DiagnosticSignError", })
+  sign({ name = "warn", hl = "DiagnosticSignWarn", })
+  sign({ name = "hint", hl = "DiagnosticSignHint", })
+  sign({ name = "info", hl = "DiagnosticSignInfo", })
 end
 
 return {
@@ -44,11 +44,11 @@ return {
       -- Add border to LSP windows
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
         vim.lsp.handlers.hover,
-        {border = "single"}
+        { border = "single", }
       )
       vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
         vim.lsp.handlers.signature_help,
-        {border = "single"}
+        { border = "single", }
       )
       require("lspconfig.ui.windows").default_options.border = "single"
 
@@ -57,32 +57,32 @@ return {
       command(
         "LspWorkspaceAdd",
         function() vim.lsp.buf.add_workspace_folder() end,
-        {desc = "Add folder to workspace"}
+        { desc = "Add folder to workspace", }
       )
       command(
         "LspWorkspaceList",
         function() vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
-        {desc = "List workspace folders"}
+        { desc = "List workspace folders", }
       )
       command(
         "LspWorkspaceRemove",
         function() vim.lsp.buf.remove_workspace_folder() end,
-        {desc = "Remove folder from workspace"}
+        { desc = "Remove folder from workspace", }
       )
 
       -- Diagnostics config
       vim.diagnostic.config({
         underline = true,
         severity_sort = true, -- Sort diagnostics by severity
-        float = {border = "single"},
+        float = { border = "single", },
       })
 
       -- Set sign icons in gutter
       set_sign_icons({
         error = "E",
-        warn =  "W",
-        hint =  "H",
-        info =  "I",
+        warn = "W",
+        hint = "H",
+        info = "I",
       })
 
       -- Start LSP
@@ -120,6 +120,7 @@ return {
           "lua_ls",
           "emmet_language_server",
           "clangd",
+          "jsonls",
         },
         handlers = {
           default_setup,
@@ -151,8 +152,8 @@ return {
       local cmp = require("cmp")
       local types = require("cmp.types")
 
-      local border = cmp.config.window.bordered({border = "single"})
-      local cmp_select_opts = {behavior = cmp.SelectBehavior.Select}
+      local border = cmp.config.window.bordered({ border = "single" })
+      local cmp_select_opts = { behavior = cmp.SelectBehavior.Select }
 
       cmp.setup({
         completion = {
@@ -162,12 +163,12 @@ return {
         mapping = {
           -- Completion results choice
           ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-CR>"] = cmp.mapping.confirm({select = true}),
+          ["<C-CR>"] = cmp.mapping.confirm({ select = true }),
           ["<C-c>"] = cmp.mapping.abort(),
 
           -- Move in completion results
-          ["<Down>"] = {i = cmp.mapping.select_next_item(cmp_select_opts)},
-          ["<Up>"] = {i = cmp.mapping.select_prev_item(cmp_select_opts)},
+          ["<Down>"] = { i = cmp.mapping.select_next_item(cmp_select_opts) },
+          ["<Up>"] = { i = cmp.mapping.select_prev_item(cmp_select_opts) },
 
           -- Scroll up and down in the completion documentation
           ["<C-j>"] = cmp.mapping.scroll_docs(-5),
@@ -178,9 +179,9 @@ return {
           documentation = border,
         },
         sources = {
-          {name = "nvim_lsp"},
-          {name = "luasnip"},
-          {name = "path"},
+          { name = "nvim_lsp" },
+          { name = "luasnip" },
+          { name = "path" },
         },
         snippet = {
           expand = function(args)
@@ -188,7 +189,7 @@ return {
           end,
         },
         formatting = {
-          fields = {"abbr", "menu", "kind"},
+          fields = { "abbr", "menu", "kind" },
           format = function(entry, item)
             local short_name = {
               nvim_lsp = "LSP",
@@ -225,29 +226,29 @@ return {
       ls.setup({
         history = true,
         enable_autosnippets = true,
-        update_events = {"TextChanged", "TextChangedI"},
+        update_events = { "TextChanged", "TextChangedI" },
         store_selection_keys = "<Tab>", -- use key on selection for $TM_SELECTED_TEXT content
         ext_opts = {
           [types.insertNode] = {
-            unvisited = {hl_group = "LuaSnipPlace"},
+            unvisited = { hl_group = "LuaSnipPlace" },
           },
           [types.exitNode] = {
-            unvisited = {hl_group = "LuaSnipPlace"},
+            unvisited = { hl_group = "LuaSnipPlace" },
           },
         }
       })
 
       -- Load user snippets
-      require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/lua/gruvw/snippets/lua"})
-      require("luasnip.loaders.from_vscode").lazy_load({paths = "~/.config/nvim/lua/gruvw/snippets/lsp"})
+      require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/lua/gruvw/snippets/lua" })
+      require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/nvim/lua/gruvw/snippets/lsp" })
 
       -- Load friendly-snippets
       require("luasnip.loaders.from_vscode").lazy_load({
-        exclude = {"plaintex", "all", "tex"},
+        exclude = { "plaintex", "all", "tex" },
       })
 
       -- Filetype fixes
-      ls.filetype_extend("plaintex", {"tex"})
+      ls.filetype_extend("plaintex", { "tex" })
     end,
   },
 
@@ -255,8 +256,8 @@ return {
   {
     "akinsho/flutter-tools.nvim",
     dependencies = {
-        "plenary.nvim",
-        "dressing.nvim",
+      "plenary.nvim",
+      "dressing.nvim",
     },
     config = function()
       require("flutter-tools").setup({

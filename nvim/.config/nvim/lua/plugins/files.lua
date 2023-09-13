@@ -13,19 +13,19 @@ return {
         end,
       },
       trigger_events = {
-        immediate_save = {"BufLeave", "FocusLost"},
-        defer_save = {"InsertLeave", "TextChanged"},
-        cancel_defered_save = {"ModeChanged"},
+        immediate_save = { "BufLeave", "FocusLost", },
+        defer_save = { "InsertLeave", "TextChanged", },
+        cancel_defered_save = { "ModeChanged", },
       },
       cleaning_interval = 3000, -- time before erasing the execution msg
-      debounce_delay = 6000, -- time till a defered save acctually happens (if not cancelled)
+      debounce_delay = 6000,    -- time till a defered save acctually happens (if not cancelled)
       condition = function(buf)
         -- Ignore auto-save
         local ignore_buftype = {}
         local ignore_filetype = {}
 
         if vim.tbl_contains(ignore_buftype, vim.bo.buftype)
-          or vim.tbl_contains(ignore_filetype, vim.bo.filetype)
+            or vim.tbl_contains(ignore_filetype, vim.bo.filetype)
         then
           return false
         end
@@ -56,8 +56,8 @@ return {
           sorting_strategy = "ascending",
           file_ignore_patterns = { "^.git/", },
           layout_config = {
-              height = 0.6,
-              prompt_position = "top",
+            height = 0.6,
+            prompt_position = "top",
           },
           mappings = {
             n = {
@@ -144,7 +144,7 @@ return {
     config = function()
       require("gitsigns").setup({
         current_line_blame_formatter = '<author> - <author_time:%Y_%m_%d> <author_time:%H:%M> - <summary>',
-         current_line_blame_opts = {
+        current_line_blame_opts = {
           delay = 300,
         },
       })

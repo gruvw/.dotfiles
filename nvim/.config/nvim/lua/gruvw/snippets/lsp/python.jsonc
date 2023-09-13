@@ -1,47 +1,47 @@
 // ~/.config/nvim/lua/gruvw/snippets/lsp/python.jsonc
 
 {
-    "[G] Main": {
-		"prefix": "main",
-		"body": [
-			"def main():",
-			"    ${0:$TM_SELECTED_TEXT}",
-			"",
-			"",
-			"if __name__ == \"__main__\":",
-			"    main()"
-		],
-		"description": "Log output to console"
-	},
-	"[G] cocotest": {
-		"prefix": "cocotest",
-		"body": [
-			"import cocotb",
-			"from test import assert_log",
-			"from cocotb.binary import BinaryValue",
-			"from cocotb.clock import Clock",
-			"from cocotb.triggers import Timer, RisingEdge, FallingEdge",
-			"",
-			"",
-			"__toplevel__ = \"$1\"",
-			"",
-			"",
-			"async def reset(dut):",
-			"\tawait FallingEdge(dut.$2)",
-			"\tdut.${3:rst}.value = 1",
-			"\t$4",
-			"\tawait RisingEdge(dut.$2)",
-			"\tdut.$3.value = 0",
-			"\tawait FallingEdge(dut.$2)",
-			"",
-			"",
-			"@cocotb.test()",
-			"async def test(dut):",
-			"",
-			"\tcocotb.start_soon(Clock(dut.${2:clk}, 4).start(start_high=False))",
-			"\tawait reset(dut)",
-			"",
-			"\t${5:assert_log(0, dut.$3.value)}"
-		]
-	}
+  "[G] Main": {
+    "prefix": "main",
+    "body": [
+      "def main():",
+      "    ${0:$TM_SELECTED_TEXT}",
+      "",
+      "",
+      "if __name__ == \"__main__\":",
+      "    main()"
+    ],
+    "description": "Log output to console"
+  },
+  "[G] cocotest": {
+    "prefix": "cocotest",
+    "body": [
+      "import cocotb",
+      "from test import assert_log",
+      "from cocotb.binary import BinaryValue",
+      "from cocotb.clock import Clock",
+      "from cocotb.triggers import Timer, RisingEdge, FallingEdge",
+      "",
+      "",
+      "__toplevel__ = \"$1\"",
+      "",
+      "",
+      "async def reset(dut):",
+      "\tawait FallingEdge(dut.$2)",
+      "\tdut.${3:rst}.value = 1",
+      "\t$4",
+      "\tawait RisingEdge(dut.$2)",
+      "\tdut.$3.value = 0",
+      "\tawait FallingEdge(dut.$2)",
+      "",
+      "",
+      "@cocotb.test()",
+      "async def test(dut):",
+      "",
+      "\tcocotb.start_soon(Clock(dut.${2:clk}, 4).start(start_high=False))",
+      "\tawait reset(dut)",
+      "",
+      "\t${5:assert_log(0, dut.$3.value)}"
+    ]
+  }
 }

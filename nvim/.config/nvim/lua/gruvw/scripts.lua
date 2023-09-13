@@ -4,12 +4,12 @@ local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
 -- Trim ending whitespaces and empty lines, keep cursor position
-autocmd({"BufWritePre"}, {
-  pattern = {"*"},
+autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
   callback = function(ev)
     local ignore_filetype = { "markdown", "latex", "tex", }
     if not vim.tbl_contains(ignore_filetype, vim.bo.filetype) then
-      save_cursor = vim.fn.getpos(".")
+      local save_cursor = vim.fn.getpos(".")
       vim.cmd([[%s/\s\+$//e]])
       vim.cmd([[%s#\($\n\s*\)\+\%$##e]])
       vim.fn.setpos(".", save_cursor)
@@ -32,7 +32,7 @@ autocmd("TextYankPost", {
 -- Open help window in a vertical split to the right.
 autocmd("BufWinEnter", {
   group = augroup("help_window_right", {}),
-  pattern = {"*.txt"},
+  pattern = { "*.txt" },
   callback = function()
     if vim.o.filetype == "help" then vim.cmd.wincmd("L") end
   end
@@ -40,8 +40,8 @@ autocmd("BufWinEnter", {
 
 -- Remember last place cursor on open, https://github.com/neovim/neovim/issues/16339
 -- Adapted from https://github.com/ethanholz/nvim-lastplace/blob/main/lua/nvim-lastplace/init.lua
-local ignore_buftype = {"quickfix", "nofile", "help"}
-local ignore_filetype = {"gitcommit", "gitrebase", "svn", "hgcommit"}
+local ignore_buftype = { "quickfix", "nofile", "help", }
+local ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit", }
 local function restore_cursor()
   if vim.tbl_contains(ignore_buftype, vim.bo.buftype) then
     return
@@ -49,7 +49,7 @@ local function restore_cursor()
 
   if vim.tbl_contains(ignore_filetype, vim.bo.filetype) then
     -- Reset cursor to first line
-    vim.cmd[[normal! gg]]
+    vim.cmd [[normal! gg]]
     return
   end
 
@@ -68,16 +68,16 @@ local function restore_cursor()
     -- Check if the last line of the buffer is the same as the win
     if win_last_line == buff_last_line then
       -- Set line to last line edited
-      vim.cmd[[normal! g`"]]
+      vim.cmd [[normal! g`"]]
       -- Try to center
     elseif buff_last_line - last_line > ((win_last_line - win_first_line) / 2) - 1 then
-      vim.cmd[[normal! g`"zz]]
+      vim.cmd [[normal! g`"zz]]
     else
-      vim.cmd[[normal! G'"<c-e>]]
+      vim.cmd [[normal! G'"<c-e>]]
     end
   end
 end
-autocmd({"BufWinEnter", "FileType"}, {
+autocmd({ "BufWinEnter", "FileType" }, {
   group = augroup("nvim-lastplace", {}),
   callback = restore_cursor
 })
@@ -95,7 +95,7 @@ autocmd({"BufWinEnter", "FileType"}, {
 -- })
 
 -- Format options (don't comment continuation in normal mode)
-autocmd({"BufNewFile", "BufRead"}, {
+autocmd({ "BufNewFile", "BufRead" }, {
   callback = function(args)
     vim.opt.formatoptions = "jctrlq"
   end

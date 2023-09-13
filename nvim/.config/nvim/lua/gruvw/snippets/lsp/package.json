@@ -1,27 +1,27 @@
 {
-	"name": "example-snippets",
-	"contributes": {
-		"snippets": [
-			{
-				"language": ["all"],
-				"path": "./all.jsonc"
-			},
-			{
-				"language": ["tex"],
-				"path": "./tex.jsonc"
-			},
-			{
-				"language": ["python"],
-				"path": "./python.jsonc"
-			},
-            {
-                "language": ["jsonc"],
-                "path": "./jsonc.jsonc"
-            },
-            {
-                "language": ["lua"],
-                "path": "./lua.jsonc"
-            }
-		]
-	}
+  "name": "example-snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": ["all"],
+        "path": "./all.jsonc"
+      },
+      {
+        "language": ["tex"],
+        "path": "./tex.jsonc"
+      },
+      {
+        "language": ["python"],
+        "path": "./python.jsonc"
+      },
+      {
+        "language": ["jsonc"],
+        "path": "./jsonc.jsonc"
+      },
+      {
+        "language": ["lua"],
+        "path": "./lua.jsonc"
+      }
+    ]
+  }
 }

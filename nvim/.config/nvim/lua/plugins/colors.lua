@@ -1,5 +1,7 @@
 -- ~/.config/nvim/lua/plugins/colors.lua
 
+local hl = vim.api.nvim_set_hl
+
 return {
   -- https://github.com/loctvl842/monokai-pro.nvim
   {
@@ -69,8 +71,6 @@ return {
       -- Enable theme
       vim.cmd("colorscheme monokai-pro")
 
-      local hl = vim.api.nvim_set_hl
-
       -- Only highlight the line number not whole current line
       -- hl(0, "CursorLine", { bg = "none", })
       -- hl(0, "NvimTreeCursorLine", { bg = "none", })
@@ -111,13 +111,13 @@ return {
       hl(0, "NonText", { link = "Whitespace", })
 
       -- Match paren
-      hl(0, "MatchParen", {fg = "#fce566", underline = false, bold = true})
+      hl(0, "MatchParen", { fg = "#fce566", underline = false, bold = true, })
 
       -- Style for LuaSnip default placeholder text
-      hl(0, "LuaSnipPlace", {bg = "#363537", italic = true})
+      hl(0, "LuaSnipPlace", { bg = "#363537", italic = true, })
 
       -- TreeSitter highlights
-      hl(0, "@function.builtin.python", {link = "Function"})
+      hl(0, "@function.builtin.python", { link = "Function", })
     end,
   },
 
@@ -157,22 +157,22 @@ return {
       local rainbow_delimiters = require("rainbow-delimiters")
 
       vim.g.rainbow_delimiters = {
-          strategy = {
-              [""] = rainbow_delimiters.strategy["global"],
-          },
-          query = {
-              [""] = "rainbow-delimiters",
-              lua = "rainbow-blocks",
-              latex = "rainbow-delimiters",
-          },
-          highlight = {
-              "RainbowDelimiterRed",
-              "RainbowDelimiterOrange",
-              "RainbowDelimiterYellow",
-              "RainbowDelimiterGreen",
-              "RainbowDelimiterCyan",
-              "RainbowDelimiterViolet",
-          },
+        strategy = {
+          [""] = rainbow_delimiters.strategy["global"],
+        },
+        query = {
+          [""] = "rainbow-delimiters",
+          lua = "rainbow-blocks",
+          latex = "rainbow-delimiters",
+        },
+        highlight = {
+          "RainbowDelimiterRed",
+          "RainbowDelimiterOrange",
+          "RainbowDelimiterYellow",
+          "RainbowDelimiterGreen",
+          "RainbowDelimiterCyan",
+          "RainbowDelimiterViolet",
+        },
       }
     end
   },
@@ -182,8 +182,8 @@ return {
     "NvChad/nvim-colorizer.lua",
     event = "VeryLazy",
     config = function()
-       require("colorizer").setup({
-        filetypes = {"*"},
+      require("colorizer").setup({
+        filetypes = { "*" },
         user_default_options = {
           RGB = true,
           RRGGBB = true,
@@ -198,7 +198,7 @@ return {
           tailwind = true,
           sass = {
             enable = true,
-            parsers = {"css"},
+            parsers = { "css" },
           },
         },
       })
@@ -214,7 +214,7 @@ return {
         duration = 300,
       })
 
-      vim.cmd([[hi! link HighlightUndo IncSearch]])
+      hl(0, "HighlightUndo", { link = "IncSearch", })
     end
   }
 }
