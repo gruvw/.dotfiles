@@ -55,12 +55,12 @@
 
 ## Advanced editor functionalities
 
-- [ ] Todos integration, with tags regex, in-code coloring, listing (todo-comments.nvim)
 - [ ] Open file in hex/byte editor view
 - [ ] Clipboard history (neoclip)
 - [ ] DAP
 - [ ] https://github.com/folke/trouble.nvim
 - [X] Local settings
+- [X] Todos integration, with tags regex, in-code coloring, listing (todo-comments.nvim)
 
 ## Fun and extra
 

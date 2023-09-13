@@ -37,6 +37,7 @@ keymap("n", "G", "G0", remap)
 keymap("i", "<Tab>",
   [[getline(".") == "" && line(".") != 1 ? (line(".") != line("$") ? "<Esc>ddko" : "<Esc>ddo") : "<Tab>"]],
   { expr = true, noremap = true, })
+keymap("n", "g<Tab>", [[i<Tab>]], remap)
 
 -- Full file operations
 keymap("n", "=A", "gg=G''", remap)
@@ -75,6 +76,7 @@ keymap("n", "<leader>sc", [[:lua require("telescope.builtin").commands()<CR>]], 
 keymap("n", "<leader>su", [[:lua require("telescope").extensions.undo.undo()<CR>]], remap)
 keymap("n", "<leader>sw", [[:lua require("telescope").extensions.workspaces.workspaces()<CR>]], remap)
 keymap("n", "<leader>sj", [[:lua require("telescope").extensions.harpoon.marks()<CR>]], remap)
+keymap("n", "<leader>st", [[:TodoTelescope<CR>]], remap)
 
 -- Workspaces (w)
 keymap("n", "<leader>wa",
