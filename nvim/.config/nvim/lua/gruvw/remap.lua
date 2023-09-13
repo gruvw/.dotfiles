@@ -137,8 +137,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "<leader>cN", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   end
 })
+
+-- Treesitter context (c)
 keymap("n", "<leader>ct", ":TSContextToggle<CR>", remap)
+
+-- Comment (c)
 keymap({ "v", "n", }, "<leader>cl", [[:CommentToggle<CR>]], remap)
+keymap("i", "<C-/>", [[<cmd>CommentToggle<CR><esc>A]], remap)
 
 -- LuaSnip
 -- Jump to $0, https://github.com/L3MON4D3/LuaSnip/issues/562#issuecomment-1233122825
@@ -162,8 +167,11 @@ keymap({ "i", "s", "n", }, "<C-Tab>", [[<cmd>lua require("luasnip").jump(1)<CR>]
 keymap({ "i", "s", "n", }, "<C-S-Tab>", [[<cmd>lua require("luasnip").jump(-1)<CR>]], remap)
 keymap({ "i", "s", "n", }, "<C-0>", snip_jump_end, remap)
 
--- Open floating terminal, enable line numbers in float (autocmd do not work)
+-- Open floating terminal (T), enable line numbers in float (autocmd do not work)
 keymap("n", "<leader>T", [[<cmd>lua require("toggleterm").toggle()<CR><cmd>setlocal number relativenumber<CR><cmd>:startinsert<CR>]], remap)
+
+-- Open hex edit (H)
+keymap("n", "<leader>H", [[:lua require("hex").toggle()<CR>]], remap)
 
 -- Run (r)
 keymap("n", "<leader>ro", [[:lua require("overseer").toggle()<CR>]], remap)

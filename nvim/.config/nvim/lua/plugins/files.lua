@@ -150,4 +150,13 @@ return {
       })
     end,
   },
+
+  -- https://github.com/RaafatTurki/hex.nvim
+  {
+    "RaafatTurki/hex.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("hex").setup({})
+    end
+  }
 }
