@@ -212,6 +212,7 @@ border_settings = dict(border_normal=Colors.window_border_normal)
 layouts = [
     layout.Columns(
         **border_settings,
+        name="col",
         border_focus=Colors.window_border_focus,
         border_width=Settings.window_border_width,
         wrap_focus_columns=False
