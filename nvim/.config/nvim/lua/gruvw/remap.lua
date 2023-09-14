@@ -21,7 +21,7 @@ keymap("n", "J", "j_d0kgJ", remap)
 keymap("n", "gJ", "j_d0kgJi<space><Esc>", remap)
 
 -- Execute line under custor as cmd
-keymap("n", "<C-x>", ":exec getline('.')<CR>", remap)
+keymap("n", "<C-S-x>", ":exec getline('.')<CR>", remap)
 
 -- Line numbers relative toggle
 keymap("n", "<C-;>", ":set relativenumber!<CR>", remap)
@@ -77,6 +77,7 @@ keymap("n", "<leader>fs", "iLucas Jung (IN-BA5 324724)<esc>", remap) -- sign
 -- Telescope, search (s)
 keymap("n", "<leader>sf", [[:lua require("telescope.builtin").find_files()<CR>]], remap)
 keymap("n", "<leader>sg", [[:lua require("telescope.builtin").live_grep()<CR>]], remap)
+keymap("n", "<leader>sb", [[:lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>]], remap)
 keymap("n", "<leader>sc", [[:lua require("telescope.builtin").commands()<CR>]], remap)
 keymap("n", "<leader>su", [[:lua require("telescope").extensions.undo.undo()<CR>]], remap)
 keymap("n", "<leader>sw", [[:lua require("telescope").extensions.workspaces.workspaces()<CR>]], remap)

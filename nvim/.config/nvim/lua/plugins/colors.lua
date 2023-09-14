@@ -65,6 +65,7 @@ return {
             ["@lsp.type.class.dart"] = { fg = base.cyan, italic = false, },
             ["@type.python"] = { fg = base.cyan, },
             ["@keyword.python"] = { link = "@keyword", },
+            ["@text.literal.markdown_inline"] = { fg = base.orange, italic = true, }
           }
         end,
       })

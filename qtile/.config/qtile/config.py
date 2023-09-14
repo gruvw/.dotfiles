@@ -71,8 +71,8 @@ class Colors:
 
 
 class Settings:
-    font = "Fira Code Medium"
-    font_bold = "Fira Code Bold"
+    font = "FiraCode Nerd Font"
+    font_bold = "FiraCode Nerd Font Bold"
 
     widget_font_size = 14
     widget_padding = 3
