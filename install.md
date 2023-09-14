@@ -132,6 +132,8 @@ pip install --no-build-isolation git+https://github.com/qtile/qtile.git
 cd Downloads
 wget -q https://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_22.04/amd64/albert_0.22.4-0+567.1_amd64.deb
 sudo dpkg -i albert_0.22.4-0+567.1_amd64.deb
+sudo apt -f -y install
+cd ~
 ```
 
 4. Betterlockscreen, <https://github.com/betterlockscreen/betterlockscreen#manual-installation>
@@ -147,6 +149,7 @@ sudo chmod u+x betterlockscreen
 sudo cp betterlockscreen /usr/local/bin/
 sudo cp system/betterlockscreen@.service /usr/lib/systemd/system/
 sudo systemctl enable betterlockscreen@$USER
+cd ~
 ```
 
 ## Recommended
