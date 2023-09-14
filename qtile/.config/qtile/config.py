@@ -74,8 +74,8 @@ class Settings:
     font = "FiraCode Nerd Font"
     font_bold = "FiraCode Nerd Font Bold"
 
-    widget_font_size = 14
-    widget_padding = 3
+    widget_font_size = 21
+    widget_padding = 5
 
     window_border_width = 3
     window_floating_border_width = 0
@@ -87,8 +87,9 @@ class Settings:
 
 @hook.subscribe.startup_once
 def autostart():
-    cycle_wallpaper()
+    # cycle_wallpaper()
     subprocess.Popen([Paths.startup_script])
+    pass
 
 
 def cycle_wallpaper():
@@ -247,6 +248,7 @@ screens = [
                     font=Settings.font_bold,
                     inactive=Colors.inactive_group,
                     this_current_screen_border=Colors.current_group,
+                    this_screen_border=[4]*4,
                     rounded=False,
                     disable_drag=True,
                 ),
@@ -278,7 +280,7 @@ screens = [
                     discharge_char=""
                 ),
             ],
-            25,
+            36,
             margin=Settings.bar_margin,
             # border_width=[0, 0, 1, 0],
             border_color=[Colors.text_color] * 4,
