@@ -46,7 +46,7 @@ keymap("n", "yA", ":%y+<CR>", remap)
 keymap("n", "cA", "ggcG", remap)
 
 -- Yank paths, relative/absolute
-keymap("n", "yp", [[:let @+="./" . expand("%") <bar> echo "copied"<CR>]], remap)
+keymap("n", "yp", [[:let @+=expand("%") <bar> echo "copied"<CR>]], remap)
 keymap("n", "yP", [[:let @+=expand("%:p") <bar> echo "copied"<CR>]], remap)
 
 -- Yank vim message
