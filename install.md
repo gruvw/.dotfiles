@@ -97,6 +97,7 @@ sudo ./squashfs-root/AppRun --version
 sudo mv squashfs-root /
 sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 cd ~
+sudo chmod u+x pathed/vim-anywhere
 ```
 
 6. Fix PATH
@@ -359,3 +360,87 @@ sudo apt install -y gnome-shell-extensions
 sudo apt install -y vim
 sudo apt install -y gnome-tweaks
 ```
+
+### Dragon
+
+Install: <https://github.com/mwh/dragon>
+
+```sh
+cd Downloads
+git clone https://github.com/mwh/dragon
+cd dragon
+make install
+cd ~
+```
+
+### Rust + cargo
+
+<https://doc.rust-lang.org/cargo/getting-started/installation.html>
+
+* Comment sccache line in `~/.cargo/config.toml`
+
+```sh
+curl https://sh.rustup.rs -sSf | sh
+cargo install sccache --locked
+```
+
+* Un-comment sccache line in `~/.cargo/config.toml`
+
+### Cargo tools
+
+* Cargo update: <https://crates.io/crates/cargo-update>
+* Bottom (btm): <https://github.com/ClementTsang/bottom>
+
+```sh
+cargo install cargo-update
+cargo install bottom --locked
+```
+
+### Figma
+
+```sh
+sudo snap install figma-linux
+```
+
+### Mailspring
+
+* Download deb: <https://github.com/Foundry376/Mailspring/releases>
+* Install: `sudo dkpg -i mailspring-version.deb`
+* Fix dependencies: `sudo apt -f -y install`
+* Open and setup every email (need application specific passwords to be generated)
+
+### Rambox / Hamsek
+
+<https://github.com/TheGoddessInari/hamsket>
+
+```sh
+sudo add-apt-repository ppa:appimagelauncher-team/stable
+sudo apt update
+sudo apt install -y appimagelauncher
+```
+
+* Download appimage from release and install it.
+* Connect accounts
+
+### Java Libs
+
+#### JavaFx Sdk
+
+<https://openjfx.io/>
+
+* Download
+* Exctract to `~/libs/`
+
+#### Junit
+
+<https://jar-download.com/artifacts/org.junit.platform/junit-platform-console-standalone/1.8.2/source-code>
+
+* Download platform console standalone JAR
+* Exctract to `~/libs/junit-1.8.2/`
+
+#### JDTLS
+
+<https://github.com/eclipse-jdtls/eclipse.jdt.ls>, <https://github.com/mfussenegger/nvim-jdtls>
+
+* Download here: <https://download.eclipse.org/jdtls/milestones/?d>
+* Extract to `~/libs/jdtls/`
