@@ -119,6 +119,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- LSP buffer actions
     keymap("n", "<leader>ch", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     keymap("n", "<leader>cd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
     keymap("n", "<leader>cD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     keymap("n", "<leader>ci", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     keymap("n", "<leader>co", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)

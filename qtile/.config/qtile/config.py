@@ -45,8 +45,8 @@ class Commands:
 
     lock_screen = "betterlockscreen -l"
 
-    brightness_increase = home + f"{Paths.brightness_prefix} +"
-    brightness_decrease = home + f"{Paths.brightness_prefix} -"
+    brightness_increase = "brightnessctl s 10%+"
+    brightness_decrease = "brightnessctl s 10%-"
 
     screenshot_fullscreen = "gnome-screenshot"
     screenshot_area = "import png:- | xclip -selection clipboard -t image/png"
@@ -74,8 +74,8 @@ class Settings:
     font = "FiraCode Nerd Font"
     font_bold = "FiraCode Nerd Font Bold"
 
-    widget_font_size = 21
-    widget_padding = 5
+    widget_font_size = 22
+    widget_padding = 6
 
     window_border_width = 3
     window_floating_border_width = 0
@@ -87,7 +87,7 @@ class Settings:
 
 @hook.subscribe.startup_once
 def autostart():
-    # cycle_wallpaper()
+    cycle_wallpaper()
     subprocess.Popen([Paths.startup_script])
     pass
 
@@ -265,14 +265,18 @@ screens = [
                 widget.Clock(format="%Y_%m_%d %a %H:%M:%S %p"),
                 widget.Spacer(length=bar.STRETCH),
                 # widget.Wlan(),
-                widget.Net(format="{down} D {up} U"),
+                widget.Net(format="{down:03.0f}{down_suffix:<2} D {up:03.0f}{up_suffix:<2} U"),
                 SEPARATOR,
-                widget.ThermalZone(high=60, crit=75, format_crit="{temp}°C"),
+                widget.ThermalZone(high=70, crit=85, format_crit="{temp}°C"),
                 # widget.ThermalSensor(threshold=75, tag_sensor="Core 0"),
                 widget.CPU(format="{freq_current}GHz {load_percent: >4}%"),
                 widget.Memory(format="{MemUsed: .0f}{mm}"),
+                widget.Volume(
+                    emoji=True,
+                    emoji_list=["M", "1", "2", "3"],
+                ),
                 SEPARATOR,
-                widget.Systray(),
+                widget.Systray(icon_size=28),
                 SEPARATOR,
                 widget.Battery(
                     format="{percent:2.0%}{char} {hour:d}:{min:02d}",
@@ -281,7 +285,7 @@ screens = [
                     discharge_char=""
                 ),
             ],
-            36,
+            40,
             margin=Settings.bar_margin,
             # border_width=[0, 0, 1, 0],
             border_color=[Colors.text_color] * 4,
@@ -316,6 +320,7 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
+        Match(title="albert"),
     ]
 )
 auto_fullscreen = True

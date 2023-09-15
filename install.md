@@ -153,6 +153,8 @@ mkdir -p Downloads/BLS
 cd Downloads/BLS
 wget https://github.com/betterlockscreen/betterlockscreen/archive/refs/heads/main.zip
 sudo apt install -y unzip
+sudo apt install -y feh
+sudo apt install -y imagemagick
 unzip -d BLS main.zip
 cd BLS/betterlockscreen-main
 sudo chmod u+x betterlockscreen
@@ -161,6 +163,8 @@ sudo cp system/betterlockscreen@.service /usr/lib/systemd/system/
 sudo systemctl enable betterlockscreen@$USER
 cd ~
 ```
+
+Install i3lock-color: follow <https://github.com/Raymo111/i3lock-color>
 
 5. Other desktop (picom, numix-icon, copyq)
 
@@ -234,7 +238,7 @@ sudo apt install brave-browser
 * uBlock Origin: https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm
 * Video Downloader Pro: https://chrome.google.com/webstore/detail/video-downloader-professi/elicpjhcidhpjomhibiffojpinpmmpil
 * Video DownloadHelper: https://chrome.google.com/webstore/detail/video-downloadhelper/lmjnegcaeklhafolokijcfjliaokphfk
-* Video Speed Controller: https://chrome.google.com/webstore/detail/video-speed-controller/ohohfdnookdcdddlkponhlbeeknjbpik
+* Video Speed Controller: https://chrome.google.com/webstore/detail/video-speed-controller/nffaoalbilbmmfgbnbgppjihopabppdk
 * GoFullPage: https://chrome.google.com/webstore/detail/gofullpage-full-page-scre/fdpohaocaechififmbbbbbknoalclacl
 
 ### Icons
@@ -242,7 +246,7 @@ sudo apt install brave-browser
 Open and download the "all-version" release of the following:
 
 * Simp1e Cursors: <https://www.pling.com/p/1932768>
-* Yaru-Colors: <https://www.gnome-look.org/p/1299514>
+* Yaru-Colors: <https://www.gnome-look.org/p/1299514> > Execute `install.sh`
 
 Extract content to `~/.icons/`.
 
@@ -255,6 +259,20 @@ cd Downloads
 sudo dpkg -i synology-drive-client-version.deb
 cd ~
 ```
+
+1. Launch Synology Drive
+2. Connect and login
+3. Select Sync Task
+4. Select NAS folder `/Lucas`
+5. Start sync
+6. Pause sync
+7. Settings > Notifications > Desktop Notifications > Disable > Apply
+8. Go to `~/.SynologyDrive/data/session/1/conf/` (maybe not exact)
+9. `sudo rm blacklist.filter`
+10. `sudo ln ~/.dotfiles/others/synology/blacklist.filter`
+11. Resume sync
+
+Set lockscreen wallpaper once synced: `betterlockscreen -u SynologyDrive/Media/Images/Backgrounds/Desktop/wallhaven-x8ye3z.jpg`
 
 ### VSCode
 
@@ -270,3 +288,74 @@ cd ~
 * Sync Settings
 * Close an Reopen
 * Check extensions & User Settings
+
+## Optional
+
+Other software.
+
+### Flutter
+
+<https://ubuntu.com/blog/getting-started-with-flutter-on-ubuntu>, <https://docs.flutter.dev/get-started/install/linux>
+
+* Dependencies: `sudo apt-get install clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
+`
+* Install: `sudo snap install flutter --classic`
+* Alias: `sudo snap alias flutter.dart dart`
+* Check `flutter doctor`
+* Telemetry: `flutter --disable-telemetry`
+* Android studio: `sudo snap install android-studio --classic`
+* Android install: `android-studio`
+* Path: `flutter config --android-studio-dir /snap/android-studio/current/android-studio`
+* SKDManager: <https://stackoverflow.com/a/62914315>
+* cmdline-tools: <https://stackoverflow.com/questions/60475481/flutter-doctor-error-android-sdkmanager-tool-not-found-windows>
+* Licenses: `flutter doctor --android-licenses`
+
+### Others APT
+
+```sh
+sudo apt install -y libgtk-3-dev
+sudo apt install -y meshlab
+sudo apt install -y clang
+sudo apt install -y clang-tools
+sudo apt install -y playerctl
+sudo apt install -y ruby-dev
+sudo apt install -y ruby-bundler
+sudo apt install -y secure-delete
+sudo apt install -y plocate
+sudo apt install -y fzf
+sudo apt install -y blueman
+sudo apt install -y libreoffice
+sudo apt install -y stress
+sudo apt install -y openssh-client
+sudo apt install -y network-manager
+sudo apt install -y net-tools
+sudo apt install -y ghdl
+sudo apt install -y pavucontrol
+sudo apt install -y nemo
+sudo apt install -y gdebi
+sudo apt install -y blender
+sudo apt install -y mpv
+sudo apt install -y libfuse2
+sudo apt install -y xclip
+sudo apt install -y ripgrep
+sudo apt install -y cloc
+sudo apt install -y openjdk-17-jre
+sudo apt install -y openjdk-19-jre
+sudo apt install -y ccrypt
+sudo apt install -y texlive-full
+sudo apt install -y transmission
+sudo apt install -y peek
+sudo apt install -y okteta
+sudo apt install -y neofetch
+sudo apt install -y vlc
+sudo apt install -y gparted
+sudo apt install -y sqlitebrowser
+sudo apt install -y gimp
+sudo apt install -y geary
+sudo apt install -y baobab
+sudo apt install -y gnome-usage
+sudo apt install -y chrome-gnome-shell
+sudo apt install -y gnome-shell-extensions
+sudo apt install -y vim
+sudo apt install -y gnome-tweaks
+```

@@ -101,6 +101,7 @@ return {
       hl(0, "TelescopePromptBorder", { fg = "white", })
       hl(0, "TelescopePreviewBorder", { fg = "white", })
       hl(0, "TelescopePromptNormal", { fg = "white", })
+      hl(0, "TelescopePromptPrefix", { fg = "#7bd88f", })
       hl(0, "TelescopeResultsNormal", { fg = "white", })
 
       -- indent-blankline, https://www.colorhexa.com, 70% 222222 + 30% <color theme>
