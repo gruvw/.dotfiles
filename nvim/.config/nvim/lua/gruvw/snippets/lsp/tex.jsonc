@@ -196,6 +196,15 @@
     ]
   },
 
+  // Others
+
+  "[G] Blue title": {
+      "prefix": "blu",
+      "body": [
+          "\\blue{$1}: $2",
+      ],
+  },
+
   // Templates
 
   "[G] Document Template": {

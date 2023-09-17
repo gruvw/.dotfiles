@@ -62,6 +62,9 @@ keymap("n", "gx", [[:silent execute "!open " . shellescape(expand("<cfile>"), 1)
 -- Open terminal in new WM window
 keymap("n", "<leader><CR>", [[:silent exec "!nohup kitty &>/dev/null &"<CR>]], remap)
 
+-- Open VIFM in cwd
+keymap("n", "<leader>V", [[:silent exec "!nohup kitty vifm &>/dev/null &"<CR>]], remap)
+
 -- LSP
 keymap("n", "<leader>lr", ":LspStart<CR>", remap)
 keymap("n", "<leader>ls", ":LspStop<CR>", remap)

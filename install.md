@@ -187,6 +187,14 @@ The following are recommended installs.
 
 Finish NeoVim config: open NeoVim twice (let time to install plugins and packages)
 
+Install `jsregexp` from `LuaSnip`:
+
+```sh
+cd ~/.local/share/nvim/lazy/LuaSnip
+make install_jsregexp
+cd ~
+```
+
 ### Brave Browser
 
 <https://brave.com/linux/>
@@ -246,10 +254,8 @@ sudo apt install brave-browser
 
 Open and download the "all-version" release of the following:
 
-* Simp1e Cursors: <https://www.pling.com/p/1932768>
-* Yaru-Colors: <https://www.gnome-look.org/p/1299514> > Execute `install.sh`
-
-Extract content to `~/.icons/`.
+* Simp1e Cursors: <https://www.pling.com/p/1932768> > Extract content to `~/.icons/`
+* Yaru-Colors: <https://www.gnome-look.org/p/1299514> > Execute `install.sh`, follow install instructions (launch gnome to install shell extension)
 
 ### Synology Drive
 
@@ -343,7 +349,7 @@ sudo apt install -y cloc
 sudo apt install -y openjdk-17-jre
 sudo apt install -y openjdk-19-jre
 sudo apt install -y ccrypt
-sudo apt install -y texlive-full
+sudo apt install -y texlive-full texlive
 sudo apt install -y transmission
 sudo apt install -y peek
 sudo apt install -y okteta
@@ -444,3 +450,9 @@ sudo apt install -y appimagelauncher
 
 * Download here: <https://download.eclipse.org/jdtls/milestones/?d>
 * Extract to `~/libs/jdtls/`
+
+### Python packages
+
+```sh
+pip install cookiecutter
+```

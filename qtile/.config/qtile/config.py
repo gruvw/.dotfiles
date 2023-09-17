@@ -271,6 +271,7 @@ screens = [
                 # widget.ThermalSensor(threshold=75, tag_sensor="Core 0"),
                 widget.CPU(format="{freq_current}GHz {load_percent: >4}%"),
                 widget.Memory(format="{MemUsed: .0f}{mm}"),
+                SEPARATOR,
                 widget.Volume(
                     emoji=True,
                     emoji_list=["M", "1", "2", "3"],
