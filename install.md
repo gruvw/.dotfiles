@@ -456,4 +456,9 @@ sudo apt install -y appimagelauncher
 
 ```sh
 pip install cookiecutter
+pip install mypy
 ```
+
+### Others
+
+* LazyGit: <https://github.com/jesseduffield/lazygit#ubuntu>
