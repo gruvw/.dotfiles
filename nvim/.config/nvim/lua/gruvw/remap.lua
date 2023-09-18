@@ -20,6 +20,10 @@ keymap("n", "g<CR>", "o<Esc>0D", remap)
 keymap("n", "J", "j_d0kgJ", remap)
 keymap("n", "gJ", "j_d0kgJi<space><Esc>", remap)
 
+-- Scrolling
+keymap("n", "<C-j>", "10j", remap)
+keymap("n", "<C-k>", "10k", remap)
+
 -- Execute line under custor as cmd
 keymap("n", "<C-S-x>", ":exec getline('.')<CR>", remap)
 

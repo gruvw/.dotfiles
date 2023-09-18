@@ -21,8 +21,8 @@ DS_TIMEOUT = 60 * 1000
 OS_TAP_TIME = 500
 TAP_TIME = 150
 
-MOUSE_MAX_SPEED = 25
-MOUSE_ACC_INTERVAL = 25
+MOUSE_MAX_SPEED = 30
+MOUSE_ACC_INTERVAL = 23
 
 # SETUP
 
@@ -50,7 +50,7 @@ dynamic_sequences = DynamicSequences(timeout=DS_TIMEOUT)
 
 keyboard.unicode_mode = UnicodeMode.LINUX
 mouse_keys.max_speed = MOUSE_MAX_SPEED
-mouse_keys.acc_interval = MOUSE_MAX_SPEED
+mouse_keys.acc_interval = MOUSE_ACC_INTERVAL
 
 # Keys
 

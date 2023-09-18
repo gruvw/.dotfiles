@@ -3,7 +3,8 @@
 # ~/.config/qtile/autostart.sh
 
 # No scrolling flicker
-picom -b --unredir-if-possible --backend xr_glx_hybrid --vsync
+# picom -b --unredir-if-possible --backend xr_glx_hybrid --vsync --use-damage --glx-no-stencil
+picom -b --unredir-if-possible --backend xr_glx_hybrid --vsync --use-damage --glx-no-stencil
 
 # Map Caps-Lock to Backspace + dvoraks
 setxkbmap -option caps:backspace dvorak
