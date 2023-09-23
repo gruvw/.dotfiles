@@ -34,12 +34,11 @@ return {
     config = function()
       local lspconfig = require("lspconfig")
 
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
+
       local lsp_defaults = lspconfig.util.default_config
-      lsp_defaults.capabilities = vim.tbl_deep_extend(
-        "force",
-        lsp_defaults.capabilities,
-        require("cmp_nvim_lsp").default_capabilities()
-      )
+      lsp_defaults.capabilities = vim.tbl_deep_extend("force", lsp_defaults.capabilities, capabilities)
 
       -- Add border to LSP windows
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
@@ -83,6 +82,10 @@ return {
         warn = "W",
         hint = "H",
         info = "I",
+      })
+
+      require("lspconfig").clangd.setup({
+        capabilities = lsp_defaults.capabilities,
       })
 
       -- Start LSP

@@ -188,11 +188,19 @@ return {
       require("nvim-tree").setup({
         on_attach = tree_on_attach,
         update_cwd = true,
-        disable_netrw = true,
+        disable_netrw = true, -- enable netrw to download spell files
         hijack_netrw = true,
         update_focused_file = {
           enable = true,
           update_cwd = true
+        },
+        filters = {
+          git_ignored = false,
+          dotfiles = false,
+          git_clean = false,
+          no_buffer = false,
+          custom = {},
+          exclude = {},
         },
         -- Open in new terminal
         system_open = {
@@ -202,6 +210,7 @@ return {
         diagnostics = {
           enable = true,
           show_on_dirs = true,
+          show_on_open_dirs = true,
           icons = {
             hint = "H",
             info = "I",
@@ -245,6 +254,9 @@ return {
               border = "single",
             },
           },
+          remove_file = {
+            close_window = false,
+          },
         },
         renderer = {
           icons = {
@@ -265,7 +277,7 @@ return {
 
       -- Sets root directory automagically
       require("nvim-rooter").setup({
-        rooter_patterns = { ".git", ".root", "latex-img", "src", "lib", },
+        rooter_patterns = { ".git", ".root", "latex-img", "src", },
         trigger_patterns = { "*", },
         fallback_to_parent = true,
         update_cwd = true,
@@ -402,8 +414,8 @@ return {
         fold_closed = ">",
         indent_lines = false,
         multiline = false,
-        win_config = { border = "single", },
         auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
+        win_config = { border = "single", },
         signs = {
           error = "E",
           warning = "W",

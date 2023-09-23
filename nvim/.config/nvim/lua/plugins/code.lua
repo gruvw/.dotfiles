@@ -165,6 +165,7 @@ return {
       local templates = {
         "python",
         "tex",
+        "md"
       }
       for _, t in ipairs(templates) do
         overseer.register_template(require("gruvw.overseer." .. t))

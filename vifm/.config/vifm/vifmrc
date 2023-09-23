@@ -4,6 +4,9 @@ plugin load
 
 set dotdirs=0
 
+" Open files
+filetype *.md,*.py,*.dart,*.c,*.rs nvim %c
+
 " Own config
 " Key map (used ZQ<CR> to close)
 nnoremap <space>c :!code %c<CR>

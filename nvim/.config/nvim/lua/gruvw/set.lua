@@ -88,12 +88,19 @@ set.formatoptions = "jctrlq"
 -- Default to fish shell
 set.shell = "fish"
 
+-- Spelling
+set.spell = false
+set.spelllang = "en_us,fr"
+set.spelloptions = "camel"
+set.spellsuggest = "best,10"
+set.spellcapcheck = ""
+
 -- Directory-local settings
 -- set.exrc = true
 
 -- Disable netrw (nvim-tree)
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 -- Invisible characters
 set.listchars:append("space:⋅")

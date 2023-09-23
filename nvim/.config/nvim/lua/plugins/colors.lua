@@ -44,6 +44,9 @@ return {
           return {
             Structure = { fg = base.cyan, italic = false, },
             Macro = { fg = base.cyan, italic = true, },
+            SpellBad = { fg = base.cyan, italic = true, underline = true, undercurl = false, sp = base.cyan, },
+            SpellRare = { link = "SpellBad", },
+            SpellLocal = { link = "SpellBad", },
 
             -- Treesitter
             ["@keyword"] = { fg = base.red, },

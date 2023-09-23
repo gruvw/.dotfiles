@@ -459,6 +459,12 @@ pip install cookiecutter
 pip install mypy
 ```
 
+### Quartus
+
+* Download and install: <https://www.intel.com/content/www/us/en/software-kit/785085/intel-quartus-prime-lite-edition-design-software-version-22-1-2-for-linux.html> > version 21.1.1 > Individual files > QuartusLite Setup
+* USB Blaster: <https://www.rocketboards.org/foswiki/Documentation/UsingUSBBlasterUnderLinux>
+
+
 ### Others
 
 * LazyGit: <https://github.com/jesseduffield/lazygit#ubuntu>

@@ -24,6 +24,12 @@ keymap("n", "gJ", "j_d0kgJi<space><Esc>", remap)
 keymap("n", "<C-j>", "10j", remap)
 keymap("n", "<C-k>", "10k", remap)
 
+-- Resize
+keymap("n", "<C-w><", ":vertical resize +10<CR>", remap)
+keymap("n", "<C-w>>", ":vertical resize -10<CR>", remap)
+keymap("n", "<C-w>+", ":resize +6<CR>", remap)
+keymap("n", "<C-w>-", ":resize -6<CR>", remap)
+
 -- Execute line under custor as cmd
 keymap("n", "<C-S-x>", ":exec getline('.')<CR>", remap)
 
@@ -38,10 +44,10 @@ keymap("n", "gg", "gg0", remap)
 keymap("n", "G", "G0", remap)
 
 -- Tab as indent, https://vi.stackexchange.com/questions/42945/indentkeys-tab-behavior
-keymap("i", "<Tab>",
-  [[getline(".") == "" && line(".") != 1 ? (line(".") != line("$") ? "<Esc>ddko" : "<Esc>ddo") : "<Tab>"]],
-  { expr = true, noremap = true, })
-keymap("n", "g<Tab>", [[i<Tab>]], remap)
+-- keymap("i", "<Tab>",
+--   [[getline(".") == "" && line(".") != 1 ? (line(".") != line("$") ? "<Esc>ddko" : "<Esc>ddo") : "<Tab>"]],
+--   { expr = true, noremap = true, })
+-- keymap("n", "g<Tab>", [[i<Tab>]], remap)
 
 -- Full file operations
 keymap("n", "=A", "gg=G''", remap)
@@ -62,6 +68,12 @@ keymap("t", "<C-c>", [[<C-\><C-n>:q<CR>]], remap)
 
 -- Open links
 keymap("n", "gx", [[:silent execute "!open " . shellescape(expand("<cfile>"), 1)<CR>]], remap)
+
+-- Spelling
+keymap("n", "zs", ":set spell!<CR>", remap)
+keymap("n", "zn", "]s", remap)
+keymap("n", "zN", "[s", remap)
+keymap("n", "zc", "z=", remap)
 
 -- Open terminal in new WM window
 keymap("n", "<leader><CR>", [[:silent exec "!nohup kitty &>/dev/null &"<CR>]], remap)
@@ -124,9 +136,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local opts = { buffer = event.buf, }
 
     -- LSP buffer actions
-    keymap("n", "<leader>ch", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     keymap("n", "<leader>cd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
     keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    keymap("n", "<leader>ch", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     keymap("n", "<leader>cD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     keymap("n", "<leader>ci", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     keymap("n", "<leader>co", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
