@@ -44,10 +44,9 @@ keymap("n", "gg", "gg0", remap)
 keymap("n", "G", "G0", remap)
 
 -- Tab as indent, https://vi.stackexchange.com/questions/42945/indentkeys-tab-behavior
--- keymap("i", "<Tab>",
+-- keymap("i", "g<Tab>",
 --   [[getline(".") == "" && line(".") != 1 ? (line(".") != line("$") ? "<Esc>ddko" : "<Esc>ddo") : "<Tab>"]],
 --   { expr = true, noremap = true, })
--- keymap("n", "g<Tab>", [[i<Tab>]], remap)
 
 -- Full file operations
 keymap("n", "=A", "gg=G''", remap)
@@ -67,6 +66,7 @@ keymap("t", "<C-t>", [[<C-\><C-n>]], remap)
 keymap("t", "<C-c>", [[<C-\><C-n>:q<CR>]], remap)
 
 -- Open links
+-- TODO use nohup here
 keymap("n", "gx", [[:silent execute "!open " . shellescape(expand("<cfile>"), 1)<CR>]], remap)
 
 -- Spelling
@@ -86,8 +86,8 @@ keymap("n", "<leader>lr", ":LspStart<CR>", remap)
 keymap("n", "<leader>ls", ":LspStop<CR>", remap)
 
 -- Functions/macro remap (f)
-keymap("n", "<leader>fb", ":lua run_build()<CR>", remap) -- run code
-keymap("n", "<leader>fr", ":lua run_restart()<CR>", remap) -- restart code
+keymap("n", "<leader>fb", ":w<CR>:lua run_build()<CR>", remap) -- run code
+keymap("n", "<leader>fr", ":w<CR>:lua run_restart()<CR>", remap) -- restart code
 keymap("n", "<leader>fD", ":lua insert_date()<CR>", remap)
 keymap("n", "<leader>fs", "iLucas Jung (IN-BA5 324724)<esc>", remap) -- sign
 
@@ -98,6 +98,7 @@ keymap("n", "<leader>sf", [[:lua require("telescope.builtin").find_files()<CR>]]
 keymap("n", "<leader>sg", [[:lua require("telescope.builtin").live_grep()<CR>]], remap)
 keymap("n", "<leader>sb", [[:lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>]], remap)
 keymap("n", "<leader>sc", [[:lua require("telescope.builtin").commands()<CR>]], remap)
+keymap("n", "<leader>sr", [[:lua require("telescope.builtin").resume()<CR>]], remap)
 keymap("n", "<leader>su", [[:lua require("telescope").extensions.undo.undo()<CR>]], remap)
 keymap("n", "<leader>sw", [[:lua require("telescope").extensions.workspaces.workspaces()<CR>]], remap)
 keymap("n", "<leader>sj", [[:lua require("telescope").extensions.harpoon.marks()<CR>]], remap)
@@ -196,10 +197,10 @@ keymap("n", "<leader>H", [[:lua require("hex").toggle()<CR>]], remap)
 
 -- Run (r)
 keymap("n", "<leader>ro", [[:lua require("overseer").toggle()<CR>]], remap)
-keymap("n", "<leader>rr", [[:lua require("overseer").run_template()<CR>]], remap)
-keymap("n", "<leader>rb", [[:lua require("overseer").run_template({tags = {require("overseer").TAG.BUILD}})<CR>]], remap)
-keymap("n", "<leader>rt", [[:lua require("overseer").run_template({tags = {require("overseer").TAG.TEST}})<CR>]], remap)
-keymap("n", "<leader>rl", [[:lua overseer_restart()<CR>]], remap)
+keymap("n", "<leader>rr", [[:w<CR>:lua require("overseer").run_template()<CR>]], remap)
+keymap("n", "<leader>rb", [[:w<CR>:lua require("overseer").run_template({tags = {require("overseer").TAG.BUILD}})<CR>]], remap)
+keymap("n", "<leader>rt", [[:w<CR>:lua require("overseer").run_template({tags = {require("overseer").TAG.TEST}})<CR>]], remap)
+keymap("n", "<leader>rl", [[:w<CR>:lua overseer_restart()<CR>]], remap)
 
 -- ToDo (d)
 keymap("n", "<leader>dn", [[:lua require("todo-comments").jump_next()<CR>]], remap)

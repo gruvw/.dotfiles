@@ -95,6 +95,12 @@ set.spelloptions = "camel"
 set.spellsuggest = "best,10"
 set.spellcapcheck = ""
 
+-- Backspace
+set.backspace = "indent,eol,start"
+
+-- LSP auto-complete max height
+set.pumheight = 10
+
 -- Directory-local settings
 -- set.exrc = true
 

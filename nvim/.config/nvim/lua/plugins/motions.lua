@@ -11,12 +11,19 @@ return {
 
       -- Defines characters considered equivalent when searching
       leap.opts.equivalence_classes = {
-        "aàâæ",
-        "eéèæê",
-        "cç{}",
-        "p()",
-        "b[]",
         " \t\r\n",
+        "aàâæ<>@&",
+        "b[]\\|",
+        "cç{}:^,",
+        "d.$\"-",
+        "eéèæê=!",
+        "h#",
+        "m-",
+        "p()+%",
+        "q?",
+        "s/';",
+        "t*~",
+        "u_",
       }
 
       -- Double cursor workaround, https://github.com/ggandor/leap.nvim/issues/70#issuecomment-1521177534

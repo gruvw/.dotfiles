@@ -144,6 +144,7 @@ return {
       -- https://github.com/notjedi/nvim-rooter.lua
       "notjedi/nvim-rooter.lua",
     },
+    priority = 51,
     config = function()
       -- Set keybinds
       local function tree_on_attach(bufnr)
@@ -186,6 +187,12 @@ return {
       end
 
       require("nvim-tree").setup({
+        log = {
+          -- enable = true,
+          types = {
+            diagnostics = true,
+          },
+        },
         on_attach = tree_on_attach,
         update_cwd = true,
         disable_netrw = true, -- enable netrw to download spell files
@@ -216,6 +223,10 @@ return {
             info = "I",
             warning = "W",
             error = "E",
+          },
+          severity = {
+            min = vim.diagnostic.severity.HINT,
+            max = vim.diagnostic.severity.ERROR,
           },
         },
         -- Floating window and borders
@@ -398,6 +409,56 @@ return {
         },
       })
     end
+  },
+
+  -- https://github.com/prochri/telescope-all-recent.nvim
+  {
+    "prochri/telescope-all-recent.nvim",
+    dependencies = {
+      -- https://github.com/kkharji/sqlite.lua
+      "kkharji/sqlite.lua",
+
+      "dressing.nvim",
+      "telescope.nvim",
+    },
+    event = "VeryLazy",
+    config = function()
+      require("telescope-all-recent").setup {
+        database = {
+          folder = vim.fn.stdpath("data"),
+          file = "telescope-all-recent.sqlite3",
+          max_timestamps = 20,
+        },
+        scoring = {
+          boost_factor = 0.0001
+        },
+        default = {
+          disable = true,
+          use_cwd = true,
+          sorting = "frecency",
+        },
+        pickers = {
+          ["workspaces#workspaces"] = {
+            disable = false,
+          },
+        },
+        vim_ui_select = {
+          kinds = {
+            overseer_template = {
+              disable = false,
+              use_cwd = true,
+              prompt = "Task template",
+              name_include_prompt = true,
+            },
+          },
+          -- prompts = {
+          --   ["Load session"] = {
+          --     use_cwd = false,
+          --   },
+          -- },
+        },
+      }
+    end,
   },
 
   -- https://github.com/folke/trouble.nvim
