@@ -1,4 +1,4 @@
--- ~/.config/nvim/lua/gruvw/snippets/lua/tex.lua
+-- ~/.config/nvim/lua/gruvw/snippets/lua/markdown.lua
 
 --- @diagnostic disable: unused-local
 --- @diagnostic disable: unused-function

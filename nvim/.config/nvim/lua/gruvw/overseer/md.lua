@@ -1,4 +1,4 @@
--- ~/.config/nvim/lua/gruvw/overseer/python.lua
+-- ~/.config/nvim/lua/gruvw/overseer/md.lua
 
 local overseer = require("overseer")
 
@@ -24,6 +24,8 @@ return {
             name = name,
             cmd = { "pandoc" },
             args = {
+              "-f",
+              "markdown-implicit_figures",
               filename,
               "-o",
               string.sub(filename, 1, #filename - 2) .. "pdf",
