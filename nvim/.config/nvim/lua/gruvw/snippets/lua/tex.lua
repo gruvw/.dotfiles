@@ -889,6 +889,7 @@ return
     rg(1), rg(2), t([[^]]), rg(3),
   }),
 
+  -- BUG fix curly braces finding => bug \sqrt[3]{x} \frac{1}{6}f
   s({
     name = "[G] N root auto / modify",
     trig = [[\\sqrt(?:\[\w\])?\{(.*)\}(\w)]],

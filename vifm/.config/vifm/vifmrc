@@ -117,6 +117,8 @@ mark 5 ~/SynologyDrive/EPFL/BA5
 mark b ~/SynologyDrive/EPFL/BA5
 mark d ~/.dotfiles
 mark m /media/gruvw/
+mark t ~/SynologyDrive/tmp
+mark T ~/Documents/tmp
 
 " ------------------------------------------------------------------------------
 
