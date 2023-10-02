@@ -74,6 +74,7 @@ return {
       local overseer = require("overseer")
       overseer.setup({
         templates = { "builtin" },
+        dap = false,
         task_list = {
           default_detail = 1,
           max_width = { 0.3 },

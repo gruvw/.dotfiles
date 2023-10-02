@@ -99,6 +99,9 @@ return {
     dependencies = {
       -- https://github.com/williamboman/mason.nvim
       "williamboman/mason.nvim",
+
+      -- https://github.com/jay-babu/mason-nvim-dap.nvim
+      "jay-babu/mason-nvim-dap.nvim",
     },
     lazy = true,
     config = function()
@@ -106,6 +109,18 @@ return {
         ui = {
           border = "single",
           height = 0.7,
+        },
+      })
+
+      require("mason-nvim-dap").setup({
+        -- https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/source.lua
+        ensure_installed = {
+          "cppdbg",
+        },
+        handlers = {
+          function(config)
+            require("mason-nvim-dap").default_setup(config)
+          end,
         },
       })
 
@@ -208,6 +223,55 @@ return {
           end,
         },
       })
+    end,
+  },
+
+  -- https://github.com/mfussenegger/nvim-dap
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      -- https://github.com/rcarriga/nvim-dap-ui
+      "rcarriga/nvim-dap-ui",
+
+      "overseer.nvim",
+    },
+    event = "VeryLazy",
+    config = function()
+      local dap = require("dap")
+      local dapui = require("dapui")
+
+      -- Signs
+      vim.fn.sign_define("DapBreakpoint", { text = "B", texthl = "Error", })
+      vim.fn.sign_define("DapBreakpointCondition", { text = "C", texthl = "Error", })
+      vim.fn.sign_define("DapLogPoint", { text = "L", texthl = "", })
+      vim.fn.sign_define("DapStopped", { text = "→", texthl = "Error", })
+      vim.fn.sign_define("DapBreakpointRejected", { text = "R", texthl = "Error", })
+
+      require("overseer").patch_dap(true)
+      require("dap.ext.vscode").json_decode = require("overseer.json").decode
+
+      dapui.setup({
+        controls = {
+          enabled = false,
+        },
+      })
+
+      -- Open close automagically
+      dap.listeners.after.event_initialized["dapui_config"] = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated["dapui_config"] = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited["dapui_config"] = function()
+        dapui.close()
+      end
+
+      -- Load JSON config
+      local load_opts = {
+        cppdbg = {"c", "cpp"},
+      }
+      require("dap.ext.vscode").load_launchjs("./launch.json", load_opts)
     end,
   },
 

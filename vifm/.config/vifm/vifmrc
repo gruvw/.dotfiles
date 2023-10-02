@@ -5,7 +5,7 @@ plugin load
 set dotdirs=0
 
 " Open files
-filetype *.md,*.tex,*.py,*.dart,*.c,*.rs,Makefile nvim %c
+filetype *.md,*.tex,*.py,*.dart,*.c,*.rs,Makefile,*.json,*.js nvim %c
 
 " Own config
 " Key map (used ZQ<CR> to close)

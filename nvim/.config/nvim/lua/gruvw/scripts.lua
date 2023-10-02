@@ -8,12 +8,12 @@ autocmd({ "BufWritePre" }, {
   pattern = { "*" },
   callback = function(ev)
     local ignore_filetype = { "markdown", "latex", "tex", }
+    local save_cursor = vim.fn.getpos(".")
     if not vim.tbl_contains(ignore_filetype, vim.bo.filetype) then
-      local save_cursor = vim.fn.getpos(".")
-      vim.cmd([[%s/\s\+$//e]])
-      vim.cmd([[%s#\($\n\s*\)\+\%$##e]])
-      vim.fn.setpos(".", save_cursor)
+      vim.cmd([[%s/\s\+$//e]]) -- spaces at end of line
     end
+    vim.cmd([[%s#\($\n\s*\)\+\%$##e]]) -- empty lines EOF
+    vim.fn.setpos(".", save_cursor)
   end,
 })
 

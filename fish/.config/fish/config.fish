@@ -37,6 +37,17 @@ if status is-interactive
     alias cat "batcat"
     # alias vifm "vifm --choose-dir -"
 
+    # Commands
+    function paste-img -d "Save image from clipboard to file"
+        if [ (count $argv) -gt 0 ]
+            command xclip -selection clipboard -t image/png -o > "$argv.png"
+            return 0
+        else
+            echo "No filename provided"
+            return 1
+        end
+    end
+
     # Loads starship prompt
     starship init fish | source
 end
