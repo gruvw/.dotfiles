@@ -42,7 +42,7 @@
 - [X] Workspaces
 - [X] Color brackets
 - [X] Commands auto-complete
-- [ ] Spell checker
+- [X] Spell checker
 - [X] Hyper-snips
 - [X] Integrated terminal (look into toggleterm)
 - [X] Tasks: configurable + run on keyboard shortcut or from palette (overseer.nvim)
@@ -55,7 +55,7 @@
 
 ## Advanced editor functionalities
 
-- [ ] DAP
+- [X] DAP
 - [X] Clipboard history (neoclip)
 - [X] https://github.com/folke/trouble.nvim
 - [X] Open file in hex/byte editor view
@@ -71,7 +71,6 @@
 - [ ] GitHub integration
 - [ ] Add current file to gitignore
 - [ ] Image preview/quick open, link resolution
-- [ ] Markdown preview
 - [ ] Random everything, Lorem Ipsum generator, custom length
 - [ ] Synctex
 - [ ] Jupyter notebook
