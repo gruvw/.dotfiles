@@ -201,6 +201,7 @@ keymap("n", "<leader>rr", [[:w<CR>:lua require("overseer").run_template()<CR>]],
 keymap("n", "<leader>rb", [[:w<CR>:lua require("overseer").run_template({tags = {require("overseer").TAG.BUILD}})<CR>]], remap)
 keymap("n", "<leader>rt", [[:w<CR>:lua require("overseer").run_template({tags = {require("overseer").TAG.TEST}})<CR>]], remap)
 keymap("n", "<leader>rl", [[:w<CR>:lua overseer_restart()<CR>]], remap)
+keymap("n", "<leader>r<CR>", [[:w<CR>:lua overseer_term()<CR>]], remap)
 
 -- ToDo (o)
 keymap("n", "<leader>on", [[:lua require("todo-comments").jump_next()<CR>]], remap)
