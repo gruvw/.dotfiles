@@ -64,6 +64,10 @@ return {
               -- Disable escape to quit and map to normal quit keybind
               ["<esc>"] = false,
               ["Zq"] = require("telescope.actions").close,
+              ["<leader><CR>"] = function()
+                local action_state = require("telescope.actions.state")
+                system_open(action_state.get_selected_entry().value)
+              end
             },
             i = {
               ["<C-c>"] = require("telescope.actions").close,

@@ -182,7 +182,7 @@ return {
         vim.keymap.set("n", "F", api.live_filter.clear, opts("Clear Filter"))
         vim.keymap.set("n", "<leader><CR>", function(node, ...)
           node = node or require("nvim-tree.lib").get_node_at_cursor()
-          vim.cmd([[silent exec "!nohup xdg-open ]] .. node.absolute_path .. [[ &>/dev/null &"]])
+          system_open(node.absolute_path)
         end, opts("Open in native app"))
       end
 

@@ -1,5 +1,9 @@
 -- ~/.config/nvim/lua/gruvw/functions.lua
 
+function system_open(path)
+  vim.cmd([[silent exec "!nohup xdg-open ]] .. path .. [[ &>/dev/null &"]])
+end
+
 -- Insert current date in YYYY_MM_DD format, before cursor
 function insert_date()
   local date_format = os.date("%Y_%m_%d")
