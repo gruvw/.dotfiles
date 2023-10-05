@@ -183,6 +183,7 @@ return {
         vim.keymap.set("n", "<leader><CR>", function(node, ...)
           node = node or require("nvim-tree.lib").get_node_at_cursor()
           system_open(node.absolute_path)
+          api.tree.close()
         end, opts("Open in native app"))
       end
 

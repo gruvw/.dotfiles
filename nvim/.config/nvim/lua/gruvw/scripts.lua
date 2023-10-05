@@ -68,12 +68,12 @@ local function restore_cursor()
     -- Check if the last line of the buffer is the same as the win
     if win_last_line == buff_last_line then
       -- Set line to last line edited
-      vim.cmd [[normal! g`"]]
+      vim.cmd([[normal! g`"]])
       -- Try to center
     elseif buff_last_line - last_line > ((win_last_line - win_first_line) / 2) - 1 then
-      vim.cmd [[normal! g`"zz]]
+      vim.cmd([[normal! g`"zz]])
     else
-      vim.cmd [[normal! G'"<c-e>]]
+      vim.cmd([[normal! G'"<c-e>]])
     end
   end
 end
@@ -98,5 +98,13 @@ autocmd({ "BufWinEnter", "FileType" }, {
 autocmd({ "BufNewFile", "BufRead" }, {
   callback = function(args)
     vim.opt.formatoptions = "jctrlq"
+
+    -- Load JSON config
+    local load_opts = {
+      cppdbg = {"c", "cpp"},
+    }
+
+    -- Load debuger config
+    require("dap.ext.vscode").load_launchjs(require("nvim-rooter").get_root() .. "/launch.json", load_opts)
   end
 })

@@ -266,12 +266,6 @@ return {
       dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close()
       end
-
-      -- Load JSON config
-      local load_opts = {
-        cppdbg = {"c", "cpp"},
-      }
-      require("dap.ext.vscode").load_launchjs("./launch.json", load_opts)
     end,
   },
 

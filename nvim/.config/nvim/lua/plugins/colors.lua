@@ -136,8 +136,9 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
       require("ibl").setup({
-        -- show_end_of_line = true,
-        -- show_trailing_blankline_indent = false,
+        scope = {
+          enabled = false,
+        },
         indent = {
           char = "▏",
           highlight = {

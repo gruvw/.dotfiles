@@ -163,10 +163,12 @@ return {
       })
 
       -- Custom templates
+      -- TODO auto load files from overseer directory
       local templates = {
         "python",
         "tex",
-        "md"
+        "md",
+        "c",
       }
       for _, t in ipairs(templates) do
         overseer.register_template(require("gruvw.overseer." .. t))
