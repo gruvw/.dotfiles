@@ -116,6 +116,13 @@
       "\\cancel{${1:$TM_SELECTED_TEXT}}"
     ]
   },
+  "[G] New item": {
+    "prefix": "itm",
+    "body": [
+      "",
+      "\\item $0"
+    ]
+  },
 
   // Modifiers
 

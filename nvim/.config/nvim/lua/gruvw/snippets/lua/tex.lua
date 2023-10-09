@@ -130,6 +130,14 @@ return
     end),
   }),
 
+  -- New item
+  s({
+    name = "[G] New item",
+    trig = "itm",
+    wordTrig = false,
+  }, {
+    t({"", [[\item ]]}),
+  }),
 },
 -- Automatic
 {

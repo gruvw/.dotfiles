@@ -105,6 +105,9 @@ autocmd({ "BufNewFile", "BufRead" }, {
     }
 
     -- Load debuger config
-    require("dap.ext.vscode").load_launchjs(require("nvim-rooter").get_root() .. "/launch.json", load_opts)
+    local root = require("nvim-rooter").get_root()
+    if root ~= nil then
+      require("dap.ext.vscode").load_launchjs(root .. "/launch.json", load_opts)
+    end
   end
 })
