@@ -310,6 +310,7 @@ return {
 
       -- Filetype fixes
       ls.filetype_extend("plaintex", { "tex" })
+      ls.filetype_extend("dart", { "flutter" })
     end,
   },
 

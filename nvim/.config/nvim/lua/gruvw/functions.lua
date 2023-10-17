@@ -39,6 +39,16 @@ function overseer_term()
   end
 end
 
+function overseer_stop()
+  local overseer = require("overseer")
+  local tasks = overseer.list_tasks({ recent_first = true })
+  if vim.tbl_isempty(tasks) then
+    vim.notify("No tasks found", vim.log.levels.WARN)
+  else
+    overseer.run_action(tasks[1], "stop")
+  end
+end
+
 function run_restart()
   if vim.bo.filetype == "dart" then
     vim.cmd("FlutterRestart")

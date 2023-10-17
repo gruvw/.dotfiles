@@ -47,7 +47,7 @@ set.undofile = true
 
 -- Matched string is highlighted when searching
 set.incsearch = true
-set.hlsearch = false
+set.hlsearch = true
 
 -- Search is case insensitive by default
 set.ignorecase = true

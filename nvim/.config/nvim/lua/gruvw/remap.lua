@@ -74,6 +74,10 @@ keymap("n", "zs", ":set spell!<CR>", remap)
 keymap("n", "zn", "]s", remap)
 keymap("n", "zN", "[s", remap)
 keymap("n", "zc", "z=", remap)
+keymap("n", "zr", "1z=", remap)
+
+-- Clear highlight search
+keymap("n", "zh", [[:let @/ = ""<CR>]], remap)
 
 -- Open terminal in new WM window
 keymap("n", "<leader><CR>", [[:silent exec "!nohup kitty &>/dev/null &"<CR>]], remap)
@@ -198,10 +202,9 @@ keymap("n", "<leader>H", [[:lua require("hex").toggle()<CR>]], remap)
 -- Run (r)
 keymap("n", "<leader>ro", [[:lua require("overseer").toggle()<CR>]], remap)
 keymap("n", "<leader>rr", [[:w<CR>:lua require("overseer").run_template()<CR>]], remap)
-keymap("n", "<leader>rb", [[:w<CR>:lua require("overseer").run_template({tags = {require("overseer").TAG.BUILD}})<CR>]], remap)
-keymap("n", "<leader>rt", [[:w<CR>:lua require("overseer").run_template({tags = {require("overseer").TAG.TEST}})<CR>]], remap)
 keymap("n", "<leader>rl", [[:w<CR>:lua overseer_restart()<CR>]], remap)
-keymap("n", "<leader>r<CR>", [[:w<CR>:lua overseer_term()<CR>]], remap)
+keymap("n", "<leader>rt", [[:w<CR>:lua overseer_term()<CR>]], remap)
+keymap("n", "<leader>rs", [[:w<CR>:lua overseer_stop()<CR>]], remap)
 
 -- ToDo (o)
 keymap("n", "<leader>on", [[:lua require("todo-comments").jump_next()<CR>]], remap)

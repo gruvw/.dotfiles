@@ -150,6 +150,12 @@
       "\\textit{${1:$TM_SELECTED_TEXT}}"
     ]
   },
+  "[G] Verbatim": {
+      "prefix": "vrb",
+      "body": [
+          "\\verb'$1'"
+      ]
+  },
 
   // Structure
 
