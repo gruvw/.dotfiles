@@ -7,4 +7,20 @@
       "{ width=${1:50%} }"
     ],
   },
+
+  "[G] Inline math": {
+      "prefix": "mi",
+      "body": [
+          "$$1$",
+      ],
+  },
+
+  "[G] Math centered": {
+      "prefix": "mc",
+      "body": [
+          "$$",
+          "\t$1",
+          "$$",
+      ],
+  },
 }

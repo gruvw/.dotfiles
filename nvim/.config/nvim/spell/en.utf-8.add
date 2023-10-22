@@ -249,3 +249,5 @@ customizable
 cross-platform
 scalable
 stateful
+allocators
+de-referenced

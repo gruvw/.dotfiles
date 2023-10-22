@@ -88,6 +88,8 @@ keymap("n", "<leader>V", [[:silent exec "!nohup kitty vifm &>/dev/null &"<CR>]],
 -- LSP
 keymap("n", "<leader>lr", ":LspStart<CR>", remap)
 keymap("n", "<leader>ls", ":LspStop<CR>", remap)
+keymap("n", "<leader>lz", ":lua vim.diagnostic.disable()<CR>", remap)
+keymap("n", "<leader>le", ":lua vim.diagnostic.enable()<CR>", remap)
 
 -- Functions/macro remap (f)
 keymap("n", "<leader>fb", ":w<CR>:lua run_build()<CR>", remap) -- run code
