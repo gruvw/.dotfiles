@@ -94,7 +94,7 @@ autocmd({ "BufWinEnter", "FileType" }, {
 --   end
 -- })
 
--- Format options (don't comment continuation in normal mode)
+-- Format options (don't comment continuation in normal mode), load debuger config
 autocmd({ "BufNewFile", "BufRead" }, {
   callback = function(args)
     vim.opt.formatoptions = "jctrlq"
@@ -110,4 +110,11 @@ autocmd({ "BufNewFile", "BufRead" }, {
       require("dap.ext.vscode").load_launchjs(root .. "/launch.json", load_opts)
     end
   end
+})
+
+autocmd({ "BufWritePre" }, {
+  pattern = { "*.dart", },
+  callback = function()
+    vim.lsp.buf.format({ async = true })
+  end,
 })

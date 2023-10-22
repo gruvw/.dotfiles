@@ -10,6 +10,8 @@ return {
     config = function()
       local colors = require("monokai-pro.colorscheme.palette.spectrum")
       local base = {
+        none = "none",
+        bg = "#222222",
         dark = colors.dark2,
         black = colors.dark1,
         red = colors.accent1,
@@ -68,7 +70,7 @@ return {
             ["@lsp.type.class.dart"] = { fg = base.cyan, italic = false, },
             ["@type.python"] = { fg = base.cyan, },
             ["@keyword.python"] = { link = "@keyword", },
-            ["@text.literal.markdown_inline"] = { fg = base.orange, italic = true, }
+            ["@text.literal.markdown_inline"] = { fg = base.orange, italic = true, bg = base.none, }
           }
         end,
       })
