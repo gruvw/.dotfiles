@@ -70,7 +70,9 @@ return {
             ["@lsp.type.class.dart"] = { fg = base.cyan, italic = false, },
             ["@type.python"] = { fg = base.cyan, },
             ["@keyword.python"] = { link = "@keyword", },
-            ["@text.literal.markdown_inline"] = { fg = base.orange, italic = true, bg = base.none, }
+            ["@text.literal.markdown_inline"] = { fg = base.orange, italic = true, bg = base.none, },
+            ["@none.markdown"] = { bg = base.none, },
+            ["@conceal.markdown"] = { bg = base.none, },
           }
         end,
       })

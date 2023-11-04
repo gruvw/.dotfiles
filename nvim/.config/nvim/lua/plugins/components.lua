@@ -289,7 +289,7 @@ return {
 
       -- Sets root directory automagically
       require("nvim-rooter").setup({
-        rooter_patterns = { ".git", ".root", "latex-img", "src", },
+        rooter_patterns = { ".git", ".root", "latex-img", "src" }, -- not "lib" as linux root
         trigger_patterns = { "*", },
         fallback_to_parent = true,
         update_cwd = true,
@@ -373,6 +373,7 @@ return {
       require("dressing").setup({
         input = {
           default_prompt = "Input:",
+          insert_only = false,
           -- start_in_insert = false,
           relative = "editor",
           border = "single",
@@ -515,13 +516,17 @@ return {
   {
     "AckslD/nvim-neoclip.lua",
     dependencies = {
+      -- https://github.com/kkharji/sqlite.lua
+      "kkharji/sqlite.lua",
+
       "telescope.nvim",
     },
     event = "VeryLazy",
     config = function()
       require("neoclip").setup({
         history = 1000,
-        enable_persistent_history = false,
+        enable_persistent_history = true,
+        db_path = vim.fn.stdpath("data") .. "/databases/neoclip.sqlite3",
         preview = true,
         default_register = [["]],
         default_register_macros = [[j]],

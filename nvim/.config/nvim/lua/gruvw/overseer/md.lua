@@ -24,6 +24,8 @@ return {
             name = name,
             cmd = { "pandoc" },
             args = {
+              "-V",
+              "block-headings",
               "-f",
               "markdown-implicit_figures",
               filename,

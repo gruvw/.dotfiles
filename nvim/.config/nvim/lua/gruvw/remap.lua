@@ -58,6 +58,9 @@ keymap("n", "cA", "ggcG", remap)
 keymap("n", "yp", [[:let @+=expand("%") <bar> echo "copied"<CR>]], remap)
 keymap("n", "yP", [[:let @+=expand("%:p") <bar> echo "copied"<CR>]], remap)
 
+-- Duplicate to + register
+keymap("n", "g\"", [[:let @+=@0<CR>]], remap)
+
 -- Yank vim message
 keymap("n", "yM", [[:let @+=trim(execute('1messages')) <bar> echo "copied"<CR>]], remap)
 
@@ -145,7 +148,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- LSP buffer actions
     keymap("n", "<leader>cd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
     keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    keymap("n", "<leader>ch", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    keymap("n", "<leader>ch", "<cmd>lua vim.lsp.buf.hover()<CR><cmd>lua vim.lsp.buf.hover()<CR>", opts)
     keymap("n", "<leader>cD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     keymap("n", "<leader>ci", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     keymap("n", "<leader>co", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)

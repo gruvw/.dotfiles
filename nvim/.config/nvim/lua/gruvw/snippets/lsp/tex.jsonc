@@ -153,7 +153,7 @@
   "[G] Verbatim": {
       "prefix": "vrb",
       "body": [
-          "\\verb'$1'"
+          "\\verb`$1`"
       ]
   },
 

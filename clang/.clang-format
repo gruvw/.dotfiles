@@ -17,3 +17,13 @@ PointerAlignment: Middle
 BinPackArguments: false
 BinPackParameters: false
 ExperimentalAutoDetectBinPacking: false
+ReflowComments: false
+IndentPPDirectives: BeforeHash
+AlignConsecutiveMacros:
+  Enabled: false
+  AcrossEmptyLines: false
+  AcrossComments: false
+AlignTrailingComments:
+  Kind: Never
+  OverEmptyLines: 0
+# IndentPragmas: true
