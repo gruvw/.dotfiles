@@ -468,3 +468,15 @@ pip install mypy
 ### Others
 
 * LazyGit: <https://github.com/jesseduffield/lazygit#ubuntu>
+
+#### Cargo applications
+
+* Bottom: <https://github.com/ClementTsang/bottom>
+* Bat: <https://github.com/sharkdp/bat>
+* Delta: <https://github.com/dandavison/delta>
+
+```
+cargo install bottom
+cargo install --locked bat
+cargo install git-delta
+```
