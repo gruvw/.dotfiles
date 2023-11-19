@@ -14,7 +14,7 @@
     {
         "iconPath": "/usr/share/icons/Numix-Circle/48/apps/github.svg",
         "name": "GitHub",
-        "trigger": "gh ",
+        "trigger": "; ",
         "url": "https://github.com/search?utf8=✓&q=%s"
     },
     {
@@ -34,5 +34,11 @@
         "name": "Stack Overflow",
         "trigger": "s ",
         "url": "https://stackoverflow.com/search?q=%s"
+    },
+    {
+        "iconPath": "/usr/share/icons/Numix-Circle/48/apps/fsearch.svg",
+        "name": "Raindrop.io",
+        "trigger": "b ",
+        "url": "https://app.raindrop.io/my/0/%s"
     }
 ]

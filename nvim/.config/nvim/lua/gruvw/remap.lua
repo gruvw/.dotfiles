@@ -160,7 +160,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("v", "<leader>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
 
     -- Diagnostic
-    keymap("n", "<leader>ce", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+    keymap("n", "<leader>ce", "<cmd>lua vim.diagnostic.open_float()<CR><cmd>lua vim.diagnostic.open_float()<CR>", opts)
     keymap("n", "<leader>cn", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
     keymap("n", "<leader>cN", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   end

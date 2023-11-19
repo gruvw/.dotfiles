@@ -264,3 +264,12 @@ aggregator
 scalability
 rotoscale
 atomicity
+sanitization
+#eardown/!
+Teardown/!
+Teardown
+incrementing
+#lideable
+slideable/!
+struct
+toolchain

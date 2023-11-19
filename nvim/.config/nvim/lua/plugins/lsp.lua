@@ -173,6 +173,8 @@ return {
       local border = cmp.config.window.bordered({ border = "single" })
       local cmp_select_opts = { behavior = cmp.SelectBehavior.Select }
 
+      local ELLIPSIS = "..."
+
       cmp.setup({
         completion = {
           -- autocomplete = false,
@@ -209,6 +211,9 @@ return {
         formatting = {
           fields = { "abbr", "menu", "kind" },
           format = function(entry, item)
+            local win_width = vim.api.nvim_win_get_width(0)
+            local max_label_width = math.max(10, math.min(50, win_width - 40))
+
             local short_name = {
               nvim_lsp = "LSP",
               nvim_lua = "NVIM",
@@ -218,6 +223,11 @@ return {
 
             local menu_name = short_name[entry.source.name] or entry.source.name
             item.menu = string.format("[%s]", menu_name)
+
+            -- https://github.com/hrsh7th/nvim-cmp/issues/88 & https://github.com/hrsh7th/nvim-cmp/discussions/609#discussioncomment-3395522
+            if #item.abbr > max_label_width then
+              item.abbr = string.sub(item.abbr, 1, max_label_width) .. ELLIPSIS
+            end
 
             return item
           end,

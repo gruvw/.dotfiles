@@ -55,7 +55,7 @@ mouse_keys.acc_interval = MOUSE_ACC_INTERVAL
 # Keys
 
 DEG = unicode_string_sequence("°")
-MIDP = send_string("·")
+MIDP = unicode_string_sequence("·")
 HTP = send_string("https://")
 AP_T = send_string("'t ")
 
