@@ -74,6 +74,7 @@ return {
         underline = true,
         severity_sort = true, -- Sort diagnostics by severity
         float = { border = "single", },
+        virtual_text = false, -- Use lsp_lines
       })
 
       -- Set sign icons in gutter
@@ -234,6 +235,15 @@ return {
         },
       })
     end,
+  },
+
+  -- https://git.sr.ht/~whynothugo/lsp_lines.nvim
+  {
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("lsp_lines").setup()
+    end
   },
 
   -- https://github.com/mfussenegger/nvim-dap

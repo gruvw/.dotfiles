@@ -122,6 +122,15 @@ return {
             winbar = 500,
           }
         },
+        extensions = {
+          "trouble",
+          "fugitive",
+          "lazy",
+          "man",
+          "mason",
+          "nvim-dap-ui",
+          "overseer",
+        },
         sections = {
           lualine_a = { mode_cmpnt, },
           lualine_b = { "branch", },
