@@ -12,6 +12,7 @@ filetype *.s,*.md,*.tex,*.py,*.dart,*.c,*.rs,Makefile,*.json,*.js,*.txt,*.html,*
 nnoremap <space>c :!code %c<CR>
 nnoremap <space>C :!code .<CR>
 nnoremap <space>V :!nohup kitty nvim %c:p &>/dev/null &<CR>
+nnoremap <space>x :!nohup xdg-open %c:p &>/dev/null &<CR>
 nnoremap <space>v :!nvim %c:p<CR>
 nnoremap <space>h za
 nnoremap <space>n :!nemo . &<CR>

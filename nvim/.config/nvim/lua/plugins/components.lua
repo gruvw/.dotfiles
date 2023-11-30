@@ -29,7 +29,7 @@ local mode_cmpnt = {
   end,
 }
 
--- File type, LSP, overseer
+-- File type, LSP, spell check, overseer
 local filetype_cmpnt = {
   "filetype",
   icon = { align = "left", },
@@ -49,7 +49,13 @@ local filetype_cmpnt = {
       lsp = "-"
     end
 
-    -- Overseer
+    -- Spell check
+    local spell = ""
+    if vim.o.spell then
+      spell = " s"
+    end
+
+    -- Overseer status
     local tasks = require("overseer.task_list").list_tasks({ unique = true, })
     local tasks_by_status = require("overseer.util").tbl_group_by(tasks, "status")
     local status = ""
@@ -61,7 +67,7 @@ local filetype_cmpnt = {
       status = " S"
     end
 
-    return lsp .. status
+    return lsp .. spell .. status
   end,
 }
 

@@ -74,7 +74,8 @@ return {
         underline = true,
         severity_sort = true, -- Sort diagnostics by severity
         float = { border = "single", },
-        virtual_text = false, -- Use lsp_lines
+        virtual_text = true, -- Use lsp_lines
+        virtual_lines = false,
       })
 
       -- Set sign icons in gutter
@@ -138,14 +139,14 @@ return {
           "texlab",
           "lua_ls",
           "emmet_language_server",
+          "html",
           "clangd",
           "jsonls",
         },
         handlers = {
           default_setup,
-          lua_ls = function()
-            require("lspconfig").lua_ls.setup(require("gruvw.lsp.lua_ls"))
-          end,
+          lua_ls = function() require("lspconfig").lua_ls.setup(require("gruvw.lsp.lua_ls")) end,
+          html = function() require("lspconfig").html.setup(require("gruvw.lsp.html")) end
         },
       })
     end
@@ -240,6 +241,7 @@ return {
   -- https://git.sr.ht/~whynothugo/lsp_lines.nvim
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    enabled = true,
     event = "VeryLazy",
     config = function()
       require("lsp_lines").setup()

@@ -126,7 +126,7 @@ sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 
 2. Qtile, <https://docs.qtile.org/en/latest/manual/install/ubuntu.html>, <https://www.reddit.com/r/qtile/comments/1605sf5/qtile_not_startingrunning_qtile/>, <https://github.com/qtile/qtile/issues/1849>
 
 ```sh
-pip install xcffib
+pip install xcffib autorandr
 pip install --no-build-isolation git+https://github.com/qtile/qtile.git
 cd /usr/share/xsessions/
 sudo ln ~/.dotfiles/others/qtile/qtile.desktop

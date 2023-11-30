@@ -100,7 +100,6 @@ def cycle_wallpaper():
 
     qtile.call_later(Settings.wallpaper_timeout, cycle_wallpaper)
 
-
 keys: list = []  # Initialize + avoid warning
 
 groups = [Group(str(i)) for i in range(10)]
@@ -149,6 +148,9 @@ keys += [
     Key([mod, control], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, control], "k", lazy.layout.grow_up(), desc="Grow window up"),
     # Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+
+    # Move to screen
+    Key([mod], "Right", lazy.next_screen(), desc=""),
 
     # More group related keys
     KeyChord([mod], "g", [
@@ -293,7 +295,7 @@ screens = [
             background=Colors.bar_background
         ),
     ),
-    # Screen(),
+    Screen(),
 ]
 
 # Drag floating layouts.
@@ -307,7 +309,7 @@ dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
 follow_mouse_focus = False
 bring_front_click = False
-cursor_warp = False
+cursor_warp = True
 floating_layout = layout.Floating(
     **border_settings,
     border_focus=Colors.window_floating_border_focus,

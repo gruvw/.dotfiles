@@ -83,12 +83,12 @@ autocmd({ "BufWinEnter", "FileType" }, {
 })
 
 -- LSP Diagnostics on save
--- autocmd({"BufNew", "InsertEnter"}, {
+-- autocmd({ "TextChanged", "TextChangedI", }, {
 --   callback = function(args)
 --     vim.diagnostic.disable(args.buf)
 --   end
 -- })
--- autocmd({"BufWrite"}, {
+-- autocmd({ "BufWinEnter", "BufNew", "BufWrite" }, {
 --   callback = function(args)
 --     vim.diagnostic.enable(args.buf)
 --   end

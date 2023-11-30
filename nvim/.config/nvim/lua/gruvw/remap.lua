@@ -21,8 +21,8 @@ keymap("n", "J", "j_d0kgJ", remap)
 keymap("n", "gJ", "j_d0kgJi<space><Esc>", remap)
 
 -- Scrolling
-keymap("n", "<C-j>", "10j", remap)
-keymap("n", "<C-k>", "10k", remap)
+keymap({ "n", "v", }, "<C-j>", "10j", remap)
+keymap({ "n", "v", }, "<C-k>", "10k", remap)
 
 -- Resize
 keymap("n", "<C-w><", ":vertical resize +10<CR>", remap)
@@ -93,9 +93,10 @@ keymap("n", "<leader>lr", ":LspStart<CR>", remap)
 keymap("n", "<leader>ls", ":LspStop<CR>", remap)
 keymap("n", "<leader>lz", ":lua vim.diagnostic.disable()<CR>", remap)
 keymap("n", "<leader>le", function()
+  -- TODO exctract to gloabal function + use in script + stay on same line
   vim.diagnostic.enable()
   vim.diagnostic.config({
-    virtual_lines = true,
+    virtual_lines = { highlight_whole_line = false },
     virtual_text = false,
   })
 end, remap)

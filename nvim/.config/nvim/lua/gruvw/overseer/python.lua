@@ -28,7 +28,7 @@ return {
 
           return {
             name = "Python " .. filename,
-            cmd = { "python" },
+            cmd = { "python3" },
             args = args,
           }
         end,
