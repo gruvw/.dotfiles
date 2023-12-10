@@ -480,3 +480,14 @@ cargo install bottom
 cargo install --locked bat
 cargo install git-delta
 ```
+
+#### Aseprite
+
+* Go to purshase link in saved emails (search "Aseprite" or "noreply@humblebundle.com").
+* Platform Linux > Direct Link > 64-bit
+* Place download to `~/Downloads`
+
+```sh
+cd ~/Downloads
+sudo apt install ./Aseprite_*.deb
+```

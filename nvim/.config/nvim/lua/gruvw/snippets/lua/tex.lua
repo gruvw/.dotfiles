@@ -136,7 +136,7 @@ return
     trig = "itm",
     wordTrig = false,
   }, {
-    t({"", [[\item ]]}),
+    t({[[\item ]]}),
   }),
 },
 -- Automatic

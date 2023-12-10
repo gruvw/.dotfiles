@@ -52,7 +52,7 @@ local filetype_cmpnt = {
     -- Spell check
     local spell = ""
     if vim.o.spell then
-      spell = " s"
+      spell = "s"
     end
 
     -- Overseer status
@@ -67,7 +67,7 @@ local filetype_cmpnt = {
       status = " S"
     end
 
-    return lsp .. spell .. status
+    return spell .. lsp .. status
   end,
 }
 

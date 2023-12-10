@@ -63,6 +63,7 @@ set.sidescrolloff = 16
 -- Add column ruler
 -- vim.wo.colorcolumn = "100"
 set.wrap = true
+set.breakindent = true
 
 -- Show command
 set.showcmd = true
@@ -94,6 +95,7 @@ set.spelllang = "en_us,fr"
 set.spelloptions = "camel"
 set.spellsuggest = "best,10"
 set.spellcapcheck = ""
+set.spellfile = "/home/gruvw/.dotfiles/nvim/.config/nvim/spell/custom.utf-8.add,/home/gruvw/.dotfiles/nvim/.config/nvim/spell/words.utf-8.add"
 
 -- Backspace
 set.backspace = "indent,eol,start"

@@ -18,8 +18,11 @@ Checks: >
   -clang-diagnostic-gnu-designator,
   -readability-isolate-declaration,
   -hicpp-braces-around-statements,
+  -hicpp-deprecated-headers,
+  -cppcoreguidelines-macro-usage,
   -google-readability-todo,
-  -misc-no-recursion
+  -misc-no-recursion,
+  -google-objc-function-naming
 ExtraArgs: [
   "-std=c17",
   "-pedantic",
