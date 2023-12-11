@@ -6,7 +6,7 @@ local remap = { noremap = true, silent = true, }
 -- Easy save/quit
 keymap("n", "Zs", ":w<CR>", remap)
 keymap("n", "Zq", ":q<CR>", remap)
-keymap({ "i", "n", }, "<C-c>", "<cmd>:q<CR>", remap)
+keymap({ "i", "n", }, "<C-c>", "<cmd>q<CR>", remap)
 keymap("n", "ZQ", ":qa<CR>", remap)
 keymap("n", "Zz", ":wq<CR>", remap)
 
@@ -142,7 +142,8 @@ keymap("n", "<leader>jn", [[:lua require("harpoon.ui").nav_file(3)<CR>]], remap)
 keymap("n", "<leader>js", [[:lua require("harpoon.ui").nav_file(4)<CR>]], remap)
 
 -- Nvim-tree (t)
-keymap("n", "<leader>t", [[:lua require("nvim-tree.api").tree.toggle()<CR>]], remap)
+keymap("n", "<leader>tt", [[:lua require("nvim-tree.api").tree.toggle()<CR>]], remap)
+keymap("n", "<leader>tv", [[<cmd>lua require("oil").open_float(vim.fn.expand("%:p:h"))<CR>]], remap)
 
 -- Git (g)
 keymap("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", remap)
@@ -169,7 +170,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "<leader>cr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
     keymap("n", "<leader>cs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     keymap("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-    keymap({ "n", "x", }, "<leader>cf", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
+    -- keymap({ "n", "x", }, "<leader>cf", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
+    keymap({ "n", "x", }, "<leader>cf", [[<cmd>lua require("conform").format({ lsp_fallback = true, })<CR>]], opts)
     keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
     keymap("v", "<leader>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
 

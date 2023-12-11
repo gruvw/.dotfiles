@@ -73,6 +73,11 @@ return {
             ["@text.literal.markdown_inline"] = { fg = base.orange, italic = true, bg = base.none, },
             ["@none.markdown"] = { bg = base.none, },
             ["@conceal.markdown"] = { bg = base.none, },
+
+            -- Plugins
+            ["OilDir"] = { bg = base.none, fg = base.green, bold = true, },
+            ["OilFile"] = { bg = base.none, fg = base.white, },
+            ["OilSize"] = { bg = base.none, fg = base.white, italic = true, },
           }
         end,
       })
