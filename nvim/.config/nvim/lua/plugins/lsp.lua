@@ -31,8 +31,8 @@ return {
       "mason-lspconfig.nvim",
       "lsp_lines.nvim",
     },
-    -- event = "VeryLazy",
-    lazy = true,
+    event = "VeryLazy",
+    -- lazy = true,
     config = function()
       local lspconfig = require("lspconfig")
 
@@ -370,4 +370,13 @@ return {
       })
     end
   },
+
+  -- https://github.com/github/copilot.vim
+  {
+    "github/copilot.vim",
+    keys = { { "<leader>Ce", ":Copilot enable<CR>" } },
+    config = function()
+      vim.g.copilot_no_tab_map = true
+    end
+  }
 }

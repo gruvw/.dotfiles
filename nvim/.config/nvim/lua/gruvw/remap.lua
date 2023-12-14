@@ -113,6 +113,13 @@ keymap("n", "<leader>li", function()
     virtual_text = true,
   })
 end, remap)
+-- Copilot
+keymap("i", "<C-u>", [[copilot#Accept("<CR>")]], {
+  expr = true,
+  replace_keycodes = false
+})
+keymap("n", "<leader>Cd", ":Copilot disable<CR>", remap)
+keymap("n", "<leader>Cp", ":Copilot panel<CR>", remap)
 
 -- Functions/macro remap (f)
 keymap("n", "<leader>fb", ":w<CR>:lua run_build()<CR>", remap) -- run code
@@ -208,7 +215,7 @@ local function snip_jump_end()
   local end_node = snip.insert_nodes[0]
 
   while end_node and ls.jumpable(1) do
-    local current = session.current_nodes[vim.api.nvim_get_current_buf()]
+    current = session.current_nodes[vim.api.nvim_get_current_buf()]
     if current == end_node then
       break
     end

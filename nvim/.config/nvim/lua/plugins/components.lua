@@ -67,7 +67,13 @@ local filetype_cmpnt = {
       status = " S"
     end
 
-    return spell .. lsp .. status
+    -- Copilot
+    local copilot = ""
+    if vim.g.copilot_enabled == 1 then
+      copilot = "*"
+    end
+
+    return spell .. lsp .. copilot .. status
   end,
 }
 
