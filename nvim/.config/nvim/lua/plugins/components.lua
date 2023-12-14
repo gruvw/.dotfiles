@@ -569,9 +569,10 @@ return {
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
+    lazy = true,
     config = function()
       require("oil").setup({
-        default_file_explorer = true,
+        default_file_explorer = false,
         columns = {
           "icon",
           { "size", highlight = "OilSize" },

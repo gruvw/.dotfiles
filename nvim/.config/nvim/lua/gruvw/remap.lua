@@ -86,10 +86,16 @@ keymap("n", "zh", [[:let @/ = ""<CR>]], remap)
 keymap("n", "<leader><CR>", [[:silent exec "!nohup kitty &>/dev/null &"<CR>]], remap)
 
 -- Open VIFM in cwd
-keymap("n", "<leader>V", [[:silent exec "!nohup kitty vifm &>/dev/null &"<CR>]], remap)
+keymap("n", "<leader>v", [[:silent exec "!nohup kitty vifm &>/dev/null &"<CR>]], remap)
 
 -- LSP
-keymap("n", "<leader>lr", ":LspStart<CR>", remap)
+keymap("n", "<leader>lr", function()
+  -- require("flutter-tools")
+  -- require("jdtls")
+  require("dap")
+  require("lspconfig")
+  vim.cmd([[:LspStart<CR>]])
+end, remap)
 keymap("n", "<leader>ls", ":LspStop<CR>", remap)
 keymap("n", "<leader>lz", ":lua vim.diagnostic.disable()<CR>", remap)
 keymap("n", "<leader>le", function()
@@ -171,7 +177,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "<leader>cs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     keymap("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
     -- keymap({ "n", "x", }, "<leader>cf", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
-    keymap({ "n", "x", }, "<leader>cf", [[<cmd>lua require("conform").format({ lsp_fallback = true, })<CR>]], opts)
     keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
     keymap("v", "<leader>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
 
@@ -181,6 +186,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "<leader>cN", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   end
 })
+keymap({ "n", "x", }, "<leader>cf", [[<cmd>lua require("conform").format({ async = true, lsp_fallback = true, })<CR>]], remap)
 
 -- Treesitter context (c)
 keymap("n", "<leader>cc", ":TSContextToggle<CR>", remap)
@@ -244,3 +250,8 @@ keymap("n", "<leader>dt", function() require("dap").terminate() require("dapui")
 keymap({"n", "v"}, "<leader>dh", function() require("dap.ui.widgets").hover() end, remap)
 keymap({"n", "v"}, "<leader>dp", function() require("dap.ui.widgets").preview() end, remap)
 keymap("n", "<leader>do", function() require("dapui").toggle() end, remap)
+
+-- Load extra plugins
+keymap("n", "<leader>L", function()
+  require("colorizer")
+end, remap)

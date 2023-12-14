@@ -165,7 +165,7 @@ return {
   -- https://github.com/RaafatTurki/hex.nvim
   {
     "RaafatTurki/hex.nvim",
-    event = "VeryLazy",
+    lazy = true,
     config = function()
       require("hex").setup({})
     end

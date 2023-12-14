@@ -29,8 +29,10 @@ return {
     dependencies = {
       "nvim-cmp",
       "mason-lspconfig.nvim",
+      "lsp_lines.nvim",
     },
-    event = "VeryLazy",
+    -- event = "VeryLazy",
+    lazy = true,
     config = function()
       local lspconfig = require("lspconfig")
 
@@ -104,6 +106,9 @@ return {
 
       -- https://github.com/jay-babu/mason-nvim-dap.nvim
       "jay-babu/mason-nvim-dap.nvim",
+
+      -- https://github.com/mfussenegger/nvim-jdtls
+      "mfussenegger/nvim-jdtls",
     },
     lazy = true,
     config = function()
@@ -242,7 +247,7 @@ return {
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     enabled = true,
-    event = "VeryLazy",
+    lazy = true,
     config = function()
       require("lsp_lines").setup()
     end
@@ -257,7 +262,7 @@ return {
 
       "overseer.nvim",
     },
-    event = "VeryLazy",
+    lazy = true,
     config = function()
       local dap = require("dap")
       local dapui = require("dapui")
@@ -341,7 +346,7 @@ return {
     "akinsho/flutter-tools.nvim",
     dependencies = {
       "plenary.nvim",
-      "dressing.nvim",
+      -- "dressing.nvim",
     },
     config = function()
       require("flutter-tools").setup({
@@ -365,9 +370,4 @@ return {
       })
     end
   },
-
-  -- https://github.com/mfussenegger/nvim-jdtls
-  {
-    "mfussenegger/nvim-jdtls",
-  }
 }
