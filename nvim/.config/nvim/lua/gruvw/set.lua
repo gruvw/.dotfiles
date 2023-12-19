@@ -84,7 +84,7 @@ set.signcolumn = "yes:1"
 set.splitright = true
 
 -- Format options (don't insert comment leader in normal mode), also in autocmd (see scripts.lua)
-set.formatoptions = "jctrlq"
+set.formatoptions = "jctlq"
 
 -- Default to fish shell
 set.shell = "fish"

@@ -97,7 +97,7 @@ autocmd({ "BufWinEnter", "FileType" }, {
 -- Format options (don't comment continuation in normal mode), load debuger config
 autocmd({ "BufNewFile", "BufRead" }, {
   callback = function(args)
-    vim.opt.formatoptions = "jctrlq"
+    vim.opt.formatoptions = "jctlq"
 
     -- Load JSON config
     local load_opts = {
