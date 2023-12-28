@@ -14,28 +14,30 @@ return {
       local filename = string.sub(file, #cwd + 2)
       local name = "Tex " .. filename
 
-      table.insert(res, {
-        name = name,
-        builder = function(params)
-          -- Create out for xelatex (if not present)
-          vim.cmd([[silent exec "!mkdir out"]])
+      if string.find(file, "parts/") == nil then -- avoid compiling parts of document
+        table.insert(res, {
+          name = name,
+          builder = function(params)
+            -- Create out for xelatex (if not present)
+            vim.cmd([[silent exec "!mkdir out"]])
 
-          return {
-            name = name,
-            cmd = { "latexmk" },
-            args = {
-              "-xelatex",
-              "-synctex=1",
-              -- "-interaction=nonstopmode",
-              -- "-file-line-error",
-              "--shell-escape",
-              "-output-directory=out",
-              file,
-            },
-          }
-        end,
-        tags = { overseer.TAG.BUILD },
-      })
+            return {
+              name = name,
+              cmd = { "latexmk" },
+              args = {
+                "-xelatex",
+                "-synctex=1",
+                -- "-interaction=nonstopmode",
+                -- "-file-line-error",
+                "--shell-escape",
+                "-output-directory=out",
+                file,
+              },
+            }
+          end,
+          tags = { overseer.TAG.BUILD },
+        })
+      end
     end
 
     cb(res)
