@@ -25,7 +25,12 @@
       {
         "language": ["markdown"],
         "path": "./markdown.jsonc"
+      },
+      {
+        "language": ["c"],
+        "path": "./c.jsonc"
       }
+
     ]
   }
 }

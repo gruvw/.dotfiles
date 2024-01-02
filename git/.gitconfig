@@ -14,8 +14,8 @@
 	rebase = false
 
 [merge]
-  conflictstyle = diff3
-	tool = code
+    conflictstyle = diff3
+    tool = code
 
 [mergetool]
 	writeToTemp = true
@@ -28,12 +28,48 @@
     pager = delta
 
 [interactive]
-    diffFilter = delta --color-only --features=interactive
+    diffFilter = delta --color-only
 
 [delta]
+    features = decorations navigation
     navigate = true
     ; side-by-side = true
-    theme = Monokai Extended
+    line-numbers = true
+
+[delta "decorations"]
+    dark = true
+    syntax-theme = gruvw
+    zero-style = syntax
+
+    commit-decoration-style = bold yellow ul
+
+    hunk-header-decoration-style = none
+    hunk-header-style = syntax italic
+
+    file-added-label = [A]
+    file-copied-label = [C]
+    file-modified-label = [M]
+    file-removed-label = [D]
+    file-renamed-label = [R]
+
+    file-decoration-style = "#f7f1ff"
+    file-style = "#f7f1ff" bold
+
+    line-numbers-left-format = " {nm:>1} :"
+    line-numbers-right-format = " {np:>1} │ "
+
+    line-numbers-left-style = "#8b888f"
+    line-numbers-minus-style = red bold
+    line-numbers-plus-style = green bold
+    line-numbers-right-style = "#8b888f"
+    line-numbers-zero-style = "#8b888f"
+
+    minus-style = syntax "#440114" ; 20% red
+    minus-emph-style = syntax "#780224" ; 35% red
+    minus-non-emph-style = minus-style
+    plus-style = syntax "#0f3417" ; 20% green
+    plus-emph-style = syntax "#1b5c29" ; 35% green
+    plus-non-emph-style = plus-style
 
 [diff]
     colorMoved = default

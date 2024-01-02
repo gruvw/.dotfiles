@@ -120,6 +120,7 @@ mark d ~/.dotfiles
 mark m /media/gruvw/
 mark t ~/SynologyDrive/tmp
 mark T ~/Documents/tmp
+mark v ~/.local/share/vifm/Trash
 
 " ------------------------------------------------------------------------------
 

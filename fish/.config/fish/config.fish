@@ -34,8 +34,7 @@ if status is-interactive
     alias vim "nvim"
     alias vi "nvim"
     alias v "nvim"
-    alias bat "batcat"
-    alias cat "batcat"
+    alias cat "bat"
     # alias vifm "vifm --choose-dir -"
 
     # Commands

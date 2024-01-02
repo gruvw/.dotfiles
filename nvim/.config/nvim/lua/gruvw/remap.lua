@@ -58,7 +58,7 @@ keymap("n", "cA", "ggcG", remap)
 keymap("n", "yp", [[:let @+=expand("%") <bar> echo "copied"<CR>]], remap)
 keymap("n", "yP", [[:let @+=expand("%:p") <bar> echo "copied"<CR>]], remap)
 
--- Duplicate to + register
+-- Duplicate to + register (clipboard to system)
 keymap("n", "g\"", [[:let @+=@0<CR>]], remap)
 
 -- Yank vim message
@@ -169,6 +169,7 @@ keymap("n", "<leader>gN", [[:lua require("gitsigns").prev_hunk()<CR>]], remap)
 keymap("n", "<leader>gs", [[:lua require("gitsigns").stage_hunk()<CR>]], remap)
 keymap("n", "<leader>gu", [[:lua require("gitsigns").undo_stage_hunk()<CR>]], remap)
 keymap("n", "<leader>gd", [[:lua require("gitsigns").diffthis()<CR>]], remap)
+keymap("n", "<leader>gR", [[:lua require("gitsigns").reset_hunk()<CR>]], remap)
 keymap("n", "<leader>gg", ":G<CR>", remap)
 
 -- Code (c)

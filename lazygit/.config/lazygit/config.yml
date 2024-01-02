@@ -53,7 +53,6 @@ gui:
   animateExplosion: true
 git:
   paging:
-    colorArg: always
     useConfig: true
   commit:
     signOff: false

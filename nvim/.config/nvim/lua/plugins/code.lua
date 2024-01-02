@@ -73,7 +73,20 @@ return {
     config = function()
       local overseer = require("overseer")
       overseer.setup({
-        templates = { "builtin" },
+        templates = {
+          "cargo",
+          "just",
+          "make",
+          "npm",
+          "tox",
+          "vscode",
+          "mix",
+          "deno",
+          "rake",
+          "task",
+          "composer",
+          "cargo-make",
+        },
         dap = false,
         task_list = {
           default_detail = 1,

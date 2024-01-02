@@ -61,7 +61,6 @@ Terminal workflow installs:
 sudo apt install -y kitty
 sudo apt install -y fish
 sudo apt install -y vifm
-sudo apt install -y bat
 sudo apt install -y curl
 curl -sS https://starship.rs/install.sh | sh
 ```
