@@ -260,7 +260,7 @@ return {
           before = "",
           keyword = "bg",
           after = "fg",
-          pattern = [[.*<(KEYWORDS)\s*:?]],
+          pattern = [[\s*<(KEYWORDS)\s*:?]],
           comments_only = true,
           exclude = {}, -- list of filetypes to exclude highlighting
         },

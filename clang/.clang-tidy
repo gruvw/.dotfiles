@@ -20,6 +20,8 @@ Checks: >
   -hicpp-braces-around-statements,
   -hicpp-deprecated-headers,
   -hicpp-signed-bitwise,
+  -hicpp-avoid-c-arrays,
+  -cppcoreguidelines-avoid-c-arrays,
   -cppcoreguidelines-macro-usage,
   -google-readability-todo,
   -misc-no-recursion,

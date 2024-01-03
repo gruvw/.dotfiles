@@ -61,6 +61,9 @@ keymap("n", "yP", [[:let @+=expand("%:p") <bar> echo "copied"<CR>]], remap)
 -- Duplicate to + register (clipboard to system)
 keymap("n", "g\"", [[:let @+=@0<CR>]], remap)
 
+-- Better alternate file
+keymap("n", "<C-e>", "<C-^>", remap)
+
 -- Yank vim message
 keymap("n", "yM", [[:let @+=trim(execute('1messages')) <bar> echo "copied"<CR>]], remap)
 
