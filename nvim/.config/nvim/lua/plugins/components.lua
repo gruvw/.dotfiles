@@ -187,7 +187,7 @@ return {
         vim.keymap.set("n", "yp", api.fs.copy.relative_path, opts("Copy Relative Path"))
         vim.keymap.set("n", "yP", api.fs.copy.absolute_path, opts("Copy Absolute Path"))
         vim.keymap.set("n", "d", api.fs.cut, opts("Cut"))
-        vim.keymap.set({ "v", "n" }, "D", api.fs.trash, opts("Trash"))
+        -- vim.keymap.set({ "v", "n" }, "D", api.fs.trash, opts("Trash"))
         vim.keymap.set("n", "C", api.tree.collapse_all, opts("Collapse All"))
         vim.keymap.set("n", "E", api.tree.expand_all, opts("Expand All"))
         vim.keymap.set("n", "/", api.tree.search_node, opts("Search"))

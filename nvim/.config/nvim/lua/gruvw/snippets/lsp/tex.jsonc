@@ -61,6 +61,15 @@
       "$0"
     ]
   },
+  "[G] Equation": {
+    "prefix": "equ",
+    "body": [
+      "\\begin{equation}",
+      "\t${1:$TM_SELECTED_TEXT}",
+      "\\end{equation}",
+      "$0"
+    ]
+  },
   "[G] Add margin": {
     "prefix": "adm",
     "body": [
@@ -153,7 +162,7 @@
   "[G] Verbatim": {
       "prefix": "vrb",
       "body": [
-          "\\verb`$1`"
+          "\\verb`${1:$TM_SELECTED_TEXT}`"
       ]
   },
 

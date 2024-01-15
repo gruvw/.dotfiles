@@ -457,14 +457,13 @@ return
 
   -- Simple with one argument
 
-  s({
-    name = "[G] Verbatim",
-    trig = [[\b(?<!\\)vrb]],
-    trigEngine = "ecma",
-    condition = in_mathzone,
-  }, {
-    t([[\verb']]), si(1), t([[']]),
-  }),
+  -- s({
+  --   name = "[G] Verbatim",
+  --   trig = [[\b(?<!\\)vrb]],
+  --   trigEngine = "ecma",
+  -- }, {
+  --   t([[\verb']]), si(1), t([[']]),
+  -- }),
 
   s({
     name = "[G] Num",

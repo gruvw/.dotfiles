@@ -489,3 +489,12 @@ cargo install git-delta
 cd ~/Downloads
 sudo apt install ./Aseprite_*.deb
 ```
+
+#### OBS Studio
+
+* Download `.deb` from <https://github.com/obsproject/obs-studio/releases>
+
+```sh
+cd ~/Downloads
+sudo apt install ./OBS-Studio-*.deb
+```
