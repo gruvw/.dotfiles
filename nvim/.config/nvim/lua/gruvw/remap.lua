@@ -266,7 +266,5 @@ keymap({"n", "v"}, "<leader>dh", function() require("dap.ui.widgets").hover() en
 keymap({"n", "v"}, "<leader>dp", function() require("dap.ui.widgets").preview() end, remap)
 keymap("n", "<leader>do", function() require("dapui").toggle() end, remap)
 
--- Load extra plugins
-keymap("n", "<leader>L", function()
-  require("colorizer")
-end, remap)
+-- Others
+keymap("n", "<leader>zc", function() require("colorizer").attach_to_buffer() end, remap)

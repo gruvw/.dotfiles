@@ -498,3 +498,11 @@ sudo apt install ./Aseprite_*.deb
 cd ~/Downloads
 sudo apt install ./OBS-Studio-*.deb
 ```
+
+#### Jupyter NoteBook
+
+* See <https://jupyter.org/install>
+
+```sh
+pip install jupyterlab notebook
+```

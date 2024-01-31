@@ -204,7 +204,8 @@ return {
   -- https://github.com/NvChad/nvim-colorizer.lua
   {
     "NvChad/nvim-colorizer.lua",
-    lazy = true,
+    -- lazy = true,
+    event = "VeryLazy",
     config = function()
       require("colorizer").setup({
         filetypes = { "*" },
