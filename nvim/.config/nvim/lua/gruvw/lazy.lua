@@ -20,4 +20,7 @@ require("lazy").setup("plugins", {
   ui = {
     border = "single",
   },
+  change_detection = {
+    notifiy = false,
+  },
 })
