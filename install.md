@@ -365,6 +365,9 @@ sudo apt install -y gnome-shell-extensions
 sudo apt install -y vim
 sudo apt install -y gnome-tweaks
 sudo apt install -y clangd clang-tidy clang-format
+sudo apt install -y nomacs
+sudo apt install -y exiftool
+sudo apt install -y jpegoptim
 ```
 
 ### Dragon

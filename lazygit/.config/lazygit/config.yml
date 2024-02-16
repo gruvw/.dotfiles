@@ -1,6 +1,6 @@
 gui:
   windowSize: "normal"
-  scrollHeight: 2
+  scrollHeight: 5
   scrollPastBottom: true
   scrollOffMargin: 6
   scrollOffBehavior: "margin"
@@ -38,7 +38,7 @@ gui:
   mouseEvents: true
   skipDiscardChangeWarning: false
   skipStashWarning: false
-  showFileTree: true
+  showFileTree: false
   showListFooter: true
   showRandomTip: false
   showBranchCommitHash: true
@@ -53,7 +53,8 @@ gui:
   animateExplosion: true
 git:
   paging:
-    useConfig: true
+    colorArg: always
+    pager: delta --paging=never
   commit:
     signOff: false
   merging:

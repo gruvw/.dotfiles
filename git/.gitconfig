@@ -28,7 +28,7 @@
     pager = delta
 
 [interactive]
-    diffFilter = delta --color-only
+    diffFilter =  delta --color-only --features=interactive
 
 [delta]
     features = decorations navigation
@@ -64,12 +64,28 @@
     line-numbers-right-style = "#8b888f"
     line-numbers-zero-style = "#8b888f"
 
-    minus-style = syntax "#440114" ; 20% red
-    minus-emph-style = syntax "#780224" ; 35% red
+    ; Diff
+    minus-style = syntax "#4A2D35"
+    minus-emph-style = syntax "#713949"
     minus-non-emph-style = minus-style
-    plus-style = syntax "#0f3417" ; 20% green
-    plus-emph-style = syntax "#1b5c29" ; 35% green
+    plus-style = syntax "#324336"
+    plus-emph-style = syntax "#42644A"
     plus-non-emph-style = plus-style
+
+    ; Moved code blocks
+    map-styles = \
+       bold purple => syntax "#373545", \
+       bold blue => syntax "#2C4246", \
+       bold cyan => syntax "#4A372B", \
+       bold yellow => syntax "#4A452E"
+
+    blame-format = "{author:<18} {commit:<6} {timestamp:<15}"
 
 [diff]
     colorMoved = default
+
+[rerere]
+	enabled = true
+
+[alias]
+lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'

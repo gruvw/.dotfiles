@@ -29,6 +29,9 @@ vim.cmd("filetype plugin indent on")
 -- Bar (|) cursor on insert mode
 set.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 
+-- Disable mouse
+vim.opt.mouse = ""
+
 -- Have the cursor position (line, column) displayed
 set.ruler = true
 
