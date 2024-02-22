@@ -94,6 +94,17 @@ return {
 
       -- Start LSP
       vim.cmd(":LspStart")
+
+      -- local MY_FQBN = "arduino:avr:uno"
+      -- lspconfig.arduino_language_server.setup {
+      --     cmd = {
+      --         "arduino-language-server",
+      --         "-cli-config", "/home/gruvw/.arduinoIDE/arduino-cli.yaml",
+      --         "-fqbn",
+      --         MY_FQBN
+      --     }
+      -- }
+
     end
   },
 
@@ -147,6 +158,7 @@ return {
           "html",
           "clangd",
           "jsonls",
+          -- "arduino_language_server",
         },
         handlers = {
           default_setup,

@@ -229,6 +229,13 @@
       ],
   },
 
+  "[G] Green": {
+      "prefix": "grn",
+      "body": [
+          "\\green{$1}",
+      ],
+  },
+
   // Templates
 
   "[G] Document Template": {

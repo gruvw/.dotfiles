@@ -17,5 +17,6 @@ set PATH "$HOME/intelFPGA_lite/21.1/quartus/bin:$PATH"
 set PATH "$HOME/.local/share/coursier/bin:$PATH"
 set PATH "$HOME/.cargo/bin:$PATH"
 set PATH "$HOME/Android/Sdk/cmdline-tools/latest/tools/bin:$PATH"
+set PATH "$HOME/Applications/PlaydateSDK-2.3.1/bin:$PATH"
 
 set NAME "LUCAS"
