@@ -132,7 +132,7 @@ keymap("n", "<leader>Cp", ":Copilot panel<CR>", remap)
 keymap("n", "<leader>fb", ":w<CR>:lua run_build()<CR>", remap) -- run code
 keymap("n", "<leader>fr", ":w<CR>:lua run_restart()<CR>", remap) -- restart code
 keymap("n", "<leader>fD", ":lua insert_date()<CR>", remap)
-keymap("n", "<leader>fs", "iLucas Jung (IN-BA5 324724)<esc>", remap) -- sign
+keymap("n", "<leader>fs", "iLucas Jung (IN-BA6 324724)<esc>", remap) -- sign
 
 -- Plugins remap
 
@@ -156,25 +156,25 @@ keymap("n", "<leader>wa", [[:lua require("workspaces").add(vim.fn.getcwd(), vim.
 
 -- Harpoon (j)
 -- From the quickmenu, open a file in: a vertical split with <C-v>, a horizontal split with <C-x>, a new tab with <C-t>
-keymap("n", "<leader>ja", [[:lua require("harpoon.mark").add_file()<CR>]], remap)
-keymap("n", "<leader>jm", [[:lua require("harpoon.ui").toggle_quick_menu()<CR>]], remap)
-keymap("n", "<leader>jh", [[:lua require("harpoon.ui").nav_file(1)<CR>]], remap)
-keymap("n", "<leader>jt", [[:lua require("harpoon.ui").nav_file(2)<CR>]], remap)
-keymap("n", "<leader>jn", [[:lua require("harpoon.ui").nav_file(3)<CR>]], remap)
-keymap("n", "<leader>js", [[:lua require("harpoon.ui").nav_file(4)<CR>]], remap)
+keymap("n", "<leader>ja", function() require("harpoon.mark").add_file() end, remap)
+keymap("n", "<leader>jm", function() require("harpoon.ui").toggle_quick_menu() end, remap)
+keymap("n", "<leader>jh", function() require("harpoon.ui").nav_file(1) end, remap)
+keymap("n", "<leader>jt", function() require("harpoon.ui").nav_file(2) end, remap)
+keymap("n", "<leader>jn", function() require("harpoon.ui").nav_file(3) end, remap)
+keymap("n", "<leader>js", function() require("harpoon.ui").nav_file(4) end, remap)
 
 -- Nvim-tree (t)
-keymap("n", "<leader>tt", [[:lua require("nvim-tree.api").tree.toggle()<CR>]], remap)
-keymap("n", "<leader>tv", [[<cmd>lua require("oil").open_float(vim.fn.expand("%:p:h"))<CR>]], remap)
+keymap("n", "<leader>tt", function() require("nvim-tree.api").tree.toggle() end, remap)
+keymap("n", "<leader>tv", function() require("oil").open_float(vim.fn.expand("%:p:h")) end, remap)
 
 -- Git (g)
 keymap("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", remap)
-keymap("n", "<leader>gn", [[:lua require("gitsigns").next_hunk()<CR>]], remap)
-keymap("n", "<leader>gN", [[:lua require("gitsigns").prev_hunk()<CR>]], remap)
-keymap("n", "<leader>gs", [[:lua require("gitsigns").stage_hunk()<CR>]], remap)
-keymap("n", "<leader>gu", [[:lua require("gitsigns").undo_stage_hunk()<CR>]], remap)
-keymap("n", "<leader>gd", [[:lua require("gitsigns").diffthis()<CR>]], remap)
-keymap("n", "<leader>gR", [[:lua require("gitsigns").reset_hunk()<CR>]], remap)
+keymap("n", "<leader>gn", function() require("gitsigns").next_hunk() end, remap)
+keymap("n", "<leader>gN", function() require("gitsigns").prev_hunk() end, remap)
+keymap("n", "<leader>gs", function() require("gitsigns").stage_hunk() end, remap)
+keymap("n", "<leader>gu", function() require("gitsigns").undo_stage_hunk() end, remap)
+keymap("n", "<leader>gd", function() require("gitsigns").diffthis() end, remap)
+keymap("n", "<leader>gR", function() require("gitsigns").reset_hunk() end, remap)
 keymap("n", "<leader>gg", ":G<CR>", remap)
 
 -- Code (c)
