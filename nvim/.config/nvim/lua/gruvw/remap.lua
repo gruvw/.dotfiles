@@ -104,7 +104,7 @@ keymap("n", "<leader>lr", function()
   vim.cmd([[:LspStart<CR>]])
 end, remap)
 keymap("n", "<leader>ls", ":LspStop<CR>", remap)
-keymap("n", "<leader>lz", ":lua vim.diagnostic.disable()<CR>", remap)
+keymap("n", "<leader>lz", function() vim.diagnostic.disable() end, remap)
 keymap("n", "<leader>le", function()
   -- TODO exctract to gloabal function + use in script + stay on same line
   vim.diagnostic.enable()
@@ -152,7 +152,9 @@ keymap("n", "<leader>sy", function() require("telescope").extensions.neoclip.def
 keymap("n", "<leader>sm", function() require("telescope").extensions.macroscope.default() end, remap)
 
 -- Workspaces (w)
-keymap("n", "<leader>wa", [[:lua require("workspaces").add(vim.fn.getcwd(), vim.fn.input("Workspace name: ", vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")))<CR>]], remap)
+keymap("n", "<leader>wa", function()
+  require("workspaces").add(vim.fn.getcwd(), vim.fn.input("Workspace name: ", vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")))
+end, remap)
 
 -- Harpoon (j)
 -- From the quickmenu, open a file in: a vertical split with <C-v>, a horizontal split with <C-x>, a new tab with <C-t>
@@ -184,26 +186,26 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local opts = { buffer = event.buf, }
 
     -- LSP buffer actions
-    keymap("n", "<leader>cd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    keymap("n", "<leader>ch", "<cmd>lua vim.lsp.buf.hover()<CR><cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    keymap("n", "<leader>cD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-    keymap("n", "<leader>ci", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-    keymap("n", "<leader>co", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-    keymap("n", "<leader>cr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    keymap("n", "<leader>cs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-    keymap("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-    -- keymap({ "n", "x", }, "<leader>cf", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
-    keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-    keymap("v", "<leader>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
+    keymap("n", "<leader>cd", function() vim.lsp.buf.definition() end, opts)
+    keymap("n", "gd", function() vim.lsp.buf.definition() end, opts)
+    keymap("n", "<leader>ch", function() vim.lsp.buf.hover() vim.lsp.buf.hover() end, opts)
+    keymap("n", "<leader>cD", function() vim.lsp.buf.declaration() end, opts)
+    keymap("n", "<leader>ci", function() vim.lsp.buf.implementation() end, opts)
+    keymap("n", "<leader>co", function() vim.lsp.buf.type_definition() end, opts)
+    keymap("n", "<leader>cr", function() vim.lsp.buf.references() end, opts)
+    keymap("n", "<leader>cs", function() vim.lsp.buf.signature_help() end, opts)
+    keymap("n", "<F2>", function() vim.lsp.buf.rename() end, opts)
+    -- keymap({ "n", "x", }, "<leader>cf", function() vim.lsp.buf.format({async = true}) end, opts)
+    keymap("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
+    keymap("v", "<leader>ca", function() vim.lsp.buf.range_code_action() end, opts)
 
     -- Diagnostic
-    keymap("n", "<leader>ce", "<cmd>lua vim.diagnostic.open_float()<CR><cmd>lua vim.diagnostic.open_float()<CR>", opts)
-    keymap("n", "<leader>cn", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-    keymap("n", "<leader>cN", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+    keymap("n", "<leader>ce", function() vim.diagnostic.open_float() vim.diagnostic.open_float() end, opts)
+    keymap("n", "<leader>cn", function() vim.diagnostic.goto_next() end, opts)
+    keymap("n", "<leader>cN", function() vim.diagnostic.goto_prev() end, opts)
   end
 })
-keymap({ "n", "x", }, "<leader>cf", [[<cmd>lua require("conform").format({ async = true, lsp_fallback = true, })<CR>]], remap)
+keymap({ "n", "x", }, "<leader>cf", function() require("conform").format({ async = true, lsp_fallback = true, }) end, remap)
 
 -- Treesitter context (c)
 keymap("n", "<leader>cc", ":TSContextToggle<CR>", remap)
