@@ -509,3 +509,10 @@ sudo apt install ./OBS-Studio-*.deb
 ```sh
 pip install jupyterlab notebook
 ```
+
+#### Arduino CLI
+
+Don't install from snap as it will not install latest version and fail with Neovim LSP
+
+* See <https://github.com/arduino/arduino-cli>
+* See <https://arduino.github.io/arduino-cli/0.35/installation/>
