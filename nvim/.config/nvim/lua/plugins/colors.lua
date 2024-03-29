@@ -71,6 +71,8 @@ return {
             ["@type.python"] = { fg = base.cyan, },
             ["@keyword.python"] = { link = "@keyword", },
             ["@text.literal.markdown_inline"] = { fg = base.orange, italic = true, bg = base.none, },
+            ["@markup.raw.markdown_inline"] = { fg = base.orange, italic = true, bg = base.none, },
+            ["@markup.raw.block.markdown"] = { bg = base.none, },
             ["@none.markdown"] = { bg = base.none, },
             ["@conceal.markdown"] = { bg = base.none, },
 

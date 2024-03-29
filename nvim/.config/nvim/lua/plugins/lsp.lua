@@ -153,18 +153,7 @@ return {
           default_setup,
           lua_ls = function() require("lspconfig").lua_ls.setup(require("gruvw.lsp.lua_ls")) end,
           html = function() require("lspconfig").html.setup(require("gruvw.lsp.html")) end,
-          arduino_language_server = function()
-            require("lspconfig").arduino_language_server.setup({
-              cmd = {
-                "arduino-language-server",
-                "-cli-config", "/home/gruvw/.arduinoIDE/arduino-cli.yaml",
-                "-cli", "/home/gruvw/Applications/Arduino/bin/arduino-cli",
-                "-clangd", "clangd",
-                "-fqbn",
-                "arduino:avr:uno",
-              }
-            })
-          end,
+          arduino_language_server = function() require("lspconfig").arduino_language_server.setup(require("gruvw.lsp.arduino_language_server")) end,
         },
       })
     end

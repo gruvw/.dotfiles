@@ -25,7 +25,9 @@ Checks: >
   -cppcoreguidelines-macro-usage,
   -google-readability-todo,
   -misc-no-recursion,
-  -google-objc-function-naming
+  -google-objc-function-naming,
+  -cppcoreguidelines-avoid-const-or-ref-data-members,
+  -bugprone-assignment-in-if-condition
 ExtraArgs: [
   "-std=c17",
   "-pedantic",

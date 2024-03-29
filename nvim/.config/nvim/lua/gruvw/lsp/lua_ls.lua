@@ -11,7 +11,7 @@ return {
     Lua = {
       -- Disable telemetry
       completion = {
-        callSnippet = "Both",
+        callSnippet = "Replace",
       },
       telemetry = { enable = false },
       runtime = {
@@ -21,7 +21,7 @@ return {
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = { "vim" },
+        globals = { "vim", "import" },
         -- Disabled lints
         disable = {
           -- "unused-local",

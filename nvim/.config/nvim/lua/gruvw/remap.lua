@@ -129,8 +129,8 @@ keymap("n", "<leader>Cd", ":Copilot disable<CR>", remap)
 keymap("n", "<leader>Cp", ":Copilot panel<CR>", remap)
 
 -- Functions/macro remap (f)
-keymap("n", "<leader>fb", ":w<CR>:lua run_build()<CR>", remap) -- run code
-keymap("n", "<leader>fr", ":w<CR>:lua run_restart()<CR>", remap) -- restart code
+keymap("n", "<leader>fb", ":w<CR>:lua run_build()<CR>", remap)       -- run code
+keymap("n", "<leader>fr", ":w<CR>:lua run_restart()<CR>", remap)     -- restart code
 keymap("n", "<leader>fD", ":lua insert_date()<CR>", remap)
 keymap("n", "<leader>fs", "iLucas Jung (IN-BA6 324724)<esc>", remap) -- sign
 
@@ -138,7 +138,9 @@ keymap("n", "<leader>fs", "iLucas Jung (IN-BA6 324724)<esc>", remap) -- sign
 
 -- Telescope, search (s)
 keymap("n", "<leader>sf", function() require("telescope.builtin").find_files() end, remap)
-keymap("n", "<leader>sg", function() require("telescope.builtin").grep_string({ search = vim.fn.input("Grep: ") }) end, remap)
+keymap("n", "<leader>sg", function()
+  require("telescope.builtin").grep_string({ search = vim.fn.input("Grep: ") })
+end, remap)
 keymap("n", "<leader>sh", function() require("telescope.builtin").help_tags() end, remap)
 keymap("n", "<leader>sl", function() require("telescope.builtin").live_grep() end, remap)
 keymap("n", "<leader>sb", function() require("telescope.builtin").current_buffer_fuzzy_find() end, remap)
@@ -153,7 +155,8 @@ keymap("n", "<leader>sm", function() require("telescope").extensions.macroscope.
 
 -- Workspaces (w)
 keymap("n", "<leader>wa", function()
-  require("workspaces").add(vim.fn.getcwd(), vim.fn.input("Workspace name: ", vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")))
+  require("workspaces").add(vim.fn.getcwd(),
+    vim.fn.input("Workspace name: ", vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")))
 end, remap)
 
 -- Harpoon (j)
@@ -188,7 +191,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- LSP buffer actions
     keymap("n", "<leader>cd", function() vim.lsp.buf.definition() end, opts)
     keymap("n", "gd", function() vim.lsp.buf.definition() end, opts)
-    keymap("n", "<leader>ch", function() vim.lsp.buf.hover() vim.lsp.buf.hover() end, opts)
+    keymap("n", "<leader>ch", function()
+      vim.lsp.buf.hover()
+      vim.lsp.buf.hover()
+    end, opts)
     keymap("n", "<leader>cD", function() vim.lsp.buf.declaration() end, opts)
     keymap("n", "<leader>ci", function() vim.lsp.buf.implementation() end, opts)
     keymap("n", "<leader>co", function() vim.lsp.buf.type_definition() end, opts)
@@ -200,12 +206,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("v", "<leader>ca", function() vim.lsp.buf.range_code_action() end, opts)
 
     -- Diagnostic
-    keymap("n", "<leader>ce", function() vim.diagnostic.open_float() vim.diagnostic.open_float() end, opts)
+    keymap("n", "<leader>ce", function()
+      vim.diagnostic.open_float()
+      vim.diagnostic.open_float()
+    end, opts)
     keymap("n", "<leader>cn", function() vim.diagnostic.goto_next() end, opts)
     keymap("n", "<leader>cN", function() vim.diagnostic.goto_prev() end, opts)
   end
 })
-keymap({ "n", "x", }, "<leader>cf", function() require("conform").format({ async = true, lsp_fallback = true, }) end, remap)
+keymap({ "n", "x", }, "<leader>cf", function()
+  require("conform").format({ async = true, lsp_fallback = true, })
+end, remap)
 
 -- Treesitter context (c)
 keymap("n", "<leader>cc", ":TSContextToggle<CR>", remap)
@@ -240,7 +251,8 @@ keymap({ "i", "s", "n", }, "<C-S-Tab>", [[<cmd>lua require("luasnip").jump(-1)<C
 keymap({ "i", "s", "n", }, "<C-0>", snip_jump_end, remap)
 
 -- Open floating terminal (T), enable line numbers in float (autocmd do not work)
-keymap("n", "<leader>T", [[<cmd>lua require("toggleterm").toggle()<CR><cmd>setlocal number relativenumber<CR><cmd>:startinsert<CR>]], remap)
+keymap("n", "<leader>T",
+  [[<cmd>lua require("toggleterm").toggle()<CR><cmd>setlocal number relativenumber<CR><cmd>:startinsert<CR>]], remap)
 
 -- Open hex edit (H)
 keymap("n", "<leader>H", [[:lua require("hex").toggle()<CR>]], remap)
@@ -262,12 +274,17 @@ keymap("n", "<leader>dn", function() require("dap").step_over() end, remap)
 keymap("n", "<leader>dL", function() require("dap").step_into() end, remap)
 keymap("n", "<leader>dH", function() require("dap").step_out() end, remap)
 keymap("n", "<leader>db", function() require("dap").toggle_breakpoint() end, remap)
-keymap("n", "<leader>dl", function() require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: ")) end, remap)
+keymap("n", "<leader>dl", function()
+  require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+end, remap)
 keymap("n", "<leader>dt", function() require("dap").repl.open() end, remap)
 keymap("n", "<leader>dr", function() require("dap").run_last() end, remap)
-keymap("n", "<leader>dt", function() require("dap").terminate() require("dapui").close() end, remap)
-keymap({"n", "v"}, "<leader>dh", function() require("dap.ui.widgets").hover() end, remap)
-keymap({"n", "v"}, "<leader>dp", function() require("dap.ui.widgets").preview() end, remap)
+keymap("n", "<leader>dt", function()
+  require("dap").terminate()
+  require("dapui").close()
+end, remap)
+keymap({ "n", "v" }, "<leader>dh", function() require("dap.ui.widgets").hover() end, remap)
+keymap({ "n", "v" }, "<leader>dp", function() require("dap.ui.widgets").preview() end, remap)
 keymap("n", "<leader>do", function() require("dapui").toggle() end, remap)
 
 -- Others

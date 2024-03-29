@@ -19,6 +19,7 @@ BinPackParameters: false
 ExperimentalAutoDetectBinPacking: false
 ReflowComments: false
 IndentPPDirectives: BeforeHash
+IndentExternBlock: Indent
 AlignConsecutiveMacros:
   Enabled: false
   AcrossEmptyLines: false

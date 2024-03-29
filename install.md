@@ -320,6 +320,7 @@ Other software.
 
 ```sh
 sudo apt install -y libgtk-3-dev
+sudo apt install -y lcov
 sudo apt install -y meshlab
 sudo apt install -y clang
 sudo apt install -y clang-tools

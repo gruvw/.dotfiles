@@ -325,7 +325,7 @@ return {
           end
 
           -- Find and set cwd
-          require("nvim-rooter").rooter()
+          require("nvim-rooter").rooter_default()
 
           -- Load local config
           local_config()

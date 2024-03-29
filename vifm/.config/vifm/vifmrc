@@ -16,7 +16,7 @@ nnoremap <space>x :!nohup xdg-open %c:p &>/dev/null &<CR>
 nnoremap <space>v :!nvim %c:p<CR>
 nnoremap <space>h za
 nnoremap <space>n :!nemo . &<CR>
-nnoremap <space><CR> :!fish<CR>
+nnoremap <space><CR> :!nohup kitty &>/dev/null &<CR>
 nnoremap <space>f :FZFlocate<CR>
 
 nnoremap os :vsplit<CR>
@@ -126,6 +126,7 @@ mark m /media/gruvw/
 mark t ~/SynologyDrive/tmp
 mark T ~/Documents/tmp
 mark o ~/Documents
+mark r ~/Documents/repositories
 mark v ~/.local/share/vifm/Trash
 
 " ------------------------------------------------------------------------------

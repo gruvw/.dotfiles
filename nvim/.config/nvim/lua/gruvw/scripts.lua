@@ -10,7 +10,7 @@ autocmd({ "BufWritePre" }, {
     local ignore_filetype = { "markdown", "latex", "tex", }
     local save_cursor = vim.fn.getpos(".")
     if not vim.tbl_contains(ignore_filetype, vim.bo.filetype) then
-      vim.cmd([[%s/\s\+$//e]]) -- spaces at end of line
+      vim.cmd([[%s/\s\+$//e]])         -- spaces at end of line
     end
     vim.cmd([[%s#\($\n\s*\)\+\%$##e]]) -- empty lines EOF
     vim.fn.setpos(".", save_cursor)
@@ -101,7 +101,7 @@ autocmd({ "BufNewFile", "BufRead" }, {
 
     -- Load JSON config
     local load_opts = {
-      cppdbg = {"c", "cpp"},
+      cppdbg = { "c", "cpp" },
     }
 
     -- Load debuger config
@@ -112,6 +112,7 @@ autocmd({ "BufNewFile", "BufRead" }, {
   end
 })
 
+-- Format on save
 autocmd({ "BufWritePre" }, {
   pattern = { "*.dart", "*.rs", },
   callback = function()
