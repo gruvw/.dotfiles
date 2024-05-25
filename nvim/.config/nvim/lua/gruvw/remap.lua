@@ -109,15 +109,15 @@ keymap("n", "<leader>le", function()
   -- TODO exctract to gloabal function + use in script + stay on same line
   vim.diagnostic.enable()
   vim.diagnostic.config({
-    virtual_lines = { highlight_whole_line = false },
-    virtual_text = false,
+    virtual_lines = false,
+    virtual_text = true,
   })
 end, remap)
 keymap("n", "<leader>li", function()
   vim.diagnostic.enable()
   vim.diagnostic.config({
-    virtual_lines = false,
-    virtual_text = true,
+    virtual_lines = { highlight_whole_line = false },
+    virtual_text = false,
   })
 end, remap)
 -- Copilot

@@ -148,6 +148,7 @@ return {
           "clangd",
           "jsonls",
           "arduino_language_server",
+          "tailwindcss",
         },
         handlers = {
           default_setup,
