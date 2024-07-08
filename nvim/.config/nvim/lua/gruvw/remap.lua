@@ -57,6 +57,9 @@ keymap("n", "cA", "ggcG", remap)
 -- Yank paths, relative/absolute
 keymap("n", "yp", [[:let @+=expand("%") <bar> echo "copied"<CR>]], remap)
 keymap("n", "yP", [[:let @+=expand("%:p") <bar> echo "copied"<CR>]], remap)
+keymap("n", "gy", [[0"+y$]], remap)
+keymap("v", "gy", [["+y]], remap)
+keymap("n", "gp", [["+p]], remap)
 
 -- Duplicate to + register (clipboard to system)
 keymap("n", "g\"", [[:let @+=@0<CR>]], remap)

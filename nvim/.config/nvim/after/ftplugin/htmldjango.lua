@@ -1,4 +1,4 @@
--- ~/.config/nvim/after/ftplugin/htmldjango.lua
+-- ~/.config/nvim/after/ftplugin/html.lua
 
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2

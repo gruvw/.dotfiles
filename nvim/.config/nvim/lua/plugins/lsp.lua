@@ -41,6 +41,7 @@ return {
 
       local lsp_defaults = lspconfig.util.default_config
       lsp_defaults.capabilities = vim.tbl_deep_extend("force", lsp_defaults.capabilities, capabilities)
+      lsp_defaults.capabilities.textDocument.completion.completionItem.snippetSupport = true
 
       -- Add border to LSP windows
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
@@ -89,6 +90,9 @@ return {
       })
 
       require("lspconfig").clangd.setup({
+        capabilities = lsp_defaults.capabilities,
+      })
+      require("lspconfig").cssls.setup({
         capabilities = lsp_defaults.capabilities,
       })
 
@@ -143,6 +147,7 @@ return {
           "marksman",
           "texlab",
           "lua_ls",
+          "cssls",
           "emmet_language_server",
           "html",
           "clangd",

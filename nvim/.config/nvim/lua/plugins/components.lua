@@ -45,8 +45,6 @@ local filetype_cmpnt = {
       })
 
       lsp = progress and "~" or "+"
-    else
-      lsp = "-"
     end
 
     -- Spell check
@@ -310,7 +308,7 @@ return {
 
       -- Sets root directory automagically
       require("nvim-rooter").setup({
-        rooter_patterns = { ".git", ".root", "latex-img", "src" }, -- not "lib" as linux root
+        rooter_patterns = { ".git", ".root", "latex-img", "src", }, -- not "lib" as linux root
         trigger_patterns = { "*", },
         fallback_to_parent = true,
         update_cwd = true,
