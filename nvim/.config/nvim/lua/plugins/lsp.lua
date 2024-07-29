@@ -95,6 +95,10 @@ return {
       require("lspconfig").cssls.setup({
         capabilities = lsp_defaults.capabilities,
       })
+      -- require("lspconfig").tinymist.setup({
+      --   capabilities = lsp_defaults.capabilities,
+      --   single_file_support = true,
+      -- })
 
       -- Start LSP
       vim.cmd(":LspStart")
@@ -109,7 +113,7 @@ return {
       "williamboman/mason.nvim",
 
       -- https://github.com/jay-babu/mason-nvim-dap.nvim
-      "jay-babu/mason-nvim-dap.nvim",
+      -- "jay-babu/mason-nvim-dap.nvim",
 
       -- https://github.com/mfussenegger/nvim-jdtls
       "mfussenegger/nvim-jdtls",
@@ -123,17 +127,17 @@ return {
         },
       })
 
-      require("mason-nvim-dap").setup({
-        -- https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/source.lua
-        ensure_installed = {
-          "cppdbg",
-        },
-        handlers = {
-          function(config)
-            require("mason-nvim-dap").default_setup(config)
-          end,
-        },
-      })
+      -- require("mason-nvim-dap").setup({
+      --   -- https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/source.lua
+      --   ensure_installed = {
+      --     "cppdbg",
+      --   },
+      --   handlers = {
+      --     -- function(config)
+      --     --   require("mason-nvim-dap").default_setup(config)
+      --     -- end,
+      --   },
+      -- })
 
       local function default_setup(server)
         require("lspconfig")[server].setup({})
@@ -154,6 +158,8 @@ return {
           "jsonls",
           "arduino_language_server",
           "tailwindcss",
+          "typst_lsp",
+          "gopls",
         },
         handlers = {
           default_setup,
@@ -261,48 +267,48 @@ return {
     end
   },
 
-  -- https://github.com/mfussenegger/nvim-dap
-  {
-    "mfussenegger/nvim-dap",
-    dependencies = {
-      -- https://github.com/rcarriga/nvim-dap-ui
-      "rcarriga/nvim-dap-ui",
+  -- -- https://github.com/mfussenegger/nvim-dap
+  -- {
+  --   "mfussenegger/nvim-dap",
+  --   dependencies = {
+  --     -- https://github.com/rcarriga/nvim-dap-ui
+  --     "rcarriga/nvim-dap-ui",
 
-      "overseer.nvim",
-    },
-    lazy = true,
-    config = function()
-      local dap = require("dap")
-      local dapui = require("dapui")
+  --     "overseer.nvim",
+  --   },
+  --   lazy = true,
+  --   config = function()
+  --     local dap = require("dap")
+  --     local dapui = require("dapui")
 
-      -- Signs
-      vim.fn.sign_define("DapBreakpoint", { text = "B", texthl = "Error", })
-      vim.fn.sign_define("DapBreakpointCondition", { text = "C", texthl = "Error", })
-      vim.fn.sign_define("DapLogPoint", { text = "L", texthl = "", })
-      vim.fn.sign_define("DapStopped", { text = "→", texthl = "Error", })
-      vim.fn.sign_define("DapBreakpointRejected", { text = "R", texthl = "Error", })
+  --     -- Signs
+  --     vim.fn.sign_define("DapBreakpoint", { text = "B", texthl = "Error", })
+  --     vim.fn.sign_define("DapBreakpointCondition", { text = "C", texthl = "Error", })
+  --     vim.fn.sign_define("DapLogPoint", { text = "L", texthl = "", })
+  --     vim.fn.sign_define("DapStopped", { text = "→", texthl = "Error", })
+  --     vim.fn.sign_define("DapBreakpointRejected", { text = "R", texthl = "Error", })
 
-      require("overseer").patch_dap(true)
-      require("dap.ext.vscode").json_decode = require("overseer.json").decode
+  --     require("overseer").patch_dap(true)
+  --     require("dap.ext.vscode").json_decode = require("overseer.json").decode
 
-      dapui.setup({
-        controls = {
-          enabled = false,
-        },
-      })
+  --     dapui.setup({
+  --       controls = {
+  --         enabled = false,
+  --       },
+  --     })
 
-      -- Open close automagically
-      dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close()
-      end
-    end,
-  },
+  --     -- Open close automagically
+  --     dap.listeners.after.event_initialized["dapui_config"] = function()
+  --       dapui.open()
+  --     end
+  --     dap.listeners.before.event_terminated["dapui_config"] = function()
+  --       dapui.close()
+  --     end
+  --     dap.listeners.before.event_exited["dapui_config"] = function()
+  --       dapui.close()
+  --     end
+  --   end,
+  -- },
 
   -- https://github.com/L3MON4D3/LuaSnip
   {

@@ -517,3 +517,7 @@ Don't install from snap as it will not install latest version and fail with Neov
 
 * See <https://github.com/arduino/arduino-cli>
 * See <https://arduino.github.io/arduino-cli/0.35/installation/>
+
+#### Go lang
+
+Follow <https://go.dev/doc/install>.

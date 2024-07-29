@@ -106,9 +106,9 @@ autocmd({ "BufNewFile", "BufRead" }, {
 
     -- Load debuger config
     local root = require("nvim-rooter").get_root()
-    if root ~= nil then
-      require("dap.ext.vscode").load_launchjs(root .. "/launch.json", load_opts)
-    end
+    -- if root ~= nil then
+    --   require("dap.ext.vscode").load_launchjs(root .. "/launch.json", load_opts)
+    -- end
   end
 })
 
@@ -117,5 +117,13 @@ autocmd({ "BufWritePre" }, {
   pattern = { "*.dart", "*.rs", },
   callback = function()
     vim.lsp.buf.format({ async = true })
+  end,
+})
+
+-- Custom filetype
+autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "*.typ", },
+  callback = function()
+    vim.o.filetype = "typst"
   end,
 })

@@ -5,7 +5,7 @@ plugin load
 set dotdirs=0
 
 " Open files
-filetype *.nu,*.cu,*.ino,*.s,*.md,*.tex,*.py,*.dart,*.c,*.rs,Makefile,*.json,*.js,*.txt,*.html,*.css,*.xml,*.java,*.cpp,*.php,*.rb,*.sql,*.swift,*.go,*.yaml,*.toml,*.h,*.hpp,*.pl,*.lua,*.sh,*.bat,*.powershell,*.ini,*.cfg,*.yml,*.cmake,*.r,*.matlab,*.asm,*.scss,*.less,*.sass,*.jsp,*.jsx,*.ts,*.tsx,*.vb,*.vbs,*.perl,*.groovy,*.scala,*.kotlin,*.gradle,*.swift,*.rust,*.elixir,*.erl,*.clojure nvim %c
+filetype *.typ,*.nu,*.cu,*.ino,*.s,*.md,*.tex,*.py,*.dart,*.c,*.rs,Makefile,*.json,*.js,*.txt,*.html,*.css,*.xml,*.java,*.cpp,*.php,*.rb,*.sql,*.swift,*.go,*.yaml,*.toml,*.h,*.hpp,*.pl,*.lua,*.sh,*.bat,*.powershell,*.ini,*.cfg,*.yml,*.cmake,*.r,*.matlab,*.asm,*.scss,*.less,*.sass,*.jsp,*.jsx,*.ts,*.tsx,*.vb,*.vbs,*.perl,*.groovy,*.scala,*.kotlin,*.gradle,*.swift,*.rust,*.elixir,*.erl,*.clojure nvim %c
 
 " Own config
 " Key map (used ZQ<CR> to close)

@@ -200,7 +200,13 @@ return {
           python = { "black" },
           javascript = { "prettier" },
           c = { "clang_format" },
+          typst = { "typstyle" },
         },
+        formatters = {
+          typstyle = {
+            command = "typstyle",
+          }
+        }
       })
     end
   },

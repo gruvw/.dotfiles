@@ -51,7 +51,7 @@ return {
             SpellLocal = { link = "SpellBad", },
 
             -- Treesitter
-            ["@keyword"] = { fg = base.red, },
+            ["@keyword"] = { fg = base.red, italic = false, },
             ["@type"] = { fg = base.cyan, },
             ["@property"] = { fg = base.white, },
             ["@parameter"] = { fg = base.orange, },
@@ -65,6 +65,7 @@ return {
             ["@lsp.typemod.function.defaultLibrary"] = { fg = base.green, },
             ["@lsp.typemod.parameter.declaration"] = { link = "@parameter", },
             ["@lsp.typemod.variable.readonly"] = { fg = base.white, },
+            ["@lsp.type.keyword.typst"] = { link = "@keyword" },
 
             -- Language specific
             ["@lsp.type.class.dart"] = { fg = base.cyan, italic = false, },
@@ -75,6 +76,13 @@ return {
             ["@markup.raw.block.markdown"] = { bg = base.none, },
             ["@none.markdown"] = { bg = base.none, },
             ["@conceal.markdown"] = { bg = base.none, },
+            ["@lsp.type.pol.typst"] = { link = "@parameter" },
+            ["@lsp.type.string.typst"] = { link = "String" },
+            ["@lsp.type.operator.typst"] = { link = "Operator" },
+            ["@lsp.type.punct.typst"] = { link = "@punctuation.bracket" },
+            ["@lsp.type.heading.typst"] = { link = "@text.title.1.markdown" },
+            ["@lsp.mod.strong.typst"] = { link = "@text.strong.markdown_inline" },
+            ["@lsp.type.marker.typst"] = { link = "@punctuation.special.markdown" },
 
             -- Plugins
             ["OilDir"] = { bg = base.none, fg = base.green, bold = true, },

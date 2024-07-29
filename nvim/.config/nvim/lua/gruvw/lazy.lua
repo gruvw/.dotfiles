@@ -19,6 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", {
   ui = {
     border = "single",
+    backdrop = 100,
   },
   change_detection = {
     notifiy = false,

@@ -38,7 +38,7 @@ return {
   -- https://github.com/nvim-telescope/telescope.nvim
   {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.2",
+    tag = "0.1.8",
     lazy = true,
     dependencies = {
       -- https://github.com/debugloop/telescope-undo.nvim
@@ -91,7 +91,9 @@ return {
             -- use_delta = true,
             -- side_by_side = true,
             layout_strategy = "vertical",
-            diff_context_lines = 4,
+            vim_diff_opts = {
+              ctxlen = 4,
+            },
             entry_format = "state #$ID, $STAT, $TIME",
             mappings = {
               n = {
