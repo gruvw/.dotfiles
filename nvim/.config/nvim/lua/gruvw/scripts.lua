@@ -7,7 +7,7 @@ local augroup = vim.api.nvim_create_augroup
 autocmd({ "BufWritePre" }, {
   pattern = { "*" },
   callback = function(ev)
-    local ignore_filetype = { "markdown", "latex", "tex", }
+    local ignore_filetype = { "markdown", "latex", "tex", "yaml" }
     local save_cursor = vim.fn.getpos(".")
     if not vim.tbl_contains(ignore_filetype, vim.bo.filetype) then
       vim.cmd([[%s/\s\+$//e]])         -- spaces at end of line

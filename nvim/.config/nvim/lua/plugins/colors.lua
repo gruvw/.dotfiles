@@ -53,7 +53,7 @@ return {
             -- Treesitter
             ["@keyword"] = { fg = base.red, italic = false, },
             ["@type"] = { fg = base.cyan, },
-            ["@property"] = { fg = base.white, },
+            -- ["@property"] = { fg = base.white, },
             ["@parameter"] = { fg = base.orange, },
 
             -- Semantic tokens
@@ -68,12 +68,16 @@ return {
             ["@lsp.type.keyword.typst"] = { link = "@keyword" },
 
             -- Language specific
+            ["@property"] = { fg = base.red, },
             ["@lsp.type.class.dart"] = { fg = base.cyan, italic = false, },
             ["@type.python"] = { fg = base.cyan, },
             ["@keyword.python"] = { link = "@keyword", },
             ["@text.literal.markdown_inline"] = { fg = base.orange, italic = true, bg = base.none, },
             ["@markup.raw.markdown_inline"] = { fg = base.orange, italic = true, bg = base.none, },
             ["@markup.raw.block.markdown"] = { bg = base.none, },
+            ["@markup.heading.1.markdown"] = { bold = true },
+            ["@markup.heading.2.markdown"] = { bold = true },
+            ["@markup.heading.3.markdown"] = { bold = true },
             ["@none.markdown"] = { bg = base.none, },
             ["@conceal.markdown"] = { bg = base.none, },
             ["@lsp.type.pol.typst"] = { link = "@parameter" },
@@ -250,6 +254,7 @@ return {
       })
 
       hl(0, "HighlightUndo", { link = "IncSearch", })
+      hl(0, "HighlightRedo", { link = "IncSearch", })
     end
   },
 

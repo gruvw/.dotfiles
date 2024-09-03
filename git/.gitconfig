@@ -3,6 +3,7 @@
 [user]
 	name = gruvw
 	email = gruvw.dev@gmail.com
+	signingkey = 8683D16D8BDBB528
 
 [init]
 	defaultBranch = main
@@ -93,3 +94,7 @@ lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(r
 [push]
 	autoSetupRemote = true
 	default = current
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg

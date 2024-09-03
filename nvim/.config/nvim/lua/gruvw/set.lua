@@ -119,7 +119,7 @@ set.listchars:append("eol:↴")
 set.listchars:append("tab:-->")
 
 -- Disable startup screen
-set.shortmess = "I"
+-- set.shortmess = "IF"
 
 -- Prefered TEX flavor
 vim.g.tex_flavor = "latex"

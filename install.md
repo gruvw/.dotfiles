@@ -172,6 +172,7 @@ Install i3lock-color: follow <https://github.com/Raymo111/i3lock-color>
 sudo apt install -y picom
 sudo apt install -y numix-icon-theme-circle
 sudo apt install -y copyq
+sudo apt install -y hollywood
 ```
 
 6. Natural scrolling, do <https://forum.endeavouros.com/t/natural-scrolling-on-mouse-and-track-pad/15121/8> (add TouchPad)

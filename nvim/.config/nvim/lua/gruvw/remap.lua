@@ -4,7 +4,7 @@ local keymap = vim.keymap.set
 local remap = { noremap = true, silent = true, }
 
 -- Easy save/quit
-keymap("n", "Zs", ":w<CR>", remap)
+keymap("n", "Zs", ":wa<CR>", remap)
 keymap("n", "Zq", ":q<CR>", remap)
 keymap({ "i", "n", }, "<C-c>", "<cmd>q<CR>", remap)
 keymap("n", "ZQ", ":qa<CR>", remap)
@@ -229,7 +229,7 @@ end, remap)
 keymap("n", "<leader>cc", ":TSContextToggle<CR>", remap)
 
 -- Trouble (c)
-keymap("n", "<leader>ct", [[:lua require("trouble").toggle()<CR>]], remap)
+keymap("n", "<leader>ct", [[:lua require("trouble").toggle("diagnostics")<CR>]], remap)
 
 -- Comment (c)
 keymap({ "v", "n", }, "<leader>cl", [[:CommentToggle<CR>]], remap)

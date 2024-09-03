@@ -308,7 +308,7 @@ return {
 
       -- Sets root directory automagically
       require("nvim-rooter").setup({
-        rooter_patterns = { ".git", ".root", "latex-img", "src", }, -- not "lib" as linux root
+        rooter_patterns = { ".git", ".root", "latex-img", }, -- not "lib" as linux root
         trigger_patterns = { "*", },
         fallback_to_parent = true,
         update_cwd = true,
@@ -490,11 +490,10 @@ return {
       require("trouble").setup({
         position = "bottom",
         height = 10,
-        icons = false,
-        mode = "workspace_diagnostics",
         fold_open = "v",
         fold_closed = ">",
         indent_lines = false,
+        focus = true,
         multiline = false,
         auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
         win_config = { border = "single", },
@@ -526,6 +525,46 @@ return {
           previous = "k",               -- previous item
           next = "j",                   -- next item
           help = "?",                   -- help menu
+        },
+        icons = {
+          indent        = {
+            top         = "│ ",
+            middle      = "├╴",
+            last        = "└╴",
+            fold_open   = " ",
+            fold_closed = " ",
+            ws          = "  ",
+          },
+          folder_closed = " ",
+          folder_open   = " ",
+          kinds         = {
+            Array         = " ",
+            Boolean       = "󰨙 ",
+            Class         = " ",
+            Constant      = "󰏿 ",
+            Constructor   = " ",
+            Enum          = " ",
+            EnumMember    = " ",
+            Event         = " ",
+            Field         = " ",
+            File          = " ",
+            Function      = "󰊕 ",
+            Interface     = " ",
+            Key           = " ",
+            Method        = "󰊕 ",
+            Module        = " ",
+            Namespace     = "󰦮 ",
+            Null          = " ",
+            Number        = "󰎠 ",
+            Object        = " ",
+            Operator      = " ",
+            Package       = " ",
+            Property      = " ",
+            String        = " ",
+            Struct        = "󰆼 ",
+            TypeParameter = " ",
+            Variable      = "󰀫 ",
+          },
         },
       })
     end

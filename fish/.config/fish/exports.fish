@@ -22,6 +22,7 @@ set PATH "$HOME/Applications/PlaydateSDK-2.4.0/bin:$PATH"
 set PATH "$HOME/Applications/Arduino/bin:$PATH"
 set PATH "$HOME/Applications/bin:$PATH"
 set PATH "$HOME/.pub-cache/bin:$PATH"
+set PATH "$HOME/go/bin:$PATH"
 set PATH "/usr/local/go/bin:$PATH"
 
 set NAME "LUCAS"
