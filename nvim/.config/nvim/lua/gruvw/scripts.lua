@@ -112,7 +112,7 @@ autocmd({ "BufNewFile", "BufRead" }, {
   end
 })
 
--- Format on save
+-- Format on save (autoformat)
 autocmd({ "BufWritePre" }, {
   pattern = { "*.dart", "*.rs", },
   callback = function()
@@ -125,5 +125,19 @@ autocmd({ "BufNewFile", "BufRead" }, {
   pattern = { "*.typ", },
   callback = function()
     vim.o.filetype = "typst"
+  end,
+})
+
+-- Auto LSP enable
+autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "*.py", "*.dart", "*.rs", "*.lua", "*.go", "*.c", "*.cpp", "*.tex", "*.latex", "*.md", "*.html", "*.css",
+    "*.json", },
+  callback = function()
+    if vim.g.lsp_off then
+      return
+    end
+
+    require("lspconfig")
+    vim.cmd([[:LspStart<CR>]])
   end,
 })

@@ -7,7 +7,7 @@ local remap = { noremap = true, silent = true, }
 keymap("n", "Zs", ":wa<CR>", remap)
 keymap("n", "Zq", ":q<CR>", remap)
 keymap({ "i", "n", }, "<C-c>", "<cmd>q<CR>", remap)
-keymap("n", "ZQ", ":qa<CR>", remap)
+keymap("n", "ZQ", ":q<CR>", remap)
 keymap("n", "Zz", ":wq<CR>", remap)
 
 -- Empty current line
@@ -106,34 +106,24 @@ keymap("n", "<leader>v", [[:silent exec "!nohup kitty vifm &>/dev/null &"<CR>]],
 keymap("n", "<leader>lr", function()
   -- require("flutter-tools")
   -- require("jdtls")
-  require("dap")
+  -- require("dap")
   require("lspconfig")
   vim.cmd([[:LspStart<CR>]])
+  vim.g.lsp_off = false
 end, remap)
-keymap("n", "<leader>ls", ":LspStop<CR>", remap)
-keymap("n", "<leader>lz", function() vim.diagnostic.disable() end, remap)
-keymap("n", "<leader>le", function()
-  -- TODO exctract to gloabal function + use in script + stay on same line
-  vim.diagnostic.enable()
-  vim.diagnostic.config({
-    virtual_lines = false,
-    virtual_text = true,
-  })
+keymap("n", "<leader>ls", function()
+  vim.cmd([[:LspStop<CR>]])
+  vim.g.lsp_off = true
 end, remap)
-keymap("n", "<leader>li", function()
-  vim.diagnostic.enable()
-  vim.diagnostic.config({
-    virtual_lines = { highlight_whole_line = false },
-    virtual_text = false,
-  })
-end, remap)
+keymap("n", "<leader>lz", function() vim.diagnostic.enable(false) end, remap)
+keymap("n", "<leader>le", function() vim.diagnostic.enable() end, remap)
 -- Copilot
-keymap("i", "<C-u>", [[copilot#Accept("<CR>")]], {
-  expr = true,
-  replace_keycodes = false
-})
-keymap("n", "<leader>Cd", ":Copilot disable<CR>", remap)
-keymap("n", "<leader>Cp", ":Copilot panel<CR>", remap)
+-- keymap("i", "<C-u>", [[copilot#Accept("<CR>")]], {
+--   expr = true,
+--   replace_keycodes = false
+-- })
+-- keymap("n", "<leader>Cd", ":Copilot disable<CR>", remap)
+-- keymap("n", "<leader>Cp", ":Copilot panel<CR>", remap)
 
 -- Functions/macro remap (f)
 keymap("n", "<leader>fb", ":w<CR>:lua run_build()<CR>", remap)       -- run code

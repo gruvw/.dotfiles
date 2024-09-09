@@ -31,8 +31,8 @@ return {
       "mason-lspconfig.nvim",
       "lsp_lines.nvim",
     },
-    event = "VeryLazy",
-    -- lazy = true,
+    -- event = "VeryLazy",
+    lazy = true,
     config = function()
       local lspconfig = require("lspconfig")
 
@@ -116,7 +116,7 @@ return {
       -- "jay-babu/mason-nvim-dap.nvim",
 
       -- https://github.com/mfussenegger/nvim-jdtls
-      "mfussenegger/nvim-jdtls",
+      -- "mfussenegger/nvim-jdtls",
     },
     lazy = true,
     config = function()
@@ -260,7 +260,7 @@ return {
   -- https://git.sr.ht/~whynothugo/lsp_lines.nvim
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    enabled = true,
+    enabled = false,
     lazy = true,
     config = function()
       require("lsp_lines").setup()

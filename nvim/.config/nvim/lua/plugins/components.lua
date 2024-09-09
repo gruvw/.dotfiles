@@ -335,6 +335,7 @@ return {
   -- https://github.com/gelguy/wilder.nvim
   {
     "gelguy/wilder.nvim",
+    enabled = false,
     event = "CmdlineEnter",
     build = ":UpdateRemotePlugins",
     config = function()
@@ -435,6 +436,7 @@ return {
   -- https://github.com/prochri/telescope-all-recent.nvim
   {
     "prochri/telescope-all-recent.nvim",
+    enabled = false,
     dependencies = {
       -- https://github.com/kkharji/sqlite.lua
       "kkharji/sqlite.lua",
