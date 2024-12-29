@@ -370,6 +370,18 @@ sudo apt install -y clangd clang-tidy clang-format
 sudo apt install -y nomacs
 sudo apt install -y exiftool
 sudo apt install -y jpegoptim
+sudo apt install -y flatpack
+sudo apt install -y xdotool
+```
+
+### Other programs
+
+Pinta: <https://github.com/PintaProject/Pinta>
+Scrcpy: <https://github.com/Genymobile/scrcpy>
+
+```sh
+sudo snap install pinta
+sudo snap install scrcpy
 ```
 
 ### Dragon

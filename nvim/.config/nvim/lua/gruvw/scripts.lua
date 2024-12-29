@@ -120,18 +120,24 @@ autocmd({ "BufWritePre" }, {
   end,
 })
 
--- Custom filetype
+-- Custom filetypes
 autocmd({ "BufNewFile", "BufRead" }, {
   pattern = { "*.typ", },
   callback = function()
     vim.o.filetype = "typst"
   end,
 })
+autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "*.arb", },
+  callback = function()
+    vim.o.filetype = "arb"
+  end,
+})
 
 -- Auto LSP enable
 autocmd({ "BufNewFile", "BufRead" }, {
   pattern = { "*.py", "*.dart", "*.rs", "*.lua", "*.go", "*.c", "*.cpp", "*.tex", "*.latex", "*.md", "*.html", "*.css",
-    "*.json", },
+    "*.scss", "*.json", "*.typ", "*.go" },
   callback = function()
     if vim.g.lsp_off then
       return

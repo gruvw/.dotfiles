@@ -75,6 +75,7 @@ return {
             ["@text.literal.markdown_inline"] = { fg = base.orange, italic = true, bg = base.none, },
             ["@markup.raw.markdown_inline"] = { fg = base.orange, italic = true, bg = base.none, },
             ["@markup.raw.block.markdown"] = { bg = base.none, },
+            ["@markup.heading"] = { fg = base.yellow, bold = true, },
             ["@markup.heading.1.markdown"] = { bold = true },
             ["@markup.heading.2.markdown"] = { bold = true },
             ["@markup.heading.3.markdown"] = { bold = true },

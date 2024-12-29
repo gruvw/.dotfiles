@@ -29,8 +29,11 @@
       {
         "language": ["c"],
         "path": "./c.jsonc"
+      },
+      {
+        "language": ["arb"],
+        "path": "./arb.jsonc"
       }
-
     ]
   }
 }

@@ -103,7 +103,7 @@ keymap("n", "<leader><CR>", [[:silent exec "!nohup kitty &>/dev/null &"<CR>]], r
 keymap("n", "<leader>v", [[:silent exec "!nohup kitty vifm &>/dev/null &"<CR>]], remap)
 
 -- LSP
-keymap("n", "<leader>lr", function()
+keymap("n", "<leader>le", function()
   -- require("flutter-tools")
   -- require("jdtls")
   -- require("dap")
@@ -116,7 +116,7 @@ keymap("n", "<leader>ls", function()
   vim.g.lsp_off = true
 end, remap)
 keymap("n", "<leader>lz", function() vim.diagnostic.enable(false) end, remap)
-keymap("n", "<leader>le", function() vim.diagnostic.enable() end, remap)
+keymap("n", "<leader>lr", function() vim.diagnostic.enable() end, remap)
 -- Copilot
 -- keymap("i", "<C-u>", [[copilot#Accept("<CR>")]], {
 --   expr = true,
@@ -168,6 +168,10 @@ keymap("n", "<leader>js", function() require("harpoon.ui").nav_file(4) end, rema
 -- Nvim-tree (t)
 keymap("n", "<leader>tt", function() require("nvim-tree.api").tree.toggle() end, remap)
 keymap("n", "<leader>tv", function() require("oil").open_float(vim.fn.expand("%:p:h")) end, remap)
+
+-- ToDo (t)
+keymap("n", "<leader>tn", [[:lua require("todo-comments").jump_next()<CR>]], remap)
+keymap("n", "<leader>tN", [[:lua require("todo-comments").jump_prev()<CR>]], remap)
 
 -- Git (g)
 keymap("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", remap)
@@ -260,10 +264,6 @@ keymap("n", "<leader>rr", [[:w<CR>:lua require("overseer").run_template()<CR>]],
 keymap("n", "<leader>rl", [[:w<CR>:lua overseer_restart()<CR>]], remap)
 keymap("n", "<leader>rt", [[:w<CR>:lua overseer_term()<CR>]], remap)
 keymap("n", "<leader>rs", [[:w<CR>:lua overseer_stop()<CR>]], remap)
-
--- ToDo (o)
-keymap("n", "<leader>on", [[:lua require("todo-comments").jump_next()<CR>]], remap)
-keymap("n", "<leader>oN", [[:lua require("todo-comments").jump_prev()<CR>]], remap)
 
 -- Nvim DAP (d)
 keymap("n", "<leader>dc", function() require("dap").continue() end, remap)

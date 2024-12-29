@@ -1,0 +1,13 @@
+// ~/.config/nvim/lua/gruvw/snippets/lsp/arb.jsonc
+
+{
+  "[G] Entry": {
+    "prefix": "e",
+    "body": [
+        "\"$1\": \"$2\",",
+        "\"@$1\": {",
+        "\t\"description\": \"$3\"",
+        "}",
+    ],
+  },
+}

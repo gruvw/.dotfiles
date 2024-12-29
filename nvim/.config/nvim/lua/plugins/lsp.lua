@@ -77,7 +77,7 @@ return {
         underline = true,
         severity_sort = true, -- Sort diagnostics by severity
         float = { border = "single", },
-        virtual_text = true, -- Use lsp_lines
+        virtual_text = true,  -- Use lsp_lines
         virtual_lines = false,
       })
 
@@ -95,10 +95,13 @@ return {
       require("lspconfig").cssls.setup({
         capabilities = lsp_defaults.capabilities,
       })
-      -- require("lspconfig").tinymist.setup({
-      --   capabilities = lsp_defaults.capabilities,
-      --   single_file_support = true,
-      -- })
+      require("lspconfig").tinymist.setup({
+        capabilities = lsp_defaults.capabilities,
+        single_file_support = true,
+        settings = {
+          exportPdf = "onSave",
+        }
+      })
 
       -- Start LSP
       vim.cmd(":LspStart")
@@ -157,15 +160,16 @@ return {
           "clangd",
           "jsonls",
           "arduino_language_server",
-          "tailwindcss",
-          "typst_lsp",
+          -- "tailwindcss",
+          "tinymist",
           "gopls",
         },
         handlers = {
           default_setup,
           lua_ls = function() require("lspconfig").lua_ls.setup(require("gruvw.lsp.lua_ls")) end,
           html = function() require("lspconfig").html.setup(require("gruvw.lsp.html")) end,
-          arduino_language_server = function() require("lspconfig").arduino_language_server.setup(require("gruvw.lsp.arduino_language_server")) end,
+          arduino_language_server = function() require("lspconfig").arduino_language_server.setup(require(
+            "gruvw.lsp.arduino_language_server")) end,
         },
       })
     end
@@ -352,12 +356,13 @@ return {
       -- Filetype fixes
       ls.filetype_extend("plaintex", { "tex" })
       ls.filetype_extend("dart", { "flutter" })
+      ls.filetype_extend("html", { "htmldjango" })
     end,
   },
 
-  -- https://github.com/akinsho/flutter-tools.nvim
+  -- https://github.com/nvim-flutter/flutter-tools.nvim
   {
-    "akinsho/flutter-tools.nvim",
+    "nvim-flutter/flutter-tools.nvim",
     dependencies = {
       "plenary.nvim",
       -- "dressing.nvim",
