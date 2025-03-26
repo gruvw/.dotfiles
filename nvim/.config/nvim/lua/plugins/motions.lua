@@ -52,8 +52,8 @@ return {
     opts = {
       keymaps = {
         normal = "gs",
-        normal_cur = "gS",
-        normal_line = "gss",
+        normal_cur = "gss",
+        normal_line = "gS",
         normal_cur_line = "gSS",
         visual = "gs",
         visual_line = "gS",
