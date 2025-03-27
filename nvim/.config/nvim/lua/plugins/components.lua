@@ -121,7 +121,7 @@ return {
 
       require("lualine").setup({
         options = {
-          theme = "monokai-pro",
+          theme = "tokyonight",
           globalstatus = true,
           icons_enabled = true,
           section_separators = { left = "", right = "", },

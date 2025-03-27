@@ -15,13 +15,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Initializes lazy.nvim
--- Plugins loading from plugins directory, https://github.com/folke/lazy.nvim#-structuring-your-plugins
+-- Plugins loading from plugins directory, https://lazy.folke.io/usage/structuring
 require("lazy").setup("plugins", {
   ui = {
     border = "single",
     backdrop = 100,
   },
   change_detection = {
+    enabled = false,
     notifiy = false,
   },
 })

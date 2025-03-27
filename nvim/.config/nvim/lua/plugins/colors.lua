@@ -6,6 +6,7 @@ return {
   -- https://github.com/loctvl842/monokai-pro.nvim
   {
     "loctvl842/monokai-pro.nvim",
+    enabled = false,
     priority = 51,
     config = function()
       local colors = require("monokai-pro.colorscheme.palette.spectrum")
@@ -152,6 +153,22 @@ return {
 
       -- TreeSitter highlights
       hl(0, "@function.builtin.python", { link = "Function", })
+    end,
+  },
+
+  -- https://github.com/folke/tokyonight.nvim
+  {
+    "folke/tokyonight.nvim",
+    priority = 51,
+    config = function()
+      require("tokyonight").setup({
+        style = "storm",
+        on_colors = function(colors)
+          colors.bg = "#222222"
+          -- TODO apply custom colors
+        end,
+      })
+      vim.cmd("colorscheme tokyonight")
     end,
   },
 
