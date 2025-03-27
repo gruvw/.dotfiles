@@ -16,7 +16,10 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Initializes lazy.nvim
 -- Plugins loading from plugins directory, https://lazy.folke.io/usage/structuring
-require("lazy").setup("plugins", {
+require("lazy").setup({
+  spec = {
+    { import = "plugins" }, -- TODO change to gruvw.plugins
+  },
   ui = {
     border = "single",
     backdrop = 100,
@@ -25,4 +28,8 @@ require("lazy").setup("plugins", {
     enabled = false,
     notifiy = false,
   },
+  -- Only enable when debugging lazy.nvim
+  -- profiling = {
+  --   require = false,
+  -- },
 })

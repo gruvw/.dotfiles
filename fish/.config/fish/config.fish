@@ -31,8 +31,8 @@ if status is-interactive
     set fish_cursor_visual block
 
     # Aliases
-    alias vim "nvim"
-    alias vi "nvim"
+    # alias vim "nvim"
+    # alias vi "nvim"
     alias v "nvim"
     alias cat "bat"
     # alias vifm "vifm --choose-dir -"

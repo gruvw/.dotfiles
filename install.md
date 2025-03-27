@@ -18,6 +18,10 @@ This part describes the first steps to do in order to come to an usual working e
 4. Clone dotfiles: `git clone https://github.com/gruvw/.dotfiles.git`
 5. Install stow: `sudo apt install -y stow`
 
+```
+sudo apt install ninja-build gettext cmake curl build-essential
+```
+
 #### Stow
 
 My dotfiles are organized to make use of the GNU Stow project.
@@ -85,6 +89,10 @@ fc-cache -fv
 ```
 
 5. NeoVim, <https://github.com/neovim/neovim/wiki/Installing-Neovim>
+
+Build/install from source: <https://github.com/neovim/neovim/blob/master/BUILD.md>
+
+Or use appimage:
 
 ```sh
 sudo apt install -y nodejs npm
