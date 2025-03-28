@@ -18,7 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Plugins loading from plugins directory, https://lazy.folke.io/usage/structuring
 require("lazy").setup({
   spec = {
-    { import = "plugins" }, -- TODO change to gruvw.plugins
+    { import = "gruvw.plugins" }, -- TODO change to gruvw.plugins
   },
   ui = {
     border = "single",

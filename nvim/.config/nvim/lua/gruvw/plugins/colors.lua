@@ -132,13 +132,6 @@ return {
       hl(0, "TelescopePromptPrefix", { fg = "#7bd88f", })
       hl(0, "TelescopeResultsNormal", { fg = "white", })
 
-      -- indent-blankline, https://www.colorhexa.com, 70% 222222 + 30% <color theme>
-      hl(0, "IndentBlanklineIndent1", { fg = "#633542", nocombine = true, })
-      hl(0, "IndentBlanklineIndent2", { fg = "#644431", nocombine = true, })
-      hl(0, "IndentBlanklineIndent3", { fg = "#635d36", nocombine = true, })
-      hl(0, "IndentBlanklineIndent4", { fg = "#3d5943", nocombine = true, })
-      hl(0, "IndentBlanklineIndent5", { fg = "#33575d", nocombine = true, })
-      hl(0, "IndentBlanklineIndent6", { fg = "#44415c", nocombine = true, })
 
       -- Invisible characters highlight
       hl(0, "Whitespace", { fg = "#626064", })
@@ -172,96 +165,7 @@ return {
     end,
   },
 
-  -- https://github.com/lukas-reineke/indent-blankline.nvim
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    enabled = false,
-    config = function()
-      require("ibl").setup({
-        scope = {
-          enabled = false,
-        },
-        indent = {
-          char = "▏",
-          highlight = {
-            "IndentBlanklineIndent1",
-            "IndentBlanklineIndent2",
-            "IndentBlanklineIndent3",
-            "IndentBlanklineIndent4",
-            "IndentBlanklineIndent5",
-            "IndentBlanklineIndent6",
-          },
-        },
-        exclude = {
-          filetypes = {
-            "lspinfo",
-            "packer",
-            "checkhealth",
-            "help",
-            "man",
-            "",
-          },
-        },
-      })
-    end
-  },
 
-  -- https://github.com/hiphish/rainbow-delimiters.nvim
-  {
-    enabled = false, -- perfomance issue when typing (input delay)
-    "hiphish/rainbow-delimiters.nvim",
-    config = function()
-      local rainbow_delimiters = require("rainbow-delimiters")
-
-      vim.g.rainbow_delimiters = {
-        strategy = {
-          [""] = rainbow_delimiters.strategy["global"],
-        },
-        query = {
-          [""] = "rainbow-delimiters",
-          lua = "rainbow-blocks",
-          latex = "rainbow-delimiters",
-        },
-        highlight = {
-          "RainbowDelimiterRed",
-          "RainbowDelimiterOrange",
-          "RainbowDelimiterYellow",
-          "RainbowDelimiterGreen",
-          "RainbowDelimiterCyan",
-          "RainbowDelimiterViolet",
-        },
-      }
-    end
-  },
-
-  -- https://github.com/NvChad/nvim-colorizer.lua
-  {
-    "NvChad/nvim-colorizer.lua",
-    -- lazy = true,
-    event = "VeryLazy",
-    config = function()
-      require("colorizer").setup({
-        filetypes = { "*" },
-        user_default_options = {
-          RGB = true,
-          RRGGBB = true,
-          names = false,
-          RRGGBBAA = true,
-          AARRGGBB = true,
-          rgb_fn = true,
-          hsl_fn = true,
-          css = true,
-          css_fn = true,
-          mode = "background",
-          tailwind = true,
-          sass = {
-            enable = true,
-            parsers = { "css" },
-          },
-        },
-      })
-    end
-  },
 
   -- https://github.com/tzachar/highlight-undo.nvim
   {
