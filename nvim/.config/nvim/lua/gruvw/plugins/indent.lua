@@ -1,12 +1,12 @@
 -- ~/.config/nvim/lua/gruvw/plugins/indent.lua
 
-
 return {
   -- https://github.com/lukas-reineke/indent-blankline.nvim
   "lukas-reineke/indent-blankline.nvim",
   config = function()
     require("ibl").setup({
       scope = {
+        -- highlight current scope lines
         enabled = false,
       },
       indent = {
