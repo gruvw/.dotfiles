@@ -119,7 +119,10 @@ set.listchars:append("eol:↴")
 set.listchars:append("tab:-->")
 
 -- Disable startup screen
-set.shortmess = "ltToOCFI"
+set.shortmess = "ltToOCFIW"
 
 -- Prefered TEX flavor
 vim.g.tex_flavor = "latex"
+
+-- Window border
+set.winborder = "single"

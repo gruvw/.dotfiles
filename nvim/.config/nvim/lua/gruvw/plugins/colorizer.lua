@@ -3,7 +3,6 @@
 return {
   -- https://github.com/NvChad/nvim-colorizer.lua
   "NvChad/nvim-colorizer.lua",
-  -- lazy = true,
   event = "VeryLazy",
   config = function()
     require("colorizer").setup({
