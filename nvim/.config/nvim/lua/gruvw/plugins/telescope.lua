@@ -17,6 +17,8 @@ return {
     telescope.setup({
       defaults = {
         -- initial_mode = "normal", -- open telescope in normal mode
+        -- FIXME disable borders while waiting for https://github.com/nvim-telescope/telescope.nvim/issues/3436
+        border = false,
         borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
         sorting_strategy = "ascending",
         file_ignore_patterns = { "^.git/", },
