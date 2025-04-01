@@ -1,78 +1,13 @@
--- ~/.config/nvim/lua/plugins/code.lua
+-- ~/.config/nvim/lua/gruvw/plugins/runner.lua
 
 return {
-  -- https://github.com/nvim-treesitter/nvim-treesitter
   {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    dependencies = {
-      -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-      -- "nvim-treesitter/nvim-treesitter-textobjects",
-    },
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = "all",
-        highlight = {
-          enable = true,
-        },
-        indent = {
-          enable = false,
-        },
-        textobjects = {
-          select = {
-            enable = true,
-            disable = { "dart", }, -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects/issues/461
-            lookahead = true,
-            keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-              ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
-              ["ib"] = "@block.inner",
-              ["ab"] = "@block.outer",
-              ["il"] = "@loop.inner",
-              ["al"] = "@loop.outer",
-            },
-          },
-        },
-      })
-    end,
-  },
-
-  -- https://github.com/nvim-treesitter/nvim-treesitter-context
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    dependencies = {
-      "nvim-treesitter",
-    },
-    event = "VeryLazy",
-    config = function()
-      require("treesitter-context").setup({
-        enable = true,
-        mode = "topline",
-        max_lines = 4,
-      })
-    end,
-  },
-
-  -- https://github.com/terrortylor/nvim-comment
-  {
-    "terrortylor/nvim-comment",
-    event = "VeryLazy",
-    config = function()
-      require("nvim_comment").setup({
-        marker_padding = true,
-        comment_empty = false,
-        create_mappings = false,
-      })
-    end,
-  },
-
-  -- https://github.com/stevearc/overseer.nvim
-  {
+    -- https://github.com/stevearc/overseer.nvim
     "stevearc/overseer.nvim",
     lazy = true,
+    dependencies = {
+      "plenary.nvim",
+    },
     config = function()
       local overseer = require("overseer")
       overseer.setup({
@@ -179,38 +114,17 @@ return {
       })
 
       -- Custom templates
-      -- TODO auto load files from overseer directory
-      local templates = {
-        "python",
-        "tex",
-        "md",
-        "c",
-      }
-      for _, t in ipairs(templates) do
-        overseer.register_template(require("gruvw.overseer." .. t))
+      -- Automatically register all Lua modules from the overseer directory
+      local overseer_dir = vim.fn.stdpath("config") .. "/lua/gruvw/overseer"
+      local dirscan = require("plenary.scandir")
+      local files = dirscan.scan_dir(overseer_dir, { depth = 1, add_dirs = false, hidden = false })
+
+      for _, file in ipairs(files) do
+        local module_name = file:match("([^/]+)%.lua$")
+        if module_name then
+          overseer.register_template(require("gruvw.overseer." .. module_name))
+        end
       end
     end,
-  },
-
-  -- https://github.com/stevearc/conform.nvim
-  {
-    "stevearc/conform.nvim",
-    lazy = true,
-    config = function()
-      require("conform").setup({
-        formatters_by_ft = {
-          lua = { "stylua" },
-          python = { "black" },
-          javascript = { "prettier" },
-          c = { "clang_format" },
-          typst = { "typstyle" },
-        },
-        formatters = {
-          typstyle = {
-            command = "typstyle",
-          }
-        }
-      })
-    end
   },
 }
