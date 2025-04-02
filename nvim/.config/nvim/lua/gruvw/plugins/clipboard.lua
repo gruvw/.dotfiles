@@ -1,16 +1,16 @@
 -- ~/.config/nvim/lua/gruvw/plugins/clipboard.lua
 
 return {
-  -- https://github.com/AckslD/nvim-neoclip.lua
   {
+    -- https://github.com/AckslD/nvim-neoclip.lua
     "AckslD/nvim-neoclip.lua",
+    event = "VeryLazy",
     dependencies = {
       -- https://github.com/kkharji/sqlite.lua
       "kkharji/sqlite.lua",
 
       "telescope.nvim",
     },
-    event = "VeryLazy",
     config = function()
       require("neoclip").setup({
         history = 1000,

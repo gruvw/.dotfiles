@@ -1,16 +1,16 @@
--- ~/.config/nvim/lua/plugins/lsp.lua
+-- ~/.config/nvim/lua/gruvw/plugins/lsp.lua
 
 return {
-  -- https://github.com/neovim/nvim-lspconfig
   {
+    -- TODO use native neovim LSP config
+    -- https://github.com/neovim/nvim-lspconfig
     "neovim/nvim-lspconfig",
+    lazy = true,
     dependencies = {
       "nvim-cmp",
       "mason-lspconfig.nvim",
       "lsp_lines.nvim",
     },
-    -- event = "VeryLazy",
-    lazy = true,
     config = function()
       local lspconfig = require("lspconfig")
 
@@ -78,8 +78,8 @@ return {
     end
   },
 
-  -- https://github.com/williamboman/mason-lspconfig.nvim
   {
+    -- https://github.com/williamboman/mason-lspconfig.nvim
     "williamboman/mason-lspconfig.nvim",
     dependencies = {
       -- https://github.com/williamboman/mason.nvim
@@ -147,8 +147,9 @@ return {
     end
   },
 
-  -- https://github.com/hrsh7th/nvim-cmp
   {
+    -- TODO use blink.cmp
+    -- https://github.com/hrsh7th/nvim-cmp
     "hrsh7th/nvim-cmp",
     dependencies = {
       -- https://github.com/hrsh7th/cmp-path

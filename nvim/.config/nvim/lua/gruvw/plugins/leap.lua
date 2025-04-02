@@ -1,8 +1,8 @@
 -- ~/.config/nvim/lua/gruvw/plugins/leap.lua
 
 return {
-  -- https://github.com/ggandor/leap.nvim
   {
+    -- https://github.com/ggandor/leap.nvim
     "ggandor/leap.nvim",
     event = "VeryLazy",
     config = function()

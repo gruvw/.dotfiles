@@ -2,11 +2,10 @@
 
 return {
   {
-  -- https://github.com/nvim-flutter/flutter-tools.nvim
+    -- https://github.com/nvim-flutter/flutter-tools.nvim
     "nvim-flutter/flutter-tools.nvim",
     dependencies = {
       "plenary.nvim",
-      -- "dressing.nvim",
     },
     config = function()
       require("flutter-tools").setup({
@@ -30,6 +29,4 @@ return {
       })
     end
   },
-
-
 }

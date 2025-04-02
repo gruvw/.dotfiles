@@ -17,11 +17,11 @@ return {
   {
     -- https://github.com/folke/todo-comments.nvim
     "folke/todo-comments.nvim",
+    event = "VeryLazy",
     dependencies = {
       "plenary.nvim",
       "telescope.nvim",
     },
-    event = "VeryLazy",
     config = function()
       require("todo-comments").setup({
         signs = false,

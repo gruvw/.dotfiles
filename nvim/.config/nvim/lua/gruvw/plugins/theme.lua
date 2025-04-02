@@ -92,6 +92,7 @@ return {
       custom_highlight()
     end
   },
+
   {
     -- https://github.com/loctvl842/monokai-pro.nvim
     "loctvl842/monokai-pro.nvim",

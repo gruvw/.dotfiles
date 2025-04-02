@@ -1,13 +1,15 @@
 -- ~/.config/nvim/lua/gruvw/plugins/harpoon.lua
 
 return {
-  -- https://github.com/ThePrimeagen/harpoon
-  "ThePrimeagen/harpoon",
-  dependencies = {
-    "telescope.nvim",
+  {
+    -- https://github.com/ThePrimeagen/harpoon
+    "ThePrimeagen/harpoon",
+    dependencies = {
+      "telescope.nvim",
+    },
+    lazy = true,
+    config = function()
+      require("telescope").load_extension("harpoon")
+    end,
   },
-  lazy = true,
-  config = function()
-    require("telescope").load_extension("harpoon")
-  end,
 }

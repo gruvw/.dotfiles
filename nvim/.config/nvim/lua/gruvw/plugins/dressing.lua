@@ -4,10 +4,10 @@ return {
   {
     -- https://github.com/stevearc/dressing.nvim
     "stevearc/dressing.nvim",
+    event = "VeryLazy",
     dependencies = {
       "telescope.nvim",
     },
-    event = "VeryLazy",
     config = function()
       require("dressing").setup({
         input = {

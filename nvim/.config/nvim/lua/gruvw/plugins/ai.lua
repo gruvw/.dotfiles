@@ -4,6 +4,7 @@ return {
   {
     -- https://github.com/github/copilot.vim
     "github/copilot.vim",
+    enabled = false,
     keys = {
       { "<leader>Ce", ":Copilot enable<CR>" },
     },

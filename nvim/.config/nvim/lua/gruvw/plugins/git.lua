@@ -1,14 +1,14 @@
 -- ~/.config/nvim/lua/gruvw/plugins/git.lua
 
 return {
-  -- https://github.com/tpope/vim-fugitive
   {
+    -- https://github.com/tpope/vim-fugitive
     "tpope/vim-fugitive",
     event = "VeryLazy",
   },
 
-  -- https://github.com/lewis6991/gitsigns.nvim
   {
+    -- https://github.com/lewis6991/gitsigns.nvim
     "lewis6991/gitsigns.nvim",
     config = function()
       require("gitsigns").setup({

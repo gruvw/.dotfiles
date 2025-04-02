@@ -8,12 +8,12 @@ return {
   {
     -- https://github.com/nvim-tree/nvim-tree.lua
     "nvim-tree/nvim-tree.lua",
+    priority = 51,
     dependencies = {
       -- https://github.com/nvim-tree/nvim-web-devicons
       "nvim-tree/nvim-web-devicons", -- icons support
 
     },
-    priority = 51,
     config = function()
       -- Set keybinds
       local function tree_on_attach(bufnr)
@@ -157,13 +157,14 @@ return {
       })
     end,
   },
-  -- https://github.com/stevearc/oil.nvim
+
   {
+    -- https://github.com/stevearc/oil.nvim
     "stevearc/oil.nvim",
+    lazy = true,
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
-    lazy = true,
     config = function()
       require("oil").setup({
         default_file_explorer = false,
@@ -215,5 +216,5 @@ return {
         progress = { border = "single", },
       })
     end,
-  }
+  },
 }

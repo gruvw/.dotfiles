@@ -14,5 +14,5 @@ return {
         update_cwd = true,
       })
     end
-  }
+  },
 }
