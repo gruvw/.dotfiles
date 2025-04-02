@@ -1,4 +1,4 @@
--- ~/.config/nvim/lua/gruvw/plugins/highlight-undo.lua
+-- ~/.config/nvim/lua/gruvw/plugins/highlight_undo.lua
 
 return {
   -- https://github.com/tzachar/highlight-undo.nvim

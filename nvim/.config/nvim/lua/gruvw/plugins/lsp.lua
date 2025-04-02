@@ -138,8 +138,10 @@ return {
           default_setup,
           lua_ls = function() require("lspconfig").lua_ls.setup(require("gruvw.lsp.lua_ls")) end,
           html = function() require("lspconfig").html.setup(require("gruvw.lsp.html")) end,
-          arduino_language_server = function() require("lspconfig").arduino_language_server.setup(require(
-            "gruvw.lsp.arduino_language_server")) end,
+          arduino_language_server = function()
+            require("lspconfig").arduino_language_server.setup(require(
+              "gruvw.lsp.arduino_language_server"))
+          end,
         },
       })
     end
@@ -231,56 +233,91 @@ return {
     end,
   },
 
-  -- https://git.sr.ht/~whynothugo/lsp_lines.nvim
   {
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    enabled = false,
+    -- https://github.com/folke/trouble.nvim
+    "folke/trouble.nvim",
     lazy = true,
     config = function()
-      require("lsp_lines").setup()
+      require("trouble").setup({
+        position = "bottom",
+        height = 10,
+        fold_open = "v",
+        fold_closed = ">",
+        indent_lines = false,
+        focus = true,
+        multiline = false,
+        auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
+        win_config = { border = "single", },
+        signs = {
+          error = "E",
+          warning = "W",
+          hint = "H",
+          information = "I",
+          other = "?",
+        },
+        action_keys = {
+          close = { "q", "Zq", },
+          cancel = "<Esc>",             -- cancel the preview and get back to your last window / buffer / cursor
+          refresh = "r",                -- manually refresh
+          jump = "<CR>",                -- jump to the diagnostic or open / close folds
+          open_split = "<c-x>",         -- open buffer in new split
+          open_vsplit = "<c-v>",        -- open buffer in new vsplit
+          open_tab = "<c-t>",           -- open buffer in new tab
+          jump_close = "<BS>",          -- jump to the diagnostic and close the list
+          toggle_mode = "<Tab>",        -- toggle between "workspace" and "document" diagnostics mode
+          switch_severity = "s",        -- switch "diagnostics" severity filter level to HINT / INFO / WARN / ERROR
+          toggle_preview = "P",         -- toggle auto_preview
+          hover = "K",                  -- opens a small popup with the full multiline message
+          preview = "p",                -- preview the diagnostic location
+          open_code_href = "gx",        -- if present, open a URI with more information about the diagnostic error
+          close_folds = { "zM", "zm" }, -- close all folds
+          open_folds = { "zR", "zr" },  -- open all folds
+          toggle_fold = { "zA", "za" }, -- toggle fold of current file
+          previous = "k",               -- previous item
+          next = "j",                   -- next item
+          help = "?",                   -- help menu
+        },
+        icons = {
+          indent        = {
+            top         = "│ ",
+            middle      = "├╴",
+            last        = "└╴",
+            fold_open   = " ",
+            fold_closed = " ",
+            ws          = "  ",
+          },
+          folder_closed = " ",
+          folder_open   = " ",
+          kinds         = {
+            Array         = " ",
+            Boolean       = "󰨙 ",
+            Class         = " ",
+            Constant      = "󰏿 ",
+            Constructor   = " ",
+            Enum          = " ",
+            EnumMember    = " ",
+            Event         = " ",
+            Field         = " ",
+            File          = " ",
+            Function      = "󰊕 ",
+            Interface     = " ",
+            Key           = " ",
+            Method        = "󰊕 ",
+            Module        = " ",
+            Namespace     = "󰦮 ",
+            Null          = " ",
+            Number        = "󰎠 ",
+            Object        = " ",
+            Operator      = " ",
+            Package       = " ",
+            Property      = " ",
+            String        = " ",
+            Struct        = "󰆼 ",
+            TypeParameter = " ",
+            Variable      = "󰀫 ",
+          },
+        },
+      })
     end
   },
-
-  -- -- https://github.com/mfussenegger/nvim-dap
-  -- {
-  --   "mfussenegger/nvim-dap",
-  --   dependencies = {
-  --     -- https://github.com/rcarriga/nvim-dap-ui
-  --     "rcarriga/nvim-dap-ui",
-
-  --     "overseer.nvim",
-  --   },
-  --   lazy = true,
-  --   config = function()
-  --     local dap = require("dap")
-  --     local dapui = require("dapui")
-
-  --     -- Signs
-  --     vim.fn.sign_define("DapBreakpoint", { text = "B", texthl = "Error", })
-  --     vim.fn.sign_define("DapBreakpointCondition", { text = "C", texthl = "Error", })
-  --     vim.fn.sign_define("DapLogPoint", { text = "L", texthl = "", })
-  --     vim.fn.sign_define("DapStopped", { text = "→", texthl = "Error", })
-  --     vim.fn.sign_define("DapBreakpointRejected", { text = "R", texthl = "Error", })
-
-  --     require("overseer").patch_dap(true)
-  --     require("dap.ext.vscode").json_decode = require("overseer.json").decode
-
-  --     dapui.setup({
-  --       controls = {
-  --         enabled = false,
-  --       },
-  --     })
-
-  --     -- Open close automagically
-  --     dap.listeners.after.event_initialized["dapui_config"] = function()
-  --       dapui.open()
-  --     end
-  --     dap.listeners.before.event_terminated["dapui_config"] = function()
-  --       dapui.close()
-  --     end
-  --     dap.listeners.before.event_exited["dapui_config"] = function()
-  --       dapui.close()
-  --     end
-  --   end,
-  -- },
 }
