@@ -147,3 +147,19 @@ autocmd({ "BufNewFile", "BufRead" }, {
     vim.cmd([[:LspStart<CR>]])
   end,
 })
+
+-- Sets root directory automagically + local config
+vim.api.nvim_create_autocmd({ "BufEnter", }, {
+  callback = function()
+    -- Don't call in floating window buffers
+    if vim.api.nvim_win_get_config(vim.fn.win_getid()).zindex then
+      return
+    end
+
+    -- Find and set cwd
+    require("nvim-rooter").rooter_default()
+
+    -- Load local config
+    local_config()
+  end,
+})

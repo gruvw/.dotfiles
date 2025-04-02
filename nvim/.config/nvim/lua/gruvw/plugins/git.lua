@@ -1,3 +1,5 @@
+-- ~/.config/nvim/lua/gruvw/plugins/git.lua
+
 return {
   -- https://github.com/tpope/vim-fugitive
   {
