@@ -1,5 +1,7 @@
 -- ~/.config/nvim/lua/gruvw/functions.lua
 
+---@diagnostic disable: lowercase-global
+
 function system_open(path)
   vim.cmd([[silent exec "!nohup xdg-open ]] .. path .. [[ &>/dev/null &"]])
 end

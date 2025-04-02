@@ -211,8 +211,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.diagnostic.open_float()
       vim.diagnostic.open_float()
     end, opts)
-    keymap("n", "<leader>cn", function() vim.diagnostic.goto_next() end, opts)
-    keymap("n", "<leader>cN", function() vim.diagnostic.goto_prev() end, opts)
+    keymap("n", "<leader>cn", function() vim.diagnostics.goto_next() end, opts)
+    keymap("n", "<leader>cN", function() vim.diagnostics.goto_prev() end, opts)
   end
 })
 keymap({ "n", "x", }, "<leader>cf", function()
@@ -236,6 +236,10 @@ local function snip_jump_end()
   local session = require("luasnip.session")
   local current = session.current_nodes[vim.api.nvim_get_current_buf()]
   local snip = current and current.parent.snippet or nil
+  if snip == nil then
+    return
+  end
+
   local end_node = snip.insert_nodes[0]
 
   while end_node and ls.jumpable(1) do
