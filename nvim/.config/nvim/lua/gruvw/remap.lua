@@ -211,8 +211,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.diagnostic.open_float()
       vim.diagnostic.open_float()
     end, opts)
-    keymap("n", "<leader>cn", function() vim.diagnostics.goto_next() end, opts)
-    keymap("n", "<leader>cN", function() vim.diagnostics.goto_prev() end, opts)
+    keymap("n", "<leader>cn", function() vim.diagnostic.jump({count = 1}) end, opts)
+    keymap("n", "<leader>cN", function() vim.diagnostic.jump({count = -1}) end, opts)
   end
 })
 keymap({ "n", "x", }, "<leader>cf", function()

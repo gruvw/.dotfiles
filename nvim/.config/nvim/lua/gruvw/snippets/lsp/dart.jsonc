@@ -1,0 +1,10 @@
+// ~/.config/nvim/lua/gruvw/snippets/lsp/dart.jsonc
+
+{
+  "[G] Stateless widget": {
+    "prefix": "",
+    "body": [
+        ""
+    ],
+  },
+}

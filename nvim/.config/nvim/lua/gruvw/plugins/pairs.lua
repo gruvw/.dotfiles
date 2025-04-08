@@ -25,7 +25,7 @@ return {
   {
     -- https://github.com/windwp/nvim-autopairs
     "windwp/nvim-autopairs",
-    enabled = false,
+    -- enabled = false,
     event = "InsertEnter",
     config = function()
       require("nvim-autopairs").setup()

@@ -5,7 +5,7 @@ return {
     -- https://github.com/okuuva/auto-save.nvim
     "okuuva/auto-save.nvim",
     event = "VeryLazy",
-    enabled = false,
+    enabled = true,
     config = function()
       require("auto-save").setup({
         enabled = true,

@@ -33,6 +33,10 @@
       {
         "language": ["arb"],
         "path": "./arb.jsonc"
+      },
+      {
+        "language": ["dart"],
+        "path": "./dart.jsonc"
       }
     ]
   }
