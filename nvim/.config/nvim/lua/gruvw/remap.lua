@@ -89,9 +89,13 @@ keymap("n", "zN", "[s", remap)
 keymap("n", "zc", "z=", remap)
 keymap("n", "zr", "1z=", remap)
 
--- Yan word
+-- Yank word
 keymap("n", "zy", [["+yiw]], remap)
 keymap("n", "zY", [["+yiW]], remap)
+
+-- Paste visual without overwriting default register
+-- keymap("v", "P", [["_dP]], remap) -- old content sent to black hole register
+keymap("v", "P", "pgvy`]", remap)
 
 -- Clear highlight search
 keymap("n", "zh", [[:let @/ = ""<CR>]], remap)
