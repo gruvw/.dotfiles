@@ -16,6 +16,7 @@ local colors = {
 }
 
 local function custom_highlight()
+  -- TODO merge custom highlights to chromance
   local hl = vim.api.nvim_set_hl
 
   -- Only highlight the line number not whole current line
@@ -66,30 +67,33 @@ local function custom_highlight()
   hl(0, "@function.builtin.python", { link = "Function", })
 
   -- indent-blankline.nvim, https://www.colorhexa.com, 70% 222222 + 30% <color theme>
-  hl(0, "IndentBlanklineIndent1", { fg = "#633542", nocombine = true, })
-  hl(0, "IndentBlanklineIndent2", { fg = "#644431", nocombine = true, })
-  hl(0, "IndentBlanklineIndent3", { fg = "#635d36", nocombine = true, })
-  hl(0, "IndentBlanklineIndent4", { fg = "#3d5943", nocombine = true, })
-  hl(0, "IndentBlanklineIndent5", { fg = "#33575d", nocombine = true, })
-  hl(0, "IndentBlanklineIndent6", { fg = "#44415c", nocombine = true, })
+  hl(0, "IndentBlankLineIndent1", { fg = "#633542", nocombine = true, })
+  hl(0, "IndentBlankLineIndent2", { fg = "#644431", nocombine = true, })
+  hl(0, "IndentBlankLineIndent3", { fg = "#635d36", nocombine = true, })
+  hl(0, "IndentBlankLineIndent4", { fg = "#3d5943", nocombine = true, })
+  hl(0, "IndentBlankLineIndent5", { fg = "#33575d", nocombine = true, })
+  hl(0, "IndentBlankLineIndent6", { fg = "#44415c", nocombine = true, })
 
   -- highlight-under.nvim
   hl(0, "HighlightUndo", { link = "IncSearch", })
   hl(0, "HighlightRedo", { link = "IncSearch", })
 end
 
+local use_chromance = false
+use_chromance = true
+
 return {
   {
     "chromance.nvim",
     dev = true,
     priority = 101,
-    enabled = false, -- TODO use only chromance
+    enabled = use_chromance, -- TODO use only chromance
     config = function()
-      require("chromance").setup()
+      require("chromance").setup({
+        devicons = true
+      })
 
       vim.cmd("colorscheme chromance")
-
-      custom_highlight()
     end
   },
 
@@ -97,7 +101,7 @@ return {
     -- https://github.com/loctvl842/monokai-pro.nvim
     "loctvl842/monokai-pro.nvim",
     priority = 101,
-    -- enabled = false,
+    enabled = not use_chromance,
     config = function()
       require("monokai-pro").setup({
         filter = "spectrum",
@@ -115,6 +119,7 @@ return {
         override = function()
           -- https://github.com/loctvl842/monokai-pro.nvim/issues/79
           return {
+            -- TODO apply custom theme to chromance
             Structure = { fg = colors.cyan, italic = false, },
             Macro = { fg = colors.cyan, italic = true, },
             SpellBad = { fg = colors.cyan, italic = true, underline = true, undercurl = false, sp = colors.cyan, },

@@ -12,14 +12,13 @@ return {
         },
         indent = {
           char = "▏",
-          -- custom highlight groups, config in theme
           highlight = {
-            "IndentBlanklineIndent1",
-            "IndentBlanklineIndent2",
-            "IndentBlanklineIndent3",
-            "IndentBlanklineIndent4",
-            "IndentBlanklineIndent5",
-            "IndentBlanklineIndent6",
+            "IndentBlankLineIndent1",
+            "IndentBlankLineIndent2",
+            "IndentBlankLineIndent3",
+            "IndentBlankLineIndent4",
+            "IndentBlankLineIndent5",
+            "IndentBlankLineIndent6",
           },
         },
         exclude = {

@@ -71,7 +71,9 @@ local filetype_cmpnt = {
       copilot = "*"
     end
 
-    return spell .. lsp .. copilot .. status
+    local sum = spell .. lsp .. copilot .. status
+
+    return sum == "" and "x" or sum
   end,
 }
 

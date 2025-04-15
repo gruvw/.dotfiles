@@ -8,7 +8,7 @@ set.belloff = "all"
 -- File encoding
 set.encoding = "utf-8"
 
--- Relative linu numbers
+-- Relative line numbers
 set.number = true
 set.relativenumber = true
 

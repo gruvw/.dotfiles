@@ -9,7 +9,6 @@ return {
     dependencies = {
       "nvim-cmp",
       "mason-lspconfig.nvim",
-      "lsp_lines.nvim",
     },
     config = function()
       local lspconfig = require("lspconfig")
@@ -55,6 +54,7 @@ return {
         underline = true,
         severity_sort = true, -- Sort diagnostics by severity
         float = { border = "single", },
+        -- TODO change to new lsp_lines system
         virtual_text = true,  -- Use lsp_lines
         virtual_lines = false,
       })
