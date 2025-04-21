@@ -94,7 +94,7 @@ set.shell = "fish"
 
 -- Spelling
 set.spell = false
--- set.spelllang = "en_us,fr"
+set.spelllang = "en_us,fr"
 set.spelloptions = "camel"
 set.spellsuggest = "best,10"
 set.spellcapcheck = ""
@@ -126,3 +126,9 @@ vim.g.tex_flavor = "latex"
 
 -- Window border
 set.winborder = "single"
+
+-- End of buffer chars
+set.fillchars:append("eob: ")
+
+-- Highlight undo/yank/redo
+vim.g.highlight_timout = 300

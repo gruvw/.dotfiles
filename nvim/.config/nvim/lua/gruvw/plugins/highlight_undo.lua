@@ -7,7 +7,7 @@ return {
     event = "VeryLazy",
     config = function()
       require("highlight-undo").setup({
-        duration = 300,
+        duration = vim.g.highlight_timout,
       })
     end
   },
