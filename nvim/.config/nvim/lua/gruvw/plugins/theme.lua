@@ -7,7 +7,7 @@ return {
     priority = 101,
     config = function()
       require("chromance").setup({
-        devicons = true
+        devicons = true,
       })
 
       vim.cmd("colorscheme chromance")

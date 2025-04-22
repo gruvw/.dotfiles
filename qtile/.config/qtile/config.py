@@ -61,13 +61,13 @@ class Keyboard:
 
 
 class Colors:
-    bar_background = "#222222"
-    text_color = "#f7f1ff"
-    window_border_normal = "#222222"
-    window_border_focus = "#7bd88f"
-    window_floating_border_focus = "#fd9353"
-    inactive_group = "#404040"
-    current_group = "#7bd88f"
+    bar_background = "#1F1F1F"
+    text_color = "#F4F4F4"
+    window_border_normal = "#1F1F1F"
+    window_border_focus = "#69FC9A"
+    window_floating_border_focus = "#FC9A69"
+    inactive_group = "#757575"
+    current_group = "#69FC9A"
 
 
 class Settings:
