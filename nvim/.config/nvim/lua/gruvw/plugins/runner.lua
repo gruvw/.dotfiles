@@ -11,11 +11,12 @@ return {
     config = function()
       local overseer = require("overseer")
       overseer.setup({
+        -- TODO use custom templates for cargo and make
         templates = {
-          "cargo",
+          -- "cargo",
           "just",
-          "make",
-          "npm",
+          -- "make",
+          -- "npm",
           "tox",
           "vscode",
           "mix",

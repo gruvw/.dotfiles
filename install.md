@@ -1,6 +1,6 @@
 # Install instructions
 
-This document facilitates the setup and installation of various programs that I use.  
+This document facilitates the setup and installation of various programs that I use.
 It is particularly useful when configuring a new (Linux/Debian) machine.
 
 ## Basics
@@ -432,6 +432,11 @@ cargo install bottom --locked
 ```sh
 sudo snap install figma-linux
 ```
+
+### Thunderbird
+
+* Install: `sudo apt install thunderbird`
+* Open and setup every email (need application specific passwords to be generated)
 
 ### Mailspring
 

@@ -6,7 +6,7 @@ local augroup = vim.api.nvim_create_augroup
 -- Trim ending whitespaces and empty lines, keep cursor position
 autocmd({ "BufWritePre" }, {
   pattern = { "*" },
-  callback = function(ev)
+  callback = function()
     local ignore_filetype = { "markdown", "latex", "tex", "yaml" }
     local save_cursor = vim.fn.getpos(".")
     if not vim.tbl_contains(ignore_filetype, vim.bo.filetype) then

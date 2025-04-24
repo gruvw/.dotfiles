@@ -3,6 +3,8 @@
 local keymap = vim.keymap.set
 local remap = { noremap = true, silent = true, }
 
+-- TODO convert all appliable to lua functions
+
 -- Easy save/quit
 keymap("n", "Zs", ":wa<CR>", remap)
 keymap("n", "Zq", ":q<CR>", remap)
@@ -268,6 +270,21 @@ keymap("n", "<leader>T",
 keymap("n", "<leader>H", [[:lua require("hex").toggle()<CR>]], remap)
 
 -- Run (r)
+local overseer = require("overseer")
+
+overseer.run_template_always_picker = function()
+  overseer.picker({
+    sources = {
+      {
+        name = "Templates",
+        finder = overseer.template_finder(),
+        item_label = function(item) return item.name end,
+        on_select = function(item) overseer.run(item.id) end,
+      },
+    },
+    title = "Choose Template",
+  })
+end
 keymap("n", "<leader>ro", [[:lua require("overseer").toggle()<CR>]], remap)
 keymap("n", "<leader>rr", [[:w<CR>:lua require("overseer").run_template()<CR>]], remap)
 keymap("n", "<leader>rl", [[:w<CR>:lua overseer_restart()<CR>]], remap)

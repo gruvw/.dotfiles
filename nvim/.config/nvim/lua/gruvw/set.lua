@@ -130,5 +130,8 @@ set.winborder = "single"
 -- End of buffer chars
 set.fillchars:append("eob: ")
 
--- Highlight undo/yank/redo
+-- Highlight undo/yank/redo (custom variable property)
 vim.g.highlight_timout = 300
+
+-- Do not take into account .editorconfig
+vim.g.editorconfig = false

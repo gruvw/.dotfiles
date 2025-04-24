@@ -38,7 +38,7 @@
 
 QListView {
     background: transparent;
-    selection-color: #7bd88f;
+    selection-color: #69FC9A;
 }
 
 QListView::item:selected {
@@ -51,7 +51,7 @@ QListView QScrollBar:vertical {
 }
 
 QListView QScrollBar::handle:vertical {
-    background: #7bd88f;
+    background: #69FC9A;
     min-height: 24px;
 }
 
