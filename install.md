@@ -61,8 +61,9 @@ Terminal workflow installs:
 4. Bat, <https://github.com/sharkdp/bat#on-ubuntu-using-apt>
 5. Starship prompt > y, <https://github.com/starship/starship>
 
+Install kitty using: <https://sw.kovidgoyal.net/kitty/binary/>, then symblink binary to `/usr/bin/kitty`.
+
 ```sh
-sudo apt install -y kitty
 sudo apt install -y fish
 sudo apt install -y vifm
 sudo apt install -y curl
