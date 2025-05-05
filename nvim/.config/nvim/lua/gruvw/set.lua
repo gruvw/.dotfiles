@@ -73,6 +73,7 @@ set.showcmd = true
 
 -- Highlight current line
 set.cursorline = true
+-- set.cursorcolumn = true
 
 -- Disable folds by default
 set.foldenable = false
