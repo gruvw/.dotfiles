@@ -49,6 +49,11 @@ keymap("n", "<C-.>", ":set list!<CR>", remap)
 keymap("n", "gg", "gg0", remap)
 keymap("n", "G", "G0", remap)
 
+-- Toggle cursor column
+keymap("n", "gC", function()
+  vim.wo.cursorcolumn = not vim.wo.cursorcolumn
+end, remap)
+
 -- Tab as indent, https://vi.stackexchange.com/questions/42945/indentkeys-tab-behavior
 -- keymap("i", "g<Tab>",
 --   [[getline(".") == "" && line(".") != 1 ? (line(".") != line("$") ? "<Esc>ddko" : "<Esc>ddo") : "<Tab>"]],
