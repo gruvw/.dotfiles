@@ -111,7 +111,8 @@ keymap("n", "zh", [[:let @/ = ""<CR>]], remap)
 keymap("n", "<leader><CR>", [[:silent exec "!nohup kitty &>/dev/null &"<CR>]], remap)
 
 -- Open VIFM in cwd
-keymap("n", "<leader>v", [[:silent exec "!nohup kitty vifm &>/dev/null &"<CR>]], remap)
+keymap("n", "<leader>V", [[:silent exec "!nohup kitty vifm &>/dev/null &"<CR>]], remap)
+keymap("n", "<leader>v", [[:silent exec "!nohup kitty vifm " . expand('%:p:h') . " &>/dev/null &"<CR>]], remap)
 
 -- LSP
 keymap("n", "<leader>le", function()
