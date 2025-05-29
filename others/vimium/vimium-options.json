@@ -1,8 +1,30 @@
 {
   "waitForEnterForFilteredHints": false,
-  "keyMappings": "# Insert your preferred key mappings here.\nmap s LinkHints.activateMode\nmap S LinkHints.activateModeToOpenInNewTab\nmap <a-s> LinkHints.activateModeWithQueue",
+  "keyMappings": "# Insert your preferred key mappings here.\nmap s LinkHints.activateMode\nmap S LinkHints.activateModeToOpenInNewTab\nmap F LinkHints.activateModeWithQueue\nmap D goNext\nmap I goPrevious",
   "linkHintCharacters": "aoeuhtns",
   "regexFindMode": true,
   "settingsVersion": "2.2.1",
-  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n/* linkhint boxes */\nbackground: #FCE369;\n}\n\ndiv > .vimiumHintMarker span {\n/* linkhint text */\ncolor: #1F1F1F;\nfont-family: 'Fira Code', monospace;\nfont-weight: bold;\nfont-size: 16px;\ntext-transform: lowercase;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n}"
+  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n/* linkhint boxes */\nbackground: #FCE369;\n}\n\ndiv > .vimiumHintMarker span {\n/* linkhint text */\ncolor: #1F1F1F;\nfont-family: 'Fira Code', monospace;\nfont-weight: bold;\nfont-size: 16px;\ntext-transform: lowercase;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n}",
+  "exclusionRules": [
+    {
+      "passKeys": "",
+      "pattern": "https?://mail.google.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https://config.qmk.fm/#/test"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://monkeytype.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://photos.google.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://cad.onshape.com/*"
+    }
+  ]
 }

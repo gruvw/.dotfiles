@@ -511,6 +511,15 @@ cargo install --locked bat
 cargo install git-delta
 ```
 
+Zola: <https://www.getzola.org/documentation/getting-started/installation/>
+
+```
+git clone https://github.com/getzola/zola.git
+cd zola
+cargo install --path . --locked
+zola --version
+```
+
 #### Aseprite
 
 * Go to purshase link in saved emails (search "Aseprite" or "noreply@humblebundle.com").

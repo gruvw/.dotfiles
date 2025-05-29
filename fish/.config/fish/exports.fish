@@ -10,6 +10,8 @@ set PATH "$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
 export PLAYDATE_SDK_PATH="$HOME/Applications/PlaydateSDK-2.4.0/"
 export CHROME_EXECUTABLE="/opt/brave.com/brave/brave-browser"
 
+export MANPAGER="nvim +Man!"
+
 # == Others ==
 set PATH "$HOME/pathed:$PATH"
 # set PATH "$HOME/intelFPGA_lite/20.1/quartus/bin:$PATH"

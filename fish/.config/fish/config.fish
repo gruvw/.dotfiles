@@ -36,7 +36,7 @@ if status is-interactive
     alias v "nvim"
     alias cat "bat"
     # alias vifm "vifm --choose-dir -"
-    alias uu "sudo apt update && sudo apt ugrade"
+    alias uu "sudo apt update && sudo apt upgrade"
 
     # Commands
     function paste-img -d "Save image from clipboard to file"
