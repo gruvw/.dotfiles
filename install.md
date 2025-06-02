@@ -38,6 +38,7 @@ stow --no-folding -v vifm
 stow --no-folding -v nvim
 stow --no-folding -v vim
 stow --no-folding -v x
+stow --no-folding -v polybar
 stow --no-folding -v qtile
 stow --no-folding -v albert
 stow --no-folding -v copyq
@@ -140,6 +141,7 @@ cd /usr/share/xsessions/
 sudo ln ~/.dotfiles/others/qtile/qtile.desktop
 pip install dbus-next psutil
 cd ~
+sudo apt install polybar
 ```
 
 3. Albert, <https://albertlauncher.github.io/installing/>, <https://software.opensuse.org/download.html?project=home:manuelschneid3r&package=albert>
