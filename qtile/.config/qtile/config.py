@@ -244,56 +244,56 @@ SEPARATOR = widget.Sep(size_percent=73, padding=8, linewidth=1)
 
 screens = [
     Screen(
-        top=bar.Bar(
-            [
-                widget.CurrentLayout(),
-                widget.GroupBox(
-                    font=Settings.font_bold,
-                    inactive=Colors.inactive_group,
-                    this_current_screen_border=Colors.current_group,
-                    this_screen_border=[4]*4,
-                    rounded=False,
-                    disable_drag=True,
-                ),
-                widget.Prompt(),
-                widget.Chord(
-                    font=Settings.font_bold,
-                    background="f7f1ff",
-                    foreground="363537",
-                    name_transform=lambda name: name.upper(),
-                    padding=4,
-                ),
-                widget.Spacer(length=bar.STRETCH),
-                widget.Clock(format="%Y_%m_%d %a %H:%M:%S %p"),
-                widget.Spacer(length=bar.STRETCH),
-                # widget.Wlan(),
-                widget.Net(format="{down:03.0f}{down_suffix:<2} D {up:03.0f}{up_suffix:<2} U"),
-                SEPARATOR,
-                widget.ThermalZone(high=70, crit=85, format_crit="{temp}°C"),
-                # widget.ThermalSensor(threshold=75, tag_sensor="Core 0"),
-                widget.CPU(format="{freq_current}GHz {load_percent: >4}%"),
-                widget.Memory(format="{MemUsed: .0f}{mm}"),
-                SEPARATOR,
-                widget.Volume(
-                    emoji=True,
-                    emoji_list=["M", "1", "2", "3"],
-                ),
-                SEPARATOR,
-                widget.Systray(icon_size=28),
-                SEPARATOR,
-                widget.Battery(
-                    format="{percent:2.0%}{char} {hour:d}:{min:02d}",
-                    update_interval=5,
-                    low_percentage=0.2,
-                    discharge_char=""
-                ),
-            ],
-            40,
-            margin=Settings.bar_margin,
-            # border_width=[0, 0, 1, 0],
-            border_color=[Colors.text_color] * 4,
-            background=Colors.bar_background
-        ),
+        # top=bar.Bar(
+        #     [
+        #         widget.CurrentLayout(),
+        #         widget.GroupBox(
+        #             font=Settings.font_bold,
+        #             inactive=Colors.inactive_group,
+        #             this_current_screen_border=Colors.current_group,
+        #             this_screen_border=[4]*4,
+        #             rounded=False,
+        #             disable_drag=True,
+        #         ),
+        #         widget.Prompt(),
+        #         widget.Chord(
+        #             font=Settings.font_bold,
+        #             background="f7f1ff",
+        #             foreground="363537",
+        #             name_transform=lambda name: name.upper(),
+        #             padding=4,
+        #         ),
+        #         widget.Spacer(length=bar.STRETCH),
+        #         widget.Clock(format="%Y_%m_%d %a %H:%M:%S %p"),
+        #         widget.Spacer(length=bar.STRETCH),
+        #         # widget.Wlan(),
+        #         widget.Net(format="{down:03.0f}{down_suffix:<2} D {up:03.0f}{up_suffix:<2} U"),
+        #         SEPARATOR,
+        #         widget.ThermalZone(high=70, crit=85, format_crit="{temp}°C"),
+        #         # widget.ThermalSensor(threshold=75, tag_sensor="Core 0"),
+        #         widget.CPU(format="{freq_current}GHz {load_percent: >4}%"),
+        #         widget.Memory(format="{MemUsed: .0f}{mm}"),
+        #         SEPARATOR,
+        #         widget.Volume(
+        #             emoji=True,
+        #             emoji_list=["M", "1", "2", "3"],
+        #         ),
+        #         SEPARATOR,
+        #         # widget.Systray(icon_size=28),
+        #         SEPARATOR,
+        #         widget.Battery(
+        #             format="{percent:2.0%}{char} {hour:d}:{min:02d}",
+        #             update_interval=5,
+        #             low_percentage=0.2,
+        #             discharge_char=""
+        #         ),
+        #     ],
+        #     40,
+        #     margin=Settings.bar_margin,
+        #     # border_width=[0, 0, 1, 0],
+        #     border_color=[Colors.text_color] * 4,
+        #     background=Colors.bar_background
+        # ),
     ),
     Screen(),
 ]

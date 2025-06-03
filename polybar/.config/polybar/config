@@ -1,42 +1,39 @@
 [colors]
-background = #282A2E
-background-alt = #373B41
-foreground = #C5C8C6
-primary = #F0C674
-secondary = #8ABEB7
-alert = #A54242
-disabled = #707880
+background = #1F1F1F
+foreground = #F4F4F4
+primary = #69FC9A
+secondary = #FCE369
+alert = #FC6982
+disabled = #757575
 
-[bar/example]
+[settings]
+screenchange-reload = true
+pseudo-transparency = true
+
+[bar/gruvw]
 width = 100%
-height = 24pt
-radius = 6
+height = 36pt
 
-; dpi = 96
+font-0 = FiraCode:size=18;4
+font-1 = FiraCode:size=18:weight=bold;4
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3pt
-
-border-size = 4pt
-border-color = #00000000
+; border-size = 4pt
 
 padding-left = 0
 padding-right = 1
-
 module-margin = 1
 
 separator = |
 separator-foreground = ${colors.disabled}
 
-font-0 = monospace;2
+modules-left = xworkspaces systray
+modules-center = date
+modules-right = wlan cpu memory pulseaudio battery
 
-modules-left = xworkspaces xwindow
-modules-right = filesystem pulseaudio xkeyboard memory cpu wlan eth date
-
-cursor-click = pointer
-cursor-scroll = ns-resize
+fixed-center = true
 
 enable-ipc = true
 
@@ -46,35 +43,29 @@ enable-ipc = true
 
 ; override-redirect = true
 
-; This module is not active by default (to enable it, add it to one of the
-; modules-* list above).
-; Please note that only a single tray can exist at any time. If you launch
-; multiple bars with this module, only a single one will show it, the others
-; will produce a warning. Which bar gets the module is timing dependent and can
-; be quite random.
-; For more information, see the documentation page for this module:
-; https://polybar.readthedocs.io/en/stable/user/modules/tray.html
 [module/systray]
 type = internal/tray
 
-format-margin = 8pt
-tray-spacing = 16pt
+tray-spacing = 10pt
 
 [module/xworkspaces]
 type = internal/xworkspaces
 
+label-active-font = 2
 label-active = %name%
-label-active-background = ${colors.background-alt}
-label-active-underline= ${colors.primary}
+label-active-foreground = ${colors.primary}
 label-active-padding = 1
 
+label-occupied-font = 2
 label-occupied = %name%
 label-occupied-padding = 1
 
+label-urgent-font = 2
 label-urgent = %name%
-label-urgent-background = ${colors.alert}
+label-urgent-foreground = ${colors.alert}
 label-urgent-padding = 1
 
+label-empty-font = 2
 label-empty = %name%
 label-empty-foreground = ${colors.disabled}
 label-empty-padding = 1
@@ -98,12 +89,23 @@ label-unmounted-foreground = ${colors.disabled}
 type = internal/pulseaudio
 
 format-volume-prefix = "VOL "
-format-volume-prefix-foreground = ${colors.primary}
-format-volume = <label-volume>
+format-volume-prefix-foreground = ${colors.secondary}
+; format-volume = <label-volume>
+format-volume = <ramp-volume>
 
-label-volume = %percentage%%
+ramp-volume-0 = 0
+ramp-volume-1 = 1
+ramp-volume-2 = 2
+ramp-volume-3 = 3
+ramp-volume-4 = 4
+ramp-volume-5 = 5
 
-label-muted = muted
+label-volume = %percentage:3%%
+
+format-muted-prefix = "VOL "
+; label-muted = ---
+label-muted = X
+format-muted-prefix-foreground = ${colors.secondary}
 label-muted-foreground = ${colors.disabled}
 
 [module/xkeyboard]
@@ -122,45 +124,67 @@ label-indicator-background = ${colors.secondary}
 type = internal/memory
 interval = 2
 format-prefix = "RAM "
-format-prefix-foreground = ${colors.primary}
+format-prefix-foreground = ${colors.secondary}
 label = %percentage_used:2%%
+
+; TODO ram used value
 
 [module/cpu]
 type = internal/cpu
 interval = 2
 format-prefix = "CPU "
-format-prefix-foreground = ${colors.primary}
+format-prefix-foreground = ${colors.secondary}
 label = %percentage:2%%
+
+; TODO cpu frequency
+; TODO cpu temperature
 
 [network-base]
 type = internal/network
-interval = 5
+interval = 2
+format-connected-prefix = "NET "
+format-connected-prefix-foreground = ${colors.secondary}
+label-connected = %downspeed:6%D %upspeed:6%U
 format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 label-disconnected = %{F#F0C674}%ifname%%{F#707880} disconnected
+speed-unit = ""
 
 [module/wlan]
 inherit = network-base
 interface-type = wireless
-label-connected = %{F#F0C674}%ifname%%{F-} %essid% %local_ip%
 
 [module/eth]
 inherit = network-base
 interface-type = wired
-label-connected = %{F#F0C674}%ifname%%{F-} %local_ip%
 
 [module/date]
 type = internal/date
 interval = 1
 
-date = %H:%M
-date-alt = %Y-%m-%d %H:%M:%S
+date = %Y_%m_%d %a %H:%M:%S %p
 
 label = %date%
-label-foreground = ${colors.primary}
 
-[settings]
-screenchange-reload = true
-pseudo-transparency = true
+[module/battery]
+type = internal/battery
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = ADP1
+
+full-at = 99
+low-at = 5
+
+time-format = %H:%M
+label-charging = ^%percentage%% %time%
+format-charging-prefix = "BAT "
+format-charging-prefix-foreground = ${colors.secondary}
+label-discharging = %percentage%% %time%
+format-discharging-prefix = "BAT "
+format-discharging-prefix-foreground = ${colors.secondary}
+
+poll-interval = 3
 
 ; vim:ft=dosini
