@@ -22,9 +22,9 @@ keymap("n", "g<CR>", "o<Esc>0D", remap)
 -- keymap("n", "j", "gj", remap)
 -- keymap("n", "k", "gk", remap)
 
--- No space inserted by J, with a single space for gJ
-keymap("n", "J", "j_d0kgJ", remap)
-keymap("n", "gJ", "j_d0kgJi<space><Esc>", remap)
+-- No space inserted by gJ, with a single space for J
+keymap("n", "J", "j_d0kgJi<space><Esc>", remap)
+keymap("n", "gJ", "j_d0kgJ", remap)
 
 -- Scrolling
 keymap({ "n", "v", }, "<C-j>", "10j", remap)
