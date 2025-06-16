@@ -29,7 +29,7 @@ return {
             },
           }
         end,
-        tags = { overseer.TAG.BUILD },
+        tags = { overseer.TAG.RUN },
       })
     end
 
