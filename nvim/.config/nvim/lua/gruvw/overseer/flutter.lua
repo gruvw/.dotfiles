@@ -15,6 +15,20 @@ return {
       local directory = string.sub(file, 0, #file - #pubspec)
       local name = "./" .. string.sub(directory, #cwd + 2)
 
+      -- flutter pub get
+      table.insert(res, {
+        name = "Flutter Pub Get " .. name,
+        builder = function()
+          return {
+            name = "Flutter Pub Get",
+            cwd = directory,
+            cmd = { "flutter", },
+            args = { "pub", "get" },
+          }
+        end,
+      })
+
+      -- flutter run web
       table.insert(res, {
         name = "Flutter Run Web " .. name,
         builder = function()
@@ -24,7 +38,7 @@ return {
             cmd = { "flutter", },
             args = { "run", "-d", "chrome" },
             env = {
-              CHROME_EXECUTABLE = os.getenv("CHROME_EXECUTABLE") or  "/opt/brave.com/brave/brave-browser",
+              CHROME_EXECUTABLE = os.getenv("CHROME_EXECUTABLE") or "/opt/brave.com/brave/brave-browser",
             },
           }
         end,
