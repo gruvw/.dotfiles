@@ -309,7 +309,6 @@ dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
 follow_mouse_focus = False
 bring_front_click = False
-cursor_warp = True
 floating_layout = layout.Floating(
     **border_settings,
     border_focus=Colors.window_floating_border_focus,
@@ -329,6 +328,7 @@ floating_layout = layout.Floating(
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
+cursor_warp = False
 
 # If things like steam games want to auto-minimize themselves when losing
 # focus, should we respect this or not?

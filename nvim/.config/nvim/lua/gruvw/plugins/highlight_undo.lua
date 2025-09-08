@@ -8,6 +8,10 @@ return {
     config = function()
       require("highlight-undo").setup({
         duration = vim.g.highlight_timout,
+        ignore_cb = function(buf)
+          local name = vim.api.nvim_buf_get_name(buf)
+          return name:match("%.str$") ~= nil
+        end,
       })
     end
   },

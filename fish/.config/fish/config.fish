@@ -48,6 +48,15 @@ if status is-interactive
             return 1
         end
     end
+    function mkcd -d "mkdir then cd"
+        if [ (count $argv) -gt 0 ]
+            command mkdir $argv && cd $argv
+            return 0
+        else
+            echo "No directory name provided"
+            return 1
+        end
+    end
 
     # Loads starship prompt
     starship init fish | source

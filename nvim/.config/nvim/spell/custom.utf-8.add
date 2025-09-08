@@ -497,3 +497,17 @@ localhost
 Tetris
 non-zero
 hardcoded
+Keymaps
+autocmd
+autocommand
+algorave
+#iletype
+filetype/!
+stdin
+stdout
+npm
+#tml
+html/!
+HTML
+api/!
+API

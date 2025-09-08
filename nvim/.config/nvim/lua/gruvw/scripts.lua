@@ -148,6 +148,14 @@ autocmd({ "BufNewFile", "BufRead" }, {
   end,
 })
 
+-- File types assign (filetype)
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.arb",
+  callback = function()
+    vim.bo.filetype = "json"
+  end,
+})
+
 -- Sets root directory automagically + local config
 vim.api.nvim_create_autocmd({ "BufEnter", }, {
   callback = function()

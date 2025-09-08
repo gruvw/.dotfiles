@@ -5,7 +5,7 @@ plugin load
 set dotdirs=0
 
 " Open files
-filetype *.conf,*.jsonc,*.fish,*.typ,*.nu,*.cu,*.ino,*.s,*.md,*.tex,*.py,*.dart,*.c,*.rs,Makefile,*.json,*.js,*.txt,*.html,*.css,*.xml,*.java,*.cpp,*.php,*.rb,*.sql,*.swift,*.go,*.yaml,*.toml,*.h,*.hpp,*.pl,*.lua,*.sh,*.bat,*.powershell,*.ini,*.cfg,*.yml,*.cmake,*.r,*.matlab,*.asm,*.scss,*.less,*.sass,*.jsp,*.jsx,*.ts,*.tsx,*.vb,*.vbs,*.perl,*.groovy,*.scala,*.kotlin,*.gradle,*.swift,*.rust,*.elixir,*.erl,*.clojure,*arb nvim %c
+filetype *str,*.conf,*.jsonc,*.fish,*.typ,*.nu,*.cu,*.ino,*.s,*.md,*.tex,*.py,*.dart,*.c,*.rs,Makefile,*.json,*.js,*.txt,*.html,*.css,*.xml,*.java,*.cpp,*.php,*.rb,*.sql,*.swift,*.go,*.yaml,*.toml,*.h,*.hpp,*.pl,*.lua,*.sh,*.bat,*.powershell,*.ini,*.cfg,*.yml,*.cmake,*.r,*.matlab,*.asm,*.scss,*.less,*.sass,*.jsp,*.jsx,*.ts,*.tsx,*.vb,*.vbs,*.perl,*.groovy,*.scala,*.kotlin,*.gradle,*.swift,*.rust,*.elixir,*.erl,*.clojure,*arb nvim %c
 
 " Own config
 " Key map (used ZQ<CR> to close)
@@ -117,12 +117,11 @@ mark D ~/Downloads
 mark s ~/SynologyDrive
 mark p ~/SynologyDrive/Programmation
 mark e ~/SynologyDrive/EPFL
-mark 2 ~/SynologyDrive/EPFL/BA2
-mark 3 ~/SynologyDrive/EPFL/BA3
-mark 4 ~/SynologyDrive/EPFL/BA4
-mark 5 ~/SynologyDrive/EPFL/BA5
-mark 6 ~/SynologyDrive/EPFL/BA6
-mark b ~/SynologyDrive/EPFL/BA6
+mark 1 ~/SynologyDrive/EPFL/MA1
+mark 2 ~/SynologyDrive/EPFL/MA2
+mark 3 ~/SynologyDrive/EPFL/MA3
+mark 4 ~/SynologyDrive/EPFL/MA4
+mark b ~/SynologyDrive/EPFL/MA1
 mark d ~/.dotfiles
 mark m /media/gruvw/
 mark t ~/SynologyDrive/tmp

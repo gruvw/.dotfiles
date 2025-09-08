@@ -316,5 +316,15 @@ keymap({ "n", "v" }, "<leader>dh", function() require("dap.ui.widgets").hover() 
 keymap({ "n", "v" }, "<leader>dp", function() require("dap.ui.widgets").preview() end, remap)
 keymap("n", "<leader>do", function() require("dapui").toggle() end, remap)
 
+-- Strudel (m)
+local strudel = require("strudel")
+keymap("n", "<leader>ml", strudel.launch, remap)
+keymap("n", "<leader>mq", strudel.quit, remap)
+keymap("n", "<leader>mt", strudel.toggle, remap)
+keymap("n", "<leader>mu", strudel.update, remap)
+keymap("n", "<leader>ms", strudel.stop, remap)
+keymap("n", "<leader>mb", strudel.set_buffer, remap)
+keymap("n", "<leader>mx", strudel.execute, remap)
+
 -- Others
 keymap("n", "<leader>zc", function() require("colorizer").attach_to_buffer() end, remap)
