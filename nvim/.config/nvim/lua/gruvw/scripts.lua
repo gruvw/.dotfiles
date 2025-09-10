@@ -114,7 +114,7 @@ autocmd({ "BufNewFile", "BufRead" }, {
 
 -- Format on save (autoformat)
 autocmd({ "BufWritePre" }, {
-  pattern = { "*.dart", "*.rs", },
+  pattern = { "*.dart", "*.rs", "*.go" },
   callback = function()
     vim.lsp.buf.format({ async = true })
   end,

@@ -8,6 +8,15 @@ return {
   },
 
   {
+    -- https://github.com/tpope/vim-rhubarb
+    "tpope/vim-rhubarb",
+    dependencies = {
+      "tpope/vim-fugitive",
+    },
+    event = "VeryLazy",
+  },
+
+  {
     -- https://github.com/lewis6991/gitsigns.nvim
     "lewis6991/gitsigns.nvim",
     config = function()
