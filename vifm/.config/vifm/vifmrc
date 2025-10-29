@@ -42,8 +42,9 @@ nnoremap <space>p :!if [ ! -f clip.png ]; then xclip -selection clipboard -t ima
 " nnoremap Zp :!echo %c:p<CR>:exit<CR
 " nnoremap ZP :!echo %d:p<CR>:exit<CR>
 
+" Drag and drop
 command! dragon dragon -a -x %f
-nnoremap <space>d :dragon<CR>
+noremap <space>d :dragon<CR>
 
 " Use editor to rename
 nnoremap cw :rename<cr>

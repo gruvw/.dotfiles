@@ -152,6 +152,7 @@ keymap("n", "<leader>sf", function() require("telescope.builtin").find_files() e
 keymap("n", "<leader>sg", function() require("telescope.builtin").live_grep() end, remap)
 keymap("n", "<leader>sb", function() require("telescope.builtin").current_buffer_fuzzy_find() end, remap)
 keymap("n", "<leader>sc", function() require("telescope.builtin").commands() end, remap)
+keymap("n", "<leader>sd", function() require("telescope.builtin").lsp_document_symbols() end, remap)
 keymap("n", "<leader>sn", function() require("telescope.builtin").lsp_workspace_symbols() end, remap)
 keymap("n", "<leader>sv", function() require("telescope.builtin").treesitter() end, remap)
 keymap("n", "<leader>so", function() require("telescope.builtin").oldfiles() end, remap)

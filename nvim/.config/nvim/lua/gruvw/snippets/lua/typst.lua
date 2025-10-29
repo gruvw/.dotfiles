@@ -137,4 +137,10 @@ return
 },
 -- Automatic
 {
+  s({
+    name = "[G] New item",
+    trig = "kk",
+  }, {
+    t({"#cb["}), i(1), t("]: "), si(2),
+  }),
 }
