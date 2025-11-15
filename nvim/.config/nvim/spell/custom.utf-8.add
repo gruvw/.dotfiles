@@ -520,3 +520,8 @@ errored
 unicast
 setgid
 lifecycle
+geo-blocking
+prevents
+geo-location
+hard-coded
+client-server

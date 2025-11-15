@@ -2,13 +2,12 @@
 
 # See https://starship.rs/config for defaults
 
-# TODO: Add git support
 # TODO: Add languages support
 
 # Use custom format
 format = """
 ([└─](green)$status$cmd_duration
-)[╭─](green)$sudo$username$hostname$directory$package$fill$memory_usage$jobs$time
+)[╭─](green)$sudo$username$hostname$directory$git_branch$package$fill$memory_usage$jobs$time
 [├─](green)$character
 """
 

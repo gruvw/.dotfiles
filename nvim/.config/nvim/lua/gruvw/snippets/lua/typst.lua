@@ -102,6 +102,28 @@ local function in_mathzone()
   return false
 end
 
+local function save_image()
+    local IMG_DIR = "images"
+
+    local input = vim.fn.input("Image name: ")
+    local default = "image_" .. os.time()
+    local img_name = (input ~= nil and input ~= "" and input or default) .. ".png"
+
+    local rel_path = IMG_DIR .. "/" .. img_name
+
+    -- Create images directory if not present
+    vim.cmd([[silent exec "!mkdir ]] .. IMG_DIR .. [["]])
+
+    local cwd = vim.fn.getcwd()
+    local img_path = cwd .. "/" .. rel_path
+    local cmd = "!xclip -selection clipboard -t image/png -o > " .. img_path
+
+    -- Paste image from clipboard
+    vim.cmd([[silent exec "]] .. cmd .. [["]])
+
+    return rel_path
+end
+
 -- `\b(?<!#)` regex is used to prevent expansion while writing a command (starts with `#`)
 
 return
@@ -113,25 +135,18 @@ return
     docstring = "Paste image under cursor",
   }, {
     d(1, function()
-      local IMG_DIR = "images"
-
-      local input = vim.fn.input("Image name: ")
-      local default = "image_" .. os.time()
-      local img_name = (input ~= nil and input ~= "" and input or default) .. ".png"
-
-      local rel_path = IMG_DIR .. "/" .. img_name
-
-      -- Create images directory if not present
-      vim.cmd([[silent exec "!mkdir ]] .. IMG_DIR .. [["]])
-
-      local cwd = vim.fn.getcwd()
-      local img_path = cwd .. "/" .. rel_path
-      local cmd = "!xclip -selection clipboard -t image/png -o > " .. img_path
-
-      -- Paste image from clipboard
-      vim.cmd([[silent exec "]] .. cmd .. [["]])
-
+      local rel_path = save_image()
       return sn(nil, { t([[#image("]] .. rel_path .. [[", width: ]]), i(1, "100"), t([[%)]]), })
+    end),
+  }),
+  s({
+    name = "[G] Paste centered image",
+    trig = "cimg",
+    docstring = "Paste image under cursor, center aligned",
+  }, {
+    d(1, function()
+      local rel_path = save_image()
+      return sn(nil, { t([[#align(center, image("]] .. rel_path .. [[", width: ]]), i(1, "100"), t([[%))]]), })
     end),
   }),
 },

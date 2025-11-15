@@ -55,7 +55,7 @@ return {
         severity_sort = true, -- Sort diagnostics by severity
         float = { border = "single", },
         -- TODO change to new lsp_lines system
-        virtual_text = true,  -- Use lsp_lines
+        virtual_text = true, -- Use lsp_lines
         virtual_lines = false,
       })
 
@@ -247,8 +247,26 @@ return {
         indent_lines = false,
         focus = true,
         multiline = false,
+        restore = true,
+        warn_no_results = false,
         auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
         win_config = { border = "single", },
+        modes = {
+          diagnostics = {
+            groups = {
+              { "filename", format = "{file_icon} {basename:Title} {count}" },
+            },
+          },
+          -- only show diagnostics for files in current workspace
+          workspace_diagnostics = {
+            mode = "diagnostics",
+            filter = function(items)
+              return vim.tbl_filter(function(item)
+                return item.filename:find(vim.fn.getcwd(), 1, true)
+              end, items)
+            end,
+          }
+        },
         signs = {
           error = "E",
           warning = "W",

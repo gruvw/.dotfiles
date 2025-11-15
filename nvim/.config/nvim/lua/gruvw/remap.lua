@@ -237,7 +237,9 @@ end, remap)
 keymap("n", "<leader>cc", ":TSContextToggle<CR>", remap)
 
 -- Trouble (c)
-keymap("n", "<leader>ct", [[:lua require("trouble").toggle("diagnostics")<CR>]], remap)
+keymap("n", "<leader>ct", function()
+  require("trouble").toggle("workspace_diagnostics")
+end, remap)
 
 -- Comment (c)
 keymap({ "v", "n", }, "<leader>cl", [[:CommentToggle<CR>]], remap)
