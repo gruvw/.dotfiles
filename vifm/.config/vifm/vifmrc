@@ -24,6 +24,9 @@ nnoremap os :vsplit<CR>
 nnoremap ov :view<CR>
 nnoremap oo :only<CR>
 
+" disable space acting like tab
+nnoremap <space> <nop>
+
 nnoremap Zz :q<CR>
 nnoremap Zq :q<CR>
 

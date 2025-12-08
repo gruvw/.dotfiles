@@ -119,8 +119,8 @@ set.listchars:append("space:⋅")
 set.listchars:append("eol:↴")
 set.listchars:append("tab:-->")
 
--- Disable startup screen
-set.shortmess = "ltToOCFIW"
+-- Disable startup screen and other annoying behaviors
+set.shortmess = "ltToOCFIWA"
 
 -- Prefered TEX flavor
 vim.g.tex_flavor = "latex"

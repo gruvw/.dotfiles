@@ -142,6 +142,15 @@ return {
             require("lspconfig").arduino_language_server.setup(require(
               "gruvw.lsp.arduino_language_server"))
           end,
+          gopls = function()
+            require("lspconfig").gopls.setup({
+              settings = {
+                gopls = {
+                  buildFlags = { "-tags=performance" },
+                },
+              },
+            })
+          end,
         },
       })
     end

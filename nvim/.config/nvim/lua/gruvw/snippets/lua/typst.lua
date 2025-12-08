@@ -149,6 +149,27 @@ return
       return sn(nil, { t([[#align(center, image("]] .. rel_path .. [[", width: ]]), i(1, "100"), t([[%))]]), })
     end),
   }),
+  s({
+    name = "[G] Paste figure image",
+    trig = "fimg",
+    docstring = "Paste image under cursor, in a figure",
+  }, {
+    d(1, function()
+      local rel_path = save_image()
+      return sn(nil, {
+        t([[#figure(]]),
+        t({ "", "  " }),
+        t([[image("]] .. rel_path .. [[", width: ]]),
+        i(1, "80"),
+        t([[%),]]),
+        t({ "", "  " }),
+        t([[caption: []]),
+        i(2, "Caption"),
+        t([[],]]),
+        t({ "", ")" }),
+      })
+    end),
+  }),
 },
 -- Automatic
 {

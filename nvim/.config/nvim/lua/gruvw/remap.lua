@@ -49,6 +49,11 @@ keymap("n", "<C-.>", ":set list!<CR>", remap)
 keymap("n", "gg", "gg0", remap)
 keymap("n", "G", "G0", remap)
 
+-- Jump tips
+-- use `. to just to jump back to last edit position
+-- use `^ to just to jump back to last insert mode position
+-- use m' to add position to the <C-o> jump list
+
 -- Toggle cursor column
 keymap("n", "gC", function()
   vim.wo.cursorcolumn = not vim.wo.cursorcolumn
@@ -184,6 +189,7 @@ keymap("n", "<leader>tt", function() require("nvim-tree.api").tree.toggle() end,
 keymap("n", "<leader>tv", function() require("oil").open_float(vim.fn.expand("%:p:h")) end, remap)
 
 -- ToDo (t)
+-- does not cycle back: see https://github.com/folke/todo-comments.nvim/pull/248 / https://github.com/folke/todo-comments.nvim/pull/280
 keymap("n", "<leader>tn", [[:lua require("todo-comments").jump_next()<CR>]], remap)
 keymap("n", "<leader>tN", [[:lua require("todo-comments").jump_prev()<CR>]], remap)
 
@@ -277,6 +283,9 @@ keymap("n", "<leader>T",
 
 -- Open hex edit (H)
 keymap("n", "<leader>H", [[:lua require("hex").toggle()<CR>]], remap)
+
+-- http
+keymap("n", "<leader>hr", function() require("kulala").run() end, remap)
 
 -- Run (r)
 local overseer = require("overseer")

@@ -525,3 +525,5 @@ prevents
 geo-location
 hard-coded
 client-server
+Paxos
+TLS

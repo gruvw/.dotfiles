@@ -4,7 +4,7 @@ return {
   {
     "strudel.nvim",
     dev = true,
-    build = "npm install",
+    build = "npm ci",
     config = function()
       require("strudel").setup({
         ui = {
@@ -14,6 +14,7 @@ return {
           hide_code_editor = false,
           hide_error_display = true,
         },
+        start_on_launch = true,
         update_on_save = false,
         cursor_sync = true,
         report_eval_errors = true,
