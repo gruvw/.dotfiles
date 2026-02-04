@@ -137,7 +137,7 @@ autocmd({ "BufNewFile", "BufRead" }, {
 -- Auto LSP enable
 autocmd({ "BufNewFile", "BufRead" }, {
   pattern = { "*.py", "*.dart", "*.rs", "*.lua", "*.go", "*.c", "*.cpp", "*.tex", "*.latex", "*.md", "*.html", "*.css",
-    "*.scss", "*.json", "*.typ", "*.go" },
+    "*.scss", "*.json", "*.typ", "*.go", "*.mjs" },
   callback = function()
     if vim.g.lsp_off then
       return

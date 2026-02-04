@@ -15,7 +15,7 @@ return {
         templates = {
           -- "cargo",
           "just",
-          -- "make",
+          "make",
           -- "npm",
           "tox",
           "vscode",

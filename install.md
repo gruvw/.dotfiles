@@ -390,10 +390,12 @@ sudo apt install -y xdotool
 
 Pinta: <https://github.com/PintaProject/Pinta>
 Scrcpy: <https://github.com/Genymobile/scrcpy>
+KAlgebra: <https://apps.kde.org/kalgebra/>
 
 ```sh
 sudo snap install pinta
 sudo snap install scrcpy
+sudo snap install kalgebra
 ```
 
 ### Dragon

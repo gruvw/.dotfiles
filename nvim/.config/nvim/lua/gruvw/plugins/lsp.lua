@@ -130,6 +130,7 @@ return {
           "clangd",
           "jsonls",
           "arduino_language_server",
+          "ts_ls",
           -- "tailwindcss",
           "tinymist",
           "gopls",
