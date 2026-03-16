@@ -8,7 +8,7 @@ return {
     lazy = true,
     dependencies = {
       "nvim-cmp",
-      "mason-lspconfig.nvim",
+      -- "mason-lspconfig.nvim",
     },
     config = function()
       local lspconfig = require("lspconfig")
@@ -81,6 +81,7 @@ return {
   {
     -- https://github.com/williamboman/mason-lspconfig.nvim
     "williamboman/mason-lspconfig.nvim",
+    enabled = false,
     dependencies = {
       -- https://github.com/williamboman/mason.nvim
       "williamboman/mason.nvim",
@@ -119,21 +120,21 @@ return {
       require("mason-lspconfig").setup({
         automatic_installation = true,
         ensure_installed = {
-          "pyright",
-          "rust_analyzer",
-          "marksman",
-          "texlab",
-          "lua_ls",
-          "cssls",
-          "emmet_language_server",
-          "html",
-          "clangd",
-          "jsonls",
-          "arduino_language_server",
-          "ts_ls",
+          -- "pyright",
+          -- "rust_analyzer",
+          -- "marksman",
+          -- "texlab",
+          -- "lua_ls",
+          -- "cssls",
+          -- "emmet_language_server",
+          -- "html",
+          -- "clangd",
+          -- "jsonls",
+          -- "arduino_language_server",
+          -- "ts_ls",
           -- "tailwindcss",
-          "tinymist",
-          "gopls",
+          -- "tinymist",
+          -- "gopls",
         },
         handlers = {
           default_setup,

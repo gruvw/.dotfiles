@@ -2,12 +2,13 @@
 
 return {
   {
-    -- https://github.com/nvim-treesitter/nvim-treesitter
+    -- https:/github.com/nvim-treesitter/nvim-treesitter
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup({
-        ensure_installed = "all",
+        ensure_installed = {}, -- Leave empty, Nix handles this
+        ignore_install = { "all" },
         highlight = {
           enable = true,
         },

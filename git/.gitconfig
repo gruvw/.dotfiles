@@ -3,7 +3,7 @@
 [user]
 	name = gruvw
 	email = gruvw.dev@gmail.com
-	signingkey = 8683D16D8BDBB528
+	signingkey = B21C0F1F572DC578
 
 [init]
 	defaultBranch = main

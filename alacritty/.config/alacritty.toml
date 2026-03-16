@@ -1,0 +1,75 @@
+# ~/.config/alacritty/alacritty.toml
+
+[window]
+decorations = "None"
+opacity = 1.0
+padding = { x = 0, y = 0 }
+
+[scrolling]
+history = 99999
+multiplier = 3
+
+[font]
+size = 12.0
+
+[font.normal]
+family = "FiraCode Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "FiraCode Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "FiraCode Nerd Font"
+style = "Regular"
+
+[font.bold_italic]
+family = "FiraCode Nerd Font"
+style = "Bold"
+
+[cursor]
+style = { shape = "Block", blinking = "Never" }
+
+[selection]
+save_to_clipboard = true
+
+[mouse]
+hide_when_typing = true
+
+[terminal.shell]
+program = "fish"
+
+[colors.primary]
+background = "#1F1F1F"
+foreground = "#F4F4F4"
+
+[colors.cursor]
+text = "#000000"
+cursor = "#F4F4F4"
+
+[colors.selection]
+text = "CellForeground"
+background = "#292929"
+
+[colors.normal]
+black   = "#1F1F1F"
+red     = "#FC6982"
+green   = "#69FC9A"
+yellow  = "#FCE369"
+blue    = "#FC9A69"
+magenta = "#A77DFC"
+cyan    = "#69CBFC"
+white   = "#F4F4F4"
+
+[colors.bright]
+black   = "#292929"
+red     = "#FC6982"
+green   = "#69FC9A"
+yellow  = "#FCE369"
+blue    = "#FC9A69"
+magenta = "#A77DFC"
+cyan    = "#69CBFC"
+white   = "#F4F4F4"
+
+[terminal]

@@ -12,6 +12,8 @@ return {
       "telescope.nvim",
     },
     config = function()
+      vim.g.sqlite_clib_path = "/nix/store/8bh8g107igzm703ib6vhslnagm1j47km-sqlite-3.50.4/lib/libsqlite3.so"
+
       require("neoclip").setup({
         history = 1000,
         enable_persistent_history = true,
