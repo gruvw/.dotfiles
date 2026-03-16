@@ -125,7 +125,7 @@ mark 1 ~/SynologyDrive/EPFL/MA1
 mark 2 ~/SynologyDrive/EPFL/MA2
 mark 3 ~/SynologyDrive/EPFL/MA3
 mark 4 ~/SynologyDrive/EPFL/MA4
-mark b ~/SynologyDrive/EPFL/MA1
+mark b ~/SynologyDrive/EPFL/MA2
 mark d ~/.dotfiles
 mark m /media/gruvw/
 mark t ~/SynologyDrive/tmp
