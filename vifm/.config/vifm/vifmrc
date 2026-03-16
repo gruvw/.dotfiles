@@ -5,7 +5,7 @@ plugin load
 set dotdirs=0
 
 " Open files
-filetype *str,*.conf,*.jsonc,*.fish,*.typ,*.nu,*.cu,*.ino,*.s,*.md,*.tex,*.py,*.dart,*.c,*.rs,Makefile,*.json,*.js,*.txt,*.html,*.css,*.xml,*.java,*.cpp,*.php,*.rb,*.sql,*.swift,*.go,*.yaml,*.toml,*.h,*.hpp,*.pl,*.lua,*.sh,*.bat,*.powershell,*.ini,*.cfg,*.yml,*.cmake,*.r,*.matlab,*.asm,*.scss,*.less,*.sass,*.jsp,*.jsx,*.ts,*.tsx,*.vb,*.vbs,*.perl,*.groovy,*.scala,*.kotlin,*.gradle,*.swift,*.rust,*.elixir,*.erl,*.clojure,*arb nvim %c
+filetype *.nix,*.kdl,*.str,*.conf,*.jsonc,*.fish,*.typ,*.nu,*.cu,*.ino,*.s,*.md,*.tex,*.py,*.dart,*.c,*.rs,Makefile,*.json,*.js,*.txt,*.html,*.css,*.xml,*.java,*.cpp,*.php,*.rb,*.sql,*.swift,*.go,*.yaml,*.toml,*.h,*.hpp,*.pl,*.lua,*.sh,*.bat,*.powershell,*.ini,*.cfg,*.yml,*.cmake,*.r,*.matlab,*.asm,*.scss,*.less,*.sass,*.jsp,*.jsx,*.ts,*.tsx,*.vb,*.vbs,*.perl,*.groovy,*.scala,*.kotlin,*.gradle,*.swift,*.rust,*.elixir,*.erl,*.clojure,*arb nvim %c
 
 " Own config
 " Key map (used ZQ<CR> to close)
@@ -17,7 +17,7 @@ nnoremap <space>v :!nvim %c:p<CR>
 nnoremap <space>n :!nvim %c:p<CR>
 nnoremap <space>h za
 nnoremap <space>N :!nemo . &<CR>
-nnoremap <space><CR> :!nohup kitty &>/dev/null &<CR>
+nnoremap <space><CR> :!nohup alacritty &>/dev/null &<CR>
 nnoremap <space>f :FZFlocate<CR>
 
 nnoremap os :vsplit<CR>
@@ -35,11 +35,11 @@ nnoremap cw cW
 nnoremap cW cw
 
 " Utils
-nnoremap yp :!echo -n %c:p | xclip -selection clipboard %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
-nnoremap yP :!echo -n %d:p | xclip -selection clipboard %i<cr>:echo expand('%"d:p') "is yanked to clipboard"<cr>
+nnoremap yp :!echo -n %c:p | wl-copy %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
+nnoremap yP :!echo -n %d:p | wl-copy %i<cr>:echo expand('%"d:p') "is yanked to clipboard"<cr>
 
 " Paste clipboard image
-nnoremap <space>p :!if [ ! -f clip.png ]; then xclip -selection clipboard -t image/png -o > clip.png; else echo "File clip.png already exists!"; fi<CR>
+nnoremap <space>p :!if [ ! -f clip.png ]; then wl-paste -t image/png > clip.png; else echo "File clip.png already exists!"; fi<CR>
 
 " TODO make them usable as command arg>
 " nnoremap Zp :!echo %c:p<CR>:exit<CR
@@ -53,7 +53,7 @@ noremap <space>d :dragon<CR>
 nnoremap cw :rename<cr>
 
 " Options
-" only
+only
 set relativenumber
 set number
 

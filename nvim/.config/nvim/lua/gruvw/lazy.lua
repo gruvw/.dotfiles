@@ -21,7 +21,7 @@ require("lazy").setup({
     { import = "gruvw.plugins" },
   },
   dev = {
-    path = "/home/gruvw/SynologyDrive/Programmation/Lua/neovim",
+    path = "/home/gruvw/Documents/repositories",
   },
   ui = {
     border = "single",

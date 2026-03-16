@@ -1,0 +1,23 @@
+# NixOS Roadmap
+
+- [ ] Niri
+    - [ ] Waybar config
+    - [ ] Show/Hide help commands (hide on startup)
+    - [x] Lockscreen
+    - [ ] Backgrounds
+    - [x] Top keys (brightness, sound, etc)
+- [ ] Use homemanager
+- [ ] Extract all dotfiles (niri, nix, gtklock, waybar, albert)
+- [ ] Use flakes
+- [ ] Garbage collection
+- [ ] Git repository setup
+- [ ] Brave configuration
+- [ ] Brave/Chrome extensions
+- [ ] Secrets storage (GitHub git, Brave logins, Bitwarden)
+- [ ] Neovim
+    - [ ] Install LSPs without mason
+    - [ ] Treesitter languages
+    - [ ] Setup neovim SQLite library file for clipboard
+- [ ] Synology drive
+- [ ] Apps
+    - [x] Orca slicer
