@@ -1,1 +1,82 @@
-../../../.dotfiles/albert/.config/albert/org.albert.extension.websearch/engines.json
+[
+    {
+        "fallback": true,
+        "iconPath": ":github",
+        "id": "a53cfc7d",
+        "name": "GitHub",
+        "trigger": "gh",
+        "url": "https://github.com/search?utf8=✓&q=%s"
+    },
+    {
+        "fallback": true,
+        "iconPath": ":google",
+        "id": "4cfff183",
+        "name": "Google",
+        "trigger": "g",
+        "url": "https://www.google.com/search?q=%s"
+    },
+    {
+        "fallback": true,
+        "iconPath": ":maps",
+        "id": "9a2b771f",
+        "name": "Google Maps",
+        "trigger": "m",
+        "url": "https://www.google.com/maps/search/%s/"
+    },
+    {
+        "fallback": true,
+        "iconPath": ":google_translate",
+        "id": "c10203bf",
+        "name": "Google Translate",
+        "trigger": "t",
+        "url": "https://translate.google.com/?text=%s"
+    },
+    {
+        "fallback": true,
+        "iconPath": "/home/gruvw/.local/share/albert/websearch/4dcb6722.png",
+        "id": "4dcb6722",
+        "name": "NixOS",
+        "trigger": "n",
+        "url": "https://search.nixos.org/packages?query=%s"
+    },
+    {
+        "fallback": true,
+        "iconPath": "/home/gruvw/.local/share/albert/websearch/63300301.png",
+        "id": "63300301",
+        "name": "Raindrop.io",
+        "trigger": "r",
+        "url": "https://app.raindrop.io/my/0/%s"
+    },
+    {
+        "fallback": true,
+        "iconPath": "/home/gruvw/.local/share/albert/websearch/fab53d63.png",
+        "id": "fab53d63",
+        "name": "Stack Overflow",
+        "trigger": "s",
+        "url": "https://stackoverflow.com/search?q=%s"
+    },
+    {
+        "fallback": true,
+        "iconPath": "/home/gruvw/.local/share/albert/websearch/16295f0c.png",
+        "id": "16295f0c",
+        "name": "Wikipedia",
+        "trigger": "w",
+        "url": "https://en.wikipedia.org/wiki/Special:Search/%s"
+    },
+    {
+        "fallback": true,
+        "iconPath": ":wolfram",
+        "id": "15102976",
+        "name": "Wolfram Alpha",
+        "trigger": "wa",
+        "url": "https://www.wolframalpha.com/input/?i=%s"
+    },
+    {
+        "fallback": true,
+        "iconPath": ":youtube",
+        "id": "4ed5c539",
+        "name": "Youtube",
+        "trigger": "y",
+        "url": "https://www.youtube.com/results?search_query=%s"
+    }
+]

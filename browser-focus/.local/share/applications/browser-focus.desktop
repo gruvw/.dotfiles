@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Browser Focus
+Exec=/home/gruvw/pathed/scripts/browser-focus %u
+Type=Application
+MimeType=x-scheme-handler/http;x-scheme-handler/https;
+NoDisplay=true
+
+# xdg-mime default browser-focus.desktop x-scheme-handler/http
+# xdg-mime default browser-focus.desktop x-scheme-handler/https
+# xdg-mime default browser-focus.desktop application/pdf

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+if [ -z "$1" ]; then
+    echo "Usage: $0 <URL>"
+    exit 1
+fi
+
+$DEFAULT_BROWSER "$1" &
+XDG_PID=$!
+wait $XDG_PID
+if [ $? -ne 0 ]; then
+    exit 1
+fi
+
+WINDOW_ID=$(niri msg windows | awk '/Window ID/ {id=$3} /App ID: "brave-browser"/ {last_id=id} END {print last_id}' | tr -d ':')
+if [ -n "$WINDOW_ID" ]; then
+    niri msg action focus-window --id "$WINDOW_ID"
+fi

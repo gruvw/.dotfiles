@@ -6,6 +6,8 @@
     - [x] Lockscreen
     - [ ] Backgrounds
     - [x] Top keys (brightness, sound, etc)
+    - [x] Browser focus urls xdg-open
+- [ ] Synology drive
 - [ ] Use homemanager
 - [ ] Extract all dotfiles (niri, nix, gtklock, waybar, albert)
 - [ ] Use flakes
@@ -18,6 +20,5 @@
     - [ ] Install LSPs without mason
     - [ ] Treesitter languages
     - [ ] Setup neovim SQLite library file for clipboard
-- [ ] Synology drive
 - [ ] Apps
     - [x] Orca slicer
