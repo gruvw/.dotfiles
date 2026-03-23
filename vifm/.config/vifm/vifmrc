@@ -46,7 +46,7 @@ nnoremap <space>p :!if [ ! -f clip.png ]; then wl-paste -t image/png > clip.png;
 " nnoremap ZP :!echo %d:p<CR>:exit<CR>
 
 " Drag and drop
-command! dragon dragon -a -x %f
+command! dragon dragon-drop -a -x %f
 noremap <space>d :dragon<CR>
 
 " Use editor to rename

@@ -5,7 +5,7 @@ prioritizePerfectMatch=true
 telemetry=false
 
 [application]
-enabled=true
+enabled=false
 global_handler_enabled=false
 
 [applications]

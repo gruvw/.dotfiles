@@ -73,6 +73,9 @@ return {
         }
       })
 
+      require("lspconfig")["rust_analyzer"].setup({})
+
+
       -- Start LSP
       vim.cmd(":LspStart")
     end
@@ -116,6 +119,7 @@ return {
       local function default_setup(server)
         require("lspconfig")[server].setup({})
       end
+
 
       require("mason-lspconfig").setup({
         automatic_installation = true,
