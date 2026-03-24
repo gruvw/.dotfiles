@@ -65,13 +65,16 @@
     - [ ] Waybar config
         - [x] Workspaces
         - [x] Time date
-        - [ ] CPU
-        - [ ] Network
+        - [x] CPU
+        - [x] Temperature
+        - [x] Memory
+        - [x] Network
         - [x] Systray
-        - [x] Battery (on hover, all the time?)
+        - [x] Battery + time
         - [x] Brightness state
         - [x] Volume state
         - [x] Mic state
+        - [ ] Style and states (spacing, separators?)
     - [x] Show/Hide help commands (hide on startup)
     - [x] Lockscreen
         - [x] Time date
@@ -85,7 +88,7 @@
 - [x] ESP 32 IDF Rust nix shell development
 - [ ] Extract all dotfiles (niri, nix, gtklock, waybar, albert)
 - [ ] Use flakes
-- [ ] Garbage collection
+- [ ] Garbage collection, automatic
 - [ ] Brave settings configuration
 - [ ] Brave/Chrome extensions
 - [x] GitHub login (gh cli)

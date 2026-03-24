@@ -244,6 +244,8 @@ sudo apt install brave-browser
        1. Payments > Disable All
        2. Addresses > Disable
 
+brave://settings/appearance
+
 #### Browser extensions
 
 * TabCopy: https://chrome.google.com/webstore/detail/tabcopy/micdllihgoppmejpecmkilggmaagfdmb
