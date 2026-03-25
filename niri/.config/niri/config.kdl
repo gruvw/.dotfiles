@@ -115,8 +115,6 @@ input {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
-    // empty-workspace-above-first
-
     // Set gaps around windows in logical pixels.
     gaps 0
 
@@ -246,7 +244,7 @@ spawn-at-startup "albert"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
-    // skip-at-startup
+    skip-at-startup
 }
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -269,7 +267,7 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // https://yalter.github.io/niri/Configuration:-Animations
 animations {
     // Uncomment to turn off all animations.
-    // off
+    off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
@@ -327,7 +325,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id="brave-browser|OrcaSlicer"
+    match app-id="^*$"
     open-maximized true
 }
 
@@ -352,6 +350,7 @@ binds {
     Mod+V hotkey-overlay-title="Open File Manager: VIFM" { spawn "alacritty" "-e" "vifm"; }
     Mod+C hotkey-overlay-title="Open Calendar: Google Calendar" { spawn "xdg-open" "https://calendar.google.com/"; }
     Mod+N hotkey-overlay-title="Open Text Editor: nvim" { spawn "alacritty" "-e" "nvim"; }
+    Mod+B hotkey-overlay-title="Open Tasks Manager: btm" { spawn "alacritty" "-e" "btm"; }
 
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
@@ -389,31 +388,24 @@ binds {
     Mod+W repeat=false { close-window; }
 
     Mod+H     { focus-column-left; }
-    Mod+J     { focus-window-down; }
-    Mod+K     { focus-window-up; }
     Mod+L     { focus-column-right; }
+    Mod+J     { focus-window-or-workspace-down; }
+    Mod+K     { focus-window-or-workspace-up; }
 
+    Mod+Shift+J     { move-window-down-or-to-workspace-down; }
+    Mod+Shift+K     { move-window-up-or-to-workspace-up; }
     Mod+Shift+H     { move-column-left; }
-    Mod+Shift+J     { move-window-down; }
-    Mod+Shift+K     { move-window-up; }
     Mod+Shift+L     { move-column-right; }
-
-    // Alternative commands that move across workspaces when reaching
-    // the first or last window in a column.
-    // Mod+J     { focus-window-or-workspace-down; }
-    // Mod+K     { focus-window-or-workspace-up; }
-    // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
-    // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
-
-    Mod+Home { focus-column-first; }
-    Mod+End  { focus-column-last; }
-    Mod+Ctrl+Home { move-column-to-first; }
-    Mod+Ctrl+End  { move-column-to-last; }
 
     Mod+Ctrl+H     { focus-monitor-left; }
     Mod+Ctrl+J     { focus-monitor-down; }
     Mod+Ctrl+K     { focus-monitor-up; }
     Mod+Ctrl+L     { focus-monitor-right; }
+
+    Mod+Home { focus-column-first; }
+    Mod+End  { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End  { move-column-to-last; }
 
     Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
     Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
@@ -486,24 +478,26 @@ binds {
     //
     // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
     // will all refer to the 3rd workspace.
-    Mod+1 { focus-workspace 1; }
-    Mod+2 { focus-workspace 2; }
-    Mod+3 { focus-workspace 3; }
-    Mod+4 { focus-workspace 4; }
-    Mod+5 { focus-workspace 5; }
-    Mod+6 { focus-workspace 6; }
-    Mod+7 { focus-workspace 7; }
-    Mod+8 { focus-workspace 8; }
-    Mod+9 { focus-workspace 9; }
-    Mod+Shift+1 { move-column-to-workspace 1; }
-    Mod+Shift+2 { move-column-to-workspace 2; }
-    Mod+Shift+3 { move-column-to-workspace 3; }
-    Mod+Shift+4 { move-column-to-workspace 4; }
-    Mod+Shift+5 { move-column-to-workspace 5; }
-    Mod+Shift+6 { move-column-to-workspace 6; }
-    Mod+Shift+7 { move-column-to-workspace 7; }
-    Mod+Shift+8 { move-column-to-workspace 8; }
-    Mod+Shift+9 { move-column-to-workspace 9; }
+    Mod+0 { focus-workspace 1; }
+    Mod+1 { focus-workspace 2; }
+    Mod+2 { focus-workspace 3; }
+    Mod+3 { focus-workspace 4; }
+    Mod+4 { focus-workspace 5; }
+    Mod+5 { focus-workspace 6; }
+    Mod+6 { focus-workspace 7; }
+    Mod+7 { focus-workspace 8; }
+    Mod+8 { focus-workspace 9; }
+    Mod+9 { focus-workspace 10; }
+    Mod+Shift+0 { move-column-to-workspace 1; }
+    Mod+Shift+1 { move-column-to-workspace 2; }
+    Mod+Shift+2 { move-column-to-workspace 3; }
+    Mod+Shift+3 { move-column-to-workspace 4; }
+    Mod+Shift+4 { move-column-to-workspace 5; }
+    Mod+Shift+5 { move-column-to-workspace 6; }
+    Mod+Shift+6 { move-column-to-workspace 7; }
+    Mod+Shift+7 { move-column-to-workspace 8; }
+    Mod+Shift+8 { move-column-to-workspace 9; }
+    Mod+Shift+9 { move-column-to-workspace 10; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
@@ -591,7 +585,11 @@ binds {
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
-    Mod+Shift+P { power-off-monitors; }
+    Mod+Ctrl+P { power-off-monitors; }
+
+    Mod+T {
+        spawn-sh "niri msg action set-column-width '50%'; niri msg action focus-column-left; niri msg action set-column-width '50%'; niri msg action focus-column-right";
+    }
 }
 
 gestures {
@@ -603,3 +601,13 @@ gestures {
 switch-events {
     lid-close { spawn "gtklock"; }
 }
+
+cursor {
+    xcursor-theme "Simp1e"
+    xcursor-size 22
+}
+
+workspace "1"
+// workspace "2"
+// workspace "3"
+// workspace "4"

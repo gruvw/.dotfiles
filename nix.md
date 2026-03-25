@@ -62,7 +62,7 @@
 ## Config
 
 - [ ] Niri
-    - [ ] Waybar config
+    - [x] Waybar config
         - [x] Workspaces
         - [x] Time date
         - [x] CPU
@@ -74,7 +74,7 @@
         - [x] Brightness state
         - [x] Volume state
         - [x] Mic state
-        - [ ] Style and states (spacing, separators?)
+        - [x] Style and states (spacing, separators?)
     - [x] Show/Hide help commands (hide on startup)
     - [x] Lockscreen
         - [x] Time date
@@ -84,13 +84,12 @@
     - [x] Browser focus urls xdg-open
     - [x] Custom cursor
     - [ ] Backgrounds (rotating)
+    - [ ] HDMI (extend & duplicate)
+    - [ ] Screenshare
     - [ ] Scherlock or Anyrun launcher
+- [x] Garbage collection, automatic
+- [x] Extract all dotfiles (niri, nix, gtklock, waybar, albert) to stow
 - [x] ESP 32 IDF Rust nix shell development
-- [ ] Extract all dotfiles (niri, nix, gtklock, waybar, albert)
-- [ ] Use flakes
-- [ ] Garbage collection, automatic
-- [ ] Brave settings configuration
-- [ ] Brave/Chrome extensions
 - [x] GitHub login (gh cli)
     - [x] GPG keys to sign
 - [ ] Neovim
@@ -98,7 +97,9 @@
         - [x] Rust (+ embedded esp 32)
     - [ ] Treesitter languages
     - [ ] Setup neovim SQLite library file for clipboard
+    - [ ] Snippets
 - [ ] Synology drive
+- [ ] Use flakes
 - [ ] Nix to github, flakes?, profiles?
 
 - [ ] Home manager

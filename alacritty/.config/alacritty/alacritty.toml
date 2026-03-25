@@ -32,7 +32,7 @@ style = "Bold"
 style = { shape = "Block", blinking = "Never" }
 
 [selection]
-save_to_clipboard = true
+save_to_clipboard = false
 
 [mouse]
 hide_when_typing = true
@@ -71,5 +71,3 @@ blue    = "#FC9A69"
 magenta = "#A77DFC"
 cyan    = "#69CBFC"
 white   = "#F4F4F4"
-
-[terminal]
