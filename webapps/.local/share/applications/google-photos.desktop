@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Google Photos
+Comment=Open Google Photos Web in default browser
+Exec=xdg-open https://photos.google.com/
+Type=Application
+Terminal=false
+Icon=google-photos
+Categories=Network;WebBrowser;

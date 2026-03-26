@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Google Calendar
+Comment=Open Google Calendar Web in default browser
+Exec=xdg-open https://calendar.google.com/
+Type=Application
+Terminal=false
+Icon=google-agenda
+Categories=Network;WebBrowser;

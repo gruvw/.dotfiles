@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Telegram Web
+Comment=Open Telegram Web in default browser
+Exec=xdg-open https://web.telegram.org/
+Type=Application
+Terminal=false
+Icon=telegram
+Categories=Network;WebBrowser;

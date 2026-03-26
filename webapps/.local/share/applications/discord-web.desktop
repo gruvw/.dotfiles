@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Discord Web
+Comment=Open Discord Web in default browser
+Exec=xdg-open https://discord.com/channels/@me
+Type=Application
+Terminal=false
+Icon=discord
+Categories=Network;WebBrowser;

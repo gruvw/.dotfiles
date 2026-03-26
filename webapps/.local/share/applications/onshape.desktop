@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=OnShape
+Comment=Open OnShape Web in default browser
+Exec=xdg-open https://cad.onshape.com/signin
+Type=Application
+Terminal=false
+Icon=onshape
+Categories=Network;WebBrowser;

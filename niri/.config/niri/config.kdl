@@ -347,6 +347,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: Alacritty" { spawn "alacritty"; }
     Mod+U hotkey-overlay-title="Open Launcher: Albert" { spawn "albert" "show"; }
+    Mod+I hotkey-overlay-title="Open Launcher: Sherlock" { spawn "sherlock"; }
     Mod+V hotkey-overlay-title="Open File Manager: VIFM" { spawn "alacritty" "-e" "vifm"; }
     Mod+C hotkey-overlay-title="Open Calendar: Google Calendar" { spawn "xdg-open" "https://calendar.google.com/"; }
     Mod+N hotkey-overlay-title="Open Text Editor: nvim" { spawn "alacritty" "-e" "nvim"; }

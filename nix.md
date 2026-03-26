@@ -83,10 +83,12 @@
     - [x] Top keys (brightness, sound, etc)
     - [x] Browser focus urls xdg-open
     - [x] Custom cursor
+    - [x] Albert launcher
+    - [x] Custom application shortcuts (web links as desktop files)
+    - [x] Custom desktop icons
     - [ ] Backgrounds (rotating)
     - [ ] HDMI (extend & duplicate)
     - [ ] Screenshare
-    - [ ] Scherlock or Anyrun launcher
 - [x] Garbage collection, automatic
 - [x] Extract all dotfiles (niri, nix, gtklock, waybar, albert) to stow
 - [x] ESP 32 IDF Rust nix shell development
@@ -98,9 +100,10 @@
     - [ ] Treesitter languages
     - [ ] Setup neovim SQLite library file for clipboard
     - [ ] Snippets
+- [ ] Full system reset with setup procedure documentation
+- [ ] Nix to github
 - [ ] Synology drive
-- [ ] Use flakes
-- [ ] Nix to github, flakes?, profiles?
+- [ ] Use flakes, profiles?
 
 - [ ] Home manager
     - [ ] Git repository setup
