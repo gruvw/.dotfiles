@@ -53,7 +53,7 @@ text = "CellForeground"
 background = "#292929"
 
 [colors.normal]
-black   = "#1F1F1F"
+black   = "#757575"
 red     = "#FC6982"
 green   = "#69FC9A"
 yellow  = "#FCE369"
@@ -63,7 +63,7 @@ cyan    = "#69CBFC"
 white   = "#F4F4F4"
 
 [colors.bright]
-black   = "#292929"
+black   = "#757575"
 red     = "#FC6982"
 green   = "#69FC9A"
 yellow  = "#FCE369"
@@ -71,3 +71,6 @@ blue    = "#FC9A69"
 magenta = "#A77DFC"
 cyan    = "#69CBFC"
 white   = "#F4F4F4"
+
+[env]
+TERM = "alacritty-direct" # for gui colors detection

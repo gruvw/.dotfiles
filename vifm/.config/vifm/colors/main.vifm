@@ -12,19 +12,27 @@
 
 highlight clear
 
-highlight Win cterm=none ctermfg=white ctermbg=black
-highlight Directory cterm=bold ctermfg=green ctermbg=black
-highlight Border cterm=none ctermfg=black ctermbg=black
-highlight CmdLine cterm=none ctermfg=white ctermbg=black
-highlight TopLine cterm=none ctermfg=cyan ctermbg=black
-highlight TopLineSel cterm=bold,reverse ctermfg=cyan ctermbg=black
-highlight CurrLine cterm=bold ctermfg=-1 ctermbg=8
-highlight StatusLine cterm=bold ctermfg=black ctermbg=green
-highlight Executable cterm=bold ctermfg=blue ctermbg=black
-highlight ErrorMsg cterm=none ctermfg=black ctermbg=red
-highlight Link cterm=italic ctermfg=yellow ctermbg=black
-highlight BrokenLink cterm=italic ctermfg=red ctermbg=black
-highlight WildMenu cterm=none ctermfg=black ctermbg=white
+" UI
+highlight Win         guibg=#1F1F1F guifg=white   cterm=none ctermfg=white ctermbg=black
+highlight Border      guibg=#1F1F1F guifg=#1F1F1F cterm=none ctermfg=black ctermbg=black
+highlight CmdLine     guibg=#1F1F1F guifg=white   cterm=none ctermfg=white ctermbg=black
+highlight TopLine     guibg=#1F1F1F guifg=white   cterm=none ctermfg=cyan  ctermbg=black
+highlight TopLineSel  guibg=cyan    guifg=#1F1F1F cterm=bold ctermfg=black ctermbg=cyan  gui=bold
+highlight StatusLine  guibg=green   guifg=#1F1F1F cterm=bold ctermfg=black ctermbg=green gui=bold
+highlight WildMenu    guibg=white   guifg=#1F1F1F cterm=none ctermfg=black ctermbg=white
+highlight ErrorMsg    guibg=red     guifg=#1F1F1F cterm=none ctermfg=black ctermbg=red
+highlight Selected    guibg=blue    guifg=#1F1F1F ctermfg=black ctermbg=blue
+highlight CurrLine    cterm=reverse,bold gui=reverse,bold
+
+" Files
+highlight Directory   ctermfg=green   cterm=bold
+highlight Link        ctermfg=yellow  cterm=italic
+highlight BrokenLink  ctermfg=red     cterm=italic
+highlight Executable  ctermfg=blue    cterm=bold
+highlight Socket      ctermfg=magenta cterm=bold
+highlight Device      ctermfg=red     cterm=bold
+highlight Fifo        ctermfg=cyan    cterm=bold
+
 
 " highlight Selected cterm=bold ctermfg=magenta ctermbg=red
 " highlight JobLine cterm=bold,reverse ctermfg=black ctermbg=white
@@ -34,8 +42,3 @@ highlight WildMenu cterm=none ctermfg=black ctermbg=white
 " highlight TabLine cterm=none ctermfg=white ctermbg=black
 " highlight TabLineSel cterm=bold,reverse ctermfg=default ctermbg=default
 " highlight OtherWin cterm=bold,underline,reverse,standout,italic ctermfg=default ctermbg=default
-
-highlight Socket cterm=bold ctermfg=magenta ctermbg=black
-highlight Device cterm=bold ctermfg=red ctermbg=black
-highlight Fifo cterm=bold ctermfg=cyan ctermbg=none
-highlight Selected cterm=none ctermfg=236 ctermbg=208

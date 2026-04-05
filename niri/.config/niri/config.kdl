@@ -327,6 +327,7 @@ window-rule {
 }
 
 window-rule {
+    match app-id="brave-browser|OrcaSlicer|thunderbird"
     open-maximized true
 }
 
