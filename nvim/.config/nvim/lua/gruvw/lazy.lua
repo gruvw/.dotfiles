@@ -21,7 +21,7 @@ require("lazy").setup({
     { import = "gruvw.plugins" },
   },
   dev = {
-    path = "/home/gruvw/Documents/repositories",
+    path = "/home/gruvw/data/repositories/nvim",
   },
   ui = {
     border = "single",

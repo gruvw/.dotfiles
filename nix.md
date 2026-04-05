@@ -58,6 +58,8 @@
 
 - [x] Others
     - [x] Hollywood
+    - [ ] NordVPN
+    - [ ] Tuxedo control center
 
 ## Config
 
@@ -86,9 +88,9 @@
     - [x] Albert launcher
     - [x] Custom application shortcuts (web links as desktop files)
     - [x] Custom desktop icons
+    - [x] Screenshare
     - [ ] Backgrounds (rotating)
     - [ ] HDMI (extend & duplicate)
-    - [ ] Screenshare
 - [x] Garbage collection, automatic
 - [x] Extract all dotfiles (niri, nix, gtklock, waybar, albert) to stow
 - [x] ESP 32 IDF Rust nix shell development
@@ -100,8 +102,8 @@
     - [ ] Treesitter languages
     - [ ] Setup neovim SQLite library file for clipboard
     - [ ] Snippets
-- [ ] Full system reset with setup procedure documentation
 - [ ] Nix to github
+- [ ] Full system reset with setup procedure documentation
 - [ ] Synology drive
 - [ ] Use flakes, profiles?
 
@@ -130,3 +132,13 @@ gsettings set org.gnome.desktop.interface cursor-size 22
 ```
 
 - Install `jsregexp` from `LuaSnip`
+
+- Neovim french spell
+
+```
+mkdir -p ~/.config/nvim/spell
+cd ~/.config/nvim/spell
+curl -Lo fr.utf-8.spl https://ftp.nluug.nl/vim/runtime/spell/fr.utf-8.spl
+```
+
+- Copy albert theme

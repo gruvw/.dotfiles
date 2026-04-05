@@ -33,7 +33,7 @@
     },
     {
         "fallback": true,
-        "iconPath": "/home/gruvw/.local/share/albert/websearch/4dcb6722.png",
+        "iconPath": "/home/gruvw/.local/share/icons/hicolor/128x128/apps/nixos.png",
         "id": "4dcb6722",
         "name": "NixOS",
         "trigger": "n",
@@ -41,7 +41,7 @@
     },
     {
         "fallback": true,
-        "iconPath": "/home/gruvw/.local/share/albert/websearch/63300301.png",
+        "iconPath": "/home/gruvw/.local/share/icons/hicolor/128x128/apps/raindrop.png",
         "id": "63300301",
         "name": "Raindrop.io",
         "trigger": "r",
@@ -49,7 +49,7 @@
     },
     {
         "fallback": true,
-        "iconPath": "/home/gruvw/.local/share/albert/websearch/fab53d63.png",
+        "iconPath": "/home/gruvw/.local/share/icons/hicolor/128x128/apps/stack_overflow.svg",
         "id": "fab53d63",
         "name": "Stack Overflow",
         "trigger": "s",
@@ -57,7 +57,7 @@
     },
     {
         "fallback": true,
-        "iconPath": "/home/gruvw/.local/share/albert/websearch/16295f0c.png",
+        "iconPath": "/home/gruvw/.local/share/icons/hicolor/128x128/apps/wikipedia.png",
         "id": "16295f0c",
         "name": "Wikipedia",
         "trigger": "w",
