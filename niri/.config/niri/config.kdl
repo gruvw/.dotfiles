@@ -118,6 +118,9 @@ layout {
     // Set gaps around windows in logical pixels.
     gaps 0
 
+    // background color
+    background-color "#1F1F1F"
+
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
     //   or right edge of the screen.
@@ -241,6 +244,7 @@ layout {
 spawn-at-startup "waybar"
 spawn-at-startup "copyq"
 spawn-at-startup "albert"
+spawn-at-startup "wpaperd"
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 

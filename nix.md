@@ -81,7 +81,6 @@
     - [x] Lockscreen
         - [x] Time date
         - [x] Password field
-        - [ ] Background ?
     - [x] Top keys (brightness, sound, etc)
     - [x] Browser focus urls xdg-open
     - [x] Custom cursor
@@ -89,20 +88,20 @@
     - [x] Custom application shortcuts (web links as desktop files)
     - [x] Custom desktop icons
     - [x] Screenshare
-    - [ ] Backgrounds (rotating)
+    - [x] Backgrounds (rotating)
     - [ ] HDMI (extend & duplicate)
 - [x] Garbage collection, automatic
 - [x] Extract all dotfiles (niri, nix, gtklock, waybar, albert) to stow
 - [x] ESP 32 IDF Rust nix shell development
 - [x] GitHub login (gh cli)
     - [x] GPG keys to sign
+- [ ] Nix to github
 - [ ] Neovim
     - [ ] LSP support
         - [x] Rust (+ embedded esp 32)
     - [ ] Treesitter languages
     - [ ] Setup neovim SQLite library file for clipboard
     - [ ] Snippets
-- [ ] Nix to github
 - [ ] Full system reset with setup procedure documentation
 - [ ] Synology drive
 - [ ] Use flakes, profiles?
@@ -142,3 +141,5 @@ curl -Lo fr.utf-8.spl https://ftp.nluug.nl/vim/runtime/spell/fr.utf-8.spl
 ```
 
 - Copy albert theme
+
+- Bat theme cache: `bat cache --build`

@@ -2,7 +2,6 @@
 <interface>
 	<object class="GtkBox" id="window-box">
 		<property name="name">window-box</property>
-		<property name="margin">100</property>
 		<property name="halign">center</property>
 		<property name="valign">center</property>
 		<property name="orientation">vertical</property>
