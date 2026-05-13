@@ -19,6 +19,8 @@ return {
         cursor_sync = true,
         report_eval_errors = true,
         headless = false,
+        browser_exec_path = "/run/current-system/sw/bin/brave",
+        -- strudel_url = "https://warm.strudel.cc",
       })
     end
   },

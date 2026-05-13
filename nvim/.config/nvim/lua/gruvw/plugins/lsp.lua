@@ -74,7 +74,7 @@ return {
       })
 
       require("lspconfig")["rust_analyzer"].setup({})
-
+      require("lspconfig")["ts_ls"].setup({})
 
       -- Start LSP
       vim.cmd(":LspStart")

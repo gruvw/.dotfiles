@@ -12,7 +12,8 @@ return {
       "telescope.nvim",
     },
     config = function()
-      vim.g.sqlite_clib_path = "/nix/store/8bh8g107igzm703ib6vhslnagm1j47km-sqlite-3.50.4/lib/libsqlite3.so"
+      -- nix eval --raw --impure --expr 'with import <nixpkgs> {}; "${sqlite.out}/lib/libsqlite3${stdenv.hostPlatform.extensions.sharedLibrary}"'
+      vim.g.sqlite_clib_path = "/nix/store/0vpj29gvvl1z9fjwh4lk9fiyvkqf21px-sqlite-3.50.4/lib/libsqlite3.so"
 
       require("neoclip").setup({
         history = 1000,

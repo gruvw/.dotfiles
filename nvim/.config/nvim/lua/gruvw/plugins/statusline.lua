@@ -38,13 +38,16 @@ local filetype_cmpnt = {
     -- Show "+" if LSP client is running, "~" when progress
     local lsp = ""
     if #vim.lsp.get_clients({ bufnr = 0 }) > 0 then
-      local progress = require("lsp-progress").progress({
-        format = function(messages)
-          return #messages > 0
-        end,
-      })
+      local function lsp_is_busy()
+        for _, client in ipairs(vim.lsp.get_clients()) do
+          for _ in pairs(client.progress.pending) do
+            return true
+          end
+        end
+        return false
+      end
 
-      lsp = progress and "~" or "+"
+      lsp = lsp_is_busy() and "~" or "+"
     end
 
     -- Spell check
@@ -109,14 +112,9 @@ return {
       -- https://github.com/nvim-tree/nvim-web-devicons
       "nvim-tree/nvim-web-devicons", -- icons support
 
-      -- https://github.com/linrongbin16/lsp-progress.nvim
-      "linrongbin16/lsp-progress.nvim",
-
       "overseer.nvim",
     },
     config = function()
-      require("lsp-progress").setup()
-
       require("lualine").setup({
         options = {
           theme = "chromance",

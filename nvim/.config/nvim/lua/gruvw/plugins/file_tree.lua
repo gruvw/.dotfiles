@@ -79,11 +79,6 @@ return {
           custom = {},
           exclude = {},
         },
-        -- Open in new terminal
-        system_open = {
-          cmd = "kitty",
-          args = { "vifm", },
-        },
         diagnostics = {
           enable = true,
           show_on_dirs = true,

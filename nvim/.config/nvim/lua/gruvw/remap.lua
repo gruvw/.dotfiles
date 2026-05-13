@@ -304,7 +304,7 @@ overseer.run_template_always_picker = function()
   })
 end
 keymap("n", "<leader>ro", [[:lua require("overseer").toggle()<CR>]], remap)
-keymap("n", "<leader>rr", [[:w<CR>:lua require("overseer").run_template()<CR>]], remap)
+keymap("n", "<leader>rr", [[:w<CR>:lua require("overseer").run_task()<CR>]], remap)
 keymap("n", "<leader>rl", [[:w<CR>:lua overseer_restart()<CR>]], remap)
 keymap("n", "<leader>rt", [[:w<CR>:lua overseer_term()<CR>]], remap)
 keymap("n", "<leader>rs", [[:w<CR>:lua overseer_stop()<CR>]], remap)
@@ -340,3 +340,11 @@ keymap("n", "<leader>mx", strudel.execute, remap)
 
 -- Others
 keymap("n", "<leader>zc", function() require("colorizer").attach_to_buffer() end, remap)
+
+-- Leap
+keymap({"n", "x", "o"}, "s", "<Plug>(leap)")
+keymap({"x", "o"}, "x", "<Plug>(leap-forward-till)")
+keymap({"x", "o"}, "X", "<Plug>(leap-backward-till)")
+keymap("n", "S", "<Plug>(leap-anywhere)")
+-- keymap("n", "S", "<Plug>(leap-from-window)")
+-- keymap({"x", "o"}, "X", "<Plug>(leap-backward-till)")

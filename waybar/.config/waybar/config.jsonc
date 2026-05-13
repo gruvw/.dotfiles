@@ -68,8 +68,8 @@
         "format-critical": "{temperatureC}°C {icon}",
         "interval": 2,
         "tooltip": false,
-        "warning-threshold": 65,
-        "critical-threshold": 75,
+        "warning-threshold": 70,
+        "critical-threshold": 80,
     },
     "backlight": {
         "format": "{icon}",

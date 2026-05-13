@@ -99,7 +99,7 @@ set.spelllang = "en_us,fr"
 set.spelloptions = "camel"
 set.spellsuggest = "best,10"
 set.spellcapcheck = ""
-set.spellfile = "/home/gruvw/.dotfiles/nvim/.config/nvim/spell/custom.utf-8.add,/home/gruvw/.dotfiles/nvim/.config/nvim/spell/words.utf-8.add"
+set.spellfile = "/home/gruvw/data/repositories/.dotfiles/nvim/.config/nvim/spell/custom.utf-8.add,/home/gruvw/data/repositories/.dotfiles/nvim/.config/nvim/spell/words.utf-8.add"
 
 -- Backspace
 set.backspace = "indent,eol,start"

@@ -58,8 +58,8 @@
 
 - [x] Others
     - [x] Hollywood
-    - [ ] NordVPN
-    - [ ] Tuxedo control center
+    - [ ] VPN
+    - [ ] OnlyOffice
 
 ## Config
 

@@ -2,12 +2,10 @@
 
 return {
   {
-    -- https://github.com/ggandor/leap.nvim
-    "ggandor/leap.nvim",
+    url = "https://codeberg.org/andyg/leap.nvim",
     event = "VeryLazy",
     config = function()
       local leap = require("leap")
-      leap.add_default_mappings()
 
       -- Defines characters considered equivalent when searching
       leap.opts.equivalence_classes = {
