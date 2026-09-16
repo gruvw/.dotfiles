@@ -6,12 +6,11 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      "nvim-cmp",
+      "blink.cmp",
       -- "mason-lspconfig.nvim",
     },
     config = function()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
 
       vim.lsp.config("*", {
         capabilities = capabilities,
@@ -57,90 +56,46 @@ return {
   },
 
   {
-    -- TODO use blink.cmp
-    -- https://github.com/hrsh7th/nvim-cmp
-    "hrsh7th/nvim-cmp",
+    -- https://github.com/saghen/blink.cmp
+    "saghen/blink.cmp",
+    version = "1.*",
+    lazy = true,
     dependencies = {
-      -- https://github.com/hrsh7th/cmp-path
-      "hrsh7th/cmp-path",
-
-      -- https://github.com/saadparwaiz1/cmp_luasnip
-      "saadparwaiz1/cmp_luasnip",
-
-      -- https://github.com/hrsh7th/cmp-nvim-lsp
-      "hrsh7th/cmp-nvim-lsp",
-
+      -- https://github.com/L3MON4D3/LuaSnip
       "LuaSnip",
     },
-    lazy = true,
-    config = function()
-      local cmp = require("cmp")
-      local types = require("cmp.types")
-
-      local border = cmp.config.window.bordered({ border = "single" })
-      local cmp_select_opts = { behavior = cmp.SelectBehavior.Select }
-
-      local ELLIPSIS = "..."
-
-      cmp.setup({
-        completion = {
-          -- autocomplete = false,
-          completeopt = "menu,menuone,noinsert", -- pre-select first option
+    opts = {
+      keymap = {
+        preset = "none",
+        ["<C-Space>"] = { "show" },
+        ["<C-CR>"] = { "select_and_accept" },
+        ["<C-c>"] = { "cancel" },
+        ["<Down>"] = { "select_next", "fallback" },
+        ["<Up>"] = { "select_prev", "fallback" },
+        ["<C-j>"] = { "scroll_documentation_down", "fallback" },
+        ["<C-k>"] = { "scroll_documentation_up", "fallback" },
+      },
+      snippets = { preset = "luasnip" },
+      completion = {
+        menu = {
+          border = "single",
+          draw = {
+            cursorline_priority = 0, -- highlighting related
+            columns = {
+              { "label", gap = 1 },
+              { "kind", "source_name", gap = 1 },
+            },
+          },
         },
-        mapping = {
-          -- Completion results choice
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-CR>"] = cmp.mapping.confirm({ select = true }),
-          ["<C-c>"] = cmp.mapping.abort(),
-
-          -- Move in completion results
-          ["<Down>"] = { i = cmp.mapping.select_next_item(cmp_select_opts) },
-          ["<Up>"] = { i = cmp.mapping.select_prev_item(cmp_select_opts) },
-
-          -- Scroll up and down in the completion documentation
-          ["<C-j>"] = cmp.mapping.scroll_docs(-5),
-          ["<C-k>"] = cmp.mapping.scroll_docs(5),
+        documentation = {
+          auto_show = true,
+          window = { border = "single" },
         },
-        window = {
-          completion = border,
-          documentation = border,
-        },
-        sources = {
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-          { name = "path" },
-        },
-        snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-          end,
-        },
-        formatting = {
-          fields = { "abbr", "menu", "kind" },
-          format = function(entry, item)
-            local win_width = vim.api.nvim_win_get_width(0)
-            local max_label_width = math.max(10, math.min(50, win_width - 40))
-
-            local short_name = {
-              nvim_lsp = "LSP",
-              nvim_lua = "NVIM",
-              luasnip = "SNIP",
-              path = "PATH",
-            }
-
-            local menu_name = short_name[entry.source.name] or entry.source.name
-            item.menu = string.format("[%s]", menu_name)
-
-            -- https://github.com/hrsh7th/nvim-cmp/issues/88 & https://github.com/hrsh7th/nvim-cmp/discussions/609#discussioncomment-3395522
-            if #item.abbr > max_label_width then
-              item.abbr = string.sub(item.abbr, 1, max_label_width) .. ELLIPSIS
-            end
-
-            return item
-          end,
-        },
-      })
-    end,
+      },
+      sources = {
+        default = { "lsp", "snippets", "path" },
+      },
+    },
   },
 
   {
