@@ -2,163 +2,56 @@
 
 return {
   {
-    -- TODO use native neovim LSP config
     -- https://github.com/neovim/nvim-lspconfig
     "neovim/nvim-lspconfig",
-    lazy = true,
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "nvim-cmp",
       -- "mason-lspconfig.nvim",
     },
     config = function()
-      local lspconfig = require("lspconfig")
-
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      capabilities.textDocument.completion.completionItem.snippetSupport = true
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-      local lsp_defaults = lspconfig.util.default_config
-      lsp_defaults.capabilities = vim.tbl_deep_extend("force", lsp_defaults.capabilities, capabilities)
-      lsp_defaults.capabilities.textDocument.completion.completionItem.snippetSupport = true
+      vim.lsp.config("*", {
+        capabilities = capabilities,
+      })
 
-      -- Add border to LSP windows
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
         vim.lsp.handlers.hover,
-        { border = "single", }
+        { border = "single" }
       )
       vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
         vim.lsp.handlers.signature_help,
-        { border = "single", }
-      )
-      require("lspconfig.ui.windows").default_options.border = "single"
-
-      -- LSP commands
-      local command = vim.api.nvim_create_user_command
-      command(
-        "LspWorkspaceAdd",
-        function() vim.lsp.buf.add_workspace_folder() end,
-        { desc = "Add folder to workspace", }
-      )
-      command(
-        "LspWorkspaceList",
-        function() vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
-        { desc = "List workspace folders", }
-      )
-      command(
-        "LspWorkspaceRemove",
-        function() vim.lsp.buf.remove_workspace_folder() end,
-        { desc = "Remove folder from workspace", }
+        { border = "single" }
       )
 
-      -- Diagnostics config
+      -- require("lspconfig.ui.windows").default_options.border = "single"
+
+      -- Diagnostics config (unrelated to lspconfig, unchanged)
       vim.diagnostic.config({
         underline = true,
-        severity_sort = true, -- Sort diagnostics by severity
-        float = { border = "single", },
+        severity_sort = true,
+        float = { border = "single" },
         -- TODO change to new lsp_lines system
-        virtual_text = true, -- Use lsp_lines
+        virtual_text = true,
         virtual_lines = false,
       })
 
-      require("lspconfig").clangd.setup({
-        capabilities = lsp_defaults.capabilities,
-      })
-      require("lspconfig").cssls.setup({
-        capabilities = lsp_defaults.capabilities,
-      })
-      require("lspconfig").tinymist.setup({
-        capabilities = lsp_defaults.capabilities,
+      vim.lsp.config("tinymist", {
         single_file_support = true,
         settings = {
           exportPdf = "onSave",
-        }
-      })
-
-      require("lspconfig")["pyright"].setup({})
-      require("lspconfig")["rust_analyzer"].setup({})
-      require("lspconfig")["ts_ls"].setup({})
-
-      -- Start LSP
-      vim.cmd(":LspStart")
-    end
-  },
-
-  {
-    -- https://github.com/williamboman/mason-lspconfig.nvim
-    "williamboman/mason-lspconfig.nvim",
-    enabled = false,
-    dependencies = {
-      -- https://github.com/williamboman/mason.nvim
-      "williamboman/mason.nvim",
-
-      -- https://github.com/jay-babu/mason-nvim-dap.nvim
-      -- "jay-babu/mason-nvim-dap.nvim",
-
-      -- https://github.com/mfussenegger/nvim-jdtls
-      -- "mfussenegger/nvim-jdtls",
-    },
-    lazy = true,
-    config = function()
-      require("mason").setup({
-        ui = {
-          border = "single",
-          height = 0.7,
         },
       })
 
-      -- require("mason-nvim-dap").setup({
-      --   -- https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/source.lua
-      --   ensure_installed = {
-      --     "cppdbg",
-      --   },
-      --   handlers = {
-      --     -- function(config)
-      --     --   require("mason-nvim-dap").default_setup(config)
-      --     -- end,
-      --   },
-      -- })
-
-      local function default_setup(server)
-        require("lspconfig")[server].setup({})
-      end
-
-
-      require("mason-lspconfig").setup({
-        automatic_installation = true,
-        ensure_installed = {
-          -- "pyright",
-          -- "rust_analyzer",
-          -- "marksman",
-          -- "texlab",
-          -- "lua_ls",
-          -- "cssls",
-          -- "emmet_language_server",
-          -- "html",
-          -- "clangd",
-          -- "jsonls",
-          -- "arduino_language_server",
-          -- "ts_ls",
-          -- "tailwindcss",
-          -- "tinymist",
-          -- "gopls",
-        },
-        handlers = {
-          default_setup,
-          lua_ls = function() require("lspconfig").lua_ls.setup(require("gruvw.lsp.lua_ls")) end,
-          html = function() require("lspconfig").html.setup(require("gruvw.lsp.html")) end,
-          arduino_language_server = function()
-            require("lspconfig").arduino_language_server.setup(require(
-              "gruvw.lsp.arduino_language_server"))
-          end,
-          gopls = function()
-            require("lspconfig").gopls.setup({
-              settings = {
-                gopls = {
-                  buildFlags = { "-tags=performance" },
-                },
-              },
-            })
-          end,
-        },
+      vim.lsp.enable({
+        "clangd",
+        "cssls",
+        "tinymist",
+        "pyright",
+        "rust_analyzer",
+        "ts_ls",
       })
     end
   },
