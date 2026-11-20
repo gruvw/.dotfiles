@@ -98,3 +98,5 @@ lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(r
 	gpgsign = true
 [gpg]
 	program = gpg
+[pager]
+	log = false

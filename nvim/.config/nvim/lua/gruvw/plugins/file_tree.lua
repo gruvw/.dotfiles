@@ -65,7 +65,7 @@ return {
         },
         on_attach = tree_on_attach,
         update_cwd = true,
-        disable_netrw = true, -- enable netrw to download spell files
+        disable_netrw = false, -- enable netrw to download spell files
         hijack_netrw = true,
         update_focused_file = {
           enable = true,

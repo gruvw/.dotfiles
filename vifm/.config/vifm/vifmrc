@@ -1,5 +1,7 @@
 " ~/.config/vifm/vifmrc
 
+" Empty trash: `rm -rf ~/.local/share/vifm/Trash`
+
 plugin load
 
 set dotdirs=0

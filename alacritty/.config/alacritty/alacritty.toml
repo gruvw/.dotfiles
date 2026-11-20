@@ -74,3 +74,8 @@ white   = "#F4F4F4"
 
 [env]
 TERM = "alacritty-direct" # for gui colors detection
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"

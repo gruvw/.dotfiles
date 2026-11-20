@@ -4,6 +4,7 @@ return {
   {
     -- https://github.com/mistweaverco/kulala.nvim
     "mistweaverco/kulala.nvim",
+    ft = { "http", "rest" },
     lazy = true,
     config = function()
       require("kulala").setup({

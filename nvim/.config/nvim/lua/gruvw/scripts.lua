@@ -144,7 +144,7 @@ autocmd({ "BufNewFile", "BufRead" }, {
     end
 
     require("lspconfig")
-    vim.cmd([[:LspStart<CR>]])
+    vim.cmd("lsp enable")
   end,
 })
 

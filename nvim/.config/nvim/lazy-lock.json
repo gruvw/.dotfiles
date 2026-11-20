@@ -12,7 +12,7 @@
   "highlight-undo.nvim": { "branch": "main", "commit": "ee32e12693d70e66f954d09a504a7371d110fc27" },
   "indent-blankline.nvim": { "branch": "master", "commit": "f1e186e44d3b7f9ae918008e2c28ce37c6023d2d" },
   "jupynium.nvim": { "branch": "master", "commit": "dbd632bfa7883244c36152fc97fd6da54c443eed" },
-  "kulala.nvim": { "branch": "main", "commit": "dcad056448773ae5b54cadbfdbd188a599cfebd3" },
+  "kulala.nvim": { "branch": "main", "commit": "de0e6370e4ffa1a8da95cb4ff9b8a3057e0ac6e5" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
   "leap.nvim": { "branch": "main", "commit": "38af0ab56c6eb8757ee6006dd13ab79c2bc11a49" },
   "lualine.nvim": { "branch": "master", "commit": "221ce6b2d999187044529f49da6554a92f740a96" },
