@@ -2,39 +2,44 @@
 
 return {
   {
-    -- https:/github.com/nvim-treesitter/nvim-treesitter
+    -- https://github.com/nvim-treesitter/nvim-treesitter
     "nvim-treesitter/nvim-treesitter",
-    branch = "master",
+    branch = "main",
     lazy = false,
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {}, -- Leave empty, Nix handles this
-        ignore_install = { "all" },
-        highlight = {
-          enable = true,
-        },
-        indent = {
-          enable = false,
-        },
-        textobjects = {
-          select = {
-            enable = true,
-            disable = { "dart", }, -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects/issues/461
-            lookahead = true,
-            keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-              ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
-              ["ib"] = "@block.inner",
-              ["ab"] = "@block.outer",
-              ["il"] = "@loop.inner",
-              ["al"] = "@loop.outer",
-            },
-          },
-        },
+      require("nvim-treesitter").install({ "stable", "unstable" })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("gruvw_treesitter", { clear = true }),
+        callback = function(args)
+          if not pcall(vim.treesitter.start, args.buf) then
+            return
+          end
+
+          -- was: textobjects.select.disable = { "dart" }
+          -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects/issues/461
+         -- if vim.bo[args.buf].filetype == "dart" then
+         --    return
+         --  end
+
+          -- local select = require("nvim-treesitter-textobjects.select")
+          -- local function map(lhs, query, group, desc)
+          --   vim.keymap.set({ "x", "o" }, lhs, function()
+          --     select.select_textobject(query, group or "textobjects")
+          --   end, { buffer = args.buf, desc = desc })
+          -- end
+
+          -- map("af", "@function.outer")
+          -- map("if", "@function.inner")
+          -- map("ac", "@class.outer")
+          -- map("ic", "@class.inner", nil, "Select inner part of a class region")
+          -- map("as", "@scope", "locals", "Select language scope")
+          -- map("ib", "@block.inner")
+          -- map("ab", "@block.outer")
+          -- map("il", "@loop.inner")
+          -- map("al", "@loop.outer")
+        end,
       })
     end,
   },

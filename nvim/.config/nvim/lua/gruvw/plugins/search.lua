@@ -4,7 +4,6 @@ return {
   {
     -- https://github.com/nvim-telescope/telescope.nvim
     "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
     lazy = true,
     dependencies = {
       -- https://github.com/debugloop/telescope-undo.nvim

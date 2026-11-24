@@ -144,7 +144,18 @@ autocmd({ "BufNewFile", "BufRead" }, {
     end
 
     require("lspconfig")
-    vim.cmd("lsp enable")
+    if not vim.g.lsp_off then
+      vim.lsp.enable({
+        "clangd",
+        "cssls",
+        "tinymist",
+        "pyright",
+        "rust_analyzer",
+        "ts_ls",
+        "lua_ls",        -- *.lua
+        "html", "jsonls",
+      })
+    end
   end,
 })
 
